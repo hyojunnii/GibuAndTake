@@ -40,6 +40,7 @@
         margin: 0 10%;
         margin-top: 30px;
         border: 1px solid black;
+        height: 1340px;
     }
     .container>p {
         font-weight: 800;
@@ -117,6 +118,8 @@
 </style>
 </head>
 <body>
+    <%@ include file="../common/header.jsp" %>
+
     <%@ include file="funding_header.jsp" %>
     
     <div id="group_catelist">
@@ -199,5 +202,7 @@
              </div>
          </a>
     </div>
+    
+    <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -81,6 +81,8 @@
 </style>
 </head>
 <body>
+    <%@ include file="../common/header.jsp" %>
+
     <div id="gibu_detail_container">
             <h1>여기는 기부 제목 공간</h1>
             <p class="comName">By 기업 이름</p>
@@ -153,6 +155,6 @@
             
         </div>
     </div>
-
+    <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

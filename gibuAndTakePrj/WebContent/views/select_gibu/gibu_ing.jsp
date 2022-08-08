@@ -39,6 +39,7 @@
     margin: 0 10%;
     margin-top: 30px;
     border: 1px solid black;
+    height: 1340px;
 }
 .container>p {
     font-weight: 800;
@@ -117,8 +118,10 @@ progress::-webkit-progress-value{
 </style>
 </head>
 <body>
-	<%@ include file="gibu_header.jsp" %>
 
+
+    <%@ include file="../common/header.jsp" %>
+	<%@ include file="gibu_header.jsp" %>
     <div id="group_catelist">
         <ul>
             <li>
@@ -281,6 +284,59 @@ progress::-webkit-progress-value{
                 <span class="i_total_money">1,000,000,000원</span>
             </div>
         </a>
+
+        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
+            <div>
+                <img src="../resources/img/select_icon/1all.png" alt="">
+            </div>
+            <div>
+                <p align="center">기부 제목</p>
+                <pre>기업이름</pre>
+                <progress id="i_progress" value="20" max="100"></progress>
+                <span class="i_prog_percent">20%</span>
+                <span class="i_total_money">1,000,000,000원</span>
+            </div>
+        </a>
+        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
+            <div>
+                <img src="../resources/img/select_icon/1all.png" alt="">
+            </div>
+            <div>
+                <p align="center">기부 제목</p>
+                <pre>기업이름</pre>
+                <progress id="i_progress" value="20" max="100"></progress>
+                <span class="i_prog_percent">20%</span>
+                <span class="i_total_money">1,000,000,000원</span>
+            </div>
+        </a>
+        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
+            <div>
+                <img src="../resources/img/select_icon/1all.png" alt="">
+            </div>
+            <div>
+                <p align="center">기부 제목</p>
+                <pre>기업이름</pre>
+                <progress id="i_progress" value="20" max="100"></progress>
+                <span class="i_prog_percent">20%</span>
+                <span class="i_total_money">1,000,000,000원</span>
+            </div>
+        </a>
+      
+        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
+            <div>
+                <img src="../resources/img/select_icon/1all.png" alt="">
+            </div>
+            <div>
+                <p align="center">기부 제목</p>
+                <pre>기업이름</pre>
+                <progress id="i_progress" value="20" max="100"></progress>
+                <span class="i_prog_percent">20%</span>
+                <span class="i_total_money">1,000,000,000원</span>
+            </div>
+        </a>
+
     </div>
+
+    <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
