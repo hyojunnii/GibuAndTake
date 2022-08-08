@@ -9,7 +9,7 @@
     #account {
         margin: 30px auto;
         width: 800px;
-        height: 150px;
+        height: 200px;
         border: 2px solid #8bdcb1;
         border-radius: 15px;
     }
@@ -27,18 +27,40 @@
         float: right;
         box-sizing: border-box;
         text-align: center;
-        margin-top: 7px;
+        margin-top: 25px;
+    }
+
+    #text a {
+        font-weight: bolder;
+        font-size: 25px;
     }
 
     .big, .small{
-        border: 1px solid black;
         margin: auto;
         width: 750px;
+    }
+
+    .big {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .small {
+        font-size: 20px;
+    }
+
+    img{
+        margin-top: 20px;
+        margin-left: 20px;
+        width: 50%;
+        height: 80%;
+        border-radius: 15px;
     }
 </style>
 </head>
 <body>
 
+    <%@include file="/views/common/header.jsp" %>
     <%@include file="/views/introduce/introduceHead.jsp" %>
 
     <div id="category">
@@ -46,7 +68,7 @@
     </div>
 
     <div id="account">
-        <img src="/gibuAndTakePrj/WebContent/resources/img/testImg01.png" alt="">
+        <img src="../../resources/img/testImg01.png" alt="">
         <div id="text">
             <a>기부 참여 실천</a>
             <p>다양한 사람들의 기부를 격려하고<br>
@@ -75,5 +97,9 @@
     <div class="small">
         줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~
     </div>
+
+    <img src="" alt="">
+
+    <%@include file="/views/common/footer.jsp" %>
 </body>
 </html>

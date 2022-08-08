@@ -22,6 +22,10 @@
 		padding: 10 10 10 20;
 	}
 
+	th, td {
+		padding: 5px;
+	}
+
 	td:first-child{
 		border-right: 1px solid;
 		width: 40%;
@@ -46,7 +50,7 @@
 		margin: 0 0 0 20px;
 	}
 
-	button {
+	input {
 		background-color: #8bdcb1;
 		border: #8bdcb1;
 		border-radius: 15px;
@@ -99,11 +103,11 @@
 				</tr>
 				<tr>
 					<td>기부증서</td>
-					<td><button data-bs-toggle="modal" data-bs-target="#certificatePrint">출력</button></td>
+					<td><input type="button" value="출력" data-bs-toggle="modal" data-bs-target="#certificatePrint"></button></td>
 				</tr>
 				<tr>
 					<td>기부금영수증</td>
-					<td><button oncanplay="location.href='';">출력</button></td>
+					<td><input type="button" value="출력" oncanplay="location.href='';"></button></td>
 				</tr>
 			</tbody>
 			</thead>
@@ -112,8 +116,7 @@
 		
 	<hr>
 	
-
-	
+	<%@include file="/views/common/footer.jsp" %>
 	
 </body>
 </html>

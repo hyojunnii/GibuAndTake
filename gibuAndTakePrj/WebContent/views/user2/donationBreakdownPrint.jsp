@@ -78,6 +78,7 @@
     hr{
         width: 800px;
         border: 2px solid #8bdcb1;
+        margin-bottom: 10px;
     }
 
     .date {
@@ -103,6 +104,9 @@
 </style>
 </head>
 <body>
+
+    <%@include file="/views/common/header.jsp" %>
+
     <div id="no">
         <div class="no">일련번호</div>
         <div class="no">11-111</div>
@@ -234,5 +238,10 @@
     <div class="sign">
         (서명 또는 인)
     </div>
+
+    <hr>
+    
+    <%@include file="/views/common/footer.jsp" %>
+
 </body>
 </html>
