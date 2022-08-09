@@ -6,12 +6,14 @@
 <meta charset="UTF-8">
 <title>소개:기부앤테이크?</title>
 <style>
+
     #account {
         margin: 30px auto;
-        width: 800px;
-        height: 200px;
+        width: 700px;
+        height: 250px;
         border: 2px solid #8bdcb1;
         border-radius: 15px;
+        display: flex;
     }
 
     #account a {
@@ -25,19 +27,20 @@
     #text {
         width: 300px;
         float: right;
-        box-sizing: border-box;
         text-align: center;
-        margin-top: 25px;
+        margin: auto;
+        margin-top: 50px;
     }
 
     #text a {
+        color: #2E6C4A;
         font-weight: bolder;
         font-size: 25px;
     }
 
     .big, .small{
         margin: auto;
-        width: 750px;
+        width: 700px;
     }
 
     .big {
@@ -49,18 +52,31 @@
         font-size: 20px;
     }
 
-    img{
-        margin-top: 20px;
-        margin-left: 20px;
-        width: 50%;
-        height: 80%;
+    #img1{
+        padding: 10px;
+        width: 350px;
+        border-radius: 20px;
+        object-fit: cover;
+    }
+
+    #img2 {
+        width: 800px;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+
+    #what {
+        background-color: #EBF5E0;
+        color: #2e6c4a;
+        font-weight: bold;
         border-radius: 15px;
     }
+
 </style>
 </head>
 <body>
 
-    <%@include file="/views/common/header.jsp" %>
     <%@include file="/views/introduce/introduceHead.jsp" %>
 
     <div id="category">
@@ -68,7 +84,9 @@
     </div>
 
     <div id="account">
-        <img src="../../resources/img/testImg01.png" alt="">
+       <div id="img-area">
+            <img src="../../resources/img/do-not-use-this-image-g43f0f0b51_640.jpg" alt="" id="img1">
+       </div>
         <div id="text">
             <a>기부 참여 실천</a>
             <p>다양한 사람들의 기부를 격려하고<br>
@@ -98,7 +116,7 @@
         줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~
     </div>
 
-    <img src="" alt="">
+    <img src="../../resources/img/history.png" alt="" id="img2">
 
     <%@include file="/views/common/footer.jsp" %>
 </body>

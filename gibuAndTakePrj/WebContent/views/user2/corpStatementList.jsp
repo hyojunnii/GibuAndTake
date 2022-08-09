@@ -79,7 +79,13 @@
 	}
 
 	#do_t {
+		margin-left: 5px;
 		font-size: 20px;
+	}
+
+	#do_ex, #do_tt, #do_tt2 {
+		line-height: 35px;
+		color: #2e6c4a;
 	}
 
 
