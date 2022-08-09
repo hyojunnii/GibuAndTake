@@ -86,7 +86,20 @@
         border-radius: 15px;
         outline: none;
         box-shadow: none;
-        border
+        
+    }
+
+    #review_detail_footer_corp_name{
+        font-size: 32px;
+    }
+    
+    #review_detail_footer_corp_intro{
+        font-size: 18px;
+    }
+    
+    .review_detail_footer_corp_date{
+        font-size: 15px;
+        color: #5c5c5c;
     }
 
 
@@ -124,10 +137,10 @@
             </div>
             <div id="review_detail_footer">
                 <div id="review_detail_footer_corp">
-                    <span>기업이름</span>
-                    <span>기업소개</span>
-                    <span>캠페인기간 : 2999. 01. 01. ~ 2999. 01. 01.</span>
-                    <span>캠페인후기 : 2999. 01. 01.</span>
+                    <span id="review_detail_footer_corp_name">기업이름</span>
+                    <span id="review_detail_footer_corp_intro">기업소개</span>
+                    <span class="review_detail_footer_corp_date">캠페인기간 : 2999. 01. 01. ~ 2999. 01. 01.</span>
+                    <span class="review_detail_footer_corp_date">캠페인후기 : 2999. 01. 01.</span>
                 </div>
                 <div id="review_detail_footer_btn">
                     <input type="submit" value="수정하기" class="review_detail_btn">
