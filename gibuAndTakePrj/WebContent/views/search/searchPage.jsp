@@ -5,23 +5,16 @@
     <meta charset="UTF-8" />
     <title>Document</title>
 
-    <!-- 지울거 -->
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <!-- 여기까지 -->
 
-    <!-- 지울거 -->
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Sans+KR&display=swap");
-
       body {
         width: 1200px;
         margin: 0 auto;
-        margin-bottom: 10%; /*지울거*/
-        font-family: "IBM Plex Sans KR", "IBM Plex Sans", sans-serif;
       }
 
       #search {
@@ -45,9 +38,16 @@
       }
 
       #search-icon {
+        width: 30px;
+        height: 40px;
+        margin: 0 10px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+      }
+
+      #search-icon img {
         width: 40px;
         height: 40px;
-        margin-left: 30px;
       }
 
       #category-search-outer {
@@ -88,6 +88,10 @@
         border-radius: 10px;
         font-size: 15px;
         width: 120px;
+      }
+
+      #searched-content {
+        margin-bottom: 10%;
       }
 
       #searched-content-header {
@@ -163,6 +167,8 @@
     </style>
   </head>
   <body>
+    <%@ include file="/views/common/header.jsp" %>
+
     <div id="search">
       <select name="" class="form-select search-category" id="inputGroupSelect01" required>
         <option selected value="1">기부</option>
@@ -170,7 +176,7 @@
         <option value="3">캠페인</option>
       </select>
       <input name="" type="text" class="form-control search-bar" placeholder="검색어를 입력하세요." />
-      <div id="search-icon">아이콘</div>
+      <button id="search-icon"><img src="../../resources/img/free-icon-search-7233469.png" /></button>
     </div>
     <div id="category-search-outer">
       <div class="category-search-title"><h6>주제별 찾기</h6></div>
@@ -259,6 +265,8 @@
         </div>
       </div>
     </div>
+
+    <%@ include file="/views/common/footer.jsp" %>
 
     <script>
       $(document).ready(function () {
