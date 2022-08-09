@@ -103,13 +103,22 @@
     #funding_basket{
         margin: 0% 5% 0% 5%;
     }
+    
+    .btn_table{
+        width: 100%;
+        height: 100%;
+    }
+
+    select{
+        width: 100%;
+    }
 </style>
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
 
     <div id="funding_detail_container">
-        <h1>여기는 기부 제목 공간</h1>
+        <h1>여기는 펀딩 제목 공간</h1>
         <p class="comName">By 기업 이름</p>
         <img src="../resources/img/sample.png" alt="첫번째 이미지사진">
     <div id="funding_detail_container_div">
@@ -165,7 +174,47 @@
         </div>
 
         <div id="funding_cover">
-            <p id="funding_item_title" align="left">
+            <table class="btn_table">
+                <tr>
+                    <td width="50%">
+                        <p id="funding_item_title">
+                            상품이름 공간
+                        </p>
+                    </td>
+                    <td width="50%">
+                        <p id="total_money">
+                            659,600원
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="funding_item_basket" id="funding_basket">
+                            <option value="리워드 선택하기">리워드 선택하기</option>
+                            <option value="값 넣기">값 넣기</option>
+                        </select>
+                    </td>
+                    <td>
+                        <p id="plan_money">
+                            4,000,000원 목표
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="funding_btn_cover">
+                            <a href=""  class="funding_btn_container">
+                                <div>
+                                    펀딩 참여하기
+                                </div>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+
+            <!-- <p id="funding_item_title" align="left">
                 상품이름 공간
             </p>
             <div>
@@ -187,7 +236,7 @@
                         기부하기
                     </div>
                 </a>
-            </div>
+            </div> -->
         </div>
 
         
