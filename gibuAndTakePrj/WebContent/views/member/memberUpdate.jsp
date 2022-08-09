@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>Insert title here</title>
 <style>
-
-	
 	main{
 		margin:auto;
 		
@@ -37,7 +37,7 @@
 
     
     
-    a{
+    a {
     	text-decoration: none;
     	color: black;
     }
@@ -70,17 +70,15 @@
 		algin: center;
 		border-collapse: separate;
 		border-spacing : 0 20px;
-		width:500px;
+		
 		
 	}
 	
 	table tr{
 		<%--border-style:solid;--%> 
-		
 	}
 	table tr >td{
-		<%--border-style:solid;--%>
-		
+		<%--border-style:solid;--%> 
 		width:33%; 
 		
 	}
@@ -101,22 +99,19 @@
         border-style: calc() ;
         align:center;
     }
-	
+
 	#input{
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
         border-width: 1px 1px 1px 1px;
-        padding-left:-30px;
+        padding-left:20px;
         
        
 	}
 	
-	
-	
-	
-	#check {
+	#check{
 		text-align: center;
         width: 100px;
         margin-top: 0 auto;
@@ -129,24 +124,22 @@
         margin-right: 140px;
        	font-weight: bold;
 	}
+	
 	.first{
-		padding-left: 10px;
-		
+		padding-left: 100px;
 	}
 	
-	 
-	 #memberDelQuit{
+	 #memberUdq {
 		text-align: center;
-    }
-   
-    .log{
-        text-decoration: none;
+		font-size:15pt;
+		
+    .log2 {
+    	text-decoration: none;
         color: black;
-        font-size: 15pt;
        	font-weight: bold;
+    	
     }
-	
-	 
+    
 </style>
 </head>
 <body>
@@ -161,59 +154,44 @@
            </div>
 		
 		<div id="line"></div>
-		<h3 align="center" style="font-size: 25px; ">회원 정보 조회</h3>
-		<form action="gibuAndTakePrj/member/memberSelect" method="post">
+		<h3 align="center" style="font-size: 25px">회원 정보 수정</h3>
+		<form action="gibuAndTakePrj/member/memberUpdate" method="post">
 			<table>
-				<tr>
-					<td class="first" style="font-weight: bold">아이디 *</span></td>
-					<%--input 안에다가 히든밸류 값 넣어주기 getNo... --%>
-					<td><input type="text" name="memberId" id="input"  required readonly ></td>
-					
-				</tr>
-				
-				<tr>
-					<td class="first" style="font-weight: bold">이름 *</td>
-					<td><input type="password" name="memberPwd" id="input" required readonly></td>
 			
-				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="password" id="input" name="memberPwd2" required readonly></td>
+					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
+					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
 					
 				</tr>
-				<tr>
-					<td  class="first" style="font-weight: bold">주민등록번호 *</td>
-					<td><input type="text" name="memberName" id="input"  required readonly></td>
-				
-				</tr>
+			
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="text" name="memberName" id="input" required readonly></td>
-					
-					
+					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
+					<td></td>
 				</tr>
+				
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="tel" name="memberPhone" id="input" required readonly ></td>
-				
+					<td><input type="email" name="memberEmail" id="input"></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="tel" name="memberPhone" id="input" required readonly ></td>
-				
+					<td><input type="text" name="memberAddr" id="input"></td>
+					<td></td>
 				</tr>
-				
+				<tr></tr><tr></tr><tr></tr><tr></tr>
 			
-				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				
+
 			</table>
 			
-				<div id="memberDelQuit">
-					<a href="" class="log">회원 정보 수정 /</a>
-                    <a href="" class="log">회원 탈퇴</a>
+				<div id="memberUdq">
+					<a href="" class="log2" style="font-weight:bold">수정하기 /</a>
+					<a href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
+                    <a  data-toggle="modal" href="pwdChange" class="log2" style="font-weight:bold">비밀 번호 변경</a>
 				
-				</tr>
-			
+				</div>
 
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
