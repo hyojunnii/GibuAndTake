@@ -126,6 +126,22 @@
 	.first{
 		padding-left: 100px;
 	}
+	 
+	 #memberDelQuit{
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+      
+    }
+   
+    .log{
+        text-decoration: none;
+        color: black;
+        font-size: 15pt;
+       	font-weight: bold;
+    }
+	
+	 
 </style>
 </head>
 <body>
@@ -140,65 +156,58 @@
            </div>
 		
 		<div id="line"></div>
-		<h3 align="center" style="font-size: 25px">일반 회원 가입 페이지</h3>
+		<h3 align="center" style="font-size: 25px">회원 정보 조회</h3>
 		<form action="gibuAndTakePrj/member/join" method="post">
 			<table>
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</span></td>
-					<td><input type="text" name="memberId" id="input" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" ></td>
-					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
+					<td><input type="text" name="memberId" id="input" maxlength="10" required="required" ></td>
+					
 				</tr>
 				
 				<tr>
-					<td class="first" style="font-weight: bold">비밀번호 *</td>
-					<td><input type="password" name="memberPwd" id="input" maxlength="10" required placeholder="영문+숫자 4글자 이상"></td>
-					<td></td>
+					<td class="first" style="font-weight: bold">이름 *</td>
+					<td><input type="password" name="memberPwd" id="input" maxlength="10" required ></td>
+			
 				</tr>
 				<tr>
-					<td class="first" style="font-weight: bold">비밀번호 확인 *</td>
+					<td class="first" style="font-weight: bold">닉네임 *</td>
 					<td><input type="password" id="input" name="memberPwd2" required></td>
 					<td></td>
 				</tr>
 				<tr>
-					<td  class="first" style="font-weight: bold">이름 *</td>
+					<td  class="first" style="font-weight: bold">주민등록번호 *</td>
 					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
-					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
-					
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">주민등록번호 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
-					<td></td>
+					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
+					
+					
 				</tr>
-				
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="memberEmail" id="input"></td>
+					<td><input type="tel" name="memberPhone" id="input" ></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="memberAddr" id="input"></td>
+					<td><input type="tel" name="memberPhone" id="input" ></td>
 					<td></td>
 				</tr>
-				<tr></tr><tr></tr><tr></tr><tr></tr>
-				<tr>
-					<td  style="font-weight: bold"></td>
-					<td><button type="button" id="join" onclick="location.href='/gibuAndTakePrj/views/member/login.jsp'">가입하기</button></td>
-					<td></td>
-				</tr>
+				
+			
+				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+				<tr id="memberDelQuit">
+					<td><a href="" class="log">회원 정보 수정 /</a></td>
+                    <td><a href="" class="log">회원 탈퇴</a></td>
+					
 
 			</table>
+			
+			
+				</tr>
 
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>

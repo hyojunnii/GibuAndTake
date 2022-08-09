@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <style>
-    div{
+   
+    #square{
      width: 500px;   
      height: 500px;
      border: solid black;
@@ -17,7 +18,7 @@
      border-width: 1px 1px 1px 1px;
     }
 
-    table {
+    #loginInfo {
         text-align: center;
         margin: 0 auto;
         margin-top: 150px;
@@ -25,8 +26,54 @@
         border-spacing: 0 5px;
     }
     
+     #logo_name{
+    	text-align:center;
+    	margin-top:50px;
+    	margin-bottom:-120px;
+
+    }
+    
+    #logo{
+        width: 65px;
+        height: 65px;
+    }
+
+    #siteName{
+        font-size: 40px;
+        vertical-align: middle;
+    }
+    
    
     
+    #logo_name>*{
+        text-decoration: none;
+    }
+
+    
+    
+    a{
+    	text-decoration: none;
+    	color: black;
+    }
+
+    #logo_name>a>*{
+        vertical-align: middle;
+        height: 75px;
+    }
+
+    #siteName_small{
+        font-size: 20px;
+        
+        
+    }
+    
+     
+    
+     .greenBold{
+        color: #086C37;
+        font-weight: bold;
+    }
+
     #ID {
         text-align: left;
         width: 350px;
@@ -74,10 +121,14 @@
 </style>
 <body>
 		<form action="gibuAndTakePrj/member/join">
-            <div class="square">
-                <table>
-                    
-                    
+            <div id ="square">
+                <table id= "loginInfo">
+                    <div id="logo_name">
+           			<a href="<%=request.getContextPath()%>">
+                	<img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
+                	<span id="siteName"><span class="greenBold selected_bg" style=" background-color: #EBF5E0;">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
+            		</a>
+            		</div>
 	                <tr>
 	                    <td colspan="4"><input type="text" name="memberId" id="ID" placeholder="아이디"></td>
 	                </tr>
@@ -94,9 +145,12 @@
                     <td><a href="" class="log">아이디 찾기 |</a></td>
                     <td><a href="" class="log"> &nbsp;비밀번호 찾기</a></td>
                     </tr>
-                <table>
-               
-          
+                </table>
+                </div>
+                
+                <div style="padding-top: 100px">
+               <%@ include file="../common/footer.jsp" %>
+          		</div>
         </form>
 
        
