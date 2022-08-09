@@ -77,6 +77,10 @@
 		height: 40px;
 		box-sizing: border-box;
 	}
+	
+	input:hover {
+		background-color: #086C37;
+	}
 
 	#do_t {
 		margin-left: 5px;
@@ -98,12 +102,11 @@
         <a>기업 명세서 목록</a>
     </div>
 	
-	<form action="">
+	<form action="/gibuAndTakePrj/member/stmtRe" method="get">
 		<table id="first">
 			<div id="outer">
 				<div id="title">진행한 기부 프로그램 이름</div>
-				<input type="button" value="수정">
-			
+				<input type="submit" value="수정">
 			
 				<div id="do_t">기부금 집행 내역</div>
 				<div id="do_ex">기부금이 어떻게 사용되었는지 등록해주세요.</div>
