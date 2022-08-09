@@ -7,7 +7,7 @@
 <title>기부앤테이크 소개</title>
 <style>
 
-    nav{
+    #int-nav{
         display: flex;
         justify-content : space-evenly;
         height: 50px;
@@ -15,20 +15,21 @@
         margin: 0 auto;
         text-align: center;
         font-size: 20px;
+        margin-top: 20px;
     }
 
-    nav a{
+    #int-nav a{
         text-decoration: none;
-        color: black;
         text-align: center;
         line-height: 40px;
         padding: 5px;
     }
 
-    nav a:hover{
+    #int-nav a:hover{
         background-color: #EBF5E0;
         color: #2e6c4a;
 		border-radius: 15px;
+        font-style: italic;
     }
 
     #category{
@@ -50,10 +51,11 @@
 </head>
 <body>
 
-    <nav>
-        <a href="">기부앤테이크?</a>
-        <a href="">기부 후원자 혜택</a>
-        <a href="">후원 결제 방법</a>
+    <%@include file="/views/common/header.jsp" %>
+    <nav id="int-nav">
+        <a href="" id="what">기부앤테이크?</a>
+        <a href="" id="benefit">기부 후원자 혜택</a>
+        <a href="" id="way">후원 결제 방법</a>
     </nav>
 
 </body>
