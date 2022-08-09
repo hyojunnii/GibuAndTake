@@ -120,7 +120,7 @@
 
 </style>
 <body>
-		<form action="gibuAndTakePrj/member/join">
+		<form action="gibuAndTakePrj/member/login">
             <div id ="square">
                 <table id= "loginInfo">
                     <div id="logo_name">
