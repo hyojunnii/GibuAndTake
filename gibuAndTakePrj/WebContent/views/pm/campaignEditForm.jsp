@@ -5,25 +5,18 @@
     <meta charset="UTF-8" />
     <title>Insert title here</title>
 
-    <!-- 지울거 -->
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <!-- 여기까지 -->
 
-    <link rel="stylesheet" href="../../../resources/css/pmForm.css" type="text/css" />
+    <link rel="stylesheet" href="../../resources/css/pmForm.css" type="text/css" />
 
-    <!-- 지울거 -->
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Sans+KR&display=swap");
-
       body {
         width: 1200px;
         margin: 0 auto;
-        margin-bottom: 10%; /*지울거*/
-        font-family: "IBM Plex Sans KR", "IBM Plex Sans", sans-serif;
       }
 
       .form-subtitle {
@@ -35,10 +28,16 @@
       .form-content-sub {
         width: 8%;
       }
+
+      #pm-form-outer {
+        margin-bottom: 10%;
+        /*왜 css파일에 넣으면 안먹힐까..*/
+      }
     </style>
-    <!-- 여기까지 -->
   </head>
   <body>
+    <%@ include file="/views/common/header.jsp" %>
+
     <div id="pm-header">
       <h1><a>캠페인 프로젝트 수정</a></h1>
     </div>
@@ -115,5 +114,7 @@
         <input type="submit" id="submit-btn" value="수정하기" />
       </form>
     </div>
+
+    <%@ include file="/views/common/footer.jsp" %>
   </body>
 </html>

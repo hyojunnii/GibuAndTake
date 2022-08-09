@@ -5,23 +5,16 @@
     <meta charset="UTF-8" />
     <title>Insert title here</title>
 
-    <!-- 지울거 -->
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <!-- 여기까지 -->
 
-    <!-- 지울거 -->
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Sans+KR&display=swap");
-
       body {
         width: 1200px;
         margin: 0 auto;
-        margin-bottom: 10%; /*지울거*/
-        font-family: "IBM Plex Sans KR", "IBM Plex Sans", sans-serif;
       }
 
       #pm-header {
@@ -62,6 +55,7 @@
         margin: 110px 12%;
         display: flex;
         justify-content: space-evenly;
+        height: 600px;
       }
 
       .apply {
@@ -115,6 +109,8 @@
     </style>
   </head>
   <body>
+    <%@ include file="/views/common/header.jsp" %>
+
     <div id="pm-header">
       <h1><a>프로젝트 관리</a></h1>
     </div>
@@ -126,18 +122,20 @@
         <img src="../../resources/img/free-icon-donation-2904948.png" />
         <div class="apply-subtitle">기부</div>
         <!-- 버튼 태그 나중에 경로 안보이게 수정 -->
-        <button class="button"><a href="applyForm/gibuApplyForm.jsp">신청하기</a></button>
+        <button class="button"><a href="donationApplyForm.jsp">신청하기</a></button>
       </div>
       <div class="apply">
         <img src="../../resources/img/free-icon-donation-3208275.png" />
         <div class="apply-subtitle">펀딩</div>
-        <button class="button"><a href="applyForm/fundingApplyForm.jsp">신청하기</a></button>
+        <button class="button"><a href="fundingApplyForm.jsp">신청하기</a></button>
       </div>
       <div class="apply">
         <img src="../../resources/img/premium-icon-donation-3843326.png" />
         <div class="apply-subtitle">캠페인</div>
-        <button class="button"><a href="applyForm/campaignApplyForm.jsp">신청하기</a></button>
+        <button class="button"><a href="campaignApplyForm.jsp">신청하기</a></button>
       </div>
     </div>
+
+    <%@ include file="/views/common/footer.jsp" %>
   </body>
 </html>
