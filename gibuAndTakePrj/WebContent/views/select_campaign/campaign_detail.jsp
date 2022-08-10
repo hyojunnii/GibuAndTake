@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    
+    body{
+    width: 1200px;
+}
         #campaign_detail_container{
         border: 1px solid blue;
         margin: 0 10%;
@@ -139,6 +141,9 @@
     margin-top: 30px;
     font-size: 30px;
 }
+#title_table{
+    width: 100%;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -149,7 +154,13 @@
         <br>
         <img src="../resources/img/sample.png" alt="첫번째 이미지사진">
     <div id="campaign_detail_container_div">
-        <h1>여기는 캠페인 제목 공간</h1>
+        <table id="title_table">
+            <tr>
+                <td width="20%"></td>
+                <td colspan="3" width="60%"><h1>여기는 캠페인 이름</h1></td>
+                <td width="20%"><button hidden>수정하기</button></td>
+            </tr>
+        </table>
         <p class="comName">By 기업 이름</p>
         <p class="ingCnt"> ???명 행동중</p>
         <div class="campaign_btn_cover">
@@ -364,7 +375,7 @@
 
 
 
-
+    <br clear="both">
     <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -9,6 +9,9 @@
     *{
         box-sizing: border-box;
     }
+    body{
+    width: 1200px;
+}
     #group_catelist ul{
         margin: 0 10%;
         margin-top: 20px;
@@ -40,7 +43,7 @@
         margin: 0 10%;
         margin-top: 30px;
         border: 1px solid black;
-        height: 1340px;
+        height: auto;
     }
     .container>p {
         font-weight: 800;
@@ -207,7 +210,7 @@
 
         
     </div>
-    
+    <br clear="both">
     <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

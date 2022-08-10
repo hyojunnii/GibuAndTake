@@ -13,6 +13,9 @@
     list-style: none;
     box-sizing: border-box;
 }
+body{
+    width: 1200px;
+}
 
 #slider-wrap {
     width: 80%;
@@ -146,7 +149,7 @@
         margin: 0 10%;
         margin-top: 30px;
         border: 1px solid black;
-        height: 1340px;
+        height: auto;
     }
     .container>p {
         font-weight: 800;
@@ -296,7 +299,7 @@
 
         
     </div>
-
+    <br clear="both">
 <script>
     //slide-wrap
 var slideWrapper = document.getElementById('slider-wrap');
