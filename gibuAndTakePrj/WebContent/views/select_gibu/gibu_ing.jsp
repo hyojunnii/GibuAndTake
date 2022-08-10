@@ -9,6 +9,9 @@
 *{
     box-sizing: border-box;
 }
+body{
+    width: 1200px;
+}
 #group_catelist ul{
     margin: 0 10%;
     height: 100px;
@@ -39,7 +42,7 @@
     margin: 0 10%;
     margin-top: 30px;
     border: 1px solid black;
-    height: 1340px;
+    height: auto;
 }
 .container>p {
     font-weight: 800;
@@ -49,6 +52,7 @@
 .card:hover{
     text-decoration: none;
 }
+
 
 .card{
     float: left;
@@ -61,6 +65,7 @@
 .card div{
     height: 50%;
     border: 1px solid black;
+
 }
 .card div p{
     margin-top: 10px;
@@ -198,7 +203,7 @@ progress::-webkit-progress-value{
             </li>
         </ul>
     </div>
-
+    
     <div class="container">
       
        <p>기부모금함 ??개</p>
@@ -336,6 +341,7 @@ progress::-webkit-progress-value{
         </a>
 
     </div>
+    <br clear="both">
 
     <%@ include file="../common/footer.jsp" %>
 </body>

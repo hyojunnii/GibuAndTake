@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    body{
+    width: 1200px;
+}
     #gibu_detail_container{
         border: 1px solid blue;
         margin: 0 10%;
@@ -78,13 +81,22 @@
         vertical-align: top;
         border-bottom: 1px solid #ccc;
     }
+    #title_table{
+    width: 100%;
+}
 </style>
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
 
     <div id="gibu_detail_container">
-            <h1>여기는 기부 제목 공간</h1>
+        <table id="title_table">
+            <tr>
+                <td width="20%"></td>
+                <td colspan="3" width="60%"><h1>여기는 기부 이름</h1></td>
+                <td width="20%"><button hidden>수정하기</button></td>
+            </tr>
+        </table>
             <p class="comName">By 기업 이름</p>
             <img src="../resources/img/sample.png" alt="첫번째 이미지사진">
         <div id="gibu_detail_container_div">
@@ -155,6 +167,7 @@
             
         </div>
     </div>
+    
     <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
