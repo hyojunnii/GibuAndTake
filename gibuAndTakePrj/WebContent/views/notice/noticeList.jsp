@@ -17,13 +17,17 @@
         font-size: 36px;
         padding: 30px;
     }
+    
+    #last {    
+        padding: 150px;
+    }
 
     #outer{
         border: 1px solid black;
         color: black;
         width: 60%;
         margin: 0 auto;
-        padding-bottom: 100px;
+        padding-bottom: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -32,21 +36,76 @@
         flex-direction: column;
     }
 
-    #write{
-    	margin: 20px;
-        border-radius: 50px;
-        align-self: center;
-    }
-
     #table-main{
         border: 1px solid white;
         width: 95%;
         margin-top: 10px;
+        line-height: 2.5em;
     }
 
     #table-main>tbody tr:hover{
-        background-color: lightgrey;
         cursor: pointer;
+    }
+    
+    #head{
+    	font-weight: bold;
+    }
+    
+     #write{
+    	border: 1px solid black;
+    	margin: 0px 380px;
+    	margin-top: 10px;
+    	background-color: white;
+        font-weight: bold;
+    }
+    
+    #write:hover{
+        cursor: pointer;
+    }
+    
+    #btn{
+    	margin-top: 100px;
+    	text-align: center;
+    }
+    
+    #a:hover{
+    	cursor: pointer;
+    }
+    
+    #b:hover{
+    	cursor: pointer;
+    }
+    
+    #c:hover{
+    	cursor: pointer;
+    }
+    
+    #a{
+    	width: 40px;
+    	height: 40px;
+    	border: 1px solid black;
+    	background-color: white;
+        font-weight: bold;
+    }
+    
+    #b{
+    	width: 40px;
+    	height: 40px;
+    	border: 1px solid black;
+    	background-color: white;
+        font-weight: bold;
+    }
+    
+    #c{
+    	width: 40px;
+    	height: 40px;
+    	border: 1px solid black;
+    	background-color: white;
+        font-weight: bold;
+    }
+    
+    #last {    
+        padding: 60px;
     }
 </style>
 </head>
@@ -58,7 +117,7 @@
     <div id="outer">
 		
         <table id="table-main">
-            <thead>
+            <thead id="head">
                 <tr>
                     <td>NO</td>
                     <td>제목</td>
@@ -70,25 +129,45 @@
             
             <tbody>        
                     <tr>
-                        <td>10</td>
+                        <td>3</td>
                         <td>안내드립니다</td>
                         <td>관리자</td>
                         <td>5</td>
                         <td>22/08/02</td>
                     </tr>
                     <tr>
-                        <td>1</td>
+                        <td>2</td>
                         <td>안내드립니다</td>
                         <td>관리자</td>
                         <td>10</td>
                         <td>22/08/01</td>
                     </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>안내드립니다</td>
+                        <td>관리자</td>
+                        <td>30</td>
+                        <td>22/08/01</td>
+                    </tr>
             </tbody>            
         </table>
-        
-        <button id="write" onclick="location.href='/gibuAndTakePrj/notice/write'">공지사항 작성</button>
     </div>
     
+    <button id="write" style="float: right" onclick="location.href='/gibuAndTakePrj/notice/write'">공지사항 작성</button>
+    
+    <div id="btn">
+    	<button id="a"><</button>
+        <button id="b">1</button>
+        <button id="b">2</button>
+        <button id="b">3</button>
+        <button id="b">4</button>
+        <button id="b">5</button>
+        <button id="c">></button>
+    </div>
+    
+    <div id="last"></div>
+    
+    <%@include file="/views/common/footer.jsp" %>
         
 </body>
 </html>
