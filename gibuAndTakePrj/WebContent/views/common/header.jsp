@@ -11,14 +11,18 @@
 <style>
     *{
         font-family: 'IBM Plex Sans KR', sans-serif;
+        box-sizing: border-box;
     }
 
     header{
-        width: 1920px;
+        width: 100%;
         vertical-align: middle;
         padding-top: 15px;
         padding-bottom: 15px;
         border-bottom: 1px solid #14AE5C;
+        display : flex;
+        align-items: center;
+    	justify-content: space-evenly;
     }
 
     header>div{
@@ -26,13 +30,10 @@
         vertical-align: middle;
     }
 
-    #logo{
-        width: 75px;
-        height: 75px;
-    }
+    
 
     #siteName{
-        font-size: 50px;
+        font-size: 30px;
         vertical-align: bottom;
     }
     
@@ -49,19 +50,16 @@
 
     #logo_name>a>*{
         vertical-align: middle;
-        height: 75px;
+        height: 45px;
     }
 
     #siteName_small{
-        font-size: 25px;
+        font-size: 15px;
         
         
     }
 
-    #top_menu{
-        padding-left: 180px;
-        margin-right: 400px;
-    }
+    
 
     #serch_icon{
         width: 35px;
@@ -69,8 +67,8 @@
     }
 
     #login{
-        font-size: 25px;
-        margin-right: 10px;
+        font-size: 20px;
+        margin-right: 15px;
     }
 
     #login_serch>a{
@@ -89,7 +87,7 @@
     .top_menu_click{
         margin-left: 10px;
         margin-right: 10px;
-        font-size: 50px;
+        font-size: 30px;
     }
 
     .float_right{
@@ -99,32 +97,60 @@
         clear: both;
     }
 
+    #header_wrap{
+        width: 1400px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    #logo{
+        width: 45px;
+        height: 45px;
+    }
+
+    #logo_name{
+        width: 400px;
+    }
+
+    #top_menu{
+        width: 450px;
+    }
+
+    #login_serch{
+        width: 400px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
 </style>
 </head>
 <body>
     <!-- 아이콘 출처 : <a href="https://www.flaticon.com/kr/free-icons/" title=" 아이콘"> 아이콘  제작자: Smashicons - Flaticon</a> -->
+    <!-- 헤더 수정 넓이 100% -->
 	<header>
-        <div id="logo_name">
-            <a href="<%=request.getContextPath()%>">
-                <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
-                <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
-            </a>
-        </div>
-        </div>
-        <div id="top_menu" class="">
-            <nav>
-                <span>
-                    <a href="" class="top_menu_click">소개</a>
-                    <a href="" class="top_menu_click">기부</a>
-                    <a href="" class="top_menu_click">펀딩</a>
-                    <a href="" class="top_menu_click">캠페인</a>
-                    <a href="" class="top_menu_click">스토리</a>
-                </span>
-            </nav>
-        </div>
-        <div id="login_serch" class="">
-            <a href=""><span id="login">로그인</span></a>
-            <a href=""><img id="serch_icon" src="../../resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
+        <div id="header_wrap">
+            <div id="logo_name">
+                <a href="<%=request.getContextPath()%>">
+                    <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
+                    <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
+                </a>
+            </div>
+            <div id="top_menu" class="">
+                <nav>
+                    <span>
+                        <a href="" class="top_menu_click">소개</a>
+                        <a href="" class="top_menu_click">기부</a>
+                        <a href="" class="top_menu_click">펀딩</a>
+                        <a href="" class="top_menu_click">캠페인</a>
+                        <a href="" class="top_menu_click">스토리</a>
+                    </span>
+                </nav>
+            </div>
+            <div id="login_serch" class="">
+                <a href=""><span id="login">로그인</span></a>
+                <a href=""><img id="serch_icon" src="../../resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
+            </div>
         </div>
     </header>
 </body>

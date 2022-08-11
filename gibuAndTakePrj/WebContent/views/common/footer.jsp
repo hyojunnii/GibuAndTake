@@ -13,10 +13,11 @@
 <style>
     *{
         font-family: 'IBM Plex Sans KR', sans-serif;
+        
     }
 
     footer{
-        width: 1920px;
+        width: 100%;
     }
 
     a{
@@ -41,7 +42,7 @@
     }
 
     #margin_colored{
-        width: 1920px;
+        width: 100%;
         height: 10px;
         background-color: #83DDAD;
         margin: 0;
