@@ -156,18 +156,26 @@
     <button id="write" style="float: right" onclick="location.href='/gibuAndTakePrj/notice/write'">공지사항 작성</button>
     
     <div id="btn">
-    	<button id="a"><</button>
-        <button id="b">1</button>
-        <button id="b">2</button>
-        <button id="b">3</button>
-        <button id="b">4</button>
-        <button id="b">5</button>
-        <button id="c">></button>
+    	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
+        <a id="b">&nbsp&nbsp1&nbsp&nbsp</a>
+        <a id="b">&nbsp&nbsp2&nbsp&nbsp</a>
+        <a id="b">&nbsp&nbsp3&nbsp&nbsp</a>
+        <a id="b">&nbsp&nbsp4&nbsp&nbsp</a>
+        <a id="b">&nbsp&nbsp5&nbsp&nbsp</a>
+        <a id="c">&nbsp&nbsp>&nbsp&nbsp</a>
     </div>
     
     <div id="last"></div>
     
     <%@include file="/views/common/footer.jsp" %>
         
+    <script>
+    	$(function(){
+    		$('#table-main>tbody>tr').click(function(){
+    			const num = $(this).children().eq(0).text();
+    			location.href='/gibuAndTakePrj/notice/detail?num=' + num;
+    		});
+    	})
+    </script>
 </body>
 </html>
