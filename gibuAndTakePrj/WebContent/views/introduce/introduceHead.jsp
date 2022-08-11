@@ -54,8 +54,7 @@
     <%@include file="/views/common/header.jsp" %>
     <nav id="int-nav">
         <a href="" id="what">기부앤테이크?</a>
-        <a href="" id="benefit">기부 후원자 혜택</a>
-        <a href="" id="way">후원 결제 방법</a>
+        <a href="" id="way">참여하는 법</a>
     </nav>
 
 </body>
