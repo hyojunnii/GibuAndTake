@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   
 <style>
-
+	
 	body{
    		width:1200px;
    		margin:0 auto;
@@ -104,6 +104,7 @@
 		font-size: 25px;
 		margin-top:20px;
 		font-weight:bold;
+		
 	}
 
 	#join{
@@ -118,26 +119,30 @@
         align:center;
     }
 
-	#input{
+	#input {
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
+        border-style: solid;
+        border-color:#acdac2;
         padding-left:20px;
-        
+       
        
 	}
 	
 	textarea{
      	width: 300px;
 		height: 150px;
-        border-radius: 20px 20px;
+        border-radius: 15px 15px;
         font-size: small;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
         padding-left:20px;
         padding: 10px 10px;
         font-size: 15px;
+        border-style: solid;
+        border-color: #acdac2;
       }
 	
 	#check{
@@ -169,13 +174,15 @@
        	transition:background 0.7s ease-in-out;
 	}
 	
-	.first{
+	.first {
 		padding-left: 100px;
+		color:#2e6c4a;
 	}
 	
 	.corpText{
 		padding-left:100px;	
 		padding-bottom: 140px;
+		color:#2e6c4a;
 	}
 	
 	 #corpQuit{
@@ -205,6 +212,7 @@
             </a>
            </div>
 		
+		<div class="corpUpWrap">
 		<div id="line"></div>
 		<h3 id= "corpUp">기업 정보 수정</h3>
 		<form action="gibuAndTakePrj/member/memberUpdate" method="post">
@@ -219,7 +227,7 @@
 			
 				<tr>
 					<td class="first" style="font-weight: bold">기업명 *</td>
-					<td><input type="tel" name="corpName" id="input" placeholder="- 없이 입력"></td>
+					<td><input type="tel" name="corpName" id="input" ></td>
 					<td></td>
 				</tr>
 				
@@ -252,26 +260,28 @@
 				<tr>
 					<td class="corpText" style="font-weight: bold">기업 설명 *</td>
 					<td>
-						 <textarea placeholder="100자 이하로 기입하시오"></textarea></td>
-					</td>
+						 <textarea placeholder="100자 이하로 기입하시오"></textarea>
+						 </td>
+					
 				</tr>
 				
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 			
 
 			</table>
-			
+			</form>
 				<div id="corpQuit">
 					<a href="" class="log2">수정하기 /</a>
                     <a href="" class="log2">회원 탈퇴</a>
 				
 				</div>	
-
+	
+			
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
 
-		</form>
+		</div>
 	</main>
 	
 </body>

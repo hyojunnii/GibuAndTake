@@ -99,7 +99,9 @@
         border-radius: 20px 20px;
         font-size: large;
         background-color: white;
-        border-style: calc() ;
+        border-style: solid ;
+        color:#2e6c4a;
+        border-color:#acdac2;
         align:center;
     }
 	
@@ -122,21 +124,22 @@
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
         padding-left:20px;
-       
+        border-style: solid;
+        border-color: #acdac2;
         
        
 	}
 	
-	#inputc {
+	#inputc{
 		width: 300px;
 		height: 150px;
         border-radius: 20px 20px;
         font-size: small;
         border-width: 1px 1px 1px 1px;
         padding-left:20px;
-       
+       	
         
        
 	}
@@ -150,6 +153,8 @@
         padding-left:20px;
         padding: 10px 10px;
         font-size: 15px;
+        border-style: solid;
+        border-color:#acdac2;
       }
       
 	#check{
@@ -164,6 +169,9 @@
         border-width: 1px 1px 1px 1px;
         margin-right: 140px;
        	font-weight: bold;
+       	border-style: solid ;
+        border-color:#acdac2;
+        color:#2e6c4a;
 	}
 	
 	#check:hover{
@@ -183,11 +191,14 @@
 	
 	.first {
 		padding-left: 100px;
+		color:#2e6c4a;
 	}
 	
 	.corpText{
 		padding-left:100px;	
 		padding-bottom: 150px;
+		color:#2e6c4a;
+		
 	}
 	
 </style>
@@ -210,7 +221,7 @@
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</span></td>
 					<td><input type="text" name="corpId" id="input" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" ></td>
-					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
+					<td><button type="button" id="check" onclick="location.href=''">중복확인</button></td>
 				</tr>
 				
 				<tr>
@@ -231,7 +242,7 @@
 				<tr>
 					<td class="first" style="font-weight: bold">기업명 *</td>
 					<td><input type="text" name="corpName" id="input" maxlength="3" required></td>
-					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
+					<td><button type="button" id="check" onclick="location.href=''">중복확인</button></td>
 					
 				</tr>
 				<tr>
@@ -269,7 +280,7 @@
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr>
 					<td  style="font-weight: bold"></td>
-					<td><button type="button" id="join" onclick="location.href='/gibuAndTakePrj/views/member/login.jsp'">가입하기</button></td>
+					<td><button type="button" id="join" onclick="location.href=''">가입하기</button></td>
 					<td></td>
 				</tr>
 

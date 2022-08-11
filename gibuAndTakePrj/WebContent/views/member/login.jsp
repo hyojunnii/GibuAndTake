@@ -20,7 +20,9 @@
      margin: 0 auto;
      margin-top: 200px;
      border-radius: 8%;  
-     border-width: 1px 1px 1px 1px;
+     border-width: 2px 2px 2px 2px;
+     border-style: solid ;
+     border-color: #acdac2;
     }
 
     #loginInfo {
@@ -85,7 +87,9 @@
         height: 60px;
         border-radius: 20px 20px;
         font-size: large;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
+        border-style: solid ;
+    	border-color: #acdac2;
     }
 
     #PWD {
@@ -94,7 +98,9 @@
         height: 60px;
         border-radius: 20px 20px;
         font-size: large;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
+        border-style: solid ;
+    	border-color: #acdac2;
     }
 
     #login {
@@ -131,7 +137,7 @@
         margin-top: 30px;
         display: flex;
         justify-content: space-evenly;
-        
+        color: #2e6c4a;
     }
    
     .log{
@@ -161,7 +167,7 @@
 	                    <td><button type="button" id="login" onclick="location.href='/gibuAndTakePrj/member/login'">로그인</button></td>
 	                </tr>
                    <tr id="alink">
-                    <td><a href="" class="log">일반 회원가입 |</a></td>
+                    <td><a href=""  class="log">일반 회원가입 |</a></td>
                     <td><a href="" class="log"> &nbsp;기업 회원가입</a></td>
                     <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> 
                     <td><a href="" class="log">아이디 찾기 |</a></td>

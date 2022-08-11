@@ -104,6 +104,7 @@
         background-color: white;
         border-style: calc() ;
         align:center;
+        
     }
 	
 	#input{
@@ -111,9 +112,10 @@
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
         padding-left:-30px;
-        
+        border-style: solid ;
+        border-color:#acdac2;
        
 	}
 	
@@ -132,10 +134,11 @@
         border-width: 1px 1px 1px 1px;
         margin-right: 140px;
        	font-weight: bold;
+       	
 	}
 	.first{
 		padding-left: 10px;
-		
+		color:#2e6c4a;
 	}
 	
 	 
