@@ -4,15 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	
 <title>Insert title here</title>
-  	
-  	
-  	<!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  
 <style>
 
 	body{
@@ -48,7 +40,7 @@
 
     
     
-    a {
+    a{
     	text-decoration: none;
     	color: black;
     }
@@ -98,13 +90,6 @@
 		border-bottom: 5px solid #E2F5EB;
 
 	}
-	
-	#memberUp{
-		text-align:center;
-		font-size: 25px;
-		margin-top:10px;
-		font-weight:bold;
-	}
 
 	#join{
         text-align: center;
@@ -117,21 +102,59 @@
         border-style: calc() ;
         align:center;
     }
-
-	#input{
+	
+	#join:hover{
+        text-align: center;
+        width: 260px;
+        margin: auto;
+        height: 60px;
+        border-radius: 20px 20px;
+        font-size: large;
+        color:white;
+        border-style: calc() ;
+        align:center;
+        background-color: #5CD394;
+        transition:background 0.7s ease-in-out;
+    }
+	
+	#input {
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
         border-width: 1px 1px 1px 1px;
         padding-left:20px;
+       
         
        
 	}
 	
+	#inputc {
+		width: 300px;
+		height: 150px;
+        border-radius: 20px 20px;
+        font-size: small;
+        border-width: 1px 1px 1px 1px;
+        padding-left:20px;
+       
+        
+       
+	}
+	
+	 textarea{
+     	width: 300px;
+		height: 150px;
+        border-radius: 20px 20px;
+        font-size: small;
+        border-width: 1px 1px 1px 1px;
+        padding-left:20px;
+        padding: 10px 10px;
+        font-size: 15px;
+      }
+      
 	#check{
 		text-align: center;
-        width: 100px;
+        width: 120px;
         margin-top: 0 auto;
         height: 30px;
         border-radius: 20px 20px;
@@ -158,23 +181,15 @@
        	transition:background 0.7s ease-in-out;
 	}
 	
-	.first{
+	.first {
 		padding-left: 100px;
 	}
 	
-	 #memberUdq{
-		text-align: center;
-		font-size:15pt;
-		
-    .log2{
-    	text-decoration: none;
-        color: black;
-       	font-weight: bold;
-    	
-    }
-    
-   
-    
+	.corpText{
+		padding-left:100px;	
+		padding-bottom: 150px;
+	}
+	
 </style>
 </head>
 <body>
@@ -189,43 +204,76 @@
            </div>
 		
 		<div id="line"></div>
-		<h3 id= "memberUp">회원 정보 수정</h3>
-		<form action="gibuAndTakePrj/member/memberUpdate" method="post">
+		<h3 align="center" style="font-size: 25px">기업 회원 가입 페이지</h3>
+		<form action="gibuAndTakePrj/member/join" method="post">
 			<table>
-			
 				<tr>
-					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
+					<td class="first" style="font-weight: bold">아이디 *</span></td>
+					<td><input type="text" name="corpId" id="input" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" ></td>
+					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
+				</tr>
+				
+				<tr>
+					<td class="first" style="font-weight: bold">비밀번호 *</td>
+					<td><input type="password" name="corpPwd" id="input" maxlength="10" required placeholder="영문+숫자 4글자 이상"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">비밀번호 확인 *</td>
+					<td><input type="password" id="input" name="corpPwd2" required></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td  class="first" style="font-weight: bold">대표자명 *</td>
+					<td><input type="text" name="rprName" id="input" maxlength="3" required></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">기업명 *</td>
+					<td><input type="text" name="corpName" id="input" maxlength="3" required></td>
 					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
 					
 				</tr>
-			
+				<tr>
+					<td class="first" style="font-weight: bold">사업자등록번호 *</td>
+					<td><input type="tel" name="compNum" id="input" placeholder="- 없이 입력"></td>
+					<td></td>
+				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
+					<td><input type="tel" name="corpPhone" id="input" placeholder="- 없이 입력"></td>
 					<td></td>
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="memberEmail" id="input"></td>
+					<td><input type="email" name="corpEmail" id="input"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="memberAddr" id="input"></td>
+					<td><input type="text" name="corpAddr" id="input"></td>
 					<td></td>
 				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">사업 유형 *</td>
+					<td><input type="text" name="corpType" id="input"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="corpText" style="font-weight: bold">기업 설명 *</td>
+					<td>
+						 <textarea placeholder="100자 이하로 기입하시오"></textarea></td>
+					</td>
+				</tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr>
-			
+				<tr>
+					<td  style="font-weight: bold"></td>
+					<td><button type="button" id="join" onclick="location.href='/gibuAndTakePrj/views/member/login.jsp'">가입하기</button></td>
+					<td></td>
+				</tr>
 
 			</table>
-			
-				<div id="memberUdq">
-					<a href="" class="log2" style="font-weight:bold">수정하기 /</a>
-					<a href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
-                 <a class="pwdMo" href="pwdChange" data-toggle="modal" > 비밀번호 변경</a>
-				</div>
 
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
@@ -233,69 +281,7 @@
 
 		</form>
 	</main>
-	<!-- The Modal -->
-	<div class="modal" id="pwdChange">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	
-	      <!-- Modal Header -->
-	      <div class="modal-header">
-	        <h4 class="modal-title">Modal Heading</h4>
-	        <button type="button" class="btn-close" data-dismiss="modal"></button>
-	      </div>
-	
-	      <!-- Modal body -->
-	      <div class="modal-body">
-	        <div id="pwdFormOuter">
-	        	<form action="" method="post"> 
-	        		<input type="hidden" name="memberId" <%--value="<%=loginMember.getId()--%>>
-		        	<table>
-		        		<tr>
-		        			<td>기존 비밀번호</td>
-		        			<td><input type="password" name="memberPwd"></td>
-		        		</tr>
-		        		<tr>
-		        			<td>신규 비밀번호</td>
-		        			<td><input type="password" name="memberPwdNew"></td>
-		        		</tr>
-		        		<tr>
-		        			<td>신규 비밀번호 확인</td>
-		        			<td><input type="password" name="memberPwdNew2"></td>
-		        		</tr>
-		        		<tr>
-		        			<td colspan="2">
-		        				<input type="submit" value="변경하기" onclick="return checkPwd();">
-		        			</td>
-		        		</tr>
-		        	</table>
-		       	</form>
-	        </div>
-	      </div>
-	
-	    </div>
-	  </div>
-	</div>
-</body>
 
 	
-	
-	<script>
-		$('#pwdChange').click(function(e){
-			e.preventDefault();
-			$('#pwdChange').modal("show");
-		});
-	</script>
-	<script>
-		function checkPwd(){
-			isSame = $('input[name=memberPwdNew]').val() == $('input[name=memberPwdNew2]').val();
-			if(isSame){
-				return true;
-			}else{
-				alert("신규 비밀번호가 일치하지 않습니다.");
-				return false;
-			}
-			
-		}
-	</script>
-	
+</body>
 </html>

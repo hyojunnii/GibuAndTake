@@ -8,6 +8,11 @@
 </head>
 <style>
    
+   body{
+   		width:1200px;
+   		margin:0 auto;
+   }
+   
     #square{
      width: 500px;   
      height: 500px;
@@ -101,9 +106,26 @@
         font-size: large;
         background-color: #5CD394;
         border: none;
+      
+    }
+    
+   #login:hover {
+        text-align: center;
+        width: 260px;
+        margin-top: 40px;
+        height: 60px;
+        border-radius: 20px 20px;
+        font-size: large;
+        background-color: #EBF5E0;
+        border: none;
+        color: #086C37;
+        font-weight: bold;
+      	transition:background 0.7s ease-in-out;
+      
     }
 
     
+
 
     #alink {
         margin-top: 30px;
@@ -148,7 +170,7 @@
                 </table>
                 </div>
                 
-                <div style="padding-top: 100px">
+                <div style="padding-top: 100px" style = "margin:0 auto">
                <%@ include file="../common/footer.jsp" %>
           		</div>
         </form>

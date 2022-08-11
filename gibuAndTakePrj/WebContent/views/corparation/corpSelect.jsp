@@ -4,15 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	
 <title>Insert title here</title>
-  	
-  	
-  	<!-- Latest compiled and minified CSS -->
+
+	<!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  
 <style>
 
 	body{
@@ -48,7 +45,7 @@
 
     
     
-    a {
+    a{
     	text-decoration: none;
     	color: black;
     }
@@ -94,16 +91,15 @@
 		
 	}
 	
+	#corpPage{
+		margin-top:35px;
+		font-size: 25px;
+		font-weight: bold;
+	}
+	
 	#line{
 		border-bottom: 5px solid #E2F5EB;
 
-	}
-	
-	#memberUp{
-		text-align:center;
-		font-size: 25px;
-		margin-top:10px;
-		font-weight:bold;
 	}
 
 	#join{
@@ -117,21 +113,59 @@
         border-style: calc() ;
         align:center;
     }
-
-	#input{
+	
+	#join:hover{
+        text-align: center;
+        width: 260px;
+        margin: auto;
+        height: 60px;
+        border-radius: 20px 20px;
+        font-size: large;
+        color:white;
+        border-style: calc() ;
+        align:center;
+        background-color: #5CD394;
+        transition:background 0.7s ease-in-out;
+    }
+	
+	#input {
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
         border-width: 1px 1px 1px 1px;
         padding-left:20px;
+       
         
        
 	}
 	
-	#check{
+	#inputc {
+		width: 300px;
+		height: 150px;
+        border-radius: 20px 20px;
+        font-size: small;
+        border-width: 1px 1px 1px 1px;
+        padding-left:20px;
+       
+        
+       
+	}
+	
+	 textarea{
+     	width: 300px;
+		height: 150px;
+        border-radius: 20px 20px;
+        font-size: small;
+        border-width: 1px 1px 1px 1px;
+        padding-left:20px;
+        padding: 10px 10px;
+        font-size: 15px;
+      }
+      
+	#check {
 		text-align: center;
-        width: 100px;
+        width: 120px;
         margin-top: 0 auto;
         height: 30px;
         border-radius: 20px 20px;
@@ -143,6 +177,9 @@
        	font-weight: bold;
 	}
 	
+	 #corpDelQuit{
+		text-align: center;
+    }
 	#check:hover{
 		text-align: center;
         width: 100px;
@@ -158,23 +195,22 @@
        	transition:background 0.7s ease-in-out;
 	}
 	
-	.first{
+	.first {
 		padding-left: 100px;
 	}
 	
-	 #memberUdq{
-		text-align: center;
-		font-size:15pt;
-		
-    .log2{
-    	text-decoration: none;
+	.corpText{
+		padding-left:100px;	
+		padding-bottom: 150px;
+	}
+	 .delQu{
+        text-decoration: none;
         color: black;
+        font-size: 15pt;
        	font-weight: bold;
-    	
     }
-    
-   
-    
+	
+	
 </style>
 </head>
 <body>
@@ -189,42 +225,74 @@
            </div>
 		
 		<div id="line"></div>
-		<h3 id= "memberUp">회원 정보 수정</h3>
-		<form action="gibuAndTakePrj/member/memberUpdate" method="post">
+		<h3 align="center" id="corpPage" >기업 정보 페이지</h3>
+		<form action="gibuAndTakePrj/member/join" method="post">
 			<table>
-			
 				<tr>
-					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
-					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
+					<td class="first" style="font-weight: bold">아이디 *</span></td>
+						<%--input 안에다가 히든밸류 값 넣어주기 getNo... --%>
+					<td><input type="text" name="corpId" id="input"required readonly></td>
 					
 				</tr>
-			
+				
+				<tr>
+					<td class="first" style="font-weight: bold">비밀번호 확인*</td>
+					<td><input type="password" name="corpPwd" id="input"  required readonly></td>
+					<td><input type="button" id="" value="비밀번호변경" class="btn" data-bs-toggle="modal" data-bs-target="#pwdChange" style="font-weight: bold">
+					</td>
+				</tr>
+				<tr>
+					<td  class="first" style="font-weight: bold">대표자명 *</td>
+					<td><input type="text" name="rprName" id="input"required readonly></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">기업명 *</td>
+					<td><input type="text" name="corpName" id="input" required readonly></td>
+					<td></td>
+					
+				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">사업자등록번호 *</td>
+					<td><input type="tel" name="compNum" id="input" required readonly></td>
+					<td></td>
+				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
+					<td><input type="tel" name="corpPhone" id="input" required readonly></td>
 					<td></td>
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="memberEmail" id="input"></td>
+					<td><input type="email" name="corpEmail" id="input" required readonly></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="memberAddr" id="input"></td>
+					<td><input type="text" name="corpAddr" id="input" required readonly></td>
 					<td></td>
 				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">사업 유형 *</td>
+					<td><input type="text" name="corpType" id="input" required readonly></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="corpText" style="font-weight: bold">기업 설명 *</td>
+					<td>
+						 <textarea required readonly></textarea></td>
+					</td>
+				</tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr>
-			
+				
 
 			</table>
 			
-				<div id="memberUdq">
-					<a href="" class="log2" style="font-weight:bold">수정하기 /</a>
-					<a href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
-                 <a class="pwdMo" href="pwdChange" data-toggle="modal" > 비밀번호 변경</a>
+				<div id="corpDelQuit">
+					<a href="" class="delQu">기업 정보 수정 /</a>
+                    <a href="" class="delQu">회원 탈퇴</a>
+				
 				</div>
 
 			  <div style="padding-top: 100px">
@@ -248,19 +316,19 @@
 	      <div class="modal-body">
 	        <div id="pwdFormOuter">
 	        	<form action="" method="post"> 
-	        		<input type="hidden" name="memberId" <%--value="<%=loginMember.getId()--%>>
+	        		<input type="hidden" name="corpId" <%--value="<%=loginMember.getId()--%>>
 		        	<table>
 		        		<tr>
 		        			<td>기존 비밀번호</td>
-		        			<td><input type="password" name="memberPwd"></td>
+		        			<td><input type="password" name="corpPwd"></td>
 		        		</tr>
 		        		<tr>
 		        			<td>신규 비밀번호</td>
-		        			<td><input type="password" name="memberPwdNew"></td>
+		        			<td><input type="password" name="corpPwdNew"></td>
 		        		</tr>
 		        		<tr>
 		        			<td>신규 비밀번호 확인</td>
-		        			<td><input type="password" name="memberPwdNew2"></td>
+		        			<td><input type="password" name="corpPwdNew2"></td>
 		        		</tr>
 		        		<tr>
 		        			<td colspan="2">
@@ -275,11 +343,11 @@
 	    </div>
 	  </div>
 	</div>
-</body>
 
 	
-	
-	<script>
+</body>
+
+<script>
 		$('#pwdChange').click(function(e){
 			e.preventDefault();
 			$('#pwdChange').modal("show");
@@ -297,5 +365,4 @@
 			
 		}
 	</script>
-	
 </html>

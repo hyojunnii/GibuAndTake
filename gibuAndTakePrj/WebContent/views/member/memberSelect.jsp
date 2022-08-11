@@ -7,7 +7,11 @@
 <title>Insert title here</title>
 <style>
 
-	
+	body{
+   		width:1200px;
+   		margin:0 auto;
+   }
+   
 	main{
 		margin:auto;
 		
@@ -212,7 +216,7 @@
 					<a href="" class="log">회원 정보 수정 /</a>
                     <a href="" class="log">회원 탈퇴</a>
 				
-				</tr>
+				</div>
 			
 
 			  <div style="padding-top: 100px">

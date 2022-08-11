@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
+	body{
+   		width:1200px;
+   		margin:0 auto;
+   }
 	main{
 		margin:auto;
 		
@@ -97,7 +102,21 @@
         border-style: calc() ;
         align:center;
     }
-
+	
+	#join:hover{
+        text-align: center;
+        width: 260px;
+        margin: auto;
+        height: 60px;
+        border-radius: 20px 20px;
+        font-size: large;
+        color:white;
+        border-style: calc() ;
+        align:center;
+        background-color: #5CD394;
+        transition:background 0.7s ease-in-out;
+    }
+	
 	#input{
 		width: 300px;
 		height: 30px;
@@ -105,6 +124,7 @@
         font-size: small;
         border-width: 1px 1px 1px 1px;
         padding-left:20px;
+       
         
        
 	}
@@ -121,6 +141,21 @@
         border-width: 1px 1px 1px 1px;
         margin-right: 140px;
        	font-weight: bold;
+	}
+	
+	#check:hover{
+		text-align: center;
+        width: 100px;
+        margin-top: 0 auto;
+        height: 30px;
+        border-radius: 20px 20px;
+        font-size: small;
+        border: solid:black;
+        border-width: 1px 1px 1px 1px;
+        margin-right: 140px;
+       	font-weight: bold;
+		background-color: #5CD394;
+       	transition:background 0.7s ease-in-out;
 	}
 	
 	.first{
@@ -166,7 +201,7 @@
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
+					<td><input type="text" name="memberNick" id="input" maxlength="3" required></td>
 					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
 					
 				</tr>

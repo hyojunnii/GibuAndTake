@@ -99,10 +99,10 @@
 
 	}
 	
-	#memberUp{
+	#corpUp{
 		text-align:center;
 		font-size: 25px;
-		margin-top:10px;
+		margin-top:20px;
 		font-weight:bold;
 	}
 
@@ -128,6 +128,17 @@
         
        
 	}
+	
+	textarea{
+     	width: 300px;
+		height: 150px;
+        border-radius: 20px 20px;
+        font-size: small;
+        border-width: 1px 1px 1px 1px;
+        padding-left:20px;
+        padding: 10px 10px;
+        font-size: 15px;
+      }
 	
 	#check{
 		text-align: center;
@@ -162,11 +173,17 @@
 		padding-left: 100px;
 	}
 	
-	 #memberUdq{
+	.corpText{
+		padding-left:100px;	
+		padding-bottom: 140px;
+	}
+	
+	 #corpQuit{
 		text-align: center;
 		font-size:15pt;
+		}
 		
-    .log2{
+    .log2 {
     	text-decoration: none;
         color: black;
        	font-weight: bold;
@@ -189,26 +206,31 @@
            </div>
 		
 		<div id="line"></div>
-		<h3 id= "memberUp">회원 정보 수정</h3>
+		<h3 id= "corpUp">기업 정보 수정</h3>
 		<form action="gibuAndTakePrj/member/memberUpdate" method="post">
 			<table>
 			
 				<tr>
-					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
-					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
+					<td class="first" style="font-weight: bold">대표자명 *</td>
+					<td><input type="text" name="rprName" id="input" maxlength="3" required></td>
+					
 					
 				</tr>
 			
 				<tr>
-					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
+					<td class="first" style="font-weight: bold">기업명 *</td>
+					<td><input type="tel" name="corpName" id="input" placeholder="- 없이 입력"></td>
 					<td></td>
 				</tr>
 				
 				<tr>
+					<td class="first" style="font-weight: bold">휴대전화 *</td>
+					<td><input type="email" name="corpPhone" id="input"></td>
+					<td></td>
+				</tr>
+				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="memberEmail" id="input"></td>
+					<td><input type="text" name="corpEmail" id="input"></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -216,16 +238,34 @@
 					<td><input type="text" name="memberAddr" id="input"></td>
 					<td></td>
 				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">주소 *</td>
+					<td><input type="text" name="corpAddr" id="input"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">사업 유형 *</td>
+					<td><input type="text" name="corpType" id="input"></td>
+					<td></td>
+				</tr>
+				
+				<tr>
+					<td class="corpText" style="font-weight: bold">기업 설명 *</td>
+					<td>
+						 <textarea placeholder="100자 이하로 기입하시오"></textarea></td>
+					</td>
+				</tr>
+				
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 			
 
 			</table>
 			
-				<div id="memberUdq">
-					<a href="" class="log2" style="font-weight:bold">수정하기 /</a>
-					<a href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
-                 <a class="pwdMo" href="pwdChange" data-toggle="modal" > 비밀번호 변경</a>
-				</div>
+				<div id="corpQuit">
+					<a href="" class="log2">수정하기 /</a>
+                    <a href="" class="log2">회원 탈퇴</a>
+				
+				</div>	
 
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
@@ -233,69 +273,11 @@
 
 		</form>
 	</main>
-	<!-- The Modal -->
-	<div class="modal" id="pwdChange">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
 	
-	      <!-- Modal Header -->
-	      <div class="modal-header">
-	        <h4 class="modal-title">Modal Heading</h4>
-	        <button type="button" class="btn-close" data-dismiss="modal"></button>
-	      </div>
-	
-	      <!-- Modal body -->
-	      <div class="modal-body">
-	        <div id="pwdFormOuter">
-	        	<form action="" method="post"> 
-	        		<input type="hidden" name="memberId" <%--value="<%=loginMember.getId()--%>>
-		        	<table>
-		        		<tr>
-		        			<td>기존 비밀번호</td>
-		        			<td><input type="password" name="memberPwd"></td>
-		        		</tr>
-		        		<tr>
-		        			<td>신규 비밀번호</td>
-		        			<td><input type="password" name="memberPwdNew"></td>
-		        		</tr>
-		        		<tr>
-		        			<td>신규 비밀번호 확인</td>
-		        			<td><input type="password" name="memberPwdNew2"></td>
-		        		</tr>
-		        		<tr>
-		        			<td colspan="2">
-		        				<input type="submit" value="변경하기" onclick="return checkPwd();">
-		        			</td>
-		        		</tr>
-		        	</table>
-		       	</form>
-	        </div>
-	      </div>
-	
-	    </div>
-	  </div>
-	</div>
 </body>
 
 	
 	
-	<script>
-		$('#pwdChange').click(function(e){
-			e.preventDefault();
-			$('#pwdChange').modal("show");
-		});
-	</script>
-	<script>
-		function checkPwd(){
-			isSame = $('input[name=memberPwdNew]').val() == $('input[name=memberPwdNew2]').val();
-			if(isSame){
-				return true;
-			}else{
-				alert("신규 비밀번호가 일치하지 않습니다.");
-				return false;
-			}
-			
-		}
-	</script>
+	
 	
 </html>
