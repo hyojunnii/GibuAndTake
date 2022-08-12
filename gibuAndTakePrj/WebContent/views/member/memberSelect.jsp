@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 
-	body{
+	#selEvery{
    		width:1200px;
    		margin:0 auto;
    }
@@ -104,6 +104,7 @@
         background-color: white;
         border-style: calc() ;
         align:center;
+        
     }
 	
 	#input{
@@ -111,9 +112,10 @@
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
         padding-left:-30px;
-        
+        border-style: solid ;
+        border-color:#acdac2;
        
 	}
 	
@@ -132,10 +134,11 @@
         border-width: 1px 1px 1px 1px;
         margin-right: 140px;
        	font-weight: bold;
+       	
 	}
 	.first{
 		padding-left: 10px;
-		
+		color:#2e6c4a;
 	}
 	
 	 
@@ -157,6 +160,7 @@
 	
 	
 	<main>
+		  <div id="selEvery">
 		  <div id="logo_name">
            	<a href="<%=request.getContextPath()%>">
             <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
@@ -217,7 +221,7 @@
                     <a href="" class="log">회원 탈퇴</a>
 				
 				</div>
-			
+			</div>
 
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>

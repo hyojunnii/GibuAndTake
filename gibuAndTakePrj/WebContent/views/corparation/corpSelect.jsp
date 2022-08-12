@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 
-	body{
+	#corpSelEvery{
    		width:1200px;
    		margin:0 auto;
    }
@@ -81,6 +81,84 @@
 		
 		
 	}
+	#modal-outer {
+        width: 400px;
+      }
+
+      #modal-form {
+        height: 400px;
+        border: 3px solid #72d09e;
+        border-radius: 15px;
+      }
+
+      #modal-header {
+        justify-content: center;
+        border-bottom: 3px solid #8bd0ab;
+        background-color: #d8eee2;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+      
+       #modal-header h4 {
+        font-weight: 600;
+        color: #2e6c4a;
+        margin-left:120px;
+      }
+	  #memberP {
+	  	 height:30px;
+         width: 180px;
+         border-radius: 15px;
+         margin: 5% auto;
+          margin-right: 10px;
+         border: 1px solid #acdac2;
+	  }
+	  
+	   #memberPnew {
+	  	 height: 30px;
+         width: 180px;
+         border-radius: 15px;
+          margin: 5% auto;
+          margin-right: 10px;
+         border: 1px solid #acdac2;
+	  }
+	  
+	  #memberPnew2 {
+	  	 height: 30px;
+        width: 180px;
+         border-radius: 15px;
+         margin: 5% auto;
+         margin-right: 10px;
+         border: 1px solid #acdac2;
+	  }
+	  
+	   .modal-form-button {
+        width: 300%;
+        border-radius: 15px;
+        border: none;
+        height: 55px;
+        margin: 0 3%;
+        font-size: 18px;
+        background-color: #e0e0e0;
+      }
+
+      .modal-form-button:hover {
+        font-weight: 600;
+        box-shadow: 0.5px 0.5px 3px 0px #dadada;
+      }
+
+      #modal-form-buttons input[type="submit"] {
+        background-color: #b3e0c9;
+      }
+
+      #modal-form-buttons {
+        margin: 0 auto;
+        color: #2e6c4a;
+        font-size: 20px;
+        font-weight: 900;
+        margin-top: 40px;
+        display: flex;
+        justify-content:center;
+      }
 	
 	table tr{
 		<%--border-style:solid;--%> 
@@ -133,9 +211,10 @@
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
         padding-left:20px;
-       
+        border-style: solid ;
+        border-color: #acdac2;
         
        
 	}
@@ -157,10 +236,12 @@
 		height: 150px;
         border-radius: 20px 20px;
         font-size: small;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
         padding-left:20px;
         padding: 10px 10px;
         font-size: 15px;
+         border-style: solid ;
+         border-color: #acdac2;
       }
       
 	#check {
@@ -197,11 +278,13 @@
 	
 	.first {
 		padding-left: 100px;
+		color:#2e6c4a;
 	}
 	
 	.corpText{
 		padding-left:100px;	
 		padding-bottom: 150px;
+		color: #2e6c4a;
 	}
 	 .delQu{
         text-decoration: none;
@@ -210,13 +293,17 @@
        	font-weight: bold;
     }
 	
-	
+	#txt {
+		color: #2e6c4a;
+		
+	}
 </style>
 </head>
 <body>
 	
 	
 	<main>
+		  <div id="corpSelEvery">
 		  <div id="logo_name">
            	<a href="<%=request.getContextPath()%>">
             <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
@@ -238,7 +325,8 @@
 				<tr>
 					<td class="first" style="font-weight: bold">비밀번호 확인*</td>
 					<td><input type="password" name="corpPwd" id="input"  required readonly></td>
-					<td><input type="button" id="" value="비밀번호변경" class="btn" data-bs-toggle="modal" data-bs-target="#pwdChange" style="font-weight: bold">
+					<td><input type="button" id="txt" value="비밀번호변경" class="btn" style="background-color: #d8eee2 ;"
+							data-bs-toggle="modal" data-bs-target="#pwdChange" style="font-weight: bold">
 					</td>
 				</tr>
 				<tr>
@@ -294,7 +382,7 @@
                     <a href="" class="delQu">회원 탈퇴</a>
 				
 				</div>
-
+			</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
@@ -303,40 +391,41 @@
 	</main>
 	<!-- The Modal -->
 	<div class="modal" id="pwdChange">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
+	  <div class="modal-dialog" id="modal-outer">
+	    <div class="modal-content" id="modal-form">
 	
 	      <!-- Modal Header -->
-	      <div class="modal-header">
-	        <h4 class="modal-title">Modal Heading</h4>
-	        <button type="button" class="btn-close" data-dismiss="modal"></button>
+	      <div class="modal-header" id="modal-header">
+	        <h4 class="modal-title">비밀번호 변경</h4>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 	      </div>
 	
 	      <!-- Modal body -->
-	      <div class="modal-body">
+	      <div class="modal-body" id="modal-body">
 	        <div id="pwdFormOuter">
-	        	<form action="" method="post"> 
-	        		<input type="hidden" name="corpId" <%--value="<%=loginMember.getId()--%>>
+	        	<form action="" method="post">
+	        		<input type="hidden" name="memberId"> 
 		        	<table>
 		        		<tr>
 		        			<td>기존 비밀번호</td>
-		        			<td><input type="password" name="corpPwd"></td>
+		        			<td><input type="password" id="memberP" name="memberPwd"></td>
 		        		</tr>
 		        		<tr>
 		        			<td>신규 비밀번호</td>
-		        			<td><input type="password" name="corpPwdNew"></td>
+		        			<td><input type="password" id="memberPnew"name="memberPwdNew"></td>
 		        		</tr>
 		        		<tr>
 		        			<td>신규 비밀번호 확인</td>
-		        			<td><input type="password" name="corpPwdNew2"></td>
+		        			<td><input type="password" id="memberPnew2" name="memberPwdNew2"></td>
 		        		</tr>
-		        		<tr>
-		        			<td colspan="2">
-		        				<input type="submit" value="변경하기" onclick="return checkPwd();">
+		        		<tr >
+		        			<td  id="modal-form-buttons">
+		        				<input type="submit" class="modal-form-button" value="변경하기" onclick="return checkPwd();">
+		        				<input type="button" class="modal-form-button"  data-bs-dismiss="modal" value="취소">
 		        			</td>
 		        		</tr>
 		        	</table>
-		       	</form>
+		        </form>
 	        </div>
 	      </div>
 	
@@ -347,12 +436,7 @@
 	
 </body>
 
-<script>
-		$('#pwdChange').click(function(e){
-			e.preventDefault();
-			$('#pwdChange').modal("show");
-		});
-	</script>
+
 	<script>
 		function checkPwd(){
 			isSame = $('input[name=memberPwdNew]').val() == $('input[name=memberPwdNew2]').val();

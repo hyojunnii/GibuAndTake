@@ -12,13 +12,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   
 <style>
-
-	body{
+	 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Sans+KR&display=swap");
+	 
+	.wrap{
    		width:1200px;
    		margin:0 auto;
-   }
+  		 }
+	
 	main{
 		margin:auto;
 		
@@ -85,14 +88,93 @@
 		
 	}
 	
-	table tr{
+	  #modal-outer {
+        width: 400px;
+      }
+
+      #modal-form {
+        height: 400px;
+        border: 3px solid #72d09e;
+        border-radius: 15px;
+      }
+
+      #modal-header {
+        justify-content: center;
+        border-bottom: 3px solid #8bd0ab;
+        background-color: #d8eee2;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+      
+       #modal-header h4 {
+        font-weight: 600;
+        color: #2e6c4a;
+        margin-left:120px;
+      }
+	  #memberP {
+	  	 height:30px;
+         width: 180px;
+         border-radius: 15px;
+         margin: 5% auto;
+          margin-right: 10px;
+         border: 1px solid #acdac2;
+	  }
+	  
+	   #memberPnew {
+	  	 height: 30px;
+         width: 180px;
+         border-radius: 15px;
+          margin: 5% auto;
+          margin-right: 10px;
+         border: 1px solid #acdac2;
+	  }
+	  
+	  #memberPnew2 {
+	  	 height: 30px;
+        width: 180px;
+         border-radius: 15px;
+         margin: 5% auto;
+         margin-right: 10px;
+         border: 1px solid #acdac2;
+	  }
+	  
+	   .modal-form-button {
+        width: 300%;
+        border-radius: 15px;
+        border: none;
+        height: 55px;
+        margin: 0 3%;
+        font-size: 18px;
+        background-color: #e0e0e0;
+      }
+
+      .modal-form-button:hover {
+        font-weight: 600;
+        box-shadow: 0.5px 0.5px 3px 0px #dadada;
+      }
+
+      #modal-form-buttons input[type="submit"] {
+        background-color: #b3e0c9;
+      }
+
+      #modal-form-buttons {
+        margin: 0 auto;
+        color: #2e6c4a;
+        font-size: 20px;
+        font-weight: 900;
+        margin-top: 40px;
+        display: flex;
+        justify-content:center;
+      }
+      
+	table tr {
 		<%--border-style:solid;--%> 
-	}
+	  }
 	table tr >td{
 		<%--border-style:solid;--%> 
 		width:33%; 
 		
-	}
+	  }
 	
 	#line{
 		border-bottom: 5px solid #E2F5EB;
@@ -123,13 +205,15 @@
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
         padding-left:20px;
+        border-style: solid;
+        border-color: #acdac2;
         
        
 	}
 	
-	#check{
+	#check {
 		text-align: center;
         width: 100px;
         margin-top: 0 auto;
@@ -141,6 +225,9 @@
         border-width: 1px 1px 1px 1px;
         margin-right: 140px;
        	font-weight: bold;
+       	border-style: solid ;
+        border-color:#acdac2;
+        color:#2e6c4a;
 	}
 	
 	#check:hover{
@@ -160,6 +247,7 @@
 	
 	.first{
 		padding-left: 100px;
+		color:#2e6c4a;
 	}
 	
 	 #memberUdq{
@@ -173,14 +261,17 @@
     	
     }
     
-   
     
+   
+    	
+    	
 </style>
 </head>
 <body>
 	
 	
 	<main>
+		  <div id="memberUpEvery">
 		  <div id="logo_name">
            	<a href="<%=request.getContextPath()%>">
             <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
@@ -196,7 +287,7 @@
 				<tr>
 					<td class="first" style="font-weight: bold">닉네임 *</td>
 					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
-					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
+					<td><button type="button" id="check" onclick="location.href=''">중복확인</button></td>
 					
 				</tr>
 			
@@ -224,78 +315,70 @@
 				<div id="memberUdq">
 					<a href="" class="log2" style="font-weight:bold">수정하기 /</a>
 					<a href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
-                 <a class="pwdMo" href="pwdChange" data-toggle="modal" > 비밀번호 변경</a>
+                 	<a href="" onclick="pwdCh"  data-bs-toggle="modal" data-bs-target="#pwdChange"style="font-weight:bold"> 비밀번호 변경</a>
 				</div>
-
+			</form>
+			</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
-
+				</div>
 		</form>
+		
 	</main>
 	<!-- The Modal -->
 	<div class="modal" id="pwdChange">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
+	  <div class="modal-dialog" id="modal-outer">
+	    <div class="modal-content" id="modal-form">
 	
 	      <!-- Modal Header -->
-	      <div class="modal-header">
-	        <h4 class="modal-title">Modal Heading</h4>
-	        <button type="button" class="btn-close" data-dismiss="modal"></button>
+	      <div class="modal-header" id="modal-header">
+	        <h4 class="modal-title">비밀번호 변경</h4>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 	      </div>
 	
 	      <!-- Modal body -->
-	      <div class="modal-body">
+	      <div class="modal-body" id="modal-body">
 	        <div id="pwdFormOuter">
-	        	<form action="" method="post"> 
-	        		<input type="hidden" name="memberId" <%--value="<%=loginMember.getId()--%>>
+	        	<form action="" method="post">
+	        		<input type="hidden" name="memberId"> 
 		        	<table>
 		        		<tr>
 		        			<td>기존 비밀번호</td>
-		        			<td><input type="password" name="memberPwd"></td>
+		        			<td><input type="password" id="memberP" name="memberPwd"></td>
 		        		</tr>
 		        		<tr>
 		        			<td>신규 비밀번호</td>
-		        			<td><input type="password" name="memberPwdNew"></td>
+		        			<td><input type="password" id="memberPnew"name="memberPwdNew"></td>
 		        		</tr>
 		        		<tr>
 		        			<td>신규 비밀번호 확인</td>
-		        			<td><input type="password" name="memberPwdNew2"></td>
+		        			<td><input type="password" id="memberPnew2" name="memberPwdNew2"></td>
 		        		</tr>
-		        		<tr>
-		        			<td colspan="2">
-		        				<input type="submit" value="변경하기" onclick="return checkPwd();">
+		        		<tr >
+		        			<td  id="modal-form-buttons">
+		        				<input type="submit" class="modal-form-button" value="변경하기" onclick="return checkPwd();">
+		        				<input type="button" class="modal-form-button"  data-bs-dismiss="modal" value="취소">
 		        			</td>
 		        		</tr>
 		        	</table>
-		       	</form>
+		        </form>
 	        </div>
 	      </div>
 	
 	    </div>
 	  </div>
 	</div>
+	
 </body>
-
-	
-	
 	<script>
-		$('#pwdChange').click(function(e){
-			e.preventDefault();
-			$('#pwdChange').modal("show");
-		});
-	</script>
-	<script>
-		function checkPwd(){
-			isSame = $('input[name=memberPwdNew]').val() == $('input[name=memberPwdNew2]').val();
-			if(isSame){
-				return true;
-			}else{
-				alert("신규 비밀번호가 일치하지 않습니다.");
-				return false;
-			}
-			
+		function pwdCh() {
+			var pwdCh = document.querySelector(".modal");
+			 pwdCh.classList.add("pwdCh");
 		}
+	
 	</script>
+	
+	
 	
 </html>

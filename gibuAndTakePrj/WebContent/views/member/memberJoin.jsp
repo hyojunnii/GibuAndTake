@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 
-	body{
+	#every{
    		width:1200px;
    		margin:0 auto;
    }
@@ -101,6 +101,9 @@
         background-color: white;
         border-style: calc() ;
         align:center;
+        border-style: solid ;
+        border-color:#acdac2;
+        color:#2e6c4a;
     }
 	
 	#join:hover{
@@ -124,8 +127,10 @@
         font-size: small;
         border-width: 1px 1px 1px 1px;
         padding-left:20px;
+       	border-style: solid ;
+        border-color:#acdac2;
        
-        
+
        
 	}
 	
@@ -138,9 +143,12 @@
         font-size: small;
         background-color: white;
         border: solid:black;
-        border-width: 1px 1px 1px 1px;
+        border-width: 2px 2px 2px 2px;
         margin-right: 140px;
        	font-weight: bold;
+       	border-style: solid ;
+        border-color:#acdac2;
+        color:#2e6c4a;
 	}
 	
 	#check:hover{
@@ -160,6 +168,7 @@
 	
 	.first{
 		padding-left: 100px;
+		color:#2e6c4a;
 	}
 </style>
 </head>
@@ -167,6 +176,8 @@
 	
 	
 	<main>
+	
+		  <div id="every">
 		  <div id="logo_name">
            	<a href="<%=request.getContextPath()%>">
             <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
@@ -181,7 +192,7 @@
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</span></td>
 					<td><input type="text" name="memberId" id="input" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" ></td>
-					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
+					<td><button type="button" id="check" onclick="location.href=''">중복확인</button></td>
 				</tr>
 				
 				<tr>
@@ -202,7 +213,7 @@
 				<tr>
 					<td class="first" style="font-weight: bold">닉네임 *</td>
 					<td><input type="text" name="memberNick" id="input" maxlength="3" required></td>
-					<td><button type="button" id="check" onclick="location.href='/gibuAndTakePrj/member/login'">중복확인</button></td>
+					<td><button type="button" id="check" onclick="location.href=''">중복확인</button></td>
 					
 				</tr>
 				<tr>
@@ -234,7 +245,7 @@
 				</tr>
 
 			</table>
-
+						</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
