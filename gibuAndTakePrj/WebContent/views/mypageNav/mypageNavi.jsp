@@ -6,64 +6,82 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	  @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Sans+KR&display=swap");
 
-	body{
-   		width:1200px;
-   		margin:0 auto;
-   }
-   	
-   	html {
-  	 font-family: "IBM Plex Sans KR", "IBM Plex Sans", sans-serif;
-  	font-size: 15px;
+   		nav{
+   			width:300px;
+   			background-color: white;
+   			border-right:2px solid #acdac2;
+   			height:550px;
+   			margin-top: 20px;
+   			margin-left:-85px;
+   		}
+   		
+   		
+   		
+   		.menu li a {
+   			height:10px !important;
+   			line-height:30px !important;
+   			display:block !important;
+   			padding:0 20px !important;
+   			font-size:15px !important;
+   			color:#555 !important;
+   			text-decoration: none !important;
+   			margin-top: 30px !important;
+   			margin-left:30px !important;
+   			text-align: center !important;
+   		}
+   		
+   		.menu li a:hover {
+   			color: #acdac2;
+   		}
+   		
+   		#middleLine  {
+   			margin-top: 50px;
+   			margin-left:50px;
+   			margin-right:30px;
+   			border-style:solid;
+   			border-color:#acdac2;
+   			border-width: 1px;
+   			width:190px;
+   			
+   		}
+   		
+   		
+   		.menu{
+   			 list-style:none;
+   		}
+
+   		
+   
   	
-	}
-   	
-   	.sidebar {
- 	 position: fixed;
- 	 width: 15%;
- 	 height: 100vh;
-  	 background: white;
-  	 font-size: 0.65em;
-}
-   
-   
-    #heightLine {
-   		width:2px;
-   		height:1000px;
-   		background:black;
-   		margin-top: 100px;
-   		margin-left: 400px;
-   }
-   
-   
-  
 </style>
  
 </head>
 <body>
-		<%@include file="/views/common/header.jsp" %>
+	
+	
+	
+	<nav>
+		<ul class="menu">
+			<li><a href="#" id="home" style="font-weight:bold">MY 홈</a></li>
+			<div id="middleLine"></div>
+			<li><a href="#" id="memberInfor"  style="font-weight:bold">회원정보</a></li>
+			<div id="middleLine"></div>
+			<li><a href="#" id="Active"  style="font-weight:bold">활동내역</a></li>
+			<li><a href="#" id="dona" style="font-size: 12px">기부</a></li>
+			<li><a href="#" id="funding-menu" style="font-size: 12px">펀딩</a></li>
+			<li><a href="#" id="camp" style="font-size: 12px" >캠페인</a></li>
+			<div id="middleLine"></div>
+			<li><a href="#" id="payment"  style="font-weight:bold">결제 내역</a></li>
+			<li><a href="#" id="donament" style="font-weight:bold">기부 내역</a></li>
+		</ul>
+		
+	</nav>	
 		
 		
-		
-		<div id="heightLine"></div>
-		<main class="main">
-  		<aside class="sidebar">
-    	<nav class="nav">
-      	<ul>
-       		<li class="active"><a href="#">MY 홈</a></li>
-        	<li><a href="#">회원정보</a></li>
-       	 	<li><a href="#">활동내역</a></li>
-        	<li><a href="#">기부</a></li>
-        	<li><a href="#">펀딩</a></li>
-        	<li><a href="#">캠페인</a></li>
-      </ul>
-    </nav>
-  </aside>
+  		
+  		
 		
 		
-		    <div style="padding-top: 500px" style = "margin:0 auto">
-               <%@ include file="/views/common/footer.jsp" %>
-          		</div>
 </body>
 </html>

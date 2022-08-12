@@ -15,7 +15,7 @@
   
 <style>
 	
-	body{
+	#corpUpEvery{
    		width:1200px;
    		margin:0 auto;
    }
@@ -205,6 +205,7 @@
 	
 	
 	<main>
+		   <div id="corpUpEvery">
 		  <div id="logo_name">
            	<a href="<%=request.getContextPath()%>">
             <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
@@ -276,7 +277,7 @@
 				
 				</div>	
 	
-			
+			</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>

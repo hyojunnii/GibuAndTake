@@ -8,7 +8,7 @@
 </head>
 <style>
    
-   body{
+   #loginEvery{
    		width:1200px;
    		margin:0 auto;
    }
@@ -147,8 +147,9 @@
     }
 
 </style>
-<body>
-		<form action="gibuAndTakePrj/member/login">
+<body>	
+		<div id="loginEvery">
+		<form action="gibuAndTakePrj/member/login" method="post">
             <div id ="square">
                 <table id= "loginInfo">
                     <div id="logo_name">
@@ -175,7 +176,7 @@
                     </tr>
                 </table>
                 </div>
-                
+              </div>  
                 <div style="padding-top: 100px" style = "margin:0 auto">
                <%@ include file="../common/footer.jsp" %>
           		</div>

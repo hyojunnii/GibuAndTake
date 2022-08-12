@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 
-	body{
+	#corpJoEvery{
    		width:1200px;
    		margin:0 auto;
    }
@@ -207,6 +207,7 @@
 	
 	
 	<main>
+		   <div id="corpJoEvery">
 		  <div id="logo_name">
            	<a href="<%=request.getContextPath()%>">
             <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
@@ -216,7 +217,7 @@
 		
 		<div id="line"></div>
 		<h3 align="center" style="font-size: 25px">기업 회원 가입 페이지</h3>
-		<form action="gibuAndTakePrj/member/join" method="post">
+		<form action="gibuAndTakePrj/corp/join" method="post">
 			<table>
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</span></td>
@@ -285,7 +286,7 @@
 				</tr>
 
 			</table>
-
+	</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>

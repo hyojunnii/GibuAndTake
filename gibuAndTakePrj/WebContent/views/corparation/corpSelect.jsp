@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 
-	body{
+	#corpSelEvery{
    		width:1200px;
    		margin:0 auto;
    }
@@ -303,6 +303,7 @@
 	
 	
 	<main>
+		  <div id="corpSelEvery">
 		  <div id="logo_name">
            	<a href="<%=request.getContextPath()%>">
             <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
@@ -381,7 +382,7 @@
                     <a href="" class="delQu">회원 탈퇴</a>
 				
 				</div>
-
+			</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>

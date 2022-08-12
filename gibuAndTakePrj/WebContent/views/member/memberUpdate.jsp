@@ -271,7 +271,7 @@
 	
 	
 	<main>
-		  <div class="wrap">
+		  <div id="memberUpEvery">
 		  <div id="logo_name">
            	<a href="<%=request.getContextPath()%>">
             <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
@@ -317,13 +317,14 @@
 					<a href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
                  	<a href="" onclick="pwdCh"  data-bs-toggle="modal" data-bs-target="#pwdChange"style="font-weight:bold"> 비밀번호 변경</a>
 				</div>
-
+			</form>
+			</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
-
+				</div>
 		</form>
-		</div>
+		
 	</main>
 	<!-- The Modal -->
 	<div class="modal" id="pwdChange">
