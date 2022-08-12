@@ -4,44 +4,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>문의하기</title>
 <style>
-    div{
-        box-sizing: border-box;
-        border: 1px solid black;
+    #title {
+        width: 200px;
+        margin-left: 120px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 36px;
+        padding: 30px;
     }
-
-    .wrap{
-        width: 1000px;
-        height: 1200px;
-        margin: auto;
+    
+    .input{
+    	background-color: white;
+    	color: green;
+    	margin-left: 140px;
+    	margin-top: 30px;
+    	font-weight: bold;
+    	border-radius: 15px;
+    	border: 0px;
     }
-
-    .wrap>div{width: 100%;}
-     #header{height: 10%;}
-     #navigator{height:15%;}
-     #content{height: 60%;}
-     #bar{height: 5%;}
-     #footer_2{height: 10%;}
-     
-     #content>div{height: 100%; float: left;}
-     #content_1{width: 20%;}
-     #content_2{width: 80%;}
+    
+    .input:hover{
+    	cursor: pointer;
+    }
+    
+    #campaign{
+    	margin-left: 135px;
+    }
 
 </style>
 </head>
 <body>
-	<h1>문의목록</h1>
-	
-	<div class="wrap">
-        <div id="header"></div>
-        <div id="navigator"></div>
-        <div id="content">
-            <div id="content_1"></div>
-            <div id="content_2"></div>
-        </div>
-        <div id="bar"></div>
-        <div id="footer"></div>
-    </div>
+	<div id="title">문의하기</div>
+    
+	 <div style="border: 1px solid #72d09e; float: left; width: 20%; height:600px; padding:10px;">
+		<form action="" method="get">
+			<input class="input" type="submit" value="기부">
+		</form>
+		
+		<form action="" method="get">
+			<input class="input" type="submit" value="펀딩">
+		</form>
+		
+		<form action="" method="get">
+			<input id="campaign" class="input" type="submit" value="캠페인">
+		</form>
+	 </div>
+	 <div style="border: 1px solid #72d09e; float: left; width: 75%; height:570px; padding:50px 0px 0px 0px;">
 </body>
 </html>

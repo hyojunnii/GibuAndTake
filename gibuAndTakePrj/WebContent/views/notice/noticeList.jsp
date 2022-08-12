@@ -107,6 +107,13 @@
     #last {    
         padding: 60px;
     }
+    
+    /*#page-area{
+		width: 80%;
+		text-align: center;
+		margin: auto;
+		padding-top: 30px;
+	}*/
 </style>
 </head>
 <body>
@@ -164,6 +171,23 @@
         <a id="b">&nbsp&nbsp5&nbsp&nbsp</a>
         <a id="c">&nbsp&nbsp>&nbsp&nbsp</a>
     </div>
+    
+   		<%-- <div id="page-area">
+				<%if(currentPage != 1){%>
+					<a class="btn btn-sm btn-primary" href="/semi/board/list?p=<%=currentPage-1%>"> &lt; </a>
+				<%} %>
+				<% for(int i = startPage; i <= endPage; ++i) {%>
+					<%if(i == currentPage) {%>
+						<a class="btn btn-sm btn-primary"><%=i%></a>
+					<%}else{ %>
+						<a class="btn btn-sm btn-primary" href="<%=contextPath%>/board/list?p=<%=i%>"><%=i%></a>
+					<%} %>
+				<%} %>
+				
+				<%if(currentPage != maxPage){%>
+					<a class="btn btn-sm btn-primary" href="/semi/board/list?p=<%=currentPage+1%>"> &gt; </a>
+				<%} %>
+			</div> --%>
     
     <div id="last"></div>
     
