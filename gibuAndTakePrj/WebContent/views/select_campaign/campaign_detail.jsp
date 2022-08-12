@@ -6,11 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    body{
-    width: 1200px;
-}
+
         #campaign_detail_container{
-        border: 1px solid blue;
         margin: 0 10%;
         text-align: center;
     }
@@ -19,10 +16,11 @@
         width: 60%;
         /* 이미지 높이 */
         height: 400px;
+        border-radius: 10px;
     }
 
     #campaign_detail_container_div{
-        width: 60%;
+        width: 100%;
         margin: 0 auto;
     }
 
@@ -34,9 +32,9 @@
     .campaign_btn_cover{
         width: 40%;
         margin: 30px auto;
-        background-color: ivory;
-        border-radius: 112px;
-        border: 1px solid black;
+        background-color: #b3e0c9;
+        border-radius: 10px;
+        border: 1px solid #72d09e;
     }
    
     #total_money{
@@ -118,23 +116,23 @@
 
     /*tab css*/
 .tab{float:left; width:100%; height:290px; box-sizing: border-box;}
-.tabnav{font-size:0; width:100%; border:1px solid #ddd; box-sizing: border-box;}
-.tabnav li{display: inline-block;  height:46px; text-align:center; border-right:1px solid #ddd;}
+.tabnav{font-size:0; width:100%; border:1px solid #72d09e; box-sizing: border-box;}
+.tabnav li{display: inline-block;  height:46px; text-align:center; border-right:1px solid #72d09e;}
 .tabnav li a:before{content:""; position:absolute; left:0; top:0px; width:100%; height:3px; }
 .tabnav li a.active:before{background:red;}
-.tabnav li a.active{border-bottom:1px solid #fff;}
+.tabnav li a.active{border-bottom:1px solid #72d09e;}
 .tabnav li a{ position:relative; display:block; background: #f8f8f8; color: #000; padding:0 30px; line-height:46px; text-decoration:none; font-size:16px;}
 .tabnav li a:hover,
 .tabnav li a.active{background:#fff; color:#7ea21e; }
-.tabcontent{padding: 20px; border:1px solid #ddd; border-top:none;}
+.tabcontent{padding: 20px; border:1px solid #72d09e; border-top:none;}
 
 #comments_table{
     width: 100%;
-    border: 1px solid black;
 }
 #comments_img{
     width: 100%;
     height: 200px;
+    border-radius: 10px;
 }
 .ingCnt{
     font-weight: 700;
@@ -144,12 +142,21 @@
 #title_table{
     width: 100%;
 }
+#outer{
+	width: 1200px;
+	margin: 0 auto;
+	
+}
+#tabs{
+	width: 100%
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
 
+	<div id="outer">
     <div id="campaign_detail_container">
         <br>
         <img src="../resources/img/sample.png" alt="첫번째 이미지사진">
@@ -171,7 +178,7 @@
             </a>
         </div>
 
-        <div class="tabs"> <!-- A -->
+        <div id="tabs"> <!-- A -->
             <ul class="tabnav">
               <li><a href="#introduce">캠페인 소개</a></li>
               <li><a href="#comments">행동보드</a></li>  
@@ -376,6 +383,7 @@
 
 
     <br clear="both">
+    </div>
     <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

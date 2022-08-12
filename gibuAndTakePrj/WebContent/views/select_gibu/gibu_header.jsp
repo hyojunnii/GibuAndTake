@@ -28,7 +28,6 @@ li{
 #gibu_wrap{
     width: 500px;
     height: 50px;
-    outline: 1px dotted red;
     margin: 0 auto;
 }
 

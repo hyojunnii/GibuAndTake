@@ -9,14 +9,13 @@
         *{
         box-sizing: border-box;
     }
-    body{
-    width: 1200px;
-}
+
     #group_catelist ul{
         margin: 0 10%;
         margin-top: 20px;
         height: 80px;
         background-color: #8bdcb1;
+        border-radius: 10px;
     }
     
     #group_catelist ul li{
@@ -25,6 +24,7 @@
         width: 12.5%;
         height:100%;
         text-align: center;
+        line-height: 15px;
     }
     
     #group_catelist ul li a span{
@@ -42,7 +42,6 @@
     .container{
         margin: 0 10%;
         margin-top: 30px;
-        border: 1px solid black;
         height: auto;
     }
     .container>p {
@@ -58,13 +57,13 @@
         float: left;
         width: 267px;
         height: 363px;
-        border: 1px solid black;
+        border: 1px solid #83DDAD;
         margin: 30px 0 30px 30px;
+        border-radius: 10px;
     }
     
     .card div{
         height: 50%;
-        border: 1px solid black;
     }
     .card div p{
         margin-top: 10px;
@@ -117,7 +116,18 @@
     .card img{
         width: 100%;
         height: 100%;
+        border-radius: 10px;
     }
+    
+    #outer{
+	width: 1200px;
+	margin: 0 auto;
+	
+}
+
+#titleNo{
+	color: #83DDAD;
+}
 </style>
 </head>
 <body>
@@ -125,6 +135,7 @@
 
     <%@ include file="funding_header.jsp" %>
     
+    <div id="outer">
     <div id="group_catelist">
         <ul>
             <li>
@@ -189,7 +200,7 @@
 
     <div class="container">
       
-        <p>만료된 펀딩 ??건</p>
+        <p id="titleNo">만료된 펀딩 ??건</p>
          
         
          <a href="/gibuAndTakePrj/view/funding_detail" class="card">
@@ -206,6 +217,7 @@
          </a>
     </div>
     <br clear="both">
+    </div>
     <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

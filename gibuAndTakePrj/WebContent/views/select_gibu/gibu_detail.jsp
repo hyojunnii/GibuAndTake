@@ -6,9 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    body{
-    width: 1200px;
-}
+
     #gibu_detail_container{
         border: 1px solid blue;
         margin: 0 10%;
@@ -19,10 +17,11 @@
         width: 60%;
         /* 이미지 높이 */
         height: 400px;
+        border-radius: 10px;
     }
 
     #gibu_detail_container_div{
-        width: 60%;
+        width: 100%;
         margin: 0 auto;
     }
 
@@ -34,8 +33,8 @@
     .gibu_btn_cover{
         width: 40%;
         margin: 30px auto;
-        background-color: #8bdcb1;
-        border-radius: 112px;
+        background-color: #b3e0c9;
+        border-radius: 10px;
     }
    
     #total_money{
@@ -71,7 +70,7 @@
         padding: 10px;
         font-weight: bold;
         vertical-align: top;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #72d09e;
         background: #f3f6f7;
         text-align: center;
     }
@@ -79,16 +78,23 @@
         width: 350px;
         padding: 10px;
         vertical-align: top;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #72d09e;
     }
     #title_table{
     width: 100%;
+}
+
+#outer{
+	width: 1200px;
+	margin: 0 auto;
+	
 }
 </style>
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
 
+	<div id="outer">
     <div id="gibu_detail_container">
         <table id="title_table">
             <tr>
@@ -167,7 +173,7 @@
             
         </div>
     </div>
-    
+    </div>
     <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -6,9 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    body{
-    width: 1200px;
-    }
+
     #funding_detail_container{
         border: 1px solid blue;
         margin: 0 10%;
@@ -19,10 +17,11 @@
         width: 60%;
         /* 이미지 높이 */
         height: 400px;
+    	border-radius: 10px;
     }
 
     #funding_detail_container_div{
-        width: 60%;
+        width: 100%;
         margin: 0 auto;
     }
 
@@ -34,8 +33,8 @@
     .funding_btn_cover{
         width: 40%;
         margin: 30px auto;
-        background-color: ivory;
-        border-radius: 112px;
+        background-color: #b3e0c9;
+        border-radius: 10px;
         border: 1px solid black;
     }
    
@@ -118,11 +117,22 @@
     #title_table{
     width: 100%;
 }
+
+#outer{
+	width: 1200px;
+	margin: 0 auto;
+	
+}
+
+#funding_cover{
+	width: 80%;
+	border-radius: 10px;
+	}
 </style>
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
-
+	<div id="outer">
     <div id="funding_detail_container">
         <table id="title_table">
             <tr>
@@ -255,7 +265,7 @@
         
     </div>
 </div>
-    
+    </div>
     <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
