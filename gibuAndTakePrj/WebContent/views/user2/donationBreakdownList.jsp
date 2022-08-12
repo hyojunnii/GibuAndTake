@@ -13,6 +13,7 @@
 <style>
     #body {
         width: 1200px;
+		height: 1000px;
         margin: 0 auto;
     }
 
@@ -33,6 +34,7 @@
 	
 	#body-table {
 		margin: 20px auto;
+		color: #15462b;
 		border-collapse: collapse;
 		width: 600px;
 	}
