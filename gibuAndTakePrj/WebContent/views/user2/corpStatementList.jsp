@@ -8,6 +8,7 @@
 <style>
 	#body {
         width: 1200px;
+		height: 1000px;
         margin: 0 auto;
     }
 
@@ -29,6 +30,7 @@
 
 	table {
 		width: 700px;
+		color: #15462b;
 		border-top: 3px solid #8bdcb1;
 		border-bottom: 3px solid #8bdcb1;
 		border-collapse: collapse;

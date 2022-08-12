@@ -49,6 +49,7 @@
     }
 
     .big {
+        color: #2e6c4a;
         font-size: 20px;
         font-weight: bold;
     }
