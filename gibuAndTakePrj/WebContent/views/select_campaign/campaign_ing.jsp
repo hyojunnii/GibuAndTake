@@ -13,9 +13,7 @@
     list-style: none;
     box-sizing: border-box;
 }
-body{
-    width: 1200px;
-}
+
 
 #slider-wrap {
     width: 80%;
@@ -23,6 +21,7 @@ body{
     position: relative;
     overflow: hidden;
     margin: 0 auto;
+    border-radius: 10px;
 }
 
 #slider-wrap ul#slider {
@@ -37,6 +36,7 @@ body{
     position: relative;
     width: 600px;
     height: 400px;
+    
 }
 
 #slider-wrap ul#slider li>div {
@@ -148,7 +148,6 @@ body{
 .container{
         margin: 0 10%;
         margin-top: 30px;
-        border: 1px solid black;
         height: auto;
     }
     .container>p {
@@ -164,13 +163,13 @@ body{
         float: left;
         width: 267px;
         height: 363px;
-        border: 1px solid black;
+        border: 1px solid #83DDAD;
         margin: 30px 0 30px 30px;
+        border-radius: 10px;
     }
     
     .card div{
         height: 50%;
-        border: 1px solid black;
     }
     .card div p{
         margin-top: 10px;
@@ -217,53 +216,73 @@ body{
     .card img{
         width: 100%;
         height: 100%;
+        border-radius: 10px;
     }
+    #outer{
+	width: 1200px;
+	margin: 0 auto;
+	
+}
+
+#titleNo{
+	color: #83DDAD;
+}
 </style>
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
     <%@ include file="campaign_header.jsp" %>
-
+	<div id="outer">
     <div id="slider-wrap">
         <ul id="slider">
             <li>
                 <div>
+                	<a href="">
                     <h3>Slide #1</h3>
                     <span>Sub-title #1</span>
                 </div>
                 <img src="https://fakeimg.pl/350x200/960a96/000?text=11111">
+                </a>
             </li>
     
             <li>
                 <div>
+                	<a href="">
                     <h3>Slide #2</h3>
                     <span>Sub-title #2</span>
                 </div>
                 <img src="https://fakeimg.pl/350x200/D27328/000?text=22222">
+                </a>
             </li>
     
             <li>
                 <div>
+                	<a href="">
                     <h3>Slide #3</h3>
                     <span>Sub-title #3</span>
                 </div>
                 <img src="https://fakeimg.pl/350x200/FF607F/000?text=33333">
+                </a>
             </li>
     
             <li>
                 <div>
+                	<a href="">
                     <h3>Slide #4</h3>
                     <span>Sub-title #4</span>
                 </div>
                 <img src="https://fakeimg.pl/350x200/0A6E0A/000?text=44444">
+                </a>
             </li>
     
             <li>
                 <div>
+                	<a href="">
                     <h3>Slide #5</h3>
                     <span>Sub-title #5</span>
                 </div>
                 <img src="https://fakeimg.pl/350x200/0064CD/000?text=55555">
+                </a>
             </li>
         </ul>
     
@@ -278,7 +297,7 @@ body{
 
     <div class="container">
       
-        <p>진행중인 펀딩 ??건</p>
+        <p id="titleNo">진행중인 펀딩 ??건</p>
          
         
          <a href="/gibuAndTakePrj/view/campaign_detail" class="card">
@@ -381,6 +400,8 @@ var autoSlider = setInterval(function () {
     plusSlides(1);
 }, 3000);
 </script>
+
+</div>
     <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

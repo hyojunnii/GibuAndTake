@@ -9,13 +9,12 @@
 *{
     box-sizing: border-box;
 }
-body{
-    width: 1200px;
-}
+
     #group_catelist ul{
     margin: 0 10%;
     height: 100px;
     background-color: #8bdcb1;
+    border-radius: 10px;
 }
 
 #group_catelist ul li{
@@ -41,7 +40,6 @@ body{
 .container{
     margin: 0 10%;
     margin-top: 30px;
-    border: 1px solid black;
     height: auto;
 }
 .container>p {
@@ -57,13 +55,13 @@ body{
     float: left;
     width: 267px;
     height: 363px;
-    border: 1px solid black;
+    border: 1px solid #83DDAD;
     margin: 30px 0 30px 30px;
+    border-radius: 10px;
 }
 
 .card div{
     height: 50%;
-    border: 1px solid black;
 }
 .card div p{
     margin-top: 10px;
@@ -118,13 +116,23 @@ progress::-webkit-progress-value{
         width: 100%;
         height: 100%;
     }
+    
+    #outer{
+	width: 1200px;
+	margin: 0 auto;
+	
+}
+
+#titleNo{
+	color: #83DDAD;
+}
 </style>
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
 
 	<%@ include file="gibu_header.jsp" %>
-
+	<div id="outer">
     <div id="group_catelist">
         <ul>
             <li>
@@ -205,7 +213,7 @@ progress::-webkit-progress-value{
 
     <div class="container">
       
-        <p>기부모금함 ??개</p>
+        <p id="titleNo">기부모금함 ??개</p>
          
         
          <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
@@ -225,6 +233,8 @@ progress::-webkit-progress-value{
  
      </div>
      <br clear="both">
+     
+     </div>
      <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

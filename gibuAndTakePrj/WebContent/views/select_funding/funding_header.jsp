@@ -28,7 +28,6 @@ li{
 #funding_wrap{
     width: 500px;
     height: 50px;
-    outline: 1px dotted red;
     margin: 0 auto;
 }
 
@@ -40,6 +39,7 @@ li{
     line-height: 50px;
     text-align: center;
     background-color: white;
+    
 }
 
 #gibu_wrap ul li a{
