@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>기부 승인 목록(메인)</title>
+<title>펀딩 승인 목록</title>
 <style>
 	#title {
         width: 200px;
@@ -130,13 +130,6 @@
     #last{
     	padding: 300px;
     }
-    
-    /* #page-area{
-		width: 80%;
-		text-align: center;
-		margin: auto;
-		padding-top: 30px;
-	} */
 </style>
 </head>
 <body>
@@ -158,7 +151,7 @@
 	 </div>
 	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:600px; padding:50px 0px 0px 0px;">
 		
-		<div id="name">기부 승인 목록</div>
+		<div id="name">펀딩 승인 목록</div>
 		
 		<div id="outer">		
         <table id="table-main">
@@ -188,7 +181,7 @@
         </table>
     	</div>
     	
- 		<form action="/gibuAndTakePrj/approve/donation" method="get">
+ 		<form action="/gibuAndTakePrj/approve/funding" method="get">
 			<input id="approve"  type="submit" value="승인">
 		</form>   	
     
@@ -222,6 +215,6 @@
     	<div id="last"></div>
        <%@include file="/views/common/footer.jsp" %>
        
-       
+      
 </body>
 </html>

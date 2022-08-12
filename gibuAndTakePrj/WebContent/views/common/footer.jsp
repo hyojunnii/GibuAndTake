@@ -82,8 +82,8 @@
         </div>
         <div id="notice">
             <span>
-                <a href="" id="go_notice">공지사항</a>
-                <a href="" id="go_notice_title">공지사항 내용</a>
+                <a href="/gibuAndTakePrj/notice/list" id="go_notice">공지사항</a>
+                <a href="/gibuAndTakePrj/notice/list" id="go_notice_title">공지사항 내용</a>
             </span>
         </div>
         <div>
@@ -92,8 +92,8 @@
                     <span id="footer_site_name">기부 앤 테이크</span>
                     <span id="footer_mini_text">Bul4Zo0826@gmail.com</span>
                     <span id="footer_else_menu">
-                        <a href="">문의하기</a>
-                        <a href="">FAQ</a>
+                        <a href="/gibuAndTakePrj/qa/list">문의하기</a>
+                        <a href="/gibuAndTakePrj/faq/list">FAQ</a>
                         <a href="">개인정보 처리방침</a>
                         <a href="">이용약관</a>
                         <a href="https://www.mois.go.kr/frt/a01/frtMain.do">공익제보(행정안전부)</a>

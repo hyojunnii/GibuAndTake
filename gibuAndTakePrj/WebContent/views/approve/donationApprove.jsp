@@ -8,12 +8,12 @@
 <style>
 
 	#title {
-        width: 200px;
-        margin-left: 500px;
+        width: 220px;
+        margin-left: 510px;
         text-align: center;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px;
+        padding: 40px;
     }
 	
     div{
@@ -21,13 +21,12 @@
         border: 1px solid white;
     }
     
-    /* table {
+    table {
         width: 820px;
-        height: 900px;
+        height: 700px;
         border-top: 1px solid black;
         border-collapse: collapse;
-        margin: 6px auto;
-    } */
+    } 
     
     .wrap{
         width: 800px;
@@ -37,33 +36,18 @@
 
     .wrap>div{width: 100%;}
      #one{height: 7%;}
-     #two{ height:7%;}
+     #two{ height: 7%;}
      #three{height: 5%;}
      #four{height: 7%;}
      #five{height: 7%;}
      
-     #two>div{height: 100%; float: left;}
      #two_1{width: 10%;}
      #two_2{width: 40%;}
      #two_3{width: 40%;}
     
-     #four>div{height: 100%; float: left;}
-     #four_1{width: 20%;}
-     #four_2{width: 20%;}
-     #four_3{width: 20%;}
-     #four_4{width: 20%;}
-     #four_5{width: 20%;}
+     #four_1{width: 40%;}
+     #four_2{width: 40%;}
      
-    #btn{
-        background-color: white;
-        width:100px;
-        margin: 50px auto;
-        display:block;
-        border-radius: 50px;
-        font-size: 20px;
-        font-weight: 700;
-    }
-    
     #one{
     	border: 1px solid black;
     	width: 820px;
@@ -87,80 +71,62 @@
     #two{
     	border: 1px solid black;
     	width: 820px;
-    	height: 150px;
+    	height: 70px;	
         margin: auto;
     }
     
     #two_1{
     	border: 1px solid black;
-    	width: 200px;
-    	height: 150px;
+    	width: 309px;
+    	vertical-align : top;
         margin: auto;
     }
     
     #two_2{
     	border: 1px solid black;
-    	width: 290px;
-    	height: 150px;
+    	width: 200px;
         margin: auto;
+        vertical-align : top;
     }
-    
-   
     
     #three{
     	border: 1px solid black;
     	width: 820px;
-    	height: 50px;
+    	height: 30px;
         margin: auto;
     }
     
     #four{
     	border: 1px solid black;
     	width: 820px;
-    	height: 150px;
+    	height: 70px;
         margin: auto;
     }
     
     #four_1{
     	border: 1px solid black;
-    	width: 200px;
-    	height: 150px;
-        margin: auto;
+      	vertical-align : top;
     }
     
     #four_2{
     	border: 1px solid black;
-    	width: 200px;
-    	height: 150px;
-        margin: auto;
-    }
-    
-    #four_3{
-    	border: 1px solid black;
-    	width: 200px;
-    	height: 150px;
-        margin: auto;
+      	vertical-align : top;
     }
     
     #five_1{
     	border: 1px solid black;
-    	width: 100px;
-    	height: 150px;
-        margin: auto;
+     	vertical-align : top;
     }
     
     #five_2{
     	border: 1px solid black;
-    	width: 80px;
-    	height: 150px;
-        margin: auto;
+      	vertical-align : top;
     }
     
     #six{
     	border: 1px solid black;
     	width: 820px;
     	height: 350px;
-        margin: auto;
     }
     
     #seven {
@@ -190,71 +156,102 @@
 		padding: 10px;
 		text-align: center;
 	}
+	
+	.line1{
+		width: 320px;
+		height: 70px;
+	}
+	
+	.line2{
+		width: 320px;
+		height: 70px;
+	}
+	
+	#btn{
+        background-color: #b3e0c9;
+        width:100px;
+        margin: 50px auto;
+        display:block;
+        border-radius: 15px;
+        font-size: 20px;
+        font-weight: 700;
+        border: 2px solid;
+    }
+    
+    #btn:hover{
+    	cursor: pointer;
+    }
+	
+	#last {    
+        padding: 10px;
+    }
+
 </style>
 </head>
 <body>
  	<%@include file="/views/common/header.jsp" %>
+ 	
     
 	<div id="title">기부 승인</div>
 	
+	<form action="/gibuAndTakePrj/approve/list" method="get">
      <div class="wrap">
 	<div id="one">
 		<div id="a">승인번호 제&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp호</div>
 		<div id="b">기부 사업 승인증</div>
 	</div>
-    
-        <div id="two">
-            <div id="two_1">승인대상자</div>
-            <div id="two_2">단체명</div>
-            <div id="two_3">사업 대상</div>
-        </div>
-        <div id="three"></div>
-        <div id="four">
-            <div id="four_1">실시계획&nbsp&nbsp승인(신고수리)</div>
-            <div id="four_2">제목</div>
-            <div id="four_3">목표금액</div>
-            <div id="five_1">기간</div>
-            <div id="five_2">사업 기간</div>
-        </div>
-        <div id="six">
-		<div id="seven">제 00조 00항에 의하여 실시 사업 계획을 승인(신고 수리) 합니다. </div>
-		<div id="eight">년 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp월&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  일</div>
-		<div id="nine">추천관리청의 장&nbsp&nbsp&nbsp<span id="ten">직인</span></div>
-	</div>
-    </div>
-    <!-- <table border="1">
-        <tr id="one">
-            <td id="one1" colspan="3">기부 사업 승인증</td>
 
-        </tr>
+    <table border="1">
         <tr id="two">
-            <td>승인대상자</td>
-            <td>단체명</td>
-            
-            <td>사업대상</td>
+            <td style="text-align: center;">승인대상자</td>
+            <td class="line" id="two_1">단체명
+            	<input type="text" size="20" style="width:100%; height:88%; border: 0; outline:none; text-align: center;">
+            </td>
+            <td class="line" id="two_2">사업대상
+            	<input type="text" size="20" style="width:100%; height:88%; border: 0; outline:none; text-align: center;">
+            </td>
            
         </tr>
         <tr id="three">
             <td colspan="3"></td>
         </tr>
         <tr id="four">
-            <td rowspan="2">실시계획승인(신고수리)</td>
-            <td>제목</td>
-            <td>목표금액</td>          
+            <td rowspan="2" style="text-align: center;">실시계획<br>승인<br>(신고수리)</td>
+            <td class="line" id="four_1">제목
+            	<input type="text" name="text" size="20" style="width:100%; height:88%; border: 0; outline:none; text-align: center;">
+            </td>
+            <td class="line" id="four_2">목표금액
+            	<input type="text" name="text" size="20" style="width:100%; height:88%; border: 0; outline:none; text-align: center;">
+            </td>
+                    
         </tr>
         <tr id="five">
-            <td>기간</td>
-            <td>사업기간</td>
+            <td class="line2" id="five_1">기간
+            	<input type="text" name="text" size="20" style="width:100%; height:88%; border: 0; outline:none; text-align: center;">
+            </td> 
+            <td class="line2" id="five_2">사업기간
+            	<input type="text" name="text" size="20" style="width:100%; height:88%; border: 0; outline:none; text-align: center;">
+            </td>
         </tr>
-    </table> -->
+        </table>
    
-    
+   
+    <div id="six">
+		<div id="seven">제 00조 00항에 의하여 실시 사업 계획을 승인(신고 수리) 합니다. </div>
+		<div id="eight"><input type="text" name="text" size="20" style=" height:10%; border: 0; outline:none; text-align: right;"></div>
+		<div id="nine">추천관리청의 장&nbsp&nbsp&nbsp<span id="ten">직인</span></div>
+	</div>
 	
+	<div>
+		<input id="btn"  type="submit" value="승인">
+	</div>
+   
+  </form>
+    <div id="last"></div>
     
-	
-    <button id="btn">승인</button>
-    
-    <%@include file="/views/common/footer.jsp" %>
+     <%@include file="/views/common/footer.jsp" %>
+
+       
 </body>
 </html>
 
