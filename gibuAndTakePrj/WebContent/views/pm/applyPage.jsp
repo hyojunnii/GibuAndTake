@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
     <style>
-      body {
+      #body {
         width: 1200px;
         margin: 0 auto;
       }
@@ -40,7 +40,7 @@
       }
 
       #apply-title h1 {
-        padding-top: 40px;
+        padding-top: 30px;
         font-size: 34px;
         font-weight: 900;
       }
@@ -52,7 +52,7 @@
       }
 
       #apply-menu {
-        margin: 110px 12%;
+        margin: 90px 12% 50px;
         display: flex;
         justify-content: space-evenly;
         height: 600px;
@@ -111,28 +111,30 @@
   <body>
     <%@ include file="/views/common/header.jsp" %>
 
-    <div id="pm-header">
-      <h1><a>프로젝트 관리</a></h1>
-    </div>
-    <div id="apply-title">
-      <h1>프로젝트 신청</h1>
-    </div>
-    <div id="apply-menu">
-      <div class="apply">
-        <img src="../../resources/img/free-icon-donation-2904948.png" />
-        <div class="apply-subtitle">기부</div>
-        <!-- 버튼 태그 나중에 경로 안보이게 수정 -->
-        <button class="button"><a href="donationApplyForm.jsp">신청하기</a></button>
+    <div id="body">
+      <div id="pm-header">
+        <h1><a>프로젝트 관리</a></h1>
       </div>
-      <div class="apply">
-        <img src="../../resources/img/free-icon-donation-3208275.png" />
-        <div class="apply-subtitle">펀딩</div>
-        <button class="button"><a href="fundingApplyForm.jsp">신청하기</a></button>
+      <div id="apply-title">
+        <h1>프로젝트 신청</h1>
       </div>
-      <div class="apply">
-        <img src="../../resources/img/premium-icon-donation-3843326.png" />
-        <div class="apply-subtitle">캠페인</div>
-        <button class="button"><a href="campaignApplyForm.jsp">신청하기</a></button>
+      <div id="apply-menu">
+        <div class="apply">
+          <img src="../../resources/img/free-icon-donation-2904948.png" />
+          <div class="apply-subtitle">기부</div>
+          <!-- 버튼 태그 나중에 경로 안보이게 수정 -->
+          <button class="button"><a href="donationApplyForm.jsp">신청하기</a></button>
+        </div>
+        <div class="apply">
+          <img src="../../resources/img/free-icon-donation-3208275.png" />
+          <div class="apply-subtitle">펀딩</div>
+          <button class="button"><a href="fundingApplyForm.jsp">신청하기</a></button>
+        </div>
+        <div class="apply">
+          <img src="../../resources/img/premium-icon-donation-3843326.png" />
+          <div class="apply-subtitle">캠페인</div>
+          <button class="button"><a href="campaignApplyForm.jsp">신청하기</a></button>
+        </div>
       </div>
     </div>
 

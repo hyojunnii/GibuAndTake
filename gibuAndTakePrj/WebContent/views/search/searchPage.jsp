@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
     <style>
-      body {
+      #body {
         width: 1200px;
         margin: 0 auto;
       }
@@ -164,104 +164,133 @@
         padding: 2px 0;
         font-size: 15px;
       }
+
+      #searched-page-area {
+        width: 80%;
+        text-align: center;
+        margin: auto;
+        padding-top: 20px;
+      }
+
+      #searched-page-area a {
+        color: #2e6c4a;
+        font-weight: 600;
+        padding: 0 10px;
+      }
     </style>
   </head>
   <body>
     <%@ include file="/views/common/header.jsp" %>
 
-    <div id="search">
-      <select name="" class="form-select search-category" id="inputGroupSelect01" required>
-        <option selected value="1">기부</option>
-        <option value="2">펀딩</option>
-        <option value="3">캠페인</option>
-      </select>
-      <input name="" type="text" class="form-control search-bar" placeholder="검색어를 입력하세요." />
-      <button id="search-icon"><img src="../../resources/img/free-icon-search-7233469.png" /></button>
-    </div>
-    <div id="category-search-outer">
-      <div class="category-search-title"><h6>주제별 찾기</h6></div>
-      <div class="category-search-menu">
-        <span class="category-search-subtitle" id="">기부</span>
-        <button class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">어르신</a></li>
-          <li><a class="dropdown-item" href="#">아동/청소년</a></li>
-          <li><a class="dropdown-item" href="#">환경</a></li>
-        </ul>
+    <div id="body">
+      <div id="search">
+        <select name="" class="form-select search-category" id="inputGroupSelect01" required>
+          <option selected value="1">기부</option>
+          <option value="2">펀딩</option>
+          <option value="3">캠페인</option>
+        </select>
+        <input name="" type="text" class="form-control search-bar" placeholder="검색어를 입력하세요." />
+        <button id="search-icon"><img src="../../resources/img/free-icon-search-7233469.png" /></button>
       </div>
-      <div class="category-search-menu">
-        <span class="category-search-subtitle" id="">펀딩</span>
-        <button class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">어르신</a></li>
-          <li><a class="dropdown-item" href="#">아동/청소년</a></li>
-          <li><a class="dropdown-item" href="#">환경</a></li>
-        </ul>
-      </div>
-    </div>
-    <div id="searched-content">
-      <div id="searched-content-header">
-        <div id="searched-header-title">
-          <!-- <span>추천 목록</span> -->
-          <span id="searched-num">검색 결과 n건</span>
-        </div>
-        <div id="searched-header-sort">
-          <span><a>최신순</a> | <a>금액순</a></span>
-          <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">전체</button>
+      <div id="category-search-outer">
+        <div class="category-search-title"><h6>주제별 찾기</h6></div>
+        <div class="category-search-menu">
+          <span class="category-search-subtitle" id="">기부</span>
+          <button class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">진행중</a></li>
-            <li><a class="dropdown-item" href="#">종료</a></li>
+            <li><a class="dropdown-item" href="#">어르신</a></li>
+            <li><a class="dropdown-item" href="#">아동/청소년</a></li>
+            <li><a class="dropdown-item" href="#">환경</a></li>
+          </ul>
+        </div>
+        <div class="category-search-menu">
+          <span class="category-search-subtitle" id="">펀딩</span>
+          <button class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">어르신</a></li>
+            <li><a class="dropdown-item" href="#">아동/청소년</a></li>
+            <li><a class="dropdown-item" href="#">환경</a></li>
           </ul>
         </div>
       </div>
-      <div id="searched-content-body">
-        <div class="contents">
-          <div class="content-info">
-            <img src="../../resources/img/premium-icon-donation-3843326.png" />
-            <div class="content-info-title">
-              <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
-              <span>단체명</span>
+      <div id="searched-content">
+        <div id="searched-content-header">
+          <div id="searched-header-title">
+            <!-- <span>추천 목록</span> -->
+            <span id="searched-num">검색 결과 n건</span>
+          </div>
+          <div id="searched-header-sort">
+            <span><a>최신순</a> | <a>금액순</a></span>
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">전체</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">진행중</a></li>
+              <li><a class="dropdown-item" href="#">종료</a></li>
+            </ul>
+          </div>
+        </div>
+        <div id="searched-content-body">
+          <div class="contents">
+            <div class="content-info">
+              <img src="../../resources/img/premium-icon-donation-3843326.png" />
+              <div class="content-info-title">
+                <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
+                <span>단체명</span>
+              </div>
+            </div>
+            <div class="content-info2">
+              <span class="content-info-state">진행중</span>
+              <div class="content-info-status">
+                <span>1,000,000원 모금</span>
+                <span>1,000명 참여</span>
+              </div>
             </div>
           </div>
-          <div class="content-info2">
-            <span class="content-info-state">진행중</span>
-            <div class="content-info-status">
-              <span>1,000,000원 모금</span>
-              <span>1,000명 참여</span>
+          <div class="contents">
+            <div class="content-info">
+              <img src="../../resources/img/premium-icon-donation-3843326.png" />
+              <div class="content-info-title">
+                <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
+                <span>단체명</span>
+              </div>
+            </div>
+            <div class="content-info2">
+              <span class="content-info-state">진행중</span>
+              <div class="content-info-status">
+                <span>1,000,000원 모금</span>
+                <span>1,000명 참여</span>
+              </div>
+            </div>
+          </div>
+          <div class="contents">
+            <div class="content-info">
+              <img src="../../resources/img/premium-icon-donation-3843326.png" />
+              <div class="content-info-title">
+                <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
+                <span>단체명</span>
+              </div>
+            </div>
+            <div class="content-info2">
+              <span class="content-info-state">진행중</span>
+              <div class="content-info-status">
+                <span>1,000,000원 모금</span>
+                <span>1,000명 참여</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="contents">
-          <div class="content-info">
-            <img src="../../resources/img/premium-icon-donation-3843326.png" />
-            <div class="content-info-title">
-              <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
-              <span>단체명</span>
-            </div>
-          </div>
-          <div class="content-info2">
-            <span class="content-info-state">진행중</span>
-            <div class="content-info-status">
-              <span>1,000,000원 모금</span>
-              <span>1,000명 참여</span>
-            </div>
-          </div>
-        </div>
-        <div class="contents">
-          <div class="content-info">
-            <img src="../../resources/img/premium-icon-donation-3843326.png" />
-            <div class="content-info-title">
-              <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
-              <span>단체명</span>
-            </div>
-          </div>
-          <div class="content-info2">
-            <span class="content-info-state">진행중</span>
-            <div class="content-info-status">
-              <span>1,000,000원 모금</span>
-              <span>1,000명 참여</span>
-            </div>
-          </div>
+        <div id="searched-page-area">
+          <a>&lt;</a>
+          <a>1</a>
+          <a>2</a>
+          <a>3</a>
+          <a>4</a>
+          <a>5</a>
+          <a>6</a>
+          <a>7</a>
+          <a>8</a>
+          <a>9</a>
+          <a>10</a>
+          <a>&gt;</a>
         </div>
       </div>
     </div>
