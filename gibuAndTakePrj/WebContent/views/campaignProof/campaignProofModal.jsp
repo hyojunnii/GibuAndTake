@@ -12,13 +12,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Sans+KR&display=swap");
-
       body {
         width: 1200px;
         margin: 0 auto;
-        margin-bottom: 10%; /*지울거*/
-        font-family: "IBM Plex Sans KR", "IBM Plex Sans", sans-serif;
       }
 
       #modal-outer {
@@ -103,7 +99,6 @@
         right: 13%;
         bottom: 50%;
         color: #666;
-        font-family: "ht_r";
         font-size: 15px;
       }
     </style>
