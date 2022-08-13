@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 		#memberMgEvery{
 			width:1200px;
    			margin:0 auto;
-		}
+		} 
 		#headIn{
 			border-style:solid;
 			border-color:black;
@@ -76,7 +76,7 @@
         margin-left:300px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:-350px;
+        margin-top:-290px;
         
     }
     #img{
@@ -97,21 +97,8 @@
         font-weight: 700;
         text-align: center;
     }
-		
-	#g_progress{
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    height: 10px;
-    -webkit-appearance: none;
-	}
-	#g_progress::-webkit-progress-bar{
-    background-color: #DAFFEB;
-    border: 1px solid black;
-	}
-	#g_progress::-webkit-progress-value{
-	    background-color: #64D498;
-	}		
+	
+			
 	
     .gibuPercent{
         color: #64D498;
@@ -152,19 +139,20 @@
    			width:100%;
    			height:200px;
 		}
+		
 </style>
 </head>
 <body>	
 		
 		<div id="headIn"><!-- include header --></div>
 		<div id="memberMgEvery">
-		<h1 id="myPageTxt">마이페이지</h1>
+		<h1 id="myPageTxt">기업 마이페이지</h1>
 		<div class="headLine">
 			
 		</div>
 		
 		<div id = "memShortOuter">
-		<h1 id="shortTitle" style="">기부 내역</h1>
+		<h1 id="shortTitle" style="">신청 펀딩 목록</h1>
 	
         <div class="card">
         <a href="" class="cardLink">
@@ -172,24 +160,20 @@
                   <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
+                 <p align="center" style="margin-top:20px">펀딩프로젝트명</p>
                  <pre>기업이름</pre>
-                 <progress id="g_progress" value="50" max="100"></progress>
-                 <span class="gibuPercent">50%</span>
-                 <span class="gibuPeople">500명</span>
+                  
              </div>
          	</a>  
              <div class="card2">
         	<a href="" class="cardLink2">
              <div id="img2">
-                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                   <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
+                 <p align="center" style="margin-top:20px">펀딩프로젝트명</p>
                  <pre>기업이름</pre>
-                 <progress id="g_progress" value="50" max="100"></progress>
-                 <span class="gibuPercent">50%</span>
-                 <span class="gibuPeople">500명</span>
+                
              </div>
          </a>
 				<br>

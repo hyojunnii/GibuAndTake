@@ -41,22 +41,42 @@
 		}
 	
 		#naviIn{
-			margin-top:-615px;
+			margin-top:-805px;
 			width:200px;
    			height:550px;
    			margin-right:200px;
 		}
 		
-		#memDonateM {
+		
+		#btn_group{
+			margin-top:100px;
 			margin-left:350px;
-			margin-top:50px;
-			width:230px;
-			height:250px;
-			border-radius:15px;
-			background:#64D498;
+		}
+		#fundingI{
+			margin-right:-4px;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius:10px;
 			
 		}
 		
+		#fundingC{
+			margin-left:-3px;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius:10px;
+		}
+		
+		#btn_group button{
+			border:2px solid #acdac2;
+			background-color: white;
+			color: #2e6c4a ;
+			width:400px;
+			height:100px;
+		}
+		
+		#btn_group button:hover{
+			color: white;
+			background-color: #83DDAD;
+		}
 		
     .card{
         width: 267px;
@@ -162,17 +182,20 @@
 		<div class="headLine">
 			
 		</div>
-		
+		<div id="btn_group">
+		<a href="/"><button id="fundingI" style="font-size: 25px">진행중인 펀딩</button></a>
+		<a href="/"><button id="fundingC" style="font-size: 25px">완료된 펀딩</button></a>
+		</div>
 		<div id = "memShortOuter">
-		<h1 id="shortTitle" style="">기부 내역</h1>
+		<h1 id="shortTitle" style="">진행 중인 펀딩</h1>
 	
         <div class="card">
         <a href="" class="cardLink">
              <div id="img">
-                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                 <img src="../resources/img/sample.png" alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
+                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
                  <pre>기업이름</pre>
                  <progress id="g_progress" value="50" max="100"></progress>
                  <span class="gibuPercent">50%</span>
@@ -185,7 +208,7 @@
                   <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
+                 <p align="center" style="margin-top:20px">펀딩프로젝트명</p>
                  <pre>기업이름</pre>
                  <progress id="g_progress" value="50" max="100"></progress>
                  <span class="gibuPercent">50%</span>

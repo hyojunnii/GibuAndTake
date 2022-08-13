@@ -158,18 +158,18 @@
 		
 		<div id="headIn"><!-- include header --></div>
 		<div id="memberMgEvery">
-		<h1 id="myPageTxt">마이페이지</h1>
+		<h1 id="myPageTxt">기업 마이페이지</h1>
 		<div class="headLine">
 			
 		</div>
 		
 		<div id = "memShortOuter">
-		<h1 id="shortTitle" style="">기부 내역</h1>
+		<h1 id="shortTitle" style="">기부 진행 중인 목록</h1>
 	
         <div class="card">
         <a href="" class="cardLink">
              <div id="img">
-                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                   <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
                  <p align="center" style="margin-top:20px">기부프로젝트명</p>

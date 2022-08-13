@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 
-	#corpJoEvery{
+	#every{
    		width:1200px;
    		margin:0 auto;
    }
@@ -99,10 +99,11 @@
         border-radius: 20px 20px;
         font-size: large;
         background-color: white;
-        border-style: solid ;
-        color:#2e6c4a;
-        border-color:#acdac2;
+        border-style: calc() ;
         align:center;
+        border-style: solid ;
+        border-color:#acdac2;
+        color:#2e6c4a;
     }
 	
 	#join:hover{
@@ -119,44 +120,21 @@
         transition:background 0.7s ease-in-out;
     }
 	
-	#input {
+	#input{
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
         font-size: small;
-        border-width: 2px 2px 2px 2px;
-        padding-left:20px;
-        border-style: solid;
-        border-color: #acdac2;
-        
-       
-	}
-	
-	#inputc{
-		width: 300px;
-		height: 150px;
-        border-radius: 20px 20px;
-        font-size: small;
         border-width: 1px 1px 1px 1px;
         padding-left:20px;
-       	
-        
-       
-	}
-	
-	 textarea{
-     	width: 300px;
-		height: 150px;
-        border-radius: 20px 20px;
-        font-size: small;
-        border-width: 1px 1px 1px 1px;
-        padding-left:20px;
-        padding: 10px 10px;
-        font-size: 15px;
-        border-style: solid;
+       	border-style: solid ;
         border-color:#acdac2;
-      }
-      #inputId{
+       
+
+       
+	}
+	
+	#inputId{
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
@@ -202,57 +180,18 @@
        	transition:background 0.7s ease-in-out;
 	}
 	
-	#check{
-		text-align: center;
-        width: 120px;
-        margin-top: 0 auto;
-        height: 30px;
-        border-radius: 20px 20px;
-        font-size: small;
-        background-color: white;
-        border: solid:black;
-        border-width: 1px 1px 1px 1px;
-        margin-right: 140px;
-       	font-weight: bold;
-       	border-style: solid ;
-        border-color:#acdac2;
-        color:#2e6c4a;
-	}
-	
-	#check:hover{
-		text-align: center;
-        width: 100px;
-        margin-top: 0 auto;
-        height: 30px;
-        border-radius: 20px 20px;
-        font-size: small;
-        border: solid:black;
-        border-width: 1px 1px 1px 1px;
-        margin-right: 140px;
-       	font-weight: bold;
-		background-color: #5CD394;
-       	transition:background 0.7s ease-in-out;
-	}
-	
-	.first {
+	.first{
 		padding-left: 100px;
 		color:#2e6c4a;
 	}
-	
-	.corpText{
-		padding-left:100px;	
-		padding-bottom: 150px;
-		color:#2e6c4a;
-		
-	}
-	
 </style>
 </head>
 <body>
 	
 	
 	<main>
-		   <div id="corpJoEvery">
+	
+		  <div id="every">
 		  <div id="logo_name">
            	<a href="<%=request.getContextPath()%>">
             <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
@@ -261,94 +200,44 @@
            </div>
 		
 		<div id="line"></div>
-		<h3 align="center" style="font-size: 25px">기업 회원 가입 페이지</h3>
-		<form action="gibuAndTakePrj/corp/join" method="post">
+		<h3 align="center" style="font-size: 25px">아이디 찾기</h3>
+		<form action="gibuAndTakePrj/member/join" method="post">
 			<table>
 				<tr>
-					<td class="first" style="font-weight: bold">아이디 *</span></td>
-					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" onkeydown="inputIdchk()" >
-					<td><input type="button" id="check_button" value="중복확인" onclick="openIdChk()">
-						<input type="hidden" name="idDuplication" value="idUncheck"><td>
-						
+					<td class="first" style="font-weight: bold">이름 *</span></td>
+					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required"onkeydown="inputIdchk()" >
 					</td>
-				</tr>
-				
-				<tr>
-					<td class="first" style="font-weight: bold">비밀번호 *</td>
-					<td><input type="password" name="corpPwd" id="input" maxlength="10" required placeholder="영문+숫자 4글자 이상"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">비밀번호 확인 *</td>
-					<td><input type="password" id="input" name="corpPwd2" required></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td  class="first" style="font-weight: bold">대표자명 *</td>
-					<td><input type="text" name="rprName" id="input" maxlength="3" required></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">기업명 *</td>
-					<td><input type="text" name="corpName" id="input" maxlength="3" required></td>
-					
-					
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">사업자등록번호 *</td>
-					<td><input type="tel" name="compNum" id="input" placeholder="- 없이 입력"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="corpPhone" id="input" placeholder="- 없이 입력"></td>
-					<td></td>
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="corpEmail" id="input"></td>
+					<td><input type="password" name="memberPwd" id="input" maxlength="10" required></td>
 					<td></td>
 				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="corpAddr" id="input"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">사업 유형 *</td>
-					<td><input type="text" name="corpType" id="input"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="corpText" style="font-weight: bold">기업 설명 *</td>
-					<td>
-						 <textarea placeholder="100자 이하로 기입하시오"></textarea></td>
-					</td>
-				</tr>
+				
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr>
 					<td  style="font-weight: bold"></td>
-					<td><button type="button" id="join" onclick="location.href=''">가입하기</button></td>
+					<td><button type="button" id="join" onclick="">찾기</button></td>
 					<td></td>
 				</tr>
 
 			</table>
-	</div>
+						</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
 
 		</form>
 	</main>
+
 	<script>
 	function openIdChk(){
 		
 		window.name = "parentForm";
-		window.open("corpIdCheckForm.jsp",
+		window.open("IdCheckForm.jsp",
 				"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
 	}
 	</script>
-	
 </body>
 </html>

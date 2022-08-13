@@ -134,7 +134,21 @@
        
 	}
 	
-	#check{
+	#inputId{
+		width: 300px;
+		height: 30px;
+        border-radius: 20px 20px;
+        font-size: small;
+        border-width: 1px 1px 1px 1px;
+        padding-left:20px;
+       	border-style: solid ;
+        border-color:#acdac2;
+       
+
+       
+	}
+	
+	#check_button{
 		text-align: center;
         width: 100px;
         margin-top: 0 auto;
@@ -151,7 +165,7 @@
         color:#2e6c4a;
 	}
 	
-	#check:hover{
+	#check_button:hover{
 		text-align: center;
         width: 100px;
         margin-top: 0 auto;
@@ -191,8 +205,11 @@
 			<table>
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</span></td>
-					<td><input type="text" name="memberId" id="input" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" ></td>
-					<td><button type="button" id="check" onclick="location.href=''">중복확인</button></td>
+					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" onkeydown="inputIdchk()" >
+					<td><input type="button" id="check_button" value="중복확인" onclick="openIdChk()">
+						<input type="hidden" name="idDuplication" value="idUncheck"><td>
+						
+					</td>
 				</tr>
 				
 				<tr>
@@ -213,7 +230,6 @@
 				<tr>
 					<td class="first" style="font-weight: bold">닉네임 *</td>
 					<td><input type="text" name="memberNick" id="input" maxlength="3" required></td>
-					<td><button type="button" id="check" onclick="location.href=''">중복확인</button></td>
 					
 				</tr>
 				<tr>
@@ -253,6 +269,13 @@
 		</form>
 	</main>
 
-	
+	<script>
+	function openIdChk(){
+		
+		window.name = "parentForm";
+		window.open("IdCheckForm.jsp",
+				"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
+	}
+	</script>
 </body>
 </html>

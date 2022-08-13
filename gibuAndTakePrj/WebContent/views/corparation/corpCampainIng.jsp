@@ -41,31 +41,23 @@
 		}
 	
 		#naviIn{
-			margin-top:-615px;
+			margin-top:-585px;
 			width:200px;
    			height:550px;
    			margin-right:200px;
 		}
 		
-		#memDonateM {
-			margin-left:350px;
-			margin-top:50px;
-			width:230px;
-			height:250px;
-			border-radius:15px;
-			background:#64D498;
-			
-		}
 		
 		
-    .card{
+		
+   .card{
         width: 267px;
         height: 363px;
         border: 1px solid #83DDAD;
         margin-left:270px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:100px;
+        margin-top:70px;
         
     }
     
@@ -76,7 +68,7 @@
         margin-left:300px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:-350px;
+        margin-top:-365px;
         
     }
     #img{
@@ -98,32 +90,18 @@
         text-align: center;
     }
 		
-	#g_progress{
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    height: 10px;
-    -webkit-appearance: none;
-	}
-	#g_progress::-webkit-progress-bar{
-    background-color: #DAFFEB;
-    border: 1px solid black;
-	}
-	#g_progress::-webkit-progress-value{
-	    background-color: #64D498;
-	}		
 	
-    .gibuPercent{
+    .campaignPercent{
         color: #64D498;
         margin-left: 20px;
         font-weight: 500;
         font-size: 25px;
-        margin-top: 40px;
+        margin-top: 60px;
        
         
     }
-    .gibuPeople{
-        margin-left:120px;
+    .capaignPeople{
+        margin-left:60px;
         margin-top: 15px;
         font-size: 20px;
         font-weight: 600;
@@ -158,43 +136,43 @@
 		
 		<div id="headIn"><!-- include header --></div>
 		<div id="memberMgEvery">
-		<h1 id="myPageTxt">마이페이지</h1>
+		<h1 id="myPageTxt">기업 마이페이지</h1>
 		<div class="headLine">
 			
 		</div>
 		
 		<div id = "memShortOuter">
-		<h1 id="shortTitle" style="">기부 내역</h1>
+		<h1 id="shortTitle" style="">캠페인 진행 중인 목록</h1>
 	
-        <div class="card">
+            <div class="card">
         <a href="" class="cardLink">
              <div id="img">
-                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                   <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
+                 <p align="center" style="margin-top:20px">캠페인명</p>
                  <pre>기업이름</pre>
-                 <progress id="g_progress" value="50" max="100"></progress>
-                 <span class="gibuPercent">50%</span>
-                 <span class="gibuPeople">500명</span>
+               
+                 <span class="campaignPercent" style="font-size:50px">50%</span>
+                 <span class="capaignPeople">500명</span>
              </div>
          	</a>  
+         	
              <div class="card2">
         	<a href="" class="cardLink2">
              <div id="img2">
-                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                   <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
+                 <p align="center" style="margin-top:20px">캠페인명</p>
                  <pre>기업이름</pre>
-                 <progress id="g_progress" value="50" max="100"></progress>
-                 <span class="gibuPercent">50%</span>
-                 <span class="gibuPeople">500명</span>
+                
+                 <span class="campaignPercent" style="font-size:50px" >50%</span>
+                 <span class="capaignPeople">500명</span>
              </div>
          </a>
 				<br>
-			
-			</div>		
+				</div>
 		</div>
 			
 			
