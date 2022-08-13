@@ -7,15 +7,16 @@
 <title>펀딩 승인 목록</title>
 <style>
 	#title {
-        width: 200px;
-        margin-left: 120px;
-        text-align: center;
+        background-color: #8bdcb1;
+        width: 1905px;
+        text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px;
+        padding: 30px 0px 30px 120px;
     }
     
     #name{
+    	color: #15462b;
 		text-align: center;
     	font-size: 25px;
     	font-weight: bold;
@@ -23,7 +24,7 @@
     }
     
     #outer{
-        border: 1px solid black;
+        border: 1px solid #2e6c4a;
         color: black;
         width: 60%;
         margin: 0 auto;
@@ -48,7 +49,16 @@
     }
     
     #head{
+    	color: #2e6c4a;
     	font-weight: bold;
+    }
+    
+    #body1:hover{
+    	background-color: #93e1b7
+    }
+    
+    #body2:hover{
+    	background-color: #93e1b7
     }
     
     
@@ -72,7 +82,8 @@
     #a{
     	width: 40px;
     	height: 40px;
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
     	background-color: white;
         font-weight: bold;
     }
@@ -80,7 +91,8 @@
     #b{
     	width: 40px;
     	height: 40px;
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
     	background-color: white;
         font-weight: bold;
     }
@@ -88,7 +100,8 @@
     #c{
     	width: 40px;
     	height: 40px;
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
     	background-color: white;
         font-weight: bold;
     }
@@ -115,15 +128,16 @@
     
     #approve{
     	background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
     	margin-left: 1150px;
     	margin-top: 5px;
-    	border: 2px solid;
     	border-radius: 15px;
     	font-weight: bold;
     	padding: 0px 20px 0px 20px;
     }
     
     #approve:hover{
+    	background-color: #93e1b7;
         cursor: pointer;
     }
     
@@ -156,7 +170,7 @@
 		<div id="outer">		
         <table id="table-main">
             <thead id="head">
-                <tr>
+                <tr id="body1">
                     <td>NO</td>
                     <td>진행현황</td>
                     <td>신청자</td>
@@ -165,7 +179,7 @@
             </thead>
             
             <tbody>        
-                    <tr>
+                    <tr id="body2">
                         <td>2</td>
                         <td>미완료</td>
                         <td>기업</td>
