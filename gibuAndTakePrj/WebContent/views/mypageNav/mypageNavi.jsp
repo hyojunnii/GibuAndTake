@@ -18,22 +18,138 @@
    		
    		
    		
-   		.menu li a {
-   			height:10px !important;
-   			line-height:30px !important;
-   			display:block !important;
-   			padding:0 20px !important;
-   			font-size:15px !important;
-   			color:#555 !important;
-   			text-decoration: none !important;
-   			margin-top: 30px !important;
-   			margin-left:30px !important;
-   			text-align: center !important;
+   		#home{
+   			height:10px ;
+   			line-height:30px;
+   			display:block ;
+   			padding:0 20px;
+   			font-size:15px ;
+   			color:#555 ;
+   			text-decoration: none;
+   			margin-top: 30px;
+   			margin-left:30px ;
+   			text-align: center ;
    		}
    		
-   		.menu li a:hover {
-   			color: #acdac2;
+   		#home:hover{
+   			color:#64D498;
+   			}
+   		
+   		#memberInfor{
+   			height:10px ;
+   			line-height:30px;
+   			display:block ;
+   			padding:0 20px;
+   			font-size:15px ;
+   			color:#555 ;
+   			text-decoration: none;
+   			margin-top: 30px;
+   			margin-left:30px ;
+   			text-align: center ;
    		}
+   		
+   		#memberInfor:hover{
+   			color:#64D498;
+   			}
+   			
+   		#Active{
+   			height:10px ;
+   			line-height:30px;
+   			display:block ;
+   			padding:0 20px;
+   			font-size:15px ;
+   			color:#555 ;
+   			text-decoration: none;
+   			margin-top: 30px;
+   			margin-left:30px ;
+   			text-align: center ;
+   		}
+   		
+   		#Active:hover{
+   			color:#64D498;
+   			}
+   		#dona{
+   			height:10px ;
+   			line-height:30px;
+   			display:block ;
+   			padding:0 20px;
+   			font-size:15px ;
+   			color:#555 ;
+   			text-decoration: none;
+   			margin-top: 30px;
+   			margin-left:30px ;
+   			text-align: center ;
+   		}
+   		
+   		#dona:hover{
+   			color:#64D498;
+   			}
+   		#funding-menu{
+   			height:10px ;
+   			line-height:30px;
+   			display:block ;
+   			padding:0 20px;
+   			font-size:15px ;
+   			color:#555 ;
+   			text-decoration: none;
+   			margin-top: 30px;
+   			margin-left:30px ;
+   			text-align: center ;
+   		}
+   		
+   		#funding-menu:hover{
+   			color:#64D498;
+   			}
+   		#camp{
+   			height:10px ;
+   			line-height:30px;
+   			display:block ;
+   			padding:0 20px;
+   			font-size:15px ;
+   			color:#555 ;
+   			text-decoration: none;
+   			margin-top: 30px;
+   			margin-left:30px ;
+   			text-align: center ;
+   		}
+   		
+   		#camp:hover{
+   			color:#64D498;
+   			}
+   		#payment{
+   			height:10px ;
+   			line-height:30px;
+   			display:block ;
+   			padding:0 20px;
+   			font-size:15px ;
+   			color:#555 ;
+   			text-decoration: none;
+   			margin-top: 30px;
+   			margin-left:30px ;
+   			text-align: center ;
+   		}
+   		
+   		#payment:hover{
+   			color:#64D498;
+   			}
+   		
+   		#donament{
+   			height:10px ;
+   			line-height:30px;
+   			display:block ;
+   			padding:0 20px;
+   			font-size:15px ;
+   			color:#555 ;
+   			text-decoration: none;
+   			margin-top: 30px;
+   			margin-left:30px ;
+   			text-align: center ;
+   		}
+   		
+   		
+   		#donament:hover{
+   			color:#64D498;
+   			}
    		
    		#middleLine  {
    			margin-top: 50px;
@@ -49,6 +165,7 @@
    		
    		.menu{
    			 list-style:none;
+   			 
    		}
 
    		

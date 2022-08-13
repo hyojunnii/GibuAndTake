@@ -91,7 +91,7 @@
 		}
 		
 		#footIn{
-			margin-top:200px;
+			margin-top:1200px;
 			
    			width:100%;
    			height:200px;

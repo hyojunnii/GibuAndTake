@@ -74,7 +74,6 @@
 		border-collapse: separate;
 		border-spacing : 0 20px;
 		
-		
 	}
 	
 	table tr{
@@ -94,7 +93,8 @@
 	#join{
         text-align: center;
         width: 260px;
-        margin: auto;
+       	margin-top:60px;
+       	margin-left:280px;
         height: 60px;
         border-radius: 20px 20px;
         font-size: large;
@@ -109,7 +109,8 @@
 	#join:hover{
         text-align: center;
         width: 260px;
-        margin: auto;
+        margin-top:60px;
+       	margin-left:280px;
         height: 60px;
         border-radius: 20px 20px;
         font-size: large;
@@ -120,6 +121,36 @@
         transition:background 0.7s ease-in-out;
     }
 	
+	#join2{
+        text-align: center;
+        width: 260px;
+        margin-top:60px;
+       	margin-left:50px;
+        height: 60px;
+        border-radius: 20px 20px;
+        font-size: large;
+        background-color: white;
+        border-style: calc() ;
+        align:center;
+        border-style: solid ;
+        border-color:#acdac2;
+        color:#2e6c4a;
+    }
+	
+	#join2:hover{
+        text-align: center;
+        width: 260px;
+        margin-top:60px;
+       	margin-left:50px;
+        height: 60px;
+        border-radius: 20px 20px;
+        font-size: large;
+        color:white;
+        border-style: calc() ;
+        align:center;
+        background-color: #5CD394;
+        transition:background 0.7s ease-in-out;
+    }
 	#input{
 		width: 300px;
 		height: 30px;
@@ -158,7 +189,7 @@
         background-color: white;
         border: solid:black;
         border-width: 2px 2px 2px 2px;
-        margin-right: 140px;
+        margin-left: -110px;
        	font-weight: bold;
        	border-style: solid ;
         border-color:#acdac2;
@@ -200,67 +231,30 @@
            </div>
 		
 		<div id="line"></div>
-		<h3 align="center" style="font-size: 25px">일반 회원 가입 페이지</h3>
+		<h3 align="center" style="font-size: 25px">비밀번호 찾기</h3>
 		<form action="gibuAndTakePrj/member/join" method="post">
 			<table>
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</span></td>
-					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" onkeydown="inputIdchk()" >
-					<td><input type="button" id="check_button" value="중복확인" onclick="openIdChk()">
-						<input type="hidden" name="idDuplication" value="idUncheck"><td>
-						
+					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required"onkeydown="inputIdchk()" >
 					</td>
 				</tr>
 				
 				<tr>
-					<td class="first" style="font-weight: bold">비밀번호 *</td>
-					<td><input type="password" name="memberPwd" id="input" maxlength="10" required placeholder="영문+숫자 4글자 이상"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">비밀번호 확인 *</td>
-					<td><input type="password" id="input" name="memberPwd2" required></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td  class="first" style="font-weight: bold">이름 *</td>
-					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberNick" id="input" maxlength="3" required></td>
-					
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">주민등록번호 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
+					<td class="first" style="font-weight: bold">이메일 *</td>
+					<td><input type="password" name="memberPwd" id="input" maxlength="10" required></td>
 					<td></td>
 				</tr>
 				
-				<tr>
-					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="memberEmail" id="input"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="memberAddr" id="input"></td>
-					<td></td>
-				</tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr>
-				<tr>
-					<td  style="font-weight: bold"></td>
-					<td><button type="button" id="join" onclick="location.href='/gibuAndTakePrj/views/member/login.jsp'">가입하기</button></td>
-					<td></td>
-				</tr>
-
+				
+					
+				
 			</table>
+			
+					<button type="button" id="join" onclick="">찾기</button>
+					<button type="button" id="join2" onclick="history.back(1)">취소</button>
+					
 						</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>

@@ -200,63 +200,25 @@
            </div>
 		
 		<div id="line"></div>
-		<h3 align="center" style="font-size: 25px">일반 회원 가입 페이지</h3>
+		<h3 align="center" style="font-size: 25px">아이디 찾기</h3>
 		<form action="gibuAndTakePrj/member/join" method="post">
 			<table>
 				<tr>
-					<td class="first" style="font-weight: bold">아이디 *</span></td>
-					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" onkeydown="inputIdchk()" >
-					<td><input type="button" id="check_button" value="중복확인" onclick="openIdChk()">
-						<input type="hidden" name="idDuplication" value="idUncheck"><td>
-						
+					<td class="first" style="font-weight: bold">이름 *</span></td>
+					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required"onkeydown="inputIdchk()" >
 					</td>
 				</tr>
 				
 				<tr>
-					<td class="first" style="font-weight: bold">비밀번호 *</td>
-					<td><input type="password" name="memberPwd" id="input" maxlength="10" required placeholder="영문+숫자 4글자 이상"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">비밀번호 확인 *</td>
-					<td><input type="password" id="input" name="memberPwd2" required></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td  class="first" style="font-weight: bold">이름 *</td>
-					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberNick" id="input" maxlength="3" required></td>
-					
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">주민등록번호 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
+					<td class="first" style="font-weight: bold">이메일 *</td>
+					<td><input type="password" name="memberPwd" id="input" maxlength="10" required></td>
 					<td></td>
 				</tr>
 				
-				<tr>
-					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="memberEmail" id="input"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="memberAddr" id="input"></td>
-					<td></td>
-				</tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr>
 					<td  style="font-weight: bold"></td>
-					<td><button type="button" id="join" onclick="location.href='/gibuAndTakePrj/views/member/login.jsp'">가입하기</button></td>
+					<td><button type="button" id="join" onclick="">찾기</button></td>
 					<td></td>
 				</tr>
 
