@@ -7,15 +7,16 @@
 <title>기부 승인 목록(메인)</title>
 <style>
 	#title {
-        width: 200px;
-        margin-left: 120px;
-        text-align: center;
+		background-color: #8bdcb1;
+        width: 1905px;
+        text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px;
+        padding: 30px 0px 30px 120px;
     }
     
     #name{
+    	color: #15462b;
 		text-align: center;
     	font-size: 25px;
     	font-weight: bold;
@@ -23,7 +24,7 @@
     }
     
     #outer{
-        border: 1px solid black;
+        border: 1px solid #2e6c4a;
         color: black;
         width: 60%;
         margin: 0 auto;
@@ -48,9 +49,17 @@
     }
     
     #head{
+    	color: #2e6c4a;
     	font-weight: bold;
     }
     
+    #body1:hover{
+    	background-color: #93e1b7
+    }
+    
+    #body2:hover{
+    	background-color: #93e1b7
+    }
     
     #btn{
     	margin-top: 120px;
@@ -72,24 +81,24 @@
     #a{
     	width: 40px;
     	height: 40px;
-    	border: 1px solid black;
-    	background-color: white;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
         font-weight: bold;
     }
     
     #b{
     	width: 40px;
     	height: 40px;
-    	border: 1px solid black;
-    	background-color: white;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
         font-weight: bold;
     }
     
     #c{
     	width: 40px;
     	height: 40px;
-    	border: 1px solid black;
-    	background-color: white;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
         font-weight: bold;
     }
 
@@ -115,15 +124,16 @@
     
     #approve{
     	background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
     	margin-left: 1150px;
     	margin-top: 5px;
-    	border: 2px solid;
     	border-radius: 15px;
     	font-weight: bold;
     	padding: 0px 20px 0px 20px;
     }
     
     #approve:hover{
+    	background-color: #93e1b7;
         cursor: pointer;
     }
     
@@ -143,7 +153,7 @@
  	<%@include file="/views/common/header.jsp" %>
     <div id="title">승인목록</div>
     
-	 <div style="border: 1px solid #72d09e; float: left; width: 20%; height:600px; padding:10px;">
+	 <div style= "border: 1px solid #72d09e; float: left; width: 20%; height:600px; padding:10px;">
 		<form action="/gibuAndTakePrj/approve/list" method="get">
 			<input class="input" type="submit" value="기부승인">
 		</form>
@@ -156,6 +166,7 @@
 			<input id="campaign" class="input" type="submit" value="캠페인승인">
 		</form>
 	 </div>
+	 
 	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:600px; padding:50px 0px 0px 0px;">
 		
 		<div id="name">기부 승인 목록</div>
@@ -172,13 +183,13 @@
             </thead>
             
             <tbody>        
-                    <tr>
+                    <tr id="body1">
                         <td>2</td>
                         <td>미완료</td>
                         <td>기업</td>
                         <td>22/08/02</td>
                     </tr>
-                    <tr>
+                    <tr id="body2">
                         <td>1</td>
                         <td>완료</td>
                         <td>기업</td>
@@ -218,7 +229,7 @@
 					<a class="btn btn-sm btn-primary" href="/semi/board/list?p=<%=currentPage+1%>"> &gt; </a>
 				<%} %>
 			</div> --%>
-		 </div>
+	</div>
     	<div id="last"></div>
        <%@include file="/views/common/footer.jsp" %>
        

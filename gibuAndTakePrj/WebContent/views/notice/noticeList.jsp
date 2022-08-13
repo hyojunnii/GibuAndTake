@@ -10,20 +10,20 @@
 <style>
 
 	#title {
-        width: 200px;
-        margin-left: 320px;
-        text-align: center;
+        background-color: #8bdcb1;
+        width: 1905px;
+        text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px;
+        padding: 30px 0px 30px 380px;
     }
     
-    #last {    
-        padding: 150px;
+    #gap{
+    	padding-bottom: 50px;
     }
-
+    
     #outer{
-        border: 1px solid black;
+        border: 1px solid #2e6c4a;
         color: black;
         width: 60%;
         margin: 0 auto;
@@ -48,18 +48,34 @@
     }
     
     #head{
+    	color: #2e6c4a;
     	font-weight: bold;
     }
     
-     #write{
-    	border: 1px solid black;
+    #body1:hover{
+    	background-color: #93e1b7
+    }
+    
+    #body2:hover{
+    	background-color: #93e1b7
+    }
+    
+    #body3:hover{
+    	background-color: #93e1b7
+    }
+    
+    #write{
+    	background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
     	margin: 0px 380px;
     	margin-top: 10px;
-    	background-color: white;
+    	border-radius: 15px;
+    	padding: 0px 20px 0px 20px;
         font-weight: bold;
     }
     
     #write:hover{
+    	background-color: #93e1b7;
         cursor: pointer;
     }
     
@@ -83,29 +99,29 @@
     #a{
     	width: 40px;
     	height: 40px;
-    	border: 1px solid black;
-    	background-color: white;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
         font-weight: bold;
     }
     
     #b{
     	width: 40px;
     	height: 40px;
-    	border: 1px solid black;
-    	background-color: white;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
         font-weight: bold;
     }
     
     #c{
     	width: 40px;
     	height: 40px;
-    	border: 1px solid black;
-    	background-color: white;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
         font-weight: bold;
     }
     
     #last {    
-        padding: 60px;
+        padding: 80px;
     }
     
     /*#page-area{
@@ -120,7 +136,7 @@
 	<%@ include file="/views/common/header.jsp" %>
 	
 	<div id="title">공지사항</div>
-	
+	<div id="gap"></div>
     <div id="outer">
 		
         <table id="table-main">
@@ -135,21 +151,21 @@
             </thead>
             
             <tbody>        
-                    <tr>
+                    <tr id="body1">
                         <td>3</td>
                         <td>안내드립니다</td>
                         <td>관리자</td>
                         <td>5</td>
                         <td>22/08/02</td>
                     </tr>
-                    <tr>
+                    <tr id="body2">
                         <td>2</td>
                         <td>안내드립니다</td>
                         <td>관리자</td>
                         <td>10</td>
                         <td>22/08/01</td>
                     </tr>
-                    <tr>
+                    <tr id="body3">
                         <td>1</td>
                         <td>안내드립니다</td>
                         <td>관리자</td>

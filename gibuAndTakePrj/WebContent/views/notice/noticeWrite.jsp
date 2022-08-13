@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
     #header {
-        width: 250px;
+        width: 280px;
         margin-left: 320px;
         text-align: center;
         font-weight: bold;

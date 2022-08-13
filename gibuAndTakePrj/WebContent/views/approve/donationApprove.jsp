@@ -8,23 +8,22 @@
 <style>
 
 	#title {
-        width: 220px;
-        margin-left: 510px;
-        text-align: center;
+		background-color: #8bdcb1;
+        width: 1905px;
+        text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 40px;
+        padding: 30px 0px 30px 550px;
     }
 	
     div{
         box-sizing: border-box;
-        border: 1px solid white;
     }
     
     table {
         width: 820px;
         height: 700px;
-        border-top: 1px solid black;
+        border: 1px solid black;
         border-collapse: collapse;
     } 
     
@@ -32,6 +31,7 @@
         width: 800px;
         height: 850px;
         margin: auto;
+        padding: 30px 0px 0px 0px;
     }
 
     .wrap>div{width: 100%;}
@@ -49,7 +49,7 @@
      #four_2{width: 40%;}
      
     #one{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
     	width: 820px;
     	height: 150px;
         margin: auto;
@@ -63,68 +63,69 @@
     }
 
     #b{
+    	padding: 20px 0px 0px 0px;
         text-align: center;
         font-size: 20px;
         font-weight: 700;
     }
     
     #two{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
     	width: 820px;
     	height: 70px;	
         margin: auto;
     }
     
     #two_1{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
     	width: 309px;
     	vertical-align : top;
         margin: auto;
     }
     
     #two_2{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
     	width: 200px;
         margin: auto;
         vertical-align : top;
     }
     
     #three{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
     	width: 820px;
     	height: 30px;
         margin: auto;
     }
     
     #four{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
     	width: 820px;
     	height: 70px;
         margin: auto;
     }
     
     #four_1{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
       	vertical-align : top;
     }
     
     #four_2{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
       	vertical-align : top;
     }
     
     #five_1{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
      	vertical-align : top;
     }
     
     #five_2{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
       	vertical-align : top;
     }
     
     #six{
-    	border: 1px solid black;
+    	border: 1px solid #2e6c4a;
     	width: 820px;
     	height: 350px;
     }
@@ -169,21 +170,22 @@
 	
 	#btn{
         background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
         width:100px;
         margin: 50px auto;
         display:block;
         border-radius: 15px;
         font-size: 20px;
         font-weight: 700;
-        border: 2px solid;
     }
     
     #btn:hover{
+    	background-color: #93e1b7;
     	cursor: pointer;
     }
 	
 	#last {    
-        padding: 10px;
+        padding: 260px;
     }
 
 </style>
@@ -196,10 +198,10 @@
 	
 	<form action="/gibuAndTakePrj/approve/list" method="get">
      <div class="wrap">
-	<div id="one">
-		<div id="a">승인번호 제&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp호</div>
-		<div id="b">기부 사업 승인증</div>
-	</div>
+		<div id="one">
+			<div id="a">승인번호 제&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp호</div>
+			<div id="b">기부 사업 승인증</div>
+		</div>
 
     <table border="1">
         <tr id="two">
@@ -236,19 +238,19 @@
         </table>
    
    
-    <div id="six">
-		<div id="seven">제 00조 00항에 의하여 실시 사업 계획을 승인(신고 수리) 합니다. </div>
-		<div id="eight"><input type="text" name="text" size="20" style=" height:10%; border: 0; outline:none; text-align: right;"></div>
-		<div id="nine">추천관리청의 장&nbsp&nbsp&nbsp<span id="ten">직인</span></div>
-	</div>
+	    <div id="six">
+			<div id="seven">제 00조 00항에 의하여 실시 사업 계획을 승인(신고 수리) 합니다. </div>
+			<div id="eight"><input type="text" name="text" size="20" style=" height:10%; border: 0; outline:none; text-align: right;"></div>
+			<div id="nine">추천관리청의 장&nbsp&nbsp&nbsp<span id="ten">직인</span></div>
+		</div>
 	
-	<div>
-		<input id="btn"  type="submit" value="승인">
-	</div>
-   
+		<div>
+			<input id="btn"  type="submit" value="승인">
+		</div>
+		
+   	</div>
   </form>
-    <div id="last"></div>
-    
+    	<div id="last"></div>
      <%@include file="/views/common/footer.jsp" %>
 
        

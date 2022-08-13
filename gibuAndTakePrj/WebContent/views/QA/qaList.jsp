@@ -32,10 +32,15 @@
     #campaign{
     	margin-left: 135px;
     }
+    
+    #last{
+    	padding: 300px;
+    }
 
 </style>
 </head>
 <body>
+	<%@include file="/views/common/header.jsp" %>
 	<div id="title">문의하기</div>
     
 	 <div style="border: 1px solid #72d09e; float: left; width: 20%; height:600px; padding:10px;">
@@ -51,6 +56,9 @@
 			<input id="campaign" class="input" type="submit" value="캠페인">
 		</form>
 	 </div>
-	 <div style="border: 1px solid #72d09e; float: left; width: 75%; height:570px; padding:50px 0px 0px 0px;">
+	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:600px; padding:50px 0px 0px 0px;"></div>
+	 
+	 <div id="last"></div>
+	 <%@include file="/views/common/footer.jsp" %>
 </body>
 </html>
