@@ -74,11 +74,42 @@
         height: 35px;
     }
 
+    #create_review{
+        width: 100%;
+        height: 30px;
+        margin: 7px 0 7px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .review_btn{
+        height: 30px;
+        background-color: #E4F4D2;
+        border-color: #e6e6e6;
+        border-radius: 10px;
+        outline: none;
+        box-shadow: none;
+    }
+
+    #create_review>div{
+        width: 1164px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
 </style>
 
 </head>
 <body>
 <%@include file="/views/common/header.jsp" %>
+
+    <div id="create_review">
+        <div>
+            <input type="button" value="후기 작성하기" class="review_btn">
+        </div>
+    </div> 
 
 	<section>
         <div id="review_card_wrap">
@@ -131,7 +162,7 @@
                 <p class="review_card_text">후기 내용 ...</p>
             </a>
 
-            <input type="button" value="더보기" class="review_view_more">
+            <input type="button" value="더보기" class="review_view_more review_btn">
 
         </div>
 
