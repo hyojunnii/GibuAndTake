@@ -116,7 +116,7 @@
          width: 180px;
          border-radius: 15px;
          margin: 5% auto;
-          margin-right: 10px;
+         margin-left: -80px;
          border: 1px solid #acdac2;
 	  }
 	  
@@ -125,7 +125,7 @@
          width: 180px;
          border-radius: 15px;
           margin: 5% auto;
-          margin-right: 10px;
+           margin-left: -80px;
          border: 1px solid #acdac2;
 	  }
 	  
@@ -134,7 +134,7 @@
         width: 180px;
          border-radius: 15px;
          margin: 5% auto;
-         margin-right: 10px;
+          margin-left: -80px;
          border: 1px solid #acdac2;
 	  }
 	  
@@ -143,7 +143,7 @@
         border-radius: 15px;
         border: none;
         height: 55px;
-        margin: 0 3%;
+        margin-left:100px;
         font-size: 18px;
         background-color: #e0e0e0;
       }
@@ -166,6 +166,23 @@
         display: flex;
         justify-content:center;
       }
+      
+       .modal-form-button2 {
+        width: 500%;
+        border-radius: 15px;
+        border: none;
+        height: 55px;
+        margin-left:20px;
+        font-size: 18px;
+        background-color: #e0e0e0;
+      }
+
+      .modal-form-button2:hover {
+        font-weight: 600;
+        box-shadow: 0.5px 0.5px 3px 0px #dadada;
+      }
+      
+      
       
 	table tr {
 		<%--border-style:solid;--%> 
@@ -287,7 +304,6 @@
 				<tr>
 					<td class="first" style="font-weight: bold">닉네임 *</td>
 					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
-					<td><button type="button" id="check" onclick="location.href=''">중복확인</button></td>
 					
 				</tr>
 			
@@ -358,7 +374,7 @@
 		        		<tr >
 		        			<td  id="modal-form-buttons">
 		        				<input type="submit" class="modal-form-button" value="변경하기" onclick="return checkPwd();">
-		        				<input type="button" class="modal-form-button"  data-bs-dismiss="modal" value="취소">
+		        				<input type="button" class="modal-form-button2"  data-bs-dismiss="modal" value="취소">
 		        			</td>
 		        		</tr>
 		        	</table>

@@ -109,7 +109,7 @@
          width: 180px;
          border-radius: 15px;
          margin: 5% auto;
-          margin-right: 10px;
+         margin-left: -80px;
          border: 1px solid #acdac2;
 	  }
 	  
@@ -118,7 +118,7 @@
          width: 180px;
          border-radius: 15px;
           margin: 5% auto;
-          margin-right: 10px;
+           margin-left: -80px;
          border: 1px solid #acdac2;
 	  }
 	  
@@ -127,7 +127,7 @@
         width: 180px;
          border-radius: 15px;
          margin: 5% auto;
-         margin-right: 10px;
+          margin-left: -80px;
          border: 1px solid #acdac2;
 	  }
 	  
@@ -136,7 +136,7 @@
         border-radius: 15px;
         border: none;
         height: 55px;
-        margin: 0 3%;
+         margin-left:100px;
         font-size: 18px;
         background-color: #e0e0e0;
       }
@@ -145,6 +145,22 @@
         font-weight: 600;
         box-shadow: 0.5px 0.5px 3px 0px #dadada;
       }
+      
+        .modal-form-button2 {
+        width: 300%;
+        border-radius: 15px;
+        border: none;
+        height: 55px;
+       margin-left:20px;
+        font-size: 18px;
+        background-color: #e0e0e0;
+      }
+
+      .modal-form-button2:hover {
+        font-weight: 600;
+        box-shadow: 0.5px 0.5px 3px 0px #dadada;
+      }
+      
 
       #modal-form-buttons input[type="submit"] {
         background-color: #b3e0c9;
@@ -421,7 +437,7 @@
 		        		<tr >
 		        			<td  id="modal-form-buttons">
 		        				<input type="submit" class="modal-form-button" value="변경하기" onclick="return checkPwd();">
-		        				<input type="button" class="modal-form-button"  data-bs-dismiss="modal" value="취소">
+		        				<input type="button" class="modal-form-button2"  data-bs-dismiss="modal" value="취소">
 		        			</td>
 		        		</tr>
 		        	</table>
