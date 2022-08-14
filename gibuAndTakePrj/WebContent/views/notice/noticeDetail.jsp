@@ -10,73 +10,65 @@
 <style>
 
 	#title {
-        width: 200px;
-        margin-left: 320px;
-        text-align: center;
+        background-color: #8bdcb1;
+        width: 1905px;
+        text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px;
+        padding: 30px 0px 30px 380px;
+    }
+    
+    #gap{
+    	padding-bottom: 50px;
     }
 
     #outer{
-        border: 1px solid lightgray;
-        height: 500px;
+        border: 1px solid #2e6c4a;
+        width: 1050px;
+        height: 600px;
         margin: 0px 380px;
+        border-collapse: collapse;
     }
     
     #a{
-        border: 1px solid lightgray;
+        border: 1px solid #2e6c4a;
+        color: #2e6c4a;
         width: 100%;
         height: 60px;
 		font-weight: bold;
-		text-indent: 40px;
-    }
-    
-    #a1{
-    	margin: 15px;
-    	text-indent: 40px;
-    }
-
-    #date1{
-    	text-indent: 40px;
-        float: right;
+		text-indent: 15px;
+		
     }
 
     #b{
-        border: 1px solid lightgray;
+        border: 1px solid #2e6c4a;
+        color: #2e6c4a;
         width: 100%;
-        height: 312px;
-        text-indent: 40px;
-    }
-
-    #b1{
-    	margin: 15px;
-    	text-indent: 40px;
+        height: 600px;
+        text-indent: 15px;
     }
 
     #c{
-        border: 1px solid lightgray;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
         width: 100%;
         height: 60px;
         text-indent: 40px;
-    }
-
-    #c1{
-    	margin: 15px;
-    	text-indent: 40px;
     }
 
 
     #d{
-        border: 1px solid lightgray;
+    	border: 1px solid #2e6c4a;
+    	color: #2e6c4a;
         width: 100%;
         height: 60px;
         text-indent: 40px;
     }
-
-    #d1{
-    	margin: 15px;
-    	text-indent: 40px;
+    
+    .date{
+        text-align: right;
+        font-weight: 100;
+        padding: 0px 70px 0px 0px;
     }
 
 
@@ -84,34 +76,33 @@
         text-align: center;
         padding: 50px;
         margin-bottom: 30px;
-    }
-
-    #date{
-        width: 200px;
-        text-align: right;
-        font-weight: 100;
+        margin-right: 130px;
     }
     
     #list{
-        border: 1px solid black;
+       	background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
         font-weight: bold;
         padding: 10px;
-        margin: 0px 50px 0px 0px;
-        border-radius: 50px;
+        margin: 0px 60px 0px 0px;
+        border-radius: 15px;
     }
 
     #modify{
-        border: 1px solid black;
+        background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
         font-weight: bold;
-        padding: 10px;
-        border-radius: 50px;
+        padding: 10px 20px 10px 20px;
+        border-radius: 15px;
     }
 
     #list:hover{
+    	background-color: #93e1b7;
         cursor: pointer;
     }  
     
     #modify:hover{
+    	background-color: #93e1b7;
         cursor: pointer;
     } 
   
@@ -122,27 +113,30 @@
 	<%@ include file="/views/common/header.jsp" %>
 	
 	<div id="title">공지사항</div>
-    
-    <div id="outer">
-    	<div id="a">
-            <div id="a1">제목 <div id="date1">등록일 2022-02-02</div></div>
-        </div>
-        <div id="b">
-            <div id="b1">작성할내용</div>
-        </div>      
-        <div id="c">
-            <div id="c1">이전내용 <div id="date1">등록일 2022-02-03</div></div>
-        </div>
-        <div id="d">
-            <div id="d1">다음내용 <div id="date1">등록일 2022-02-01</div></div>
-        </div>
-        
-    </div>
+    <div id="gap"></div>
+    <table id="outer">
+    	<tr id="a">
+			<td>제목</td>
+			<td class="date">등록일 2022-02-02</td>
+    	</tr>
+    	<tr id="b">
+			<td>작성할내용</td>
+			<td></td>
+    	</tr>
+    	<tr id="c">
+			<td>이전내용</td>
+			<td class="date">등록일 2022-02-03</td>
+    	</tr>
+    	<tr id="d">
+			<td>다음내용</td>
+			<td class="date">등록일 2022-02-01</td>
+    	</tr>
+    </table>
     
     
     <div id="tag">
-        <a id="list" onclick="location.href='/gibuAndTakePrj/notice/list'">&nbsp공지사항 목록&nbsp</a>
-        <a id="modify" onclick="location.href='/gibuAndTakePrj/notice/modify'">&nbsp수정/삭제&nbsp</a>
+        <a id="list" onclick="location.href='/gibuAndTakePrj/notice/list'">공지사항 목록</a>
+        <a id="modify" onclick="location.href='/gibuAndTakePrj/notice/modify'">수정/삭제</a>
     </div>
         
     

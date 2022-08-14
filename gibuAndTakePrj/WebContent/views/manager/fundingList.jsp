@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>활동내역관리</title>
+<title>펀딩내역관리</title>
 <style>
 	#title {
        	background-color: #8bdcb1;
@@ -292,13 +292,13 @@
 	 
 	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:1200px; padding:50px 0px 0px 0px;">
 	
-			<div id="name">활동 내역 관리</div>
+			<div id="name">펀딩 내역 관리</div>
 			
 			<div id="outer1">
 			<nav id="nav1">
-				<a href="/gibuAndTakePrj/manager/list" class="tag">전체내역</a>
+				<a href="/gibuAndTakePrj/manager/list">전체내역</a>
 		        <a href="/gibuAndTakePrj/manager/donation">기부내역</a>
-		        <a href="/gibuAndTakePrj/manager/funding">펀딩내역</a>
+		        <a href="/gibuAndTakePrj/manager/funding" class="tag">펀딩내역</a>
 			</nav>
 			</div>
 			
