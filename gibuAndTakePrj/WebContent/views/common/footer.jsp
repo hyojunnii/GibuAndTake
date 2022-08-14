@@ -16,16 +16,19 @@
         
     }
 
-    footer{
+    #site_footer{
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    a{
+    #site_footer a{
     	text-decoration: none;
     	color: black;
     }
 
-    footer>div{
+    #site_footer>div{
         padding-left: 30px;
     }
 
@@ -34,6 +37,15 @@
         font-size: 27px;
         padding-bottom: 10px;
         padding-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    
+    #notice>span{
+    	width : 1200px;        
     }
 
     #go_notice_title{
@@ -60,13 +72,23 @@
     }
 
     #footer_else_menu{
-        margin-left: 800px;
+        
     }
     
     #footer_else_menu>a{
         margin-left: 15px;
         margin-right: 15px;
         font-size: 20px;
+    }
+    
+    #footer_else{
+    	width: 1200px;
+    }
+
+    #footer_else>span{
+    	display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
 
@@ -76,7 +98,7 @@
 </head>
 <body>
 
-	<footer>
+	<footer id="site_footer">
         <div id="margin_colored">
 
         </div>
@@ -89,8 +111,10 @@
         <div>
             <div id="footer_else">
                 <span>
-                    <span id="footer_site_name">기부 앤 테이크</span>
-                    <span id="footer_mini_text">Bul4Zo0826@gmail.com</span>
+                    <span id="footer_else_site_name">
+                        <span id="footer_site_name">기부 앤 테이크</span>
+                        <span id="footer_mini_text">Bul4Zo0826@gmail.com</span>
+                    </span>
                     <span id="footer_else_menu">
                         <a href="">문의하기</a>
                         <a href="">FAQ</a>

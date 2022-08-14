@@ -14,7 +14,7 @@
         box-sizing: border-box;
     }
 
-    header{
+    #site_header{
         width: 100%;
         vertical-align: middle;
         padding-top: 15px;
@@ -25,8 +25,7 @@
     	justify-content: space-evenly;
     }
 
-    header>div{
-        display: inline-block;
+    #site_header>div{
         vertical-align: middle;
     }
 
@@ -43,7 +42,7 @@
 
     
     
-    a{
+    #site_header a{
     	text-decoration: none;
     	color: black;
     }
@@ -85,9 +84,18 @@
     }
 
     .top_menu_click{
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-left : 4px;
+        padding-right : 4px; 
         font-size: 30px;
+        border-radius: 15px
+    }
+    
+    .top_menu_click:hover{
+        background-color: #EBF5E0;
+        color : #086C37;
+        font-weight: 900;
     }
 
     .float_right{
@@ -98,7 +106,7 @@
     }
 
     #header_wrap{
-        width: 1400px;
+        width: 1200px;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -128,11 +136,11 @@
 <body>
     <!-- 아이콘 출처 : <a href="https://www.flaticon.com/kr/free-icons/" title=" 아이콘"> 아이콘  제작자: Smashicons - Flaticon</a> -->
     <!-- 헤더 수정 넓이 100% -->
-	<header>
+	<header id="site_header">
         <div id="header_wrap">
             <div id="logo_name">
                 <a href="<%=request.getContextPath()%>">
-                    <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
+                    <img id="logo" src="/gibuAndTakePrj/resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
                     <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
                 </a>
             </div>
@@ -149,7 +157,7 @@
             </div>
             <div id="login_serch" class="">
                 <a href=""><span id="login">로그인</span></a>
-                <a href=""><img id="serch_icon" src="../../resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
+                <a href=""><img id="serch_icon" src="/gibuAndTakePrj/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
             </div>
         </div>
     </header>
