@@ -7,28 +7,35 @@
 <title>Insert title here</title>
 <style>
     #header {
-        width: 280px;
-        margin-left: 320px;
-        text-align: center;
+        background-color: #8bdcb1;
+        width: 1905px;
+        text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px;
+        padding: 30px 0px 30px 380px;
     }
     
-
+    #gap{
+    	padding-bottom: 50px;
+    }
+    
     
     #title{
+    		color: #15462b;
             margin: 0px 70px 0px 430px;
             font-weight: bold;
             text-align: center;
     }
 
     #content{
+    		color: #15462b;
             margin: 0px 70px 0px 430px;
             font-weight: bold;
     }
     
     #input1{
+    		border: 2px solid #acdac2;
+			border-radius: 10px;
             width: 760px;
             height: 40px;
             color: black;
@@ -36,6 +43,8 @@
     }
 
     #input2{
+    		border: 2px solid #acdac2;
+			border-radius: 10px;
             width: 760px;
             height: 500px;
             color: black;                      
@@ -44,15 +53,18 @@
     }
 
     #btn{
-        background-color: white;
+        background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
         margin: 0px 850px;
         margin-top: 30px;
         padding: 10px;
         font-weight: bold;
-        border-radius: 50px;
+        border-radius: 15px;
+        padding: 5px 20px 5px 20px;
     }
 
     #btn:hover{
+    	background-color: #93e1b7;
         cursor: pointer;
     }
     
@@ -64,13 +76,14 @@
 <body>
 	<%@ include file="/views/common/header.jsp" %>
     <div id="header">공지사항 작성</div>
+    <div id="gap"></div>
     
-    <form action="">
+    <form action="/gibuAndTakePrj/notice/list" method="get">
     	<label id="title">제목</label>
-	    <input id="input1" type="text" name="id">
+	    <input id="input1" type="text">
 	    <br><br>
 	    <label id="content">내용</label> 
-	    <textarea name="content" id="input2"></textarea>
+	    <textarea id="input2"></textarea>
 	    <div >
             <input id="btn" type="submit" value="공지사항 등록">
         </div>

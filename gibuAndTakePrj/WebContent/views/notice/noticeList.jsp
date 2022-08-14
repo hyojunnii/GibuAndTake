@@ -70,7 +70,7 @@
     	margin: 0px 380px;
     	margin-top: 10px;
     	border-radius: 15px;
-    	padding: 0px 20px 0px 20px;
+    	padding: 5px 20px 5px 20px;
         font-weight: bold;
     }
     
