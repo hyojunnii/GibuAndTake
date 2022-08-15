@@ -7,16 +7,18 @@
 <title>Insert title here</title>
 <style>
     #header {
-        width: 370px;
-        margin-left: 320px;
-        text-align: center;
+       	background-color: #8bdcb1;
+        width: 1905px;
+        text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px;
+        padding: 30px 0px 30px 380px;
     }
     
     
     #input1{
+			border: 2px solid #acdac2;
+			border-radius: 10px;    		
             width: 800px;
             height: 500px;
             color: black;
@@ -25,6 +27,8 @@
     }
 
     #input2{
+    		border: 2px solid #acdac2;
+			border-radius: 10px;
             width: 800px;
             height: 500px;
             color: black;                      
@@ -33,32 +37,39 @@
     }
     
     #list{
+    	font-weight: bold;
     	margin-left: 470px;
     }
 
-    #btn1{
-        background-color: white;
-        margin: 0px 50px 0px 750px;
+   #btn1{
+    	background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
+        margin: 0px 50px 0px 790px;
         margin-top: 30px;
-        padding: 20px;
+        padding: 10px;
         font-weight: bold;
-        border-radius: 50px;
+        border-radius: 15px;
+        padding: 5px 20px 5px 20px;
     }
     
  	#btn2{
-        background-color: white;
+        background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
         margin: 0px 50px 0px 0px;
         margin-top: 30px;
-        padding: 20px;
+        padding: 10px;
         font-weight: bold;
-        border-radius: 50px;
+        border-radius: 15px;
+		padding: 5px 20px 5px 20px;
     }
 
     #btn1:hover{
+    	background-color: #93e1b7;
         cursor: pointer;
     }
     
     #btn2:hover{
+    	background-color: #93e1b7;
         cursor: pointer;
     }
     
@@ -72,14 +83,14 @@
 	<%@ include file="/views/common/header.jsp" %>
     <div id="header">[공지] 사용자 제제 안내</div>
 
-    <form action="">
-	    <textarea name="content" id="input1">안내내용</textarea>
+    <form action="/gibuAndTakePrj/manager/sanction" method="get">
+	    <textarea id="input1">안내내용</textarea>
 	    <br><br>
 	    <div id="list">[제재된 사용자 목록]</div>
-	    <textarea name="content" id="input2"></textarea>
-	    <div id="btn">
-            <input id="btn1" type="submit" value="작성이동">
-            <input id="btn2" type="submit" value="목록이동">
+	    <textarea id="input2"></textarea>
+	    <div>
+            <input id="btn1" type="submit" value="목록">
+            <input id="btn2" type="submit" value="작성">
         </div>
 	    
     </form>

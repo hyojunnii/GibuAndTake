@@ -125,8 +125,9 @@
     #approve{
     	background-color: #b3e0c9;
     	border: 2px solid #acdac2;
-    	margin-left: 1150px;
+    	margin-left: 1060px;
     	margin-top: 5px;
+    	margin-right: 10px;
     	border-radius: 15px;
     	font-weight: bold;
     	padding: 0px 20px 0px 20px;
@@ -137,8 +138,22 @@
         cursor: pointer;
     }
     
-    #last{
-    	padding: 300px;
+    #back{
+    	background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
+    	margin-top: 5px;
+    	border-radius: 15px;
+    	font-weight: bold;
+    	padding: 0px 15px 0px 15px;
+    }
+    
+    #back:hover{
+    	background-color: #93e1b7;
+        cursor: pointer;
+    }
+    
+    .float{
+    	float:left;
     }
     
     /* #page-area{
@@ -147,6 +162,10 @@
 		margin: auto;
 		padding-top: 30px;
 	} */
+	
+	#last{
+    	padding: 300px;
+    }
 </style>
 </head>
 <body>
@@ -200,8 +219,10 @@
     	</div>
     	
  		<form action="/gibuAndTakePrj/approve/donation" method="get">
-			<input id="approve"  type="submit" value="승인">
+				<input id="approve" class="float"  type="submit" value="승인">			
 		</form>   	
+    
+    	<input id="back" class="float" type="button" value="뒤로가기" onclick="location.href='http://127.0.0.1:8803/gibuAndTakePrj/manager/list'">
     
     	<div id="btn">
 	    	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
