@@ -55,8 +55,8 @@
     #btn1{
     	background-color: #b3e0c9;
     	border: 2px solid #acdac2;
-        margin: 0px 50px 0px 790px;
         margin-top: 30px;
+        margin-left: 800px;
         padding: 10px;
         font-weight: bold;
         border-radius: 15px;
@@ -66,7 +66,7 @@
  	#btn2{
         background-color: #b3e0c9;
     	border: 2px solid #acdac2;
-        margin: 0px 50px 0px 0px;
+        margin: 0px 50px 0px 50px;
         margin-top: 30px;
         padding: 10px;
         font-weight: bold;

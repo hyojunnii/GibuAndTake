@@ -129,7 +129,7 @@
 <body>
 	<%@ include file="/views/common/header.jsp" %>
 	
-	<div id="head">문의하기</div>
+	<div id="head">문의답변</div>
 	
 	<div style="border: 1px solid #72d09e; float: left; width: 20%; height:850px; padding:0px 0px 0px 20px;">
 		<form action="" method="get">
@@ -178,7 +178,7 @@
 	    <label id="content">문의 내용</label> 
 	    <textarea id="input4" name="content"></textarea>
 	    <div >
-            <input id="btn" type="submit" value="문의접수">
+            <input id="btn" type="submit" value="문의답변등록">
         </div>
 	    
     </form>

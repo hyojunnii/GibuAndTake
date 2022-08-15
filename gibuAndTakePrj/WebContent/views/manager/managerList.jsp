@@ -124,6 +124,11 @@
     	margin: 0px 0px 0px 20px;
     }
     
+    #search:hover{
+    	background-color: #93e1b7;
+        cursor: pointer;
+    }
+    
     #outer4{
         border: 1px solid #2e6c4a;
         color: black;

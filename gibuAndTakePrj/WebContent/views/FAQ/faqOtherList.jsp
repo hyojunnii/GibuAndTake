@@ -7,14 +7,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>FAQ</title>
 <style>
-
-	#to{
-            width: 100px;
-            height: 100px;
-            border: 1px solid black;
-            background-color: skyblue;
-        }
-	
     #title {
         background-color: #8bdcb1;
        	width: 1905px;
@@ -47,43 +39,6 @@
 	  right: 12px;
 	  margin: 0;
 	}
-	
-	.toggle{
-    	border: 2px solid #acdac2;
-    	background-color: white;
-    	border-radius: 10px;
-    	width: 650px;
-    	height: 40px;
-    	margin: 0px 70px 0px 350px;
-    	text-align: left;
-	}
-	
-	.toggle:hover{
-        cursor: pointer;
-	}
-	
-	.toggle2{
-		border: 2px solid #acdac2;
-    	background-color: white;
-    	border-radius: 10px;
-    	width: 650px;
-    	height: 80px;
-    	margin: 0px 70px 0px 350px;
-    	text-align: left;
-	}
-	
-	#toggle{
-		margin-top: 30px;
-	}
-	
-	#img{
-		background-color: white;
-		border: 0;
-    	border-radius: 10px;
-    	margin: 0px 70px 0px -110px;
-    	font-size: 17px;
-		text-align: right;
-	}
     
     .input{
     	background-color: white;
@@ -103,13 +58,32 @@
     	margin-left: 135px;
     }
     
-    #category{
+    .toggle{
     	border: 2px solid #acdac2;
-		border-radius: 10px;
+    	background-color: white;
+    	border-radius: 10px;
     	width: 650px;
     	height: 40px;
     	margin: 0px 70px 0px 350px;
-    }
+    	text-align: left;
+	}
+	
+	.toggle:hover{
+        cursor: pointer;
+	}
+	
+	#toggle{
+		margin-top: 30px;
+	}
+	
+	#img{
+		background-color: white;
+		border: 0;
+    	border-radius: 10px;
+    	margin: 0px 70px 0px -110px;
+    	font-size: 17px;
+		text-align: right;
+	}
     
     #btn1{
         background-color: #b3e0c9;
@@ -145,7 +119,7 @@
     }
     
     #btn{
-    	margin-top: 100px;
+    	margin-top: 120px;
     	margin-left: 570px;
     }
     
@@ -186,9 +160,10 @@
     }
     
     #last{
-    	padding: 320px;
+    	padding: 300px;
     }
-
+    
+    
 </style>
 </head>
 <body>
@@ -200,7 +175,7 @@
 				</div>
 	</div>
     
-	 <div style="border: 1px solid #72d09e; float: left; width: 20%; height:640px; padding:0px 0px 0px 20px;">
+	 <div style="border: 1px solid #72d09e; float: left; width: 20%; height:600px; padding:0px 0px 0px 20px;">
 		<form action="/gibuAndTakePrj/faq/list" method="get">
 			<input class="input" type="submit" value="기부">
 		</form>
@@ -217,19 +192,16 @@
 			<input class="input" type="submit" value="기타">
 		</form>		
 	 </div>
-	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:640px; padding:50px 0px 0px 0px;">                  
+	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:600px; padding:50px 0px 0px 0px;">                  
 	    	
-	    	
-            
-            <form action="/gibuAndTakePrj/faq/list" method="get">
-	    	<button class="toggle">기부질문<button id="img">▲</button></button>
-	    	<div class="toggle2">기부답변</div>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-            </form>
-	    	
+	    	<form action="/gibuAndTakePrj/faq/detailother" method="get">
+	    	<button class="toggle">기타질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">기타질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">기타질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">기타질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">기타질문<button id="img">▽</button></button>
+	    	</form>
+             
 	    	<form action="/gibuAndTakePrj/faq/write" method="get">
 		    	<input id="btn1" class="btn3" type="submit" value="FAQ작성">
 	    	</form>
@@ -237,7 +209,7 @@
 	    	<form action="/gibuAndTakePrj/faq/modify" method="get">
 	        	<input id="btn2" class="btn3" type="submit" value="FAQ수정/삭제">
 	    	</form>
-	    	
+	    
 	    
 	    <div id="btn">
 	    	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
@@ -252,20 +224,5 @@
 	  </div>
 	<div id="last"></div>
 	<%@include file="/views/common/footer.jsp" %>
-	
-	<!-- <button id="t">toggle</button>
-	    	<div id="to">
-	    	</div> -->
-	
-	<!-- <script>
-        $(function(){
-
-            const t = $('#to');
-
-            $('#t').click(function(){
-                t.toggle(1000);
-            });
-        })
-     </script> -->
 </body>
 </html>

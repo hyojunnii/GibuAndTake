@@ -221,13 +221,13 @@
 	    	
 	    	
             
-            <form action="/gibuAndTakePrj/faq/list" method="get">
-	    	<button class="toggle">기부질문<button id="img">▲</button></button>
-	    	<div class="toggle2">기부답변</div>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
+            <form action="/gibuAndTakePrj/faq/fundinglist" method="get">
+	    	<button class="toggle">펀딩질문<button id="img">▲</button></button>
+	    	<div class="toggle2">펀딩답변</div>
+	    	<button class="toggle" id="toggle">펀딩질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">펀딩질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">펀딩질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">펀딩질문<button id="img">▽</button></button>
             </form>
 	    	
 	    	<form action="/gibuAndTakePrj/faq/write" method="get">

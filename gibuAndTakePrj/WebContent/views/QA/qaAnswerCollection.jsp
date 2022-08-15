@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<title>FAQ</title>
+<title>문의답변</title>
 <style>
 
 	#to{
@@ -21,7 +21,7 @@
         text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px 0px 30px 150px;
+        padding: 30px 0px 30px 120px;
     }
     
     .search {
@@ -84,23 +84,19 @@
     	font-size: 17px;
 		text-align: right;
 	}
-    
-    .input{
+	
+	.click{
     	background-color: white;
     	color: green;
-    	margin-left: 140px;
+    	margin-left: 110px;
     	margin-top: 30px;
     	font-weight: bold;
     	border-radius: 15px;
     	border: 0px;
     }
     
-    .input:hover{
+    .click:hover{
     	cursor: pointer;
-    }
-    
-    #campaign{
-    	margin-left: 135px;
     }
     
     #category{
@@ -193,7 +189,7 @@
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
-	<div id="title">FAQ
+	<div id="title">문의답변
 		<div class="search">
 				   <input id="search" type="text" placeholder="검색어 입력">
 				   <img id="icon" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
@@ -201,41 +197,40 @@
 	</div>
     
 	 <div style="border: 1px solid #72d09e; float: left; width: 20%; height:640px; padding:0px 0px 0px 20px;">
-		<form action="/gibuAndTakePrj/faq/list" method="get">
-			<input class="input" type="submit" value="기부">
+		<form action="/gibuAndTakePrj/qa/list" method="get">
+			<input class="click" type="submit" value="서비스 이용문의">
 		</form>
 		
-		<form action="/gibuAndTakePrj/faq/fundinglist" method="get">
-			<input class="input" type="submit" value="펀딩">
+		<form action="/gibuAndTakePrj/qa/collection" method="get">
+			<input class="click" type="submit" value="모금제안 문의">
 		</form>
 		
-		<form action="/gibuAndTakePrj/faq/campaignlist" method="get">
-			<input id="campaign" class="input" type="submit" value="캠페인">
+		<form action="/gibuAndTakePrj/qa/pay" method="get">
+			<input class="click" type="submit" value="결제/영수증 이용문의">
 		</form>
-		
-		<form action="/gibuAndTakePrj/faq/otherlist" method="get">
-			<input class="input" type="submit" value="기타">
-		</form>		
+		<form action="/gibuAndTakePrj/qa/one" method="get">
+			<input class="click" type="submit" value="1:1문의">
+		</form>
 	 </div>
 	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:640px; padding:50px 0px 0px 0px;">                  
 	    	
 	    	
             
-            <form action="/gibuAndTakePrj/faq/list" method="get">
-	    	<button class="toggle">기부질문<button id="img">▲</button></button>
-	    	<div class="toggle2">기부답변</div>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
+            <form action="/gibuAndTakePrj/qa/collection" method="get">
+	    	<button class="toggle">모금제안질문<button id="img">▲</button></button>
+	    	<div class="toggle2">모금제안답변</div>
+	    	<button class="toggle" id="toggle">모금제안질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">모금제안질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">모금제안질문<button id="img">▽</button></button>
+	    	<button class="toggle" id="toggle">모금제안질문<button id="img">▽</button></button>
             </form>
 	    	
-	    	<form action="/gibuAndTakePrj/faq/write" method="get">
-		    	<input id="btn1" class="btn3" type="submit" value="FAQ작성">
+	    	<form action="/gibuAndTakePrj/qa/write" method="get">
+		    	<input id="btn1" class="btn3" type="submit" value="문의하기">
 	    	</form>
 	    	
-	    	<form action="/gibuAndTakePrj/faq/modify" method="get">
-	        	<input id="btn2" class="btn3" type="submit" value="FAQ수정/삭제">
+	    	<form action="/gibuAndTakePrj/qa/modify" method="get">
+	        	<input id="btn2" class="btn3" type="submit" value="문의수정/삭제">
 	    	</form>
 	    	
 	    
