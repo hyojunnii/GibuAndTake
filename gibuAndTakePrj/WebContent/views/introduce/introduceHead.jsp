@@ -29,7 +29,7 @@
         background-color: #EBF5E0;
         color: #2e6c4a;
 		border-radius: 15px;
-        font-style: italic;
+        font-weight: bolder;
     }
 
     #category{

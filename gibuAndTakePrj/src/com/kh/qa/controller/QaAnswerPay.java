@@ -1,4 +1,4 @@
-package com.kh.faq.controller;
+package com.kh.qa.controller;
 
 import java.io.IOException;
 
@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/faq/write")
-public class FaqWrite extends HttpServlet{
+@WebServlet(urlPatterns = "/qa/answerpay")
+public class QaAnswerPay extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/views/FAQ/faqWrite.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/QA/qaAnswerPay.jsp").forward(req, resp);
 	}
 }
