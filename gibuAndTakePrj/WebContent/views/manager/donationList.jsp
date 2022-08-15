@@ -124,6 +124,11 @@
     	margin: 0px 0px 0px 20px;
     }
     
+    #search:hover{
+    	background-color: #93e1b7;
+        cursor: pointer;
+    }
+    
     #outer4{
         border: 1px solid #2e6c4a;
         color: black;
@@ -403,7 +408,7 @@
                     </tr>
                     <tr id="body3">
                         <td>2022/08/03</td>
-                        <td>펀딩</td>
+                        <td>기부</td>
                         <td>기업</td>
                         <td>50,000원</td>
                     </tr>
