@@ -12,14 +12,7 @@
 			width:1200px;
    			margin:0 auto;
 		} 
-		#headIn{
-			border-style:solid;
-			border-color:black;
-			
-   			width:100%;
-   			height:200px;
-		}
-		
+	
 		#myPageTxt {
 			color:#2e6c4a;
 			margin-top:60px;
@@ -144,7 +137,7 @@
 </head>
 <body>	
 		
-		<div id="headIn"><!-- include header --></div>
+		<div id="headIn"><%@ include file="/views/common/header.jsp" %></div>
 		<div id="memberMgEvery">
 		<h1 id="myPageTxt">기업 마이페이지</h1>
 		<div class="headLine">

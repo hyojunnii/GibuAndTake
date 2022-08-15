@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 
-   		nav{
+   		#leftNav{
    			width:300px;
    			background-color: white;
    			border-right:2px solid #acdac2;
@@ -178,7 +178,7 @@
 	
 	
 	
-	<nav>
+	<div id="leftNav">
 		<ul class="menu">
 			<li><a href="#" id="home" style="font-weight:bold">MY 홈</a></li>
 			<div id="middleLine"></div>
@@ -193,7 +193,7 @@
 			<li><a href="#" id="donament" style="font-weight:bold">기부 내역</a></li>
 		</ul>
 		
-	</nav>	
+	</div>	
 		
 		
   		

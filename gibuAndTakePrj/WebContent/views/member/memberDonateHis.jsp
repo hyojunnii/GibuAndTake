@@ -12,13 +12,7 @@
 			width:1200px;
    			margin:0 auto;
 		}
-		#headIn{
-			border-style:solid;
-			border-color:black;
-			
-   			width:100%;
-   			height:200px;
-		}
+	
 		
 		#myPageTxt {
 			color:#2e6c4a;
@@ -79,6 +73,11 @@
         margin-top:-350px;
         
     }
+    
+    .cardLink{
+    	text-decoration:none;
+    	color:black;
+    }
     #img{
         height: 50%;
     }
@@ -119,7 +118,7 @@
         font-weight: 500;
         font-size: 25px;
         margin-top: 40px;
-       
+       text-decoration: none;
         
     }
     .gibuPeople{
@@ -156,7 +155,7 @@
 </head>
 <body>	
 		
-		<div id="headIn"><!-- include header --></div>
+		<div id="headIn"><%@ include file="/views/common/header.jsp" %></div>
 		<div id="memberMgEvery">
 		<h1 id="myPageTxt">마이페이지</h1>
 		<div class="headLine">
@@ -167,18 +166,18 @@
 		<h1 id="shortTitle" style="">기부 내역</h1>
 	
         <div class="card">
-        <a href="" class="cardLink">
+       
              <div id="img">
                   <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
+                  <a href="" class="cardLink" align="center" style="margin-top:20px">기부프로젝트명</a>
                  <pre>기업이름</pre>
-                 <progress id="g_progress" value="50" max="100"></progress>
+                 <progress id="g_progress" value="50" max="100" style="text-decoration: none"></progress>
                  <span class="gibuPercent">50%</span>
                  <span class="gibuPeople">500명</span>
              </div>
-         	</a>  
+         	  
              <div class="card2">
         	<a href="" class="cardLink2">
              <div id="img2">
