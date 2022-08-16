@@ -202,7 +202,7 @@
 	    	<button class="toggle" id="toggle">캠페인질문<button id="img">▽</button></button>
 	    	</form>
              
-	    	<form action="/gibuAndTakePrj/faq/write" method="get">
+	    	<form action="/gibuAndTakePrj/faq/write1" method="get">
 		    	<input id="btn1" class="btn3" type="submit" value="FAQ작성">
 	    	</form>
 	    	
