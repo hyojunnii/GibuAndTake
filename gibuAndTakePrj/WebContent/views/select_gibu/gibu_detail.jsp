@@ -8,7 +8,6 @@
 <style>
 
     #gibu_detail_container{
-        border: 1px solid blue;
         margin: 0 10%;
         text-align: center;
     }

@@ -214,7 +214,7 @@ progress::-webkit-progress-value{
     
     <div class="container">
       
-       <p id="titleNo">기부모금함 ??개</p>
+       <p id="titleNo">진행중인 기부모금함 ??개</p>
         
        
         <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
