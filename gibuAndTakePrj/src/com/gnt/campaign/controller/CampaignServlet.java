@@ -1,4 +1,4 @@
-package com.kh.campaign.controller;
+package com.gnt.campaign.controller;
 
 import java.io.IOException;
 
