@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +14,10 @@
 <meta charset="UTF-8">
 <title>기부 내역 조회</title>
 <style>
+	#nav{
+		display: flex;
+	}
+
     #body {
         width: 1200px;
 		height: 1000px;
@@ -30,6 +37,10 @@
 
 	#category a {
 		margin: 0 0 0 20px;
+	}
+
+	form {
+		width: 1000px;
 	}
 	
 	#body-table {
@@ -216,48 +227,52 @@
 		<div id="category">
 			<a>기부 내역 조회</a>
 		</div>
-	
-		<form action="">
-			<table id="body-table">
-				<thead>
-					<tr>
-						<th colspan="2" style=" font-size: 20px;">참여한 프로젝트 이름</th>
-					</tr>
-				<tbody>
-					<tr>
-						<th colspan="2">기부 내역</th>
-					</tr>
-					<tr>
-						<td>신청번호</td>
-						<td>R123456789</td>
-					</tr>
-					<tr>
-						<td>결제방법</td>
-						<td>신용카드</td>
-					</tr>
-					<tr>
-						<td>기부금액</td>
-						<td>30,000 원</td>
-					</tr>
-					<tr>
-						<td>기부일자</td>
-						<td>2022-08-07</td>
-					</tr>
-					<tr>
-						<td>기부증서</td>
-						<td><input id="certificate" type="button" value="출력" data-bs-toggle="modal" data-bs-target="#certificatePrint"></button></td>
-					</tr>
-					<tr>
-						<td>기부금영수증</td>
-						<td><input id="receipt" type="button" value="출력" oncanplay="location.href='';"></button></td>
-					</tr>
-				</tbody>
-				</thead>
-			</table>
-		</form>
+		<div id="nav">
+			<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
 			
-		<hr>
+			<form action="<%=contextPath%>/member/breakPrint" method="get">
+				<table id="body-table">
+					<thead>
+						<tr>
+							<th colspan="2" style=" font-size: 20px;">참여한 프로젝트 이름</th>
+						</tr>
+					<tbody>
+						<tr>
+							<th colspan="2">기부 내역</th>
+						</tr>
+						<tr>
+							<td>신청번호</td>
+							<td>R123456789</td>
+						</tr>
+						<tr>
+							<td>결제방법</td>
+							<td>신용카드</td>
+						</tr>
+						<tr>
+							<td>기부금액</td>
+							<td>30,000 원</td>
+						</tr>
+						<tr>
+							<td>기부일자</td>
+							<td>2022-08-07</td>
+						</tr>
+						<tr>
+							<td>기부증서</td>
+							<td><input id="certificate" type="button" value="출력" data-bs-toggle="modal" data-bs-target="#certificatePrint"></button></td>
+						</tr>
+						<tr>
+							<td>기부금영수증</td>
+							<td><input id="receipt" type="submit" value="출력"></button></td>
+						</tr>
+					</tbody>
+					</thead>
+				</table>
+			</form>
 
+			<hr>
+		
+		</div>
+		
 	</div>
 	
 	<%@include file="/views/common/footer.jsp" %>

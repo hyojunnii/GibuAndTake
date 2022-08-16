@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,14 +50,20 @@
 		margin: 0 0 0 20px;
 	}
 
+    a { text-decoration: none; color: black; }
+    a:visited { text-decoration: none; }
+    a:hover { text-decoration: none; }
+    a:focus { text-decoration: none; }
+    a:hover, a:active { text-decoration: none; }
+
 </style>
 </head>
 <body>
 
     <%@include file="/views/common/header.jsp" %>
     <nav id="int-nav">
-        <a href="" id="what">기부앤테이크?</a>
-        <a href="" id="way">참여하는 법</a>
+        <a href="<%=contextPath %>/introduce/site" id="what">기부앤테이크?</a>
+        <a href="<%=contextPath %>/introduce/way" id="way">참여하는 법</a>
     </nav>
 
 </body>
