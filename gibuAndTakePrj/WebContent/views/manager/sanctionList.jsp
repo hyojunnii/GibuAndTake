@@ -129,6 +129,21 @@
         font-weight: bold;
     }
     
+    #sanction{
+    	background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
+    	margin-left: 1140px;
+    	margin-top: 5px;
+    	margin-right: 10px;
+    	border-radius: 15px;
+    	font-weight: bold;
+    	padding: 0px 20px 0px 20px;
+    }
+    
+    .float{
+    	float: left;
+    }
+    
     #last{
     	padding: 325px;
     }
@@ -198,6 +213,10 @@
             </tbody>            
         </table>
 	    </div>
+	    
+	    <form action="/gibuAndTakePrj/manager/write" method="get">
+				<input id="sanction" class="float"  type="submit" value="작성">			
+		</form>
 		
 		
 		<div id="btn">
@@ -230,6 +249,15 @@
     	<div id="last"></div>
        <%@include file="/views/common/footer.jsp" %>
        
+       <script>
+    	$(function(){
+    		$('#table-main>tbody>tr').click(function(){
+    			const num = $(this).children().eq(0).text();
+    			
+    			location.href='/gibuAndTakePrj/manager/detail?num=' + num;
+    		});
+    	})
+    </script>
        
 </body>
 </html>

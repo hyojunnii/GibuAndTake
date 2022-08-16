@@ -15,7 +15,7 @@
         text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px 0px 30px 380px;
+        padding: 30px 0px 30px 430px;
     }
     
     #gap{
@@ -26,7 +26,8 @@
         border: 1px solid #2e6c4a;
         width: 1050px;
         height: 600px;
-        margin: 0px 380px;
+        margin: 0px 430px;
+        border-radius: 10px;
         border-collapse: collapse;
     }
     
@@ -45,7 +46,6 @@
         color: #2e6c4a;
         width: 100%;
         height: 600px;
-        text-indent: 15px;
     }
 
     #c{
@@ -73,10 +73,9 @@
 
 
     #tag{
-        text-align: center;
         padding: 50px;
         margin-bottom: 30px;
-        margin-right: 130px;
+        margin-left: 750px;
     }
     
     #list{
@@ -115,19 +114,19 @@
 	<div id="title">공지사항</div>
     <div id="gap"></div>
     <table id="outer">
-    	<tr id="a">
+    	<tr id="a" class="border">
 			<td>제목</td>
 			<td class="date">등록일 2022-02-02</td>
     	</tr>
-    	<tr id="b">
+    	<tr id="b" class="border">
 			<td>작성할내용</td>
 			<td></td>
     	</tr>
-    	<tr id="c">
+    	<tr id="c" class="border">
 			<td>이전내용</td>
 			<td class="date">등록일 2022-02-03</td>
     	</tr>
-    	<tr id="d">
+    	<tr id="d" class="border">
 			<td>다음내용</td>
 			<td class="date">등록일 2022-02-01</td>
     	</tr>
