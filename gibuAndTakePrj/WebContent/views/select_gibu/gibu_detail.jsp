@@ -89,6 +89,12 @@
 	
 }
 </style>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
@@ -99,7 +105,7 @@
             <tr>
                 <td width="20%"></td>
                 <td colspan="3" width="60%"><h1>여기는 기부 이름</h1></td>
-                <td width="20%"><button hidden>수정하기</button></td>
+                <td width="20%"><button class="btn">수정하기</button></td>
             </tr>
         </table>
             <p class="comName">By 기업 이름</p>
@@ -157,7 +163,7 @@
             </div>
 
             <div class="gibu_btn_cover">
-                <a href=""  class="gibu_btn_container">
+                <a href="<%=path %>/donate/pay"  class="gibu_btn_container">
                     <div>
                         기부하기
                     </div>
