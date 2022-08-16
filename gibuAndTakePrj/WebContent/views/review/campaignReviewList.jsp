@@ -107,7 +107,7 @@
 
     <div id="create_review">
         <div>
-            <input type="button" value="후기 작성하기" class="review_btn">
+            <input type="button" value="후기 작성하기" class="review_btn" onclick="location.href='<%=request.getContextPath()%>/campaign/review/create'">
         </div>
     </div>  
 	<section>
@@ -119,7 +119,7 @@
                 <p class="review_card_text">후기 내용 ...</p>
             </a>
 
-            <a href="" class="review_card">
+            <a href="<%=request.getContextPath()%>/campaign/review/view" class="review_card">
                 <span class="review_card_corp">기업이름</span>
                 <strong class="review_card_title">후기 제목</strong>
                 <img src="" alt="후기 썸네일" class="review_card_img">

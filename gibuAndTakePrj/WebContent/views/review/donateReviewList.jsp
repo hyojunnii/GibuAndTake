@@ -107,7 +107,7 @@
 
     <div id="create_review">
         <div>
-            <input type="button" value="후기 작성하기" class="review_btn">
+            <input type="button" value="후기 작성하기" class="review_btn" onclick="location.href='<%=request.getContextPath()%>/donate/review/create'">
         </div>
     </div> 
 

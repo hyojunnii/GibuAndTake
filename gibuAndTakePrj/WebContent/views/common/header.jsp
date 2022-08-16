@@ -151,7 +151,7 @@
                         <a href="" class="top_menu_click">기부</a>
                         <a href="" class="top_menu_click">펀딩</a>
                         <a href="" class="top_menu_click">캠페인</a>
-                        <a href="" class="top_menu_click">스토리</a>
+                        <a href="<%=request.getContextPath()%>/story" class="top_menu_click">스토리</a>
                     </span>
                 </nav>
             </div>

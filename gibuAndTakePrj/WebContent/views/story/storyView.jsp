@@ -138,7 +138,7 @@
 <section>
     <div id="site_total" class="green_bg">
         <div class="total_div">
-        <img src="../../resources/img/graph.png" alt="그래프" id="graph_img">
+        <img src="/gibuAndTakePrj/resources/img/graph.png" alt="그래프" id="graph_img">
         <table>
             <tr>
                 <td>누적 참여자</td>
