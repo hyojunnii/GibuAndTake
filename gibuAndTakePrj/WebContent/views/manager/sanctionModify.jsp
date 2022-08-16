@@ -12,41 +12,33 @@
         text-align: left;
         font-weight: bold;
         font-size: 36px;
-        padding: 30px 0px 30px 380px;
-    }
-    
-    .a{
-    	margin-left: 560px;
-    }
-    
-    #up{
-    	margin-top: 20px;
+        padding: 30px 0px 30px 480px;
     }
     
     
-    #list1{
+    #input1{
 			border: 2px solid #acdac2;
 			border-radius: 10px;    		
             width: 800px;
             height: 500px;
             color: black;
+            margin: 0px 70px 0px 570px;
             margin-top: 30px;
-            vertical-align : top;
     }
 
-    #list2{
+    #input2{
     		border: 2px solid #acdac2;
 			border-radius: 10px;
             width: 800px;
             height: 500px;
             color: black;                      
-            vertical-align : top;
+            margin: 0px 70px 0px 570px;
+            vertical-align: middle;
     }
     
     #list{
     	font-weight: bold;
-    	margin-left: 560px;
-    	margin-top: 20px;
+    	margin-left: 570px;
     }
 
    #btn1{
@@ -95,27 +87,18 @@
 	<%@ include file="/views/common/header.jsp" %>
     <div id="header">[공지] 사용자 제제 안내</div>
 
-    <form action="/gibuAndTakePrj/manager/sanction" method="get">
-	    <table id="up" class="a">
-	    	<tr>
-	    	<td id="list1">안내내용</td>
-	    	</tr>
-	    	<tr>
-	    </table>
-		    <div id="list">[제재된 사용자 목록]</div>
-		<table id="down" class="a">
-			<tr>
-			    <td id="list2">제재 사용자 이름</td>
-	    	</tr>
-		</table>    
-		    <div>
-	            <input id="btn1" class="float" type="submit" value="목록">
-	        </div>
-	    
+    <form action="/gibuAndTakePrj/manager/detail" method="get">
+	    <textarea id="input1">안내내용</textarea>
+	    <br><br>
+	    <div id="list">[제재된 사용자 목록]</div>
+	    <textarea id="input2"></textarea>
+	    <div>
+            <input id="btn1" class="float" type="submit" value="수정">
+        </div>
     </form>
     
-    <form action="/gibuAndTakePrj/manager/modify" method="get">
-            <input id="btn2" class="float" type="submit" value="수정">
+    <form action="/gibuAndTakePrj/manager/sanction" method="get">
+            <input id="btn2" class="float" type="submit" value="삭제">
     </form>
     	
     
