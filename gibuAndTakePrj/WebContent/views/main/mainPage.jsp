@@ -75,10 +75,10 @@
         border-radius: 15px;
         font-size: 13px;
         font-weight: 600;
+        color: #2e6c4a;
       }
 
       #funding-header a:hover {
-        color: #2e6c4a;
         background-color: #cfe6da;
       }
 
