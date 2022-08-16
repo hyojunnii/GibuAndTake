@@ -28,6 +28,7 @@
 		margin: 0 0 0 0;
         margin-top: 20px;
 	}
+	
 	#category a {
 		margin: 0 0 0 20px;
 	}
@@ -45,6 +46,7 @@
 		margin: auto;
 		margin-bottom: 5px;
 	}
+
 	th {
 		text-align: left;
 		width: 20%;

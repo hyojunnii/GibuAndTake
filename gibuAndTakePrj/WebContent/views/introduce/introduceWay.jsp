@@ -61,7 +61,7 @@
     <div id="body">
 
         <div id="category">
-            <a>후원 결제 방법</a>
+            <a>기부앤테이크에 함께하는 방법</a>
         </div>
         <!--
             이미지 다 3번 형식으로 바꿀 예정
@@ -69,7 +69,7 @@
         <h2>1 기부하기</h2>
         <div id="img-area">
             <div class="img">
-                <img src="../../resources/img/testImg01.png" alt="기부 방법 이미지">
+                <img src="/gibuAndTakePrj/resources/img/testImg01.png" alt="기부 방법 이미지">
                 <div class="text">
                 1. 기부하고 싶은 프로젝트를 선택한다. <br>
                 2. 기부하기를 누른다. <br>
@@ -84,7 +84,7 @@
 
             <h2>2 펀딩하기</h2>
             <div class="img">
-                <img src="../../resources/img/testImg01.png" alt="펀딩 방법 이미지">
+                <img src="/gibuAndTakePrj/resources/img/testImg01.png" alt="펀딩 방법 이미지">
                 <div class="text">
                 1. 펀딩에 참여하고 싶은 프로젝트를 선택한다. <br>
                 2. 펀딩할 물품을 고르고 결제한다. <br>
@@ -98,7 +98,7 @@
 
             <h2> 3 캠페인 참여하기</h2>
             <div class="img">
-                <img src="../../resources/img/testImg01.png" alt="캠페인 참여 방법 이미지">
+                <img src="/gibuAndTakePrj/resources/img/testImg01.png" alt="캠페인 참여 방법 이미지">
                 <div class="text">
                 1. 참여하고 싶은 캠페인을 선택한다. <br>
                 2. 각 캠페인의 인증 방법을 읽는다. <br>

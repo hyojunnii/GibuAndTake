@@ -93,7 +93,7 @@
     
         <div id="account">
            <div id="img-area">
-                <img src="../../resources/img/do-not-use-this-image-g43f0f0b51_640.jpg" alt="" id="img1">
+                <img src="/gibuAndTakePrj/resources/img/do-not-use-this-image-g43f0f0b51_640.jpg" alt="" id="img1">
            </div>
             <div id="text">
                 <a>기부 참여 실천</a>
@@ -106,7 +106,7 @@
         </div>
         
         <div class="big">
-            기부에 대한 인식 변화
+            기부를 통한 세상의 변화
         </div>
         <div class="small">
             줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~
@@ -118,13 +118,13 @@
             줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~
         </div>
         <div class="big">
-            기부에 대한 인식 변화
+            기부 기준의 변화
         </div>
         <div class="small">
             줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~줄글로 된 설명~~~~~~~~~~~~~~
         </div>
     
-        <img src="../../resources/img/history.png" alt="" id="img2">
+        <img src="/gibuAndTakePrj/resources/img/history.png" alt="" id="img2">
 
     </div>
 

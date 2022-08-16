@@ -6,9 +6,18 @@
 <meta charset="UTF-8">
 <title>기부금 영수증 출력</title>
 <style>
+
+    #nav{
+		display: flex;
+	}
+
     #body {
         width: 1200px;
         margin: 0 auto;
+    }
+
+    #res {
+        width: 1000px;
     }
 
     #top-outer{
@@ -139,145 +148,149 @@
     <%@include file="/views/common/header.jsp" %>
 
     <div id="body">
+        <div id="nav">
+            <div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
+            <div id="res">
+                <div id="top-outer">
+                    <div id="no">
+                        <div class="no">일련번호</div>
+                        <div class="no">11-111</div>
+                    </div>
+                
+                    <div id="title">기 부 금  영 수 증</div>
+                
+                    <a id="print">출력하기</a>
+                </div>
         
-        <div id="top-outer">
-            <div id="no">
-                <div class="no">일련번호</div>
-                <div class="no">11-111</div>
+        
+                <table>
+                    <tr id="first">
+                        <td colspan="7">1 기부자</td>
+                    </tr>
+                    <tr>
+                        <th>성명(법인명)</td>
+                        <td colspan="2">홍길동(더미데이터)</td>
+                        <th  colspan="2">주민등록번호</td>
+                        <td colspan="2">990909-1999999</td>
+                    </tr>
+                    <tr>
+                        <th>주소(소재지)</th>
+                        <td colspan="6"></td>
+                    </tr>
+                </table>
+                <table id="second">
+                    <tr>
+                        <td colspan="7">2 기부금 단체</td>
+                    </tr>
+                    <tr>
+                        <th>단체명</td>
+                        <td colspan="2">기부앤테이크짱짱</td>
+                        <th colspan="2">사업자등록번호</td>
+                        <td colspan="2">444-55-6666</td>
+                    </tr>
+                    <tr>
+                        <th>소재지</td>
+                        <td colspan="2">기부시 앤드구 테이크짱동</td>
+                        <th colspan="2">기부금공공제대상<br>
+                        공익법인등 근거법령</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            
+                <table id="third">
+                    <tr>
+                        <td colspan="7">3 기부금 모집처</td>
+                    </tr>
+                    <tr>
+                        <th>단체명</td>
+                        <td colspan="2">기부 앤 테이크</td>
+                        <th colspan="2">사업자등록번호</td>
+                        <td colspan="2">111-22-3333</td>
+                    </tr>
+                    <tr>
+                        <th>주소(소재지)</th>
+                        <td colspan="6">기부시 앤구 테이크동</td>
+                    </tr>
+                </table>
+            
+                <table id="fourth">
+                    <tr>
+                        <td colspan="7">4 기부 내용</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">코드</th>
+                        <th rowspan="2">구분<br>
+                        (금전 또는 현물)</th>
+                        <th rowspan="2">연월일</th>
+                        <th colspan="3">내용</th>
+                        <th rowspan="2">금액</th>
+                    </tr>
+                    <tr>
+                        <th>품명</th>
+                        <th>수량</th>
+                        <th>단가</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                </table>
+            
+                <hr>
+            
+                <div class="text">
+                    「소득세법」제34조,「조세특례제한법」제76조·제88조의4 및 「법인세법」제24조에 따른 기부금을 위와 같이 기부하였음을 증명하여 주시기 바랍니다.
+                </div>
+                <div class="date">
+                    2022년 08월 05일
+                </div>
+                <div class="name">
+                    신청인
+                </div>
+                <div class="sign">
+                    (서명 또는 인)
+                </div>
+                
+                <hr>
+            
+                <div class="text">
+                    위와 같이 기부금을 기부받았음을 증명합니다.
+                </div>
+                <div class="date">
+                    2022년 08월 05일
+                </div>
+                <div class="name">
+                    기부금 수령인
+                </div>
+                <div class="sign">
+                    (서명 또는 인)
+                </div>
+            
+                <hr>
             </div>
-        
-            <div id="title">기 부 금  영 수 증</div>
-        
-            <a id="print">출력하기</a>
         </div>
-
-
-        <table>
-            <tr id="first">
-                <td colspan="7">1 기부자</td>
-            </tr>
-            <tr>
-                <th>성명(법인명)</td>
-                <td colspan="2">홍길동(더미데이터)</td>
-                <th  colspan="2">주민등록번호</td>
-                <td colspan="2">990909-1999999</td>
-            </tr>
-            <tr>
-                <th>주소(소재지)</th>
-                <td colspan="6"></td>
-            </tr>
-        </table>
-        <table id="second">
-            <tr>
-                <td colspan="7">2 기부금 단체</td>
-            </tr>
-            <tr>
-                <th>단체명</td>
-                <td colspan="2">기부앤테이크짱짱</td>
-                <th colspan="2">사업자등록번호</td>
-                <td colspan="2">444-55-6666</td>
-            </tr>
-            <tr>
-                <th>소재지</td>
-                <td colspan="2">기부시 앤드구 테이크짱동</td>
-                <th colspan="2">기부금공공제대상<br>
-                공익법인등 근거법령</td>
-                <td colspan="2"></td>
-            </tr>
-        </table>
-    
-        <table id="third">
-            <tr>
-                <td colspan="7">3 기부금 모집처</td>
-            </tr>
-            <tr>
-                <th>단체명</td>
-                <td colspan="2">기부 앤 테이크</td>
-                <th colspan="2">사업자등록번호</td>
-                <td colspan="2">111-22-3333</td>
-            </tr>
-            <tr>
-                <th>주소(소재지)</th>
-                <td colspan="6">기부시 앤구 테이크동</td>
-            </tr>
-        </table>
-    
-        <table id="fourth">
-            <tr>
-                <td colspan="7">4 기부 내용</td>
-            </tr>
-            <tr>
-                <th rowspan="2">코드</th>
-                <th rowspan="2">구분<br>
-                (금전 또는 현물)</th>
-                <th rowspan="2">연월일</th>
-                <th colspan="3">내용</th>
-                <th rowspan="2">금액</th>
-            </tr>
-            <tr>
-                <th>품명</th>
-                <th>수량</th>
-                <th>단가</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-        </table>
-    
-        <hr>
-    
-        <div class="text">
-            「소득세법」제34조,「조세특례제한법」제76조·제88조의4 및 「법인세법」제24조에 따른 기부금을 위와 같이 기부하였음을 증명하여 주시기 바랍니다.
-        </div>
-        <div class="date">
-            2022년 08월 05일
-        </div>
-        <div class="name">
-            신청인
-        </div>
-        <div class="sign">
-            (서명 또는 인)
-        </div>
-        
-        <hr>
-    
-        <div class="text">
-            위와 같이 기부금을 기부받았음을 증명합니다.
-        </div>
-        <div class="date">
-            2022년 08월 05일
-        </div>
-        <div class="name">
-            기부금 수령인
-        </div>
-        <div class="sign">
-            (서명 또는 인)
-        </div>
-    
-        <hr>
 
     </div>
     
