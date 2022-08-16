@@ -123,17 +123,17 @@
           <img src="../../resources/img/free-icon-donation-2904948.png" />
           <div class="apply-subtitle">기부</div>
           <!-- 버튼 태그 나중에 경로 안보이게 수정 -->
-          <button class="button"><a href="donationApplyForm.jsp">신청하기</a></button>
+          <button class="button"><a href="<%=request.getContextPath()%>/pm/apply/donation">신청하기</a></button>
         </div>
         <div class="apply">
           <img src="../../resources/img/free-icon-donation-3208275.png" />
           <div class="apply-subtitle">펀딩</div>
-          <button class="button"><a href="fundingApplyForm.jsp">신청하기</a></button>
+          <button class="button"><a href="<%=request.getContextPath()%>/pm/apply/funding">신청하기</a></button>
         </div>
         <div class="apply">
           <img src="../../resources/img/premium-icon-donation-3843326.png" />
           <div class="apply-subtitle">캠페인</div>
-          <button class="button"><a href="campaignApplyForm.jsp">신청하기</a></button>
+          <button class="button"><a href="<%=request.getContextPath()%>/pm/apply/campaign">신청하기</a></button>
         </div>
       </div>
     </div>
