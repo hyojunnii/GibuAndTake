@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>기업 명세서 수정</title>
 <style>
+
+	#nav{
+		display: flex;
+	}
+
     #body {
         width: 1200px;
 		height: 1000px;
@@ -25,6 +30,10 @@
 	}
 	#category a {
 		margin: 0 0 0 20px;
+	}
+
+	form {
+		width: 1200px;
 	}
 
     table {
@@ -146,51 +155,56 @@
 		<div id="category">
 			<a>기업 명세서 수정</a>
 		</div>
-	
-		<form action="/gibuAndTakePrj/member/stmtList" method="get">
-	
-			<table id="first">
-				<div id="outer">
-					<div id="title">진행한 기부 프로그램 이름</div>
-					<div id="do_t">기부금 집행 내역 수정하기</div>
-				</div>
-				<tr>
-					<th>집행기간</th>
-					<td colspan="2">2022년 7월 5일~2022년 8월 5일</td>
-				</tr>
-				<tr>
-					<th>총 모금 금액</th>
-					<td colspan="2"><span class="total">3,000,000원</span>(목표금액 3,000,000원)</td>
-				</tr>
-				<tr>
-					<th>사업 분야</th>
-					<td colspan="2">취약계층 아동·청소년</td>
-				</tr>
-			</table>
-			<table id="second">
-				<div id="col-outer">
-					<div id="col-p">+</div>
-					<div id="col-m">-</div>
-				</div>
-				<thead>
+		<div id="nav">
+			<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
+
+			<form action="/gibuAndTakePrj/member/stmtList" method="get">
+		
+				<table id="first">
+					<div id="outer">
+						<div id="title">진행한 기부 프로그램 이름</div>
+						<div id="do_t">기부금 집행 내역 수정하기</div>
+					</div>
 					<tr>
-						<th>총 집행 금액</th>
+						<th>집행기간</th>
+						<td colspan="2">2022년 7월 5일~2022년 8월 5일</td>
+					</tr>
+					<tr>
+						<th>총 모금 금액</th>
 						<td colspan="2"><span class="total">3,000,000원</span>(목표금액 3,000,000원)</td>
 					</tr>
-				</thead>
-				<tbody>
 					<tr>
-						<th>사업비</th>
-						<td colspan="2" class="input-col">
-							<input type="text" size="40" placeholder=" 사용 내역을 등록해주세요.">
-							<input type="text" placeholder=" 금액을 등록해주세요.">
-						</td>
+						<th>사업 분야</th>
+						<td colspan="2">취약계층 아동·청소년</td>
 					</tr>
-			</table>
-			<div id="re-outer">
-				<input type="submit" value="수정">
-			</div>
-		</form>
+				</table>
+				<table id="second">
+					<div id="col-outer">
+						<div id="col-p">+</div>
+						<div id="col-m">-</div>
+					</div>
+					<thead>
+						<tr>
+							<th>총 집행 금액</th>
+							<td colspan="2"><span class="total">3,000,000원</span>(목표금액 3,000,000원)</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>사업비</th>
+							<td colspan="2" class="input-col">
+								<input type="text" size="40" placeholder=" 사용 내역을 등록해주세요.">
+								<input type="text" placeholder=" 금액을 등록해주세요.">
+							</td>
+						</tr>
+				</table>
+				<div id="re-outer">
+					<input type="submit" value="수정">
+				</div>
+			</form>
+
+
+		</div>
 	</div>
 
 	<%@include file="/views/common/footer.jsp" %>
