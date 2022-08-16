@@ -168,11 +168,11 @@
 	                    <td><button type="button" id="login" onclick="location.href='/gibuAndTakePrj/member/login'">로그인</button></td>
 	                </tr>
                    <tr id="alink">
-                    <td><a href=""  class="log">일반 회원가입 |</a></td>
-                    <td><a href="" class="log"> &nbsp;기업 회원가입</a></td>
+                    <td><a onclick="location.href='/gibuAndTakePrj/member/Join'"  class="log">일반 회원가입 |</a></td>
+                    <td><a onclick="location.href='/gibuAndTakePrj/corp/corpJoin'"  class="log"> &nbsp;기업 회원가입</a></td>
                     <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> 
-                    <td><a href="" class="log">아이디 찾기 |</a></td>
-                    <td><a href="" class="log"> &nbsp;비밀번호 찾기</a></td>
+                    <td><a href="/views/member/IdSearch" class="log">아이디 찾기 |</a></td>
+                    <td><a href="/views/member/PWdSearch" class="log"> &nbsp;비밀번호 찾기</a></td>
                     </tr>
                 </table>
                 </div>
