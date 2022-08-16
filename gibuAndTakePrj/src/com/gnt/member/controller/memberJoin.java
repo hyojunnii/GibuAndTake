@@ -14,7 +14,7 @@ public class memberJoin extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("테스트 테스트");
+		
 		req.getRequestDispatcher("/views/member/memberJoin.jsp").forward(req, resp);
 	}
 }

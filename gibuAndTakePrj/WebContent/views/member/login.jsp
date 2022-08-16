@@ -74,7 +74,9 @@
         
     }
     
-     
+      .selected_bg{
+        background-color: #EBF5E0;
+    }
     
      .greenBold{
         color: #086C37;
@@ -102,7 +104,11 @@
         border-style: solid ;
     	border-color: #acdac2;
     }
-
+	
+	  .selected_bg{
+        background-color: #EBF5E0;
+    }
+    
     #login {
         text-align: center;
         width: 260px;
@@ -153,11 +159,11 @@
             <div id ="square">
                 <table id= "loginInfo">
                     <div id="logo_name">
-           			<a href="<%=request.getContextPath()%>">
-                	<img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
-                	<span id="siteName"><span class="greenBold selected_bg" style=" background-color: #EBF5E0;">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
-            		</a>
-            		</div>
+           			 <a href="<%=request.getContextPath()%>">
+                    <img id="logo" src="/gibuAndTakePrj/resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
+                    <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
+               		 </a>
+          			 </div>
 	                <tr>
 	                    <td colspan="4"><input type="text" name="memberId" id="ID" placeholder="아이디"></td>
 	                </tr>
@@ -171,8 +177,8 @@
                     <td><a onclick="location.href='/gibuAndTakePrj/member/Join'"  class="log">일반 회원가입 |</a></td>
                     <td><a onclick="location.href='/gibuAndTakePrj/corp/corpJoin'"  class="log"> &nbsp;기업 회원가입</a></td>
                     <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> 
-                    <td><a href="/views/member/IdSearch" class="log">아이디 찾기 |</a></td>
-                    <td><a href="/views/member/PWdSearch" class="log"> &nbsp;비밀번호 찾기</a></td>
+                    <td><a onclick="location.href='/gibuAndTakePrj/IdFound/idSearch'"class="log">아이디 찾기 |</a></td>
+                    <td><a onclick="location.href='/gibuAndTakePrj/PwdSearch/pwdSearch'"> &nbsp;비밀번호 찾기</a></td>
                     </tr>
                 </table>
                 </div>

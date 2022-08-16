@@ -64,7 +64,9 @@
         
     }
     
-     
+     .selected_bg{
+     background-color: #EBF5E0;
+    }
     
      .greenBold{
         color: #086C37;
@@ -205,13 +207,13 @@
 	
 	
 	<main>
-		   <div id="corpUpEvery">
-		  <div id="logo_name">
-           	<a href="<%=request.getContextPath()%>">
-            <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
-            <span id="siteName"><span class="greenBold selected_bg" style=" background-color: #EBF5E0;">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
-            </a>
-           </div>
+		<div id="corpUpEvery">
+		 		<div id="logo_name">
+           			 <a href="<%=request.getContextPath()%>">
+                    <img id="logo" src="/gibuAndTakePrj/resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
+                    <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
+               		 </a>
+          		</div>
 		
 		<div class="corpUpWrap">
 		<div id="line"></div>

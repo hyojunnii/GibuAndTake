@@ -56,7 +56,9 @@
         
     }
     
-     
+      .selected_bg{
+        background-color: #EBF5E0;
+    }
     
      .greenBold{
         color: #086C37;
@@ -193,10 +195,10 @@
 	
 		  <div id="every">
 		  <div id="logo_name">
-           	<a href="<%=request.getContextPath()%>">
-            <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
-            <span id="siteName"><span class="greenBold selected_bg" style=" background-color: #EBF5E0;">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
-            </a>
+           	 <a href="<%=request.getContextPath()%>">
+                    <img id="logo" src="/gibuAndTakePrj/resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
+                    <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
+                </a>
            </div>
 		
 		<div id="line"></div>
@@ -206,7 +208,7 @@
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</span></td>
 					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" onkeydown="inputIdchk()" >
-					<td><input type="button" id="check_button" value="중복확인" onclick="openIdChk()">
+					<td><input type="button" id="check_button" value="중복확인" onclick="openIdChk()" >
 						<input type="hidden" name="idDuplication" value="idUncheck"><td>
 						
 					</td>
@@ -256,7 +258,7 @@
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr>
 					<td  style="font-weight: bold"></td>
-					<td><button type="button" id="join" onclick="location.href='/gibuAndTakePrj/views/member/login.jsp'">가입하기</button></td>
+					<td><button type="button" id="join" onclick="location.href='/gibuAndTakePrj/login'">가입하기</button></td>
 					<td></td>
 				</tr>
 

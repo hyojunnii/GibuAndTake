@@ -329,7 +329,7 @@
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr>
 					<td  style="font-weight: bold"></td>
-					<td><button type="button" id="join" onclick="location.href=''">가입하기</button></td>
+					<td><button type="button" id="join" onclick="location.href='/gibuAndTakePrj/login'">가입하기</button></td>
 					<td></td>
 				</tr>
 
