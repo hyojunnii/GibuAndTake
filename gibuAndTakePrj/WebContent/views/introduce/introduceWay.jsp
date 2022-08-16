@@ -79,7 +79,7 @@
             </div>
 
             <div class="btn-area">
-                <a href="">기부하러 가기</a>
+                <a href="<%=path %>/view/gibu">기부하러 가기</a>
             </div>
 
             <h2>2 펀딩하기</h2>
@@ -93,7 +93,7 @@
             </div>
 
             <div class="btn-area">
-                <a href="">펀딩하러 가기</a>
+                <a href="<%=path %>/view/funding">펀딩하러 가기</a>
             </div>
 
             <h2> 3 캠페인 참여하기</h2>
@@ -108,7 +108,7 @@
             </div>
 
             <div class="btn-area">
-                <a href="">캠페인 참여하러 가기</a>
+                <a href="<%=path %>/view/campaign">캠페인 참여하러 가기</a>
             </div> 
         </div>
 

@@ -224,7 +224,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="funding_btn_cover">
-                            <a href=""  class="funding_btn_container">
+                            <a href="<%=path %>/funding/pay"  class="funding_btn_container">
                                 <div>
                                     펀딩 참여하기
                                 </div>

@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	String path = request.getContextPath();
+    %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+  <link rel="shortcut icon" type="image/x-icon" href="resources/img/free-icon-giving-5017478.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
@@ -147,17 +151,17 @@
             <div id="top_menu" class="">
                 <nav>
                     <span>
-                        <a href="" class="top_menu_click">소개</a>
-                        <a href="" class="top_menu_click">기부</a>
-                        <a href="" class="top_menu_click">펀딩</a>
-                        <a href="" class="top_menu_click">캠페인</a>
+                        <a href="<%=path %>/introduce/site" class="top_menu_click">소개</a>
+                        <a href="<%=path %>/view/gibu" class="top_menu_click">기부</a>
+                        <a href="<%=path %>/view/funding" class="top_menu_click">펀딩</a>
+                        <a href="<%=path %>/view/campaign" class="top_menu_click">캠페인</a>
                         <a href="<%=request.getContextPath()%>/story" class="top_menu_click">스토리</a>
                     </span>
                 </nav>
             </div>
             <div id="login_serch" class="">
                 <a href=""><span id="login">로그인</span></a>
-                <a href=""><img id="serch_icon" src="/gibuAndTakePrj/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
+                <a href="<%=path %>/search"><img id="serch_icon" src="/gibuAndTakePrj/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
             </div>
         </div>
     </header>

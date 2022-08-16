@@ -238,7 +238,7 @@
       <div id="funding">
         <div id="funding-header">
           <h5>펀딩인데 좀 있어보이는 말이 뭐가 있을까요</h5>
-          <a href="">더보기 &gt;</a>
+          <a href="<%=path%>/view/funding">더보기 &gt;</a>
         </div>
         <div id="funding-content">
           <div class="card f-content" style="width: 20%">
