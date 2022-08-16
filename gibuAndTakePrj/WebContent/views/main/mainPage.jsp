@@ -113,7 +113,7 @@
       }
 
       #info-outer {
-        background-color: #8bdcb1;
+        background-color: #b3e0c9;
         padding: 20px 10%;
         height: 170px;
         display: flex;
@@ -194,7 +194,7 @@
             <div class="carousel-item active content-outer">
               <div class="content-header">
                 <span>기부 카테고리</span>
-                <h3>23글자정도까지만 제대로 보입니다 (여기까지)</h3>
+                <h3>제목입니다 제목입니다</h3>
                 <br />
                 <h6>기부앤테이크 단체명</h6>
               </div>
@@ -205,9 +205,9 @@
             <div class="carousel-item content-outer">
               <div class="content-header">
                 <span>기부 카테고리</span>
-                <h3>23글자 안넘을거같긴한데</h3>
+                <h3>제목입니다 제목입니다</h3>
                 <br />
-                <h6>단체명명명</h6>
+                <h6>기부앤테이크 단체명</h6>
               </div>
               <div class="content-img">
                 <img src="resources/img/testImg01.png" class="right img-fluid" alt="..." />
@@ -216,9 +216,9 @@
             <div class="carousel-item content-outer">
               <div class="content-header">
                 <span>기부 카테고리</span>
-                <h3>줄 넘어가게 바꿀수있으신분은 바꿔주세욘</h3>
+                <h3>제목입니다 제목입니다</h3>
                 <br />
-                <h6>화면 넘어가는거 때문에 그냥 포기했습니다 flex가 안먹혀여</h6>
+                <h6>기부앤테이크 단체명</h6>
               </div>
               <div class="content-img">
                 <img src="resources/img/testImg01.png" class="right img-fluid" alt="..." />
@@ -254,7 +254,7 @@
           <div class="card f-content" style="width: 20%">
             <img src="resources/img/testImg01.png" class="card-img-top" />
             <div class="card-body">
-              <div class="card-title progress-title">여기도 하나라도 줄 다르면 이상해져요</div>
+              <div class="card-title progress-title">펀딩제목제목제목제목제목제목제목제목</div>
               <div class="progress-money">1,100,000원</div>
               <div class="progress" style="height: 5px; width: 58%">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 5px"></div>
@@ -264,7 +264,7 @@
           <div class="card f-content" style="width: 20%">
             <img src="resources/img/testImg01.png" class="card-img-top" />
             <div class="card-body">
-              <div class="card-title progress-title">근데 제목을 짧지도 길지도 않게 쓰면 될거같아요</div>
+              <div class="card-title progress-title">펀딩제목제목제목제목제목제목제목제목</div>
               <div class="progress-money">1,100,000원</div>
               <div class="progress" style="height: 5px; width: 58%">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 5px"></div>
@@ -274,7 +274,7 @@
           <div class="card f-content" style="width: 20%">
             <img src="resources/img/testImg01.png" class="card-img-top" />
             <div class="card-body">
-              <div class="card-title progress-title">제목 길이 대충 정해두던가..</div>
+              <div class="card-title progress-title">펀딩제목제목제목제목제목제목제목제목</div>
               <div class="progress-money">1,100,000원</div>
               <div class="progress" style="height: 5px; width: 58%">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 5px"></div>
@@ -315,14 +315,14 @@
           <figure class="figure">
             <img src="resources/img/testImg01.png" class="figure-img img-fluid rounded" alt="..." />
             <div id="campaign-content-info">
-              <figcaption class="figure-caption" style="color: #000000">캠페인제목입니다 여기도 마찬가지</figcaption>
+              <figcaption class="figure-caption" style="color: #000000">캠페인제목입니다</figcaption>
               <figcaption class="figure-caption">진행자명</figcaption>
             </div>
           </figure>
           <figure class="figure">
             <img src="resources/img/testImg01.png" class="figure-img img-fluid rounded" alt="..." />
             <div id="campaign-content-info">
-              <figcaption class="figure-caption" style="color: #000000">어떻게 할수있을거같기도한데 안하고싶어요</figcaption>
+              <figcaption class="figure-caption" style="color: #000000">캠페인제목입니다</figcaption>
               <figcaption class="figure-caption">진행자명</figcaption>
             </div>
           </figure>
