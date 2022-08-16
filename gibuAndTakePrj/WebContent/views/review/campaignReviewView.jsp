@@ -110,7 +110,7 @@
 <%@include file="/views/common/header.jsp" %>
 
     <section>
-        <form action="" method="post">
+        <form action="<%=request.getContextPath()%>/review/update" method="get">
         <div id="review_detail_wrap">
             <div class="review_detail_header">
                 <strong class="review_header_title">후기제목</strong>
@@ -144,7 +144,7 @@
                 </div>
                 <div id="review_detail_footer_btn">
                     <input type="submit" value="수정하기" class="review_detail_btn">
-                    <input type="submit" value="삭제하기" class="review_detail_btn"> 
+                    <input type="submit" value="삭제하기" class="review_detail_btn" onclick="btnDelete();"> 
                 </div>
             </div>
         </div>
@@ -154,5 +154,15 @@
 
 
 <%@include file="/views/common/footer.jsp" %>
+
+<script>
+function btnDelete(){
+	const YN = confirm("정말 삭제하시겠습니까?");
+    if(YN){
+        document.querySelector('form').setAttribute("action", "<%=request.getContextPath()%>/review/delete");
+    }
+}
+</script>
+
 </body>
 </html>
