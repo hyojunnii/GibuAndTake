@@ -1,4 +1,4 @@
-package com.gnt.pmEdit.controller;
+package com.kh.main.controller;
 
 import java.io.IOException;
 
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/pm/edit/campaign")
-public class CampaignEditController extends HttpServlet{
+@WebServlet(urlPatterns = "/main")
+public class MainPageController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/views/pm/campaignEditForm.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/main/mainPage.jsp").forward(req, resp);
 	}
 }

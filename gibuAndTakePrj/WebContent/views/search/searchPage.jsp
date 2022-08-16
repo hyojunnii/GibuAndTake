@@ -190,7 +190,7 @@
           <option value="3">캠페인</option>
         </select>
         <input name="" type="text" class="form-control search-bar" placeholder="검색어를 입력하세요." />
-        <button id="search-icon"><img src="resources/img/free-icon-search-7233469.png" /></button>
+        <button id="search-icon"><img src="../../resources/img/free-icon-search-7233469.png" /></button>
       </div>
       <div id="category-search-outer">
         <div class="category-search-title"><h6>주제별 찾기</h6></div>
@@ -231,7 +231,7 @@
         <div id="searched-content-body">
           <div class="contents">
             <div class="content-info">
-              <img src="resources/img/premium-icon-donation-3843326.png" />
+              <img src="../../resources/img/premium-icon-donation-3843326.png" />
               <div class="content-info-title">
                 <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
                 <span>단체명</span>
@@ -247,7 +247,7 @@
           </div>
           <div class="contents">
             <div class="content-info">
-              <img src="resources/img/premium-icon-donation-3843326.png" />
+              <img src="../../resources/img/premium-icon-donation-3843326.png" />
               <div class="content-info-title">
                 <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
                 <span>단체명</span>
@@ -263,7 +263,7 @@
           </div>
           <div class="contents">
             <div class="content-info">
-              <img src="resources/img/premium-icon-donation-3843326.png" />
+              <img src="../../resources/img/premium-icon-donation-3843326.png" />
               <div class="content-info-title">
                 <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
                 <span>단체명</span>
