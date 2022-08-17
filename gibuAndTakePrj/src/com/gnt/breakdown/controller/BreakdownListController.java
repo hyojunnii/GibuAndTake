@@ -14,4 +14,5 @@ public class BreakdownListController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/views/user2/donationBreakdownList.jsp").forward(req, resp);
 	}
+	
 }

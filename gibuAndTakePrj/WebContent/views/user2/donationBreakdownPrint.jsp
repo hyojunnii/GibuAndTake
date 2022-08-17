@@ -43,13 +43,19 @@
         border: 1px solid gray;
     }
 
-    #print {
+    #btn-outer {
+        width: 200px;
+        display: flex;
+    }
+
+    #print, #back {
 		background-color: #8bdcb1;
 		border: none;
 		border-radius: 25px;
 		color: #2e6c4a;
-		width: 150px;
+		width: 100px;
         height: 40px;
+        margin: 5px;
         
         justify-content: center;
         align-items: center;
@@ -140,6 +146,9 @@
         color: lightgray;
     }
     
+    a {
+        cursor: pointer;
+    }
 
 </style>
 </head>
@@ -158,8 +167,10 @@
                     </div>
                 
                     <div id="title">기 부 금  영 수 증</div>
-                
-                    <a id="print">출력하기</a>
+                    <div id="btn-outer">
+                        <a id="print">출력하기</a>
+                        <a id="back" onclick="history.back()">돌아가기</a>
+                    </div>
                 </div>
         
         

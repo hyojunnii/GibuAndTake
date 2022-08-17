@@ -132,6 +132,7 @@
         margin: 5px;
         text-align: center;
         line-height: 25px;
+		cursor: pointer;
     }
 
     #second tbody td {
@@ -148,6 +149,15 @@
 		justify-content: space-between;
 		border: none;
 	}
+
+	a {
+        cursor: pointer;
+    }
+
+	input[type=submit]{
+		cursor: pointer;
+	}
+
 </style>
 </head>
 <body>
@@ -158,9 +168,9 @@
 			<a>기업 명세서 수정</a>
 		</div>
 		<div id="nav">
-			<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
+			<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
 
-			<form action="/gibuAndTakePrj/member/stmtList" method="get">
+			<form action="/gibuAndTakePrj/corp/stmtList" method="post">
 		
 				<table id="first">
 					<div id="outer">
