@@ -16,6 +16,15 @@
         width: 1200px;
         margin: 0 auto;
       }
+      
+      a {
+      	text-decoration:none;
+      	color: #000000;
+      }
+      
+      a:hover {
+      	color: #123c25;
+      }
 
       .right {
         float: right;
@@ -288,7 +297,7 @@
           <img src="resources/img/free-icon-giving-5017478.png" class="img-fluid" />
         </div>
         <div id="info-content">
-          <h3>오늘의 참여현황</h3>
+          <h3><a href="<%=path%>/story">오늘의 참여현황</a></h3>
           <p>오늘의 마음이 이만큼 모였어요</p>
           <span>2022.08.14</span>
         </div>
@@ -310,7 +319,7 @@
         </div>
       </div>
       <div id="campaign">
-        <h5 align="center">함께 행동해요 (?) 오늘의 행동 (?)</h5>
+        <h5 align="center"><a href="<%=path %>/view/campaign">함께 행동해요 (?) 오늘의 행동 (?)</a></h5>
         <div id="campaign-content">
           <figure class="figure">
             <img src="resources/img/testImg01.png" class="figure-img img-fluid rounded" alt="..." />
