@@ -216,6 +216,12 @@
 	#modal-sign {
 		font-size: 20px;
 	}
+
+	a {
+        cursor: pointer;
+    }
+
+
 </style>
 </head>
 <body>
@@ -230,7 +236,7 @@
 		<div id="nav">
 			<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
 			
-			<form action="<%=contextPath%>/member/breakPrint" method="get">
+			<form action="<%=contextPath%>/member/breakPrint" method="post">
 				<table id="body-table">
 					<thead>
 						<tr>

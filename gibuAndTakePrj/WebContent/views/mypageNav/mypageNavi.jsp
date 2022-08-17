@@ -190,7 +190,7 @@
 			<li><a onclick="location.href='/gibuAndTakePrj/member/MemberCamp'" id="camp" style="font-size: 12px" >캠페인</a></li>
 			<div id="middleLine"></div>
 			<li><a href="#" id="payment"  style="font-weight:bold">결제 내역</a></li>
-			<li><a href="#" id="donament" style="font-weight:bold">기부 내역</a></li>
+			<li><a onclick="location.href='/gibuAndTakePrj/member/breakList'" id="donament" style="font-weight:bold">기부 내역</a></li>
 		</ul>
 		
 	</div>	

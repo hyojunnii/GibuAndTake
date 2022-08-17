@@ -113,7 +113,10 @@
 		border: 1px dashed #8bdcb1;
 	}
 
-
+	a, input[type=submit] {
+        cursor: pointer;
+    }
+	
 </style>
 </head>
 <body>
@@ -125,13 +128,13 @@
 		</div>
 		
 		<div id="nav">
-			<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
+			<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
 
-			<form action="/gibuAndTakePrj/member/stmtRe" method="get">
+			<form action="/gibuAndTakePrj/corp/stmtRe" method="get">
 				<table id="first">
 					<div id="outer">
 						<div id="title">진행한 기부 프로그램 이름</div>
-						<input type="submit" value="수정">
+						<input type="submit" value="수정하기">
 						
 						<div id="do_t">기부금 집행 내역 |</div>
 						<div id="do_ex">기부금이 어떻게 사용되었는지 등록해주세요.</div>
