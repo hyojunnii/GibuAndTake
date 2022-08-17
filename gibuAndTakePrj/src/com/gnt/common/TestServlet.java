@@ -1,4 +1,4 @@
-package com.kh.common;
+package com.gnt.common;
 
 import java.io.IOException;
 
