@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 
-   		#leftNav{
+   		#leftcorpNav{
    			width:300px;
    			background-color: white;
    			border-right:2px solid #acdac2;
@@ -18,7 +18,7 @@
    		
    		
    		
-   		#home{
+   		#corphome{
    			height:10px ;
    			line-height:30px;
    			display:block ;
@@ -31,11 +31,11 @@
    			text-align: center ;
    		}
    		
-   		#home:hover{
+   		#corphome:hover{
    			color:#64D498;
    			}
    		
-   		#memberInfor{
+   		#corpInfor{
    			height:10px ;
    			line-height:30px;
    			display:block ;
@@ -48,11 +48,11 @@
    			text-align: center ;
    		}
    		
-   		#memberInfor:hover{
+   		#corpInfor:hover{
    			color:#64D498;
    			}
    			
-   		#Active{
+   		#corpActive{
    			height:10px ;
    			line-height:30px;
    			display:block ;
@@ -65,10 +65,10 @@
    			text-align: center ;
    		}
    		
-   		#Active:hover{
+   		#corpActive:hover{
    			color:#64D498;
    			}
-   		#dona{
+   		#corpdona{
    			height:10px ;
    			line-height:30px;
    			display:block ;
@@ -81,10 +81,10 @@
    			text-align: center ;
    		}
    		
-   		#dona:hover{
+   		#corpdona:hover{
    			color:#64D498;
    			}
-   		#funding-menu{
+   		#corpfunding-menu{
    			height:10px ;
    			line-height:30px;
    			display:block ;
@@ -97,10 +97,10 @@
    			text-align: center ;
    		}
    		
-   		#funding-menu:hover{
+   		#corpfunding-menu:hover{
    			color:#64D498;
    			}
-   		#camp{
+   		#corpcamp{
    			height:10px ;
    			line-height:30px;
    			display:block ;
@@ -113,10 +113,10 @@
    			text-align: center ;
    		}
    		
-   		#camp:hover{
+   		#corpcamp:hover{
    			color:#64D498;
    			}
-   		#payment{
+   		#corppayment{
    			height:10px ;
    			line-height:30px;
    			display:block ;
@@ -129,11 +129,11 @@
    			text-align: center ;
    		}
    		
-   		#payment:hover{
+   		#corppayment:hover{
    			color:#64D498;
    			}
    		
-   		#donament{
+   		#corpdonament{
    			height:10px ;
    			line-height:30px;
    			display:block ;
@@ -147,7 +147,7 @@
    		}
    		
    		
-   		#donament:hover{
+   		#corpdonament:hover{
    			color:#64D498;
    			}
    		
@@ -163,7 +163,7 @@
    		}
    		
    		
-   		.menu{
+   		.corpmenu{
    			 list-style:none;
    			 
    		}
@@ -178,19 +178,19 @@
 	
 	
 	
-	<div id="leftNav">
-		<ul class="menu">
-			<li><a onclick="location.href='/gibuAndTakePrj/member/MyPage'" id="home" style="font-weight:bold">MY 홈</a></li>
+	<div id="leftcorpNav">
+		<ul class="corpmenu">
+			<li><a onclick="location.href='/gibuAndTakePrj/corp/corpMyPage'" id="corphome" style="font-weight:bold">MY 홈</a></li>
 			<div id="middleLine"></div>
-			<li><a onclick="location.href='/gibuAndTakePrj/member/MemberInfo'" id="memberInfor"  style="font-weight:bold">회원정보</a></li>
+			<li><a onclick="location.href='/gibuAndTakePrj/corp/corpInfo'" id="corpInfor"  style="font-weight:bold">회원정보</a></li>
 			<div id="middleLine"></div>
-			<li><a href="#" id="Active"  style="font-weight:bold">활동내역</a></li>
-			<li><a onclick="location.href='/gibuAndTakePrj/member/MemberGibu'" id="dona" style="font-size: 12px">기부</a></li>
-			<li><a onclick="location.href='/gibuAndTakePrj/member/MemberFunding'" id="funding-menu" style="font-size: 12px">펀딩</a></li>
-			<li><a onclick="location.href='/gibuAndTakePrj/member/MemberCamp'" id="camp" style="font-size: 12px" >캠페인</a></li>
+			<li><a href="#" id="corpActive"  style="font-weight:bold">활동내역</a></li>
+			<li><a onclick="location.href='/gibuAndTakePrj/corp/corpGibu'" id="corpdona" style="font-size: 12px">기부</a></li>
+			<li><a onclick="location.href='/gibuAndTakePrj/corp/corpFunding'" id="corpfunding-menu" style="font-size: 12px">펀딩</a></li>
+			<li><a onclick="location.href='/gibuAndTakePrj/corp/corpCamp'" id="corpcamp" style="font-size: 12px" >캠페인</a></li>
 			<div id="middleLine"></div>
-			<li><a href="#" id="payment"  style="font-weight:bold">결제 내역</a></li>
-			<li><a href="#" id="donament" style="font-weight:bold">기부 내역</a></li>
+			<li><a href="#" id="corppayment"  style="font-weight:bold">결제 내역</a></li>
+			<li><a href="#" id="corpdonament" style="font-weight:bold">기부 내역</a></li>
 		</ul>
 		
 	</div>	

@@ -1,4 +1,4 @@
-package com.gnt.corp.controller;
+package com.gnt.member.controller;
 
 import java.io.IOException;
 
@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/corp/corpJoin")
-public class corpJoin extends HttpServlet{
-	
+@WebServlet(urlPatterns="/login")
+public class loginForm extends HttpServlet {
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-		req.getRequestDispatcher("/views/corparation/corpJoin.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/member/login.jsp").forward(req, resp);
+
 	}
+	
 }

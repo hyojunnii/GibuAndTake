@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/corp/corpJoin")
-public class corpJoin extends HttpServlet{
+@WebServlet(urlPatterns="/corp/corpFunding")
+public class CorpFunding extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-		req.getRequestDispatcher("/views/corparation/corpJoin.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/corparation/corpFunding.jsp").forward(req, resp);
 	}
+
 }

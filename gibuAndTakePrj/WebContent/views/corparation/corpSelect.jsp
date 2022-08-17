@@ -60,7 +60,10 @@
         
         
     }
-    
+    	
+     .selected_bg{
+     background-color: #EBF5E0;
+    }
      
     
      .greenBold{
@@ -320,12 +323,12 @@
 	
 	<main>
 		  <div id="corpSelEvery">
-		  <div id="logo_name">
-           	<a href="<%=request.getContextPath()%>">
-            <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
-            <span id="siteName"><span class="greenBold selected_bg" style=" background-color: #EBF5E0;">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
-            </a>
-           </div>
+		 <div id="logo_name">
+           			 <a href="<%=request.getContextPath()%>">
+                    <img id="logo" src="/gibuAndTakePrj/resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
+                    <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
+               		 </a>
+          		</div>
 		
 		<div id="line"></div>
 		<h3 align="center" id="corpPage" >기업 정보 페이지</h3>

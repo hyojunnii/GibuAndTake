@@ -70,13 +70,26 @@
         margin-left:300px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:-350px;
+        margin-top:-315px;
         
     }
     
     .cardLink{
     	text-decoration:none;
     	color:black;
+    	margin-left:70px;
+    	font-size:20px;
+    	font-weight: bold;
+    	margin-top: -20px;
+    }
+    
+     .cardLink2{
+    	text-decoration:none;
+    	color:black;
+    	margin-left:70px;
+    	font-size:20px;
+    	font-weight: bold;
+    	margin-top: -20px;
     }
     #img{
         height: 50%;
@@ -168,10 +181,10 @@
         <div class="card">
        
              <div id="img">
-                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                  <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                  <a href="" class="cardLink" align="center" style="margin-top:20px">기부프로젝트명</a>
+                  <a href="" class="cardLink" align="center">기부프로젝트명</a>
                  <pre>기업이름</pre>
                  <progress id="g_progress" value="50" max="100" style="text-decoration: none"></progress>
                  <span class="gibuPercent">50%</span>
@@ -179,18 +192,18 @@
              </div>
          	  
              <div class="card2">
-        	<a href="" class="cardLink2">
+        	
              <div id="img2">
-                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                  <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
+                <a href="" class="cardLink2" align="center">기부프로젝트명</a>
                  <pre>기업이름</pre>
                  <progress id="g_progress" value="50" max="100"></progress>
                  <span class="gibuPercent">50%</span>
                  <span class="gibuPeople">500명</span>
              </div>
-         </a>
+       
 				<br>
 			
 			</div>		
