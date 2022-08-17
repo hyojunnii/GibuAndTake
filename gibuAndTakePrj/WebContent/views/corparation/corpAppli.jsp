@@ -35,21 +35,48 @@
 		}
 	
 		#naviIn{
-			margin-top:-615px;
+			margin-top:-815px;
 			width:200px;
    			height:550px;
    			margin-right:200px;
 		}
 		
-		#memDonateM {
+		#btn_group{
+			margin-top:100px;
 			margin-left:350px;
-			margin-top:50px;
-			width:230px;
-			height:250px;
-			border-radius:15px;
-			background:#64D498;
+		}
+		#fundingI{
+			margin-right:-4px;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius:10px;
 			
 		}
+		
+		#fundingC{
+			margin-left:-3px;
+			border-top-right-radius: 0px;
+			border-bottom-right-radius:px;
+		}
+		
+		#campainC{
+			margin-left:-4px;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius:10px;
+		}
+		
+		#btn_group button{
+			border:2px solid #acdac2;
+			background-color: white;
+			color: #2e6c4a ;
+			width:250px;
+			height:100px;
+		}
+		
+		#btn_group button:hover{
+			color: white;
+			background-color: #83DDAD;
+		}
+		
 		
 		
     .card{
@@ -70,8 +97,26 @@
         margin-left:300px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:-290px;
+        margin-top:-328px;
         
+    }
+     .cardLink{
+    	text-decoration:none;
+    	color:black;
+    	margin-left:70px;
+    	font-size:20px;
+    	font-weight: bold;
+    	margin-top: 50px;
+    	
+    }
+    
+     .cardLink2{
+    	text-decoration:none;
+    	color:black;
+    	margin-left:70px;
+    	font-size:20px;
+    	font-weight: bold;
+    	margin-top: 0px;
     }
     #img{
         height: 50%;
@@ -94,6 +139,7 @@
 	
 			
 	
+		
     .gibuPercent{
         color: #64D498;
         margin-left: 20px;
@@ -143,30 +189,39 @@
 		<h1 id="myPageTxt">기업 마이페이지</h1>
 		<div class="headLine">
 			
+		</div>	
+		<div id="btn_group">
+		<a href="/gibuAndTakePrj/corp/corpGibuAppl"><button id="fundingI" style="font-size: 20px"> 기부 신청 내역</button></a>
+		<a href="/gibuAndTakePrj/corp/corpFundAppl"><button id="fundingC" style="font-size: 20px">펀딩 신청 내역</button></a>
+		<a href="/gibuAndTakePrj/corp/corpCampAppl"><button id="campainC" style="font-size: 20px">캠페인 신청 내역</button></a>
 		</div>
 		
 		<div id = "memShortOuter">
 		<h1 id="shortTitle" style="">신청 기부목록</h1>
 	
         <div class="card">
-        <a href="" class="cardLink">
+       
              <div id="img">
                  <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
-                 <pre>기업이름</pre>
+             <br><br>
+                <a href="" class="cardLink" >기부프로젝트명</a>
+                <br><br>
+                 <pre>승인안됨</pre>
                   
              </div>
-         	</a>  
+         
              <div class="card2">
-        	<a href="" class="cardLink2">
+        	
              <div id="img2">
                   <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">기부프로젝트명</p>
-                 <pre>기업이름</pre>
+             	<br><br>
+                  <a href="" class="cardLink2" align="center">기부프로젝트명</a>
+                  <br><br>
+                 <pre>승인안됨</pre>
                 
              </div>
          </a>

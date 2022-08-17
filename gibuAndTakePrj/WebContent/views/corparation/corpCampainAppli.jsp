@@ -13,6 +13,7 @@
    			margin:0 auto;
 		}
 		
+		
 		#myPageTxt {
 			color:#2e6c4a;
 			margin-top:60px;
@@ -34,12 +35,11 @@
 		}
 	
 		#naviIn{
-			margin-top:-785px;
+			margin-top:-815px;
 			width:200px;
    			height:550px;
    			margin-right:200px;
 		}
-		
 		
 		#btn_group{
 			margin-top:100px;
@@ -54,6 +54,12 @@
 		
 		#fundingC{
 			margin-left:-3px;
+			border-top-right-radius: 0px;
+			border-bottom-right-radius:px;
+		}
+		
+		#campainC{
+			margin-left:-4px;
 			border-top-right-radius: 10px;
 			border-bottom-right-radius:10px;
 		}
@@ -62,7 +68,7 @@
 			border:2px solid #acdac2;
 			background-color: white;
 			color: #2e6c4a ;
-			width:400px;
+			width:250px;
 			height:100px;
 		}
 		
@@ -70,25 +76,17 @@
 			color: white;
 			background-color: #83DDAD;
 		}
-		#memDonateM {
-			margin-left:350px;
-			margin-top:50px;
-			width:230px;
-			height:250px;
-			border-radius:15px;
-			background:#64D498;
-			
-		}
 		
 		
-     .card{
+		
+    .card{
         width: 267px;
         height: 363px;
         border: 1px solid #83DDAD;
         margin-left:270px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:70px;
+        margin-top:100px;
         
     }
     
@@ -99,26 +97,26 @@
         margin-left:300px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:-315px;
+        margin-top:-328px;
         
     }
-    
-      .cardLink{
+     .cardLink{
     	text-decoration:none;
     	color:black;
-    	margin-left:70px;
+    	margin-left:97px;
     	font-size:20px;
     	font-weight: bold;
-    	margin-top: -20px;
+    	margin-top: 50px;
+    	
     }
     
      .cardLink2{
     	text-decoration:none;
     	color:black;
-    	margin-left:70px;
+    	margin-left:97px;
     	font-size:20px;
     	font-weight: bold;
-    	margin-top: -20px; 
+    	margin-top: 0px;
     }
     #img{
         height: 50%;
@@ -138,22 +136,10 @@
         font-weight: 700;
         text-align: center;
     }
-		
-	#g_progress{
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    height: 10px;
-    -webkit-appearance: none;
-	}
-	#g_progress::-webkit-progress-bar{
-    background-color: #DAFFEB;
-    border: 1px solid black;
-	}
-	#g_progress::-webkit-progress-value{
-	    background-color: #64D498;
-	}		
 	
+			
+	
+		
     .gibuPercent{
         color: #64D498;
         margin-left: 20px;
@@ -164,7 +150,7 @@
         
     }
     .gibuPeople{
-        margin-left:100px;
+        margin-left:120px;
         margin-top: 15px;
         font-size: 20px;
         font-weight: 600;
@@ -193,6 +179,7 @@
    			width:100%;
    			height:200px;
 		}
+		
 </style>
 </head>
 <body>	
@@ -202,26 +189,27 @@
 		<h1 id="myPageTxt">기업 마이페이지</h1>
 		<div class="headLine">
 			
-		</div>
+		</div>	
 		<div id="btn_group">
-		<a href="/gibuAndTakePrj/corp/corpFunding"><button id="fundingI" style="font-size: 25px">진행중인 펀딩</button></a>
-		<a href="/gibuAndTakePrj/corp/corpFundFinish"><button id="fundingC" style="font-size: 25px">완료된 펀딩</button></a>
+		<a href="/gibuAndTakePrj/corp/corpGibuAppl"><button id="fundingI" style="font-size: 20px"> 기부 신청 내역</button></a>
+		<a href="/gibuAndTakePrj/corp/corpFundAppl"><button id="fundingC" style="font-size: 20px">펀딩 신청 내역</button></a>
+		<a href="/gibuAndTakePrj/corp/corpCampAppl"><button id="campainC" style="font-size: 20px">캠페인 신청 내역</button></a>
 		</div>
 		
 		<div id = "memShortOuter">
-		<h1 id="shortTitle" style="">펀딩 완료 목록</h1>
+		<h1 id="shortTitle" style="">신청 캠페인 목록</h1>
 	
         <div class="card">
-        
+       
              <div id="img">
-                   <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
+                 <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                   <a href="" class="cardLink" align="center">펀딩프로젝트명</a>
-                 <pre>기업이름</pre>
-                 <progress id="g_progress" value="100" max="100"></progress>
-                 <span class="gibuPercent">100%</span>
-                 <span class="gibuPeople">500명</span>
+             <br><br>
+                <a href="" class="cardLink" >캠페인명</a>
+                <br><br>
+                 <pre>승인안됨</pre>
+                  
              </div>
          
              <div class="card2">
@@ -230,13 +218,13 @@
                   <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                  <a href="" class="cardLink2" align="center">펀딩프로젝트명</a>
-                 <pre>기업이름</pre>
-                 <progress id="g_progress" value="100" max="100"></progress>
-                 <span class="gibuPercent">100%</span>
-                 <span class="gibuPeople">500명</span>
+             	<br><br>
+                  <a href="" class="cardLink2" align="center">캠페인명</a>
+                  <br><br>
+                 <pre>승인안됨</pre>
+                
              </div>
-    
+         </a>
 				<br>
 			
 			</div>		

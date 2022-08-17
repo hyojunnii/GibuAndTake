@@ -225,7 +225,7 @@
 			
 			</div>	
 			
-		<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
+		<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
 		</div>
 	
 		<div id="footIn"><%@ include file="/views/common/footer.jsp" %></div>
