@@ -144,7 +144,7 @@
         <div id="header_wrap">
             <div id="logo_name">
                 <a href="<%=request.getContextPath()%>">
-                    <img id="logo" src="/gibuAndTakePrj/resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
+                    <img id="logo" src="<%=path %>/resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
                     <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
                 </a>
             </div>
@@ -161,7 +161,7 @@
             </div>
             <div id="login_serch" class="">
                 <a href=""><span id="login">로그인</span></a>
-                <a href="<%=path %>/search"><img id="serch_icon" src="/gibuAndTakePrj/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
+                <a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
             </div>
         </div>
     </header>
