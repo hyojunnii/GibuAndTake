@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
-    	String path = request.getContextPath();
-    %>
+<%
+	String path = request.getContextPath();
+%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -160,8 +163,17 @@
                 </nav>
             </div>
             <div id="login_serch" class="">
-                <a href=""><span id="login">로그인</span></a>
-                <a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
+            	<c:choose>
+            		<c:when test="${!empty memberVo }">
+            			<a href="<%=path %>/member/MyPage"><span id="login">${memberVo.name}님</span></a>
+                		<a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
+            		</c:when>
+            		<c:otherwise>
+            			
+        	    		<a href="<%=path %>/login"><span id="login">로그인</span></a>
+		                <a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>	
+            		</c:otherwise>
+            	</c:choose>
             </div>
         </div>
     </header>

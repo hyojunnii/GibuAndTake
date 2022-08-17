@@ -108,7 +108,7 @@
             </div>
             <div id="review_update_footer_btn">
                 <input type="submit" value="수정하기" class="review_update_btn">
-                <input type="submit" value="뒤로가기" class="review_update_btn"> 
+                <input type="button" value="뒤로가기" class="review_update_btn" onclick="history.go(-1)"> 
             </div>
         </div>
         </form>

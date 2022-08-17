@@ -108,7 +108,7 @@
             </div>
             <div id="review_create_footer_btn">
                 <input type="submit" value="작성하기" class="review_create_btn">
-                <input type="submit" value="뒤로가기" class="review_create_btn"> 
+                <input type="button" value="뒤로가기" class="review_create_btn" onclick="history.go(-1)"> 
             </div>
         </div>
         </form>

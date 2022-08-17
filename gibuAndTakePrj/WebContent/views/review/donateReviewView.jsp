@@ -143,7 +143,7 @@
                 </div>
                 <div id="review_detail_footer_btn">
                     <input type="submit" value="수정하기" class="review_detail_btn">
-                    <input type="submit" value="삭제하기" class="review_detail_btn" onclick="btnDelete();"> 
+                    <input type="button" value="삭제하기" class="review_detail_btn" onclick="btnDelete();"> 
                 </div>
             </div>
         </div>
