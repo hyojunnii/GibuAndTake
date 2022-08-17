@@ -135,7 +135,9 @@
     
     <div id="tag">
         <a id="list" onclick="location.href='/gibuAndTakePrj/notice/list'">공지사항 목록</a>
+        <%-- <% if(loginMember != null && "admin".equals(loginMember.getId())) {%> --%>
         <a id="modify" onclick="location.href='/gibuAndTakePrj/notice/modify'">수정/삭제</a>
+    	<%-- <%} %> --%>
     </div>
         
     

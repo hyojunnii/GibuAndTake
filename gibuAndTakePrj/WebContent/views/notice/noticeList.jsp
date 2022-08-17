@@ -176,7 +176,9 @@
         </table>
     </div>
     
+    <%-- <% if(loginMember != null && "admin".equals(loginMember.getId())) {%> --%>
     <button id="write" style="float: right" onclick="location.href='/gibuAndTakePrj/notice/write'">공지사항 작성</button>
+    <%-- <%} %> --%>
     
     <div id="btn">
     	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
