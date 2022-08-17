@@ -200,7 +200,7 @@
 
     <div class="container">
       
-        <p id="titleNo">만료된 펀딩 ??건</p>
+        <p>만료된 펀딩 <span id="titleNo">??</span>개</p>
          
         
          <a href="/gibuAndTakePrj/view/funding_detail" class="card">

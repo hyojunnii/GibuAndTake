@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    .campaign_btn_container:hover{
+        color: black ;
+    }
 
         #campaign_detail_container{
         margin: 0 10%;

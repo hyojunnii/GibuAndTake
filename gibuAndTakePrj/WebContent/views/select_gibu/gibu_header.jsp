@@ -15,11 +15,10 @@ a{
     font-size: 25px;
     color: black;
 }
-a:hover{
-    text-decoration: underline;
-}
-a:active{
-    text-decoration: underline;
+.nav_tab:hover{
+    background-color: #EBF5E0;
+        color : #086C37;
+        font-weight: 900;
 }
 li{
     list-style: none;
@@ -34,7 +33,7 @@ li{
 
 #gibu_wrap ul li{
     float: left;
-    width: 50%;
+    width: 33.3%;
     height: 50px;
     line-height: 50px;
     text-align: center;
@@ -50,12 +49,17 @@ li{
     <div id="gibu_wrap">
         <ul>
             <li>
-                <a href="/gibuAndTakePrj/view/gibu">진행중인 기부</a>
+                <a class="nav_tab" href="/gibuAndTakePrj/view/gibu">진행중인 기부</a>
             </li>
         </ul>
         <ul>
             <li>
-                <a href="/gibuAndTakePrj/view/gibu_done">완료된 기부</a>
+                <a class="nav_tab" href="/gibuAndTakePrj/view/gibu_done">만료된 기부</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a class="nav_tab" href="">후기</a>
             </li>
         </ul>
     </div>
