@@ -181,7 +181,7 @@
         <div class="card">
        
              <div id="img">
-                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                  <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
                   <a href="" class="cardLink" align="center">기부프로젝트명</a>
@@ -194,7 +194,7 @@
              <div class="card2">
         	
              <div id="img2">
-                  <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                  <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
                 <a href="" class="cardLink2" align="center">기부프로젝트명</a>
@@ -203,7 +203,7 @@
                  <span class="gibuPercent">50%</span>
                  <span class="gibuPeople">500명</span>
              </div>
-         </a>
+       
 				<br>
 			
 			</div>		

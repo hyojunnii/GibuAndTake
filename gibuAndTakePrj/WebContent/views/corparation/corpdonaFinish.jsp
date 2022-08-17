@@ -162,7 +162,7 @@
         <div class="card">
         <a href="" class="cardLink">
              <div id="img">
-                 <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                 <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
                  <p align="center" style="margin-top:20px">기부프로젝트명</p>
@@ -175,7 +175,7 @@
              <div class="card2">
         	<a href="" class="cardLink2">
              <div id="img2">
-                   <img src="../../resources/img/gibuman.png" width = 100% height =100% alt="">
+                   <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
                  <p align="center" style="margin-top:20px">기부프로젝트명</p>
@@ -194,7 +194,7 @@
 			
 			</div>	
 			
-		<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
+		<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
 		</div>
 	
 		<div id="footIn"><%@ include file="/views/common/footer.jsp" %></div>

@@ -107,7 +107,7 @@
 				<br>
 				
 			 <div id="img2">
-                 <img src="../../resources/img/purme.png"  alt="">
+                 <img src="/gibuAndTakePrj/resources/img/purme.png"  alt="">
              </div>
 					<p style="margin: 100px 0px 0px 320px">
 					장애인이 행복하면 모두가 행복한 사회,
@@ -138,7 +138,7 @@
 			
 			</div>	
 			
-		<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
+		<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
 		</div>
 		<div id="btn_group">
 		<a href="/"><button id="fundingI" style="font-size: 25px"> 신청 </button></a>
