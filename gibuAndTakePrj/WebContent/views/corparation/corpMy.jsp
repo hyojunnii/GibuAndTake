@@ -46,16 +46,16 @@
 		
 	
 		#naviIn{
-			margin-top:-1080px;
+			margin-top:-1090px;
 			width:200px;
    			height:550px;
-   			margin-left:150px;
+   			margin-left:450px;
 		}
 		
 		
 		#btn_group{
 			margin-top:700px;
-			margin-left:450px;
+			margin-left:750px;
 		}
 		#fundingI{
 			margin-right:-4px;
@@ -132,21 +132,20 @@
 				</div>
 			
 			</div>		
-		</div>
+		
 			
 			
 			
-			</div>	
 			
 		<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
-		</div>
+	
+		
 		<div id="btn_group">
 		<a href="/"><button id="fundingI" style="font-size: 25px"> 신청 </button></a>
 		<a href="/"><button id="fundingC" style="font-size: 25px">내역 보기</button></a>
 		</div>
 		
-		</div>
-	
+		
 		<div id="footIn"><%@ include file="/views/common/footer.jsp" %></div>
 		
 		

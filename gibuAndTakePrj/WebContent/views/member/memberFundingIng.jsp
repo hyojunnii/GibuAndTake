@@ -195,8 +195,8 @@
 			
 		</div>
 		<div id="btn_group">
-		<a href="/"><button id="fundingI" style="font-size: 25px">진행중인 펀딩</button></a>
-		<a href="/"><button id="fundingC" style="font-size: 25px">완료된 펀딩</button></a>
+		<a href="/gibuAndTakePrj/member/MemberFunding"><button id="fundingI" style="font-size: 25px">진행중인 펀딩</button></a>
+		<a href="/gibuAndTakePrj/member/MemberFundFinish"><button id="fundingC" style="font-size: 25px">완료된 펀딩</button></a>
 		</div>
 		<div id = "memShortOuter">
 		<h1 id="shortTitle" style="">진행 중인 펀딩</h1>
