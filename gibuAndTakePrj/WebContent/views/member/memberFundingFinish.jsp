@@ -35,7 +35,7 @@
 		}
 	
 		#naviIn{
-			margin-top:-805px;
+			margin-top:-785px;
 			width:200px;
    			height:550px;
    			margin-right:200px;
@@ -79,7 +79,7 @@
         margin-left:270px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:100px;
+        margin-top:70px;
         
     }
     
@@ -90,8 +90,26 @@
         margin-left:300px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:-350px;
+        margin-top:-315px;
         
+    }
+    
+      .cardLink{
+    	text-decoration:none;
+    	color:black;
+    	margin-left:70px;
+    	font-size:20px;
+    	font-weight: bold;
+    	margin-top: -20px;
+    }
+    
+     .cardLink2{
+    	text-decoration:none;
+    	color:black;
+    	margin-left:70px;
+    	font-size:20px;
+    	font-weight: bold;
+    	margin-top: -20px;
     }
     #img{
         height: 50%;
@@ -177,38 +195,38 @@
 			
 		</div>
 		<div id="btn_group">
-		<a href="/"><button id="fundingI" style="font-size: 25px">진행중인 펀딩</button></a>
-		<a href="/"><button id="fundingC" style="font-size: 25px">완료된 펀딩</button></a>
+		<a href="/gibuAndTakePrj/member/MemberFunding"><button id="fundingI" style="font-size: 25px">진행중인 펀딩</button></a>
+		<a href="/gibuAndTakePrj/member/MemberFundFinish"><button id="fundingC" style="font-size: 25px">완료된 펀딩</button></a>
 		</div>
 		<div id = "memShortOuter">
 		<h1 id="shortTitle" style="">완료된 펀딩</h1>
 	
         <div class="card">
-        <a href="" class="cardLink">
+ 
              <div id="img">
                   <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">펀딩프로젝트명</p>
+                 <a href="" class="cardLink" align="center">펀딩프로젝트명</a>
                  <pre>기업이름</pre>
                  <progress id="g_progress" value="100" max="100"></progress>
                  <span class="gibuPercent">100%</span>
                  <span class="gibuPeople">500명</span>
              </div>
-         	</a>  
+         
              <div class="card2">
-        	<a href="" class="cardLink2">
+        	
              <div id="img2">
                    <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">펀딩프로젝트명</p>
+                 <a href="" class="cardLink2" align="center">펀딩프로젝트명</a>
                  <pre>기업이름</pre>
                  <progress id="g_progress" value="100" max="100"></progress>
                  <span class="gibuPercent">100%</span>
                  <span class="gibuPeople">500명</span>
              </div>
-         </a>
+       
 				<br>
 			
 			</div>		
