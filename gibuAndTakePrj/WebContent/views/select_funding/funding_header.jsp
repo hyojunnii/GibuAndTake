@@ -15,11 +15,10 @@ a{
     font-size: 25px;
     color: black;
 }
-a:hover{
-    text-decoration: underline;
-}
-a:active{
-    text-decoration: underline;
+.nav_tab:hover{
+    background-color: #EBF5E0;
+        color : #086C37;
+        font-weight: 900;
 }
 li{
     list-style: none;
@@ -34,7 +33,7 @@ li{
 
 #funding_wrap ul li{
     float: left;
-    width: 50%;
+    width: 33.3%;
     height: 50px;
     line-height: 50px;
     text-align: center;
@@ -53,12 +52,17 @@ li{
     <div id="funding_wrap">
         <ul>
             <li>
-                <a href="/gibuAndTakePrj/view/funding">진행중인 펀딩</a>
+                <a class="nav_tab" href="/gibuAndTakePrj/view/funding">진행중인 펀딩</a>
             </li>
         </ul>
         <ul>
             <li>
-                <a href="/gibuAndTakePrj/view/funding_done">만료된 펀딩</a>
+                <a class="nav_tab" href="/gibuAndTakePrj/view/funding_done">만료된 펀딩</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a class="nav_tab" href="">후기</a>
             </li>
         </ul>
     </div>

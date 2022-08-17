@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
+    .funding_btn_container:hover{
+        color: black ;
+    }
     #funding_detail_container{
         margin: 0 10%;
         text-align: center;
@@ -127,6 +129,74 @@
 	width: 80%;
 	border-radius: 10px;
 	}
+
+
+        /* tab css*/
+    /* .tabs{float:left; width:100%; height:290px; box-sizing: border-box;} */
+/* .tabnav{font-size:40px; width:60%; box-sizing: border-box; margin: 0 auto;} */
+.tabnav li{display: inline-block;  height:46px; text-align:center; border-right:1px solid #72d09e;}
+/* .tabnav li a:before{content:""; position:absolute; left:0; top:0px; width:100%; height:3px; }
+.tabnav li a.active:before{background:red;}
+.tabnav li a.active{border-bottom:1px solid #72d09e;}
+.tabnav li a{ position:relative; display:block; background: #f8f8f8; color: #000; padding:0 30px; line-height:46px; text-decoration:none; font-size:16px;}
+.tabnav li a:hover,
+.tabnav li a.active{background:#fff; color:#7ea21e; }
+.tabcontent{padding: 20px; border:1px solid #72d09e; border-top:none; width: 100%;} */ 
+
+#comments{
+    width: 60%;
+    margin: 0 auto;
+}
+
+#comments_table{
+    width: 100%;
+    margin: 0 auto;
+}
+#comments_img{
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+.ingCnt{
+    font-weight: 700;
+    margin-top: 30px;
+    font-size: 30px;
+}
+#title_table{
+    width: 100%;
+}
+#outer{
+	width: 1200px;
+	margin: 0 auto;
+	
+}
+
+#comment_input_table {
+    width: 100%;
+}
+
+#comment_area{
+    width: 110%;
+    height: 100px;
+    resize: none;
+    margin-top: 0;
+}
+#comment_area_btn{
+    height: 100px;
+    width: 45%;
+    margin-top: 0;
+    background-color: #8bdcb1;
+    border: none;
+    border-radius: 15px;
+}
+
+</style>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 </style>
 </head>
 <body>
@@ -259,12 +329,182 @@
                 </a>
             </div> -->
         </div>
-
-        
-        
     </div>
 </div>
+</div>
+
+<br>
+<br>
+<div id="tabs"> <!-- A -->
+    <h1 align="center">댓글</h1>
+    <div class="tabcontent">
+     
+      <div id="comments">
+        <table id="comments_table">
+            <tr>
+                <td colspan="3" id="comments_name">이름or닉네임</td>
+                <td id="comments_date" align="right">2022-08-05 19:36</td>
+                <td align="right">
+                    <button value="수정" class="btn">수정</button>
+                    <button value="삭제" class="btn">삭제</button>
+                    <button value="신고" class="btn">신고</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
+            </tr>
+            <!-- <tr>
+                <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
+            </tr> -->
+            
+        </table>
+        <hr>
+
+        <table id="comments_table">
+            <tr>
+                <td colspan="3" id="comments_name">이름or닉네임</td>
+                <td id="comments_date" align="right">2022-08-05 19:36</td>
+                <td align="right">
+                    <button value="수정" class="btn">수정</button>
+                    <button value="삭제" class="btn">삭제</button>
+                    <button value="신고" class="btn">신고</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
+            </tr>
+            <!-- <tr>
+                <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
+            </tr> -->
+            
+        </table>
+        <hr>
+
+        <table id="comments_table">
+            <tr>
+                <td colspan="3" id="comments_name">이름or닉네임</td>
+                <td id="comments_date" align="right">2022-08-05 19:36</td>
+                <td align="right">
+                    <button value="수정" class="btn">수정</button>
+                    <button value="삭제" class="btn">삭제</button>
+                    <button value="신고" class="btn">신고</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
+            </tr>
+            <!-- <tr>
+                <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
+            </tr> -->
+            
+        </table>
+        <hr>
+
+        <table id="comments_table">
+            <tr>
+                <td colspan="3" id="comments_name">이름or닉네임</td>
+                <td id="comments_date" align="right">2022-08-05 19:36</td>
+                <td align="right">
+                    <button value="수정" class="btn">수정</button>
+                    <button value="삭제" class="btn">삭제</button>
+                    <button value="신고" class="btn">신고</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
+            </tr>
+            <!-- <tr>
+                <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
+            </tr> -->
+            
+        </table>
+        <hr>
+
+        <table id="comments_table">
+            <tr>
+                <td colspan="3" id="comments_name">이름or닉네임</td>
+                <td id="comments_date" align="right">2022-08-05 19:36</td>
+                <td align="right">
+                    <button value="수정" class="btn">수정</button>
+                    <button value="삭제" class="btn">삭제</button>
+                    <button value="신고" class="btn">신고</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
+            </tr>
+            <!-- <tr>
+                <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
+            </tr> -->
+            
+        </table>
+        <hr>
+
+        <table id="comments_table">
+            <tr>
+                <td colspan="3" id="comments_name">이름or닉네임</td>
+                <td id="comments_date" align="right">2022-08-05 19:36</td>
+                <td align="right">
+                    <button value="수정" class="btn">수정</button>
+                    <button value="삭제" class="btn">삭제</button>
+                    <button value="신고" class="btn">신고</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
+            </tr>
+            <!-- <tr>
+                <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
+            </tr> -->
+            
+        </table>
+        <hr>
+
+        <table id="comments_table">
+            <tr>
+                <td colspan="3" id="comments_name">이름or닉네임</td>
+                <td id="comments_date" align="right">2022-08-05 19:36</td>
+                <td align="right">
+                    <button value="수정" class="btn">수정</button>
+                    <button value="삭제" class="btn">삭제</button>
+                    <button value="신고" class="btn">신고</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
+            </tr>
+            <!-- <tr>
+                <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
+            </tr> -->
+            
+        </table>
+        <hr>
+
+
+        <!-- 댓글 -->
+        <form action="" method="post">
+        
+            <table id="comment_input_table">
+                <br>
+               <tr>
+                <td align="left">
+                    <textarea name="comment_area" id="comment_area" rows="5" placeholder="내용을 적어주세요"></textarea>
+                </td>
+                <td align="right">
+                    <button id="comment_area_btn" >등록하기</button>
+                </td>
+               </tr> 
+            </table>
+            
+           
+
+        </form>
+
+
+      </div>
+
     </div>
+    
     <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

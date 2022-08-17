@@ -12,7 +12,6 @@
 
     #group_catelist ul{
         margin: 0 10%;
-        margin-top: 20px;
         height: 80px;
         background-color: #8bdcb1;
         border-radius: 10px;
@@ -199,7 +198,7 @@
 
     <div class="container">
       
-        <p id="titleNo">진행중인 펀딩 ??건</p>
+        <p>진행중인 펀딩 <span id="titleNo">??</span>개</p>
          
         
          <a href="/gibuAndTakePrj/view/funding_detail" class="card">

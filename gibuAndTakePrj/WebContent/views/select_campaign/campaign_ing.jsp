@@ -297,7 +297,7 @@
 
     <div class="container">
       
-        <p id="titleNo">진행중인 펀딩 ??건</p>
+        <p>진행중인 캠페인 <span id="titleNo">??</span>개</p>
          
         
          <a href="/gibuAndTakePrj/view/campaign_detail" class="card">
