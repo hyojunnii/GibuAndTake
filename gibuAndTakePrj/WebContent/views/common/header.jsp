@@ -169,7 +169,6 @@
                 		<a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
             		</c:when>
             		<c:otherwise>
-            			
         	    		<a href="<%=path %>/login"><span id="login">로그인</span></a>
 		                <a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>	
             		</c:otherwise>
