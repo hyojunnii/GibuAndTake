@@ -21,7 +21,7 @@ public class GibuService {
 		//DAO 호출
 		voList = dao.selectList(conn);
 		
-		return null;
+		return voList;
 	}
 
 }
