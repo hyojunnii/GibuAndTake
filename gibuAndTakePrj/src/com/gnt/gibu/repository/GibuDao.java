@@ -35,7 +35,7 @@ public class GibuDao {
 				String email = rs.getString("U_EMAIL");
 				String phone = rs.getString("U_PHONE");
 				
-				
+				//테스트
 				
 				
 				
