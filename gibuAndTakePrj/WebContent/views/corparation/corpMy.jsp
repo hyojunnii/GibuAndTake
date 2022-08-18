@@ -142,7 +142,7 @@
 		
 		<div id="btn_group">
 		<a href="/"><button id="fundingI" style="font-size: 25px"> 신청 </button></a>
-		<a href="/"><button id="fundingC" style="font-size: 25px">내역 보기</button></a>
+		<a href="/gibuAndTakePrj/corp/corpGibuAppl"><button id="fundingC" style="font-size: 25px">내역 보기</button></a>
 		</div>
 		
 		

@@ -35,16 +35,44 @@
 		}
 	
 		#naviIn{
-			margin-top:-585px;
+			margin-top:-785px;
 			width:200px;
    			height:550px;
    			margin-right:200px;
 		}
 		
 		
+		#btn_group{
+			margin-top:100px;
+			margin-left:350px;
+		}
+		#fundingI{
+			margin-right:-4px;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius:10px;
+			
+		}
 		
+		#fundingC{
+			margin-left:-3px;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius:10px;
+		}
 		
-   .card{
+		#btn_group button{
+			border:2px solid #acdac2;
+			background-color: white;
+			color: #2e6c4a ;
+			width:400px;
+			height:100px;
+		}
+		
+		#btn_group button:hover{
+			color: white;
+			background-color: #83DDAD;
+		}
+		
+    .card{
         width: 267px;
         height: 363px;
         border: 1px solid #83DDAD;
@@ -62,12 +90,31 @@
         margin-left:300px;
         border-radius: 10px;
         background-color: #DAFFEB;
-        margin-top:-365px;
+        margin-top:-330px;
         
+    }
+    
+     .cardLink{
+    	text-decoration:none;
+    	color:black;
+    	margin-left:97px;
+    	font-size:20px;
+    	font-weight: bold;
+    	margin-top: -20px;
+    	
+    }
+    
+     .cardLink2{
+    	text-decoration:none;
+    	color:black;
+    	margin-left:97px;
+    	font-size:20px;
+    	font-weight: bold;
+    	margin-top: -20px;
     }
     #img{
         height: 50%;
-    } 
+    }
     
     #img2{
         height: 50%;
@@ -95,7 +142,7 @@
         
     }
     .capaignPeople{
-        margin-left:30px;
+        margin-left:40px;
         margin-top: 15px;
         font-size: 20px;
         font-weight: 600;
@@ -103,7 +150,7 @@
 		
 		#gogibu{
 			font-size:20px;
-			padding-left:50px;
+			padding-left:80px;
 			color:white;
 		}
 		#middleLin{
@@ -132,41 +179,46 @@
 		<div id="memberMgEvery">
 		<h1 id="myPageTxt">기업 마이페이지</h1>
 		<div class="headLine">
-			
-		</div>
 		
+		</div>	
+		<div id="btn_group">
+		<a href="/gibuAndTakePrj/corp/corpCamp"><button id="fundingI" style="font-size: 25px">진행중인 캠페인</button></a>
+		<a href="/gibuAndTakePrj/corp/corpCampFinish"><button id="fundingC" style="font-size: 25px">완료된 캠페인</button></a>
+		</div>
 		<div id = "memShortOuter">
 		<h1 id="shortTitle" style="">캠페인 완료 목록</h1>
 	
-            <div class="card">
-        <a href="" class="cardLink">
+        <div class="card">
+        
+      
              <div id="img">
                    <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">캠페인명</p>
+                   <a href="" class="cardLink">캠페인명</a>
                  <pre>기업이름</pre>
                
                  <span class="campaignPercent" style="font-size:50px">100%</span>
                  <span class="capaignPeople">500명</span>
              </div>
-         	</a>  
+       
          	
              <div class="card2">
-        	<a href="" class="cardLink2">
+        	
              <div id="img2">
                    <img src="/gibuAndTakePrj/resources/img/gibuman.png" width = 100% height =100% alt="">
              </div>
              <div>
-                 <p align="center" style="margin-top:20px">캠페인명</p>
+                  <a href="" class="cardLink2" align="center">캠페인명</a>
                  <pre>기업이름</pre>
                 
                  <span class="campaignPercent" style="font-size:50px" >100%</span>
                  <span class="capaignPeople">500명</span>
              </div>
-         </a>
+     
 				<br>
-				</div>
+			
+			</div>		
 		</div>
 			
 			

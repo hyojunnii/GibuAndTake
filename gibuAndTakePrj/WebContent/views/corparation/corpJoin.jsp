@@ -254,10 +254,10 @@
 	<main>
 		   <div id="corpJoEvery">
 		  <div id="logo_name">
-           	<a href="<%=request.getContextPath()%>">
-            <img id="logo" src="../../resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
-            <span id="siteName"><span class="greenBold selected_bg" style=" background-color: #EBF5E0;">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
-            </a>
+           	 <a href="<%=request.getContextPath()%>">
+                    <img id="logo" src="/gibuAndTakePrj/resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
+                    <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
+                </a>
            </div>
 		
 		<div id="line"></div>
@@ -336,7 +336,7 @@
 			</table>
 	</div>
 			  <div style="padding-top: 100px">
-               <%@ include file="../common/footer.jsp" %>
+               <%@ include file="/views/common/footer.jsp" %>
           		</div>
 
 		</form>

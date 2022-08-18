@@ -278,13 +278,13 @@
                     <a href="" class="log2">회원 탈퇴</a>
 				
 				</div>	
-	
+					</div>
 			</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
 
-		</div>
+		
 	</main>
 	
 </body>
