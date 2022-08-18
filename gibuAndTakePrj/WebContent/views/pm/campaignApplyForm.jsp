@@ -43,14 +43,14 @@
         <h1><a>캠페인 프로젝트 신청</a></h1>
       </div>
       <div id="pm-form-outer">
-        <form action="">
+        <form action="<%=path%>/pm/apply/campaign" method="post">
           <!-- name 안채움 -->
           <table id="pm-table">
             <tr>
               <td class="form-subtitle">카테고리*</td>
               <td colspan="4">
-                <select name="" class="form-select form-content" id="inputGroupSelect01" required>
-                  <option selected>카테고리를 선택하세요.</option>
+                <select name="category" class="form-select form-content" id="inputGroupSelect01" required>
+                  <option value="" selected>카테고리를 선택하세요.</option>
                   <option value="1">아동/청소년</option>
                   <option value="2">어르신</option>
                   <option value="3">장애인</option>
@@ -59,24 +59,24 @@
             </tr>
             <tr>
               <td class="form-subtitle">진행자명*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="진행자명을 입력하세요." required /></td>
+              <td colspan="4"><input name="corp" type="text" class="form-control form-content" placeholder="진행자명을 입력하세요." required /></td>
             </tr>
             <tr>
               <td class="form-subtitle">프로젝트 제목*</td>
               <td colspan="4">
-                <input name="" type="text" class="form-control form-content" placeholder="프로젝트의 제목을 입력하세요." required />
+                <input name="title" type="text" class="form-control form-content" placeholder="프로젝트의 제목을 입력하세요." required />
               </td>
             </tr>
             <tr>
               <td class="form-subtitle">캠페인 기간*</td>
               <td class="form-content-sub">캠페인 종료일</td>
-              <td class="form-content-date" colspan="3"><input name="" type="date" class="form-control form-content" required /></td>
+              <td class="form-content-date" colspan="3"><input name="fDate" type="date" class="form-control form-content" required /></td>
             </tr>
             <tr>
               <td class="form-subtitle">프로젝트 소개*</td>
               <td colspan="4">
                 <textarea
-                  name=""
+                  name="content"
                   class="form-control form-content form-content-textarea"
                   aria-label="With textarea"
                   placeholder="진행하는 프로젝트에 대한 설명을 입력하세요."
@@ -92,7 +92,7 @@
             </tr>
             <tr>
               <td class="form-subtitle">목표 인원*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="목표 인원을 입력하세요." required /></td>
+              <td colspan="4"><input name="gPeople" type="text" class="form-control form-content" placeholder="목표 인원을 입력하세요." required /></td>
             </tr>
           </table>
 

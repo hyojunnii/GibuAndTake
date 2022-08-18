@@ -1,4 +1,4 @@
-package com.gnt.pmEdit.controller;
+package com.gnt.search.controller;
 
 import java.io.IOException;
 
@@ -8,10 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/pm/edit/funding")
-public class FundingEditController extends HttpServlet{
+@WebServlet(urlPatterns = "/search/donation")
+public class SearchDonationController extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/views/pm/fundingEditForm.jsp").forward(req, resp);
+		
+		String category = req.getParameter("c");
+		
+		//String searched = SearchService().donationSearch(category);
+		
+		//req.setAttribute("searched", searched);
+		req.getRequestDispatcher("/search").forward(req, resp);
+		
 	}
 }

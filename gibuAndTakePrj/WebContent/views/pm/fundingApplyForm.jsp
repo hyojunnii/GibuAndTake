@@ -27,6 +27,7 @@
       .form-subtitle {
         width: 10%;
       }
+      
       .sub-title {
         padding-left: 6%;
       }
@@ -34,6 +35,7 @@
       .form-content-sub {
         width: 8%;
       }
+      
     </style>
   </head>
   <body>
@@ -43,40 +45,44 @@
         <h1><a>펀딩 프로젝트 신청</a></h1>
       </div>
       <div id="pm-form-outer">
-        <form action="">
+        <form action="<%=path%>/pm/apply/funding" method="post">
           <!-- name 안채움 -->
           <table id="pm-table">
             <tr>
               <td class="form-subtitle">카테고리*</td>
               <td colspan="4">
-                <select name="" class="form-select form-content" id="inputGroupSelect01" required>
-                  <option selected>카테고리를 선택하세요.</option>
-                  <option value="1">아동/청소년</option>
-                  <option value="2">어르신</option>
-                  <option value="3">장애인</option>
+                <select name="category" class="form-select form-content" id="inputGroupSelect01" required>
+                  <option value="" selected>카테고리를 선택하세요.</option>
+                  <option value="일자리창출">일자리창출</option>
+                  <option value="공정무역">공정무역</option>
+                  <option value="친환경">친환경</option>
+                  <option value="기부">기부</option>
+                  <option value="작은가게">작은가게</option>
+                  <option value="미디어">미디어</option>
+                  <option value="창작자">창작자</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="form-subtitle">기업명*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="기업명을 입력하세요." required /></td>
+              <td colspan="4"><input name="corp" type="text" class="form-control form-content" placeholder="로그인 기업" disabled/></td>
             </tr>
             <tr>
               <td class="form-subtitle">프로젝트 제목*</td>
               <td colspan="4">
-                <input name="" type="text" class="form-control form-content" placeholder="프로젝트의 제목을 입력하세요." required />
+                <input name="title" type="text" class="form-control form-content" placeholder="프로젝트의 제목을 입력하세요." required />
               </td>
             </tr>
             <tr>
               <td class="form-subtitle">펀딩 기간*</td>
               <td class="form-content-sub">펀딩 종료일</td>
-              <td class="form-content-date" colspan="3"><input name="" type="date" class="form-control form-content" required /></td>
+              <td class="form-content-date" colspan="3"><input name="fDate" type="date" class="form-control form-content" required /></td>
             </tr>
             <tr>
               <td class="form-subtitle">프로젝트 소개*</td>
               <td colspan="4">
                 <textarea
-                  name=""
+                  name="content"
                   class="form-control form-content form-content-textarea"
                   aria-label="With textarea"
                   placeholder="진행하는 프로젝트에 대한 설명을 입력하세요."
@@ -92,24 +98,26 @@
             </tr>
             <tr>
               <td class="form-subtitle">목표 금액*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="목표 금액을 입력하세요." required /></td>
+              <td colspan="4"><input name="gMoney" type="text" class="form-control form-content" placeholder="목표 금액을 입력하세요." required /></td>
             </tr>
             <tr>
               <td colspan="5" class="sub-title">리워드 정보</td>
             </tr>
-            <tr>
-              <td class="form-subtitle">제품명*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="리워드 제품명을 입력하세요." required /></td>
-            </tr>
-            <tr>
-              <td class="form-subtitle">금액*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="제품의 금액을 입력하세요." required /></td>
-            </tr>
-            <tr>
-              <td class="form-subtitle">수량*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="제품의 수량을 입력하세요." required /></td>
-            </tr>
           </table>
+          <table id="pm-table2">
+              <tr>
+                <td class="form-subtitle" style="width: 23.5%">사업 세부 사항*</td>
+                <td>
+                  <input name="rName" type="text" class="form-control form-content" placeholder="제품명" required />
+                </td>
+                <td><input name="rMoney" type="text" class="form-control form-content" placeholder="금액" required /></td>
+                <td>
+                  <input name="rCount" type="text" class="form-control form-content" placeholder="수량" required />
+                </td>
+              </tr>
+           </table>
+           <input type="button" onclick="addRow()" class="button add-button" value="추가" style="margin-left: 22.5%"/>
+         	<input type="button" onclick="deleteRow()" class="button" value="삭제" />
 
           <div id="form-notice">
             <span class="form-notice-title">유의사항</span>
@@ -144,18 +152,17 @@
         const newCell3 = newRow.insertCell(2);
         const newCell4 = newRow.insertCell(3);
 
-        newCell1.innerHTML = '<td class="form-subtitle form-subtitle2"></td>';
-        newCell2.innerHTML =
-          '<td><select class="form-select form-content" id="inputGroupSelect01"><option selected>분류</option><option value="1">사업비</option><option value="2">기타</option><option value="3">장애인</option></select></td>';
-        newCell3.innerHTML = '<td colspan="2"><input type="text" class="form-control form-content" placeholder="사용 내용" /></td>';
-        newCell4.innerHTML = '<td><input type="text" class="form-control form-content" placeholder="사용 금액" /></td>';
+        newCell1.innerHTML = '<td class="form-subtitle" style="width: 23.5%"></td>';
+        newCell2.innerHTML = '<td><input name="rName" type="text" class="form-control form-content" placeholder="제품명" required /></td>';
+        newCell3.innerHTML = '<td><input name="rMoney" type="text" class="form-control form-content" placeholder="금액" /></td>';
+        newCell4.innerHTML = '<td><input name="rCount" type="text" class="form-control form-content" placeholder="수량" /></td>';
       }
 
       function deleteRow() {
-        const table = document.getElementById("pm-table2");
-        if (table.rows.length < 1) return;
-        table.deleteRow(table.rows.length - 1);
-      }
+          const table = document.getElementById("pm-table2");
+          if (table.rows.length <= 1) return;
+          table.deleteRow(table.rows.length - 1);
+        }
     </script>
   </body>
 </html>

@@ -32,43 +32,47 @@
         <h1><a>기부 프로젝트 신청</a></h1>
       </div>
       <div id="pm-form-outer">
-        <form action="">
-          <!-- name 안채움 -->
+        <form action="<%=path%>/pm/apply/donation" method="post">
           <table id="pm-table">
             <tr>
               <td class="form-subtitle">카테고리*</td>
               <td colspan="4">
-                <select name="" class="form-select form-content" id="inputGroupSelect01" required>
-                  <option selected>카테고리를 선택하세요.</option>
-                  <option value="1">아동/청소년</option>
-                  <option value="2">어르신</option>
-                  <option value="3">장애인</option>
+                <select name="category" class="form-select form-content" id="inputGroupSelect01" required>
+                  <option value="" selected>카테고리를 선택하세요.</option>
+                  <option value="아동/청소년">아동/청소년</option>
+                  <option value="어르신">어르신</option>
+                  <option value="장애인">장애인</option>
+                  <option value="다문화">다문화</option>
+                  <option value="지구촌">지구촌</option>
+                  <option value="가족/여성">가족/여성</option>
+                  <option value="시민사회">시민사회</option>
+                  <option value="동물">동물</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="form-subtitle">단체명*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="단체명을 입력하세요." required /></td>
+              <td colspan="4"><input name="corp" type="text" class="form-control form-content" placeholder="단체명을 입력하세요." value="로그인기업" disabled /></td>
             </tr>
             <tr>
               <td class="form-subtitle">프로젝트 제목*</td>
               <td colspan="4">
-                <input name="" type="text" class="form-control form-content" placeholder="프로젝트의 제목을 입력하세요." required />
+                <input name="title" type="text" class="form-control form-content" placeholder="프로젝트의 제목을 입력하세요." required />
               </td>
             </tr>
             <tr>
               <td class="form-subtitle">모금 기간*</td>
               <td class="form-content-sub">모금 종료일</td>
-              <td class="form-content-date" colspan="3"><input name="" type="date" class="form-control form-content" required /></td>
+              <td class="form-content-date" colspan="3"><input name="fDate" type="date" class="form-control form-content" required /></td>
             </tr>
             <tr>
               <td class="form-subtitle">프로젝트 소개*</td>
               <td colspan="4">
                 <textarea
-                  name=""
+                  name="content"
                   class="form-control form-content form-content-textarea"
                   aria-label="With textarea"
-                  placeholder="진행하는 프로젝트에 대한 설명을 입력하세요."
+                  placeholder="진행하는 프로젝트에 대한 정보를 입력하세요."
                   required
                 ></textarea>
               </td>
@@ -84,39 +88,38 @@
             </tr>
             <tr>
               <td class="form-subtitle">사업 대상*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="사업 대상을 입력하세요." required /></td>
+              <td colspan="4"><input name="exePerson" type="text" class="form-control form-content" placeholder="사업 대상을 입력하세요." required /></td>
             </tr>
             <tr>
               <td class="form-subtitle">사업 기간*</td>
               <td class="form-content-sub">사업 시작일</td>
               <td class="form-content-date">
-                <input name="" type="date" class="form-control form-content" required />
+                <input name="exeStartDate" type="date" class="form-control form-content" required />
               </td>
               <td class="form-content-sub">사업 종료일</td>
-              <td class="form-content-date"><input name="" type="date" class="form-control form-content" required /></td>
+              <td class="form-content-date"><input name="exeFinishDate" type="date" class="form-control form-content" required /></td>
             </tr>
             <tr>
               <td class="form-subtitle">목표 금액*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="목표 금액을 입력하세요." required /></td>
+              <td colspan="4"><input name="goalMoney" type="text" class="form-control form-content" placeholder="목표 금액을 입력하세요." required /></td>
             </tr>
+            </table>
             <table id="pm-table2">
               <tr>
                 <td class="form-subtitle form-subtitle2">사업 세부 사항*</td>
                 <td>
-                  <select name="" class="form-select form-content" id="inputGroupSelect01" required>
-                    <option selected>분류</option>
-                    <option value="">사업비</option>
-                    <option value="">인건비</option>
-                    <option value="">운영비</option>
-                    <option value="">행사홍보비</option>
+                  <select name="exeCategory" class="form-select form-content" id="inputGroupSelect01" required>
+                    <option value="사업비" selected>사업비</option>
+                    <option value="인건비">인건비</option>
+                    <option value="운영비">운영비</option>
+                    <option value="행사홍보비">행사홍보비</option>
                   </select>
                 </td>
-                <td><input name="" type="text" class="form-control form-content" placeholder="사용 내용" required /></td>
+                <td><input name="exeContent" type="text" class="form-control form-content" placeholder="사용 내용" required /></td>
                 <td>
-                  <input name="" type="text" class="form-control form-content" placeholder="사용 금액" required />
+                  <input name="exeMoney" type="text" class="form-control form-content" placeholder="사용 금액" required />
                 </td>
               </tr>
-            </table>
           </table>
           <input type="button" onclick="addRow()" class="button add-button" value="추가" />
           <input type="button" onclick="deleteRow()" class="button" value="삭제" />
@@ -156,9 +159,10 @@
 
         newCell1.innerHTML = '<td class="form-subtitle form-subtitle2"></td>';
         newCell2.innerHTML =
-          '<td><select name="" class="form-select form-content" id="inputGroupSelect01" required><option selected>분류</option><option value="">사업비</option><option value="">인건비</option><option value="">운영비</option><option value="">행사홍보비</option></select></td>';
-        newCell3.innerHTML = '<td colspan="2"><input type="text" class="form-control form-content" placeholder="사용 내용" /></td>';
-        newCell4.innerHTML = '<td><input type="text" class="form-control form-content" placeholder="사용 금액" /></td>';
+          '<td><select name="exeCategory" class="form-select form-content" id="inputGroupSelect01" required><option value="사업비" selected>사업비</option><option value="인건비">인건비</option><option value="운영비">운영비</option><option value="행사홍보비">행사홍보비</option></select></td>';
+        newCell3.innerHTML = '<td colspan="2"><input name="exeContent" type="text" class="form-control form-content" placeholder="사용 내용" /></td>';
+        newCell4.innerHTML = '<td><input name="exeMoney" type="text" class="form-control form-content" placeholder="사용 금액" /></td>';
+      
       }
 
       function deleteRow() {
