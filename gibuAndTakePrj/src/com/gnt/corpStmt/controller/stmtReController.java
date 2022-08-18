@@ -14,9 +14,10 @@ import com.gnt.corpStmt.service.StmtReService;
 @WebServlet (urlPatterns = "/corp/stmtList")
 public class StmtReController extends HttpServlet{
 
-	@Overrideㄴ
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		ArrayList<StmtVo> voList = new StmtReService().selectList();
+//		ArrayList<StmtVo> list = new StmtReService().selectList();
+//		req.setAttribute("list", list);
 		
 		req.getRequestDispatcher("/views/user2/corpStatementList.jsp").forward(req, resp);
 	}
