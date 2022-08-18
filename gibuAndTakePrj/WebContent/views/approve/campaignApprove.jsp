@@ -190,7 +190,7 @@
     
 	<div id="title">캠페인 승인</div>
 	
-	<form action="/gibuAndTakePrj/approve/campaignlist" method="get">
+	<form action="/gibuAndTakePrj/manager/campaignlist" method="get">
      <div class="wrap">
 	<div id="one">
 		<div id="a">승인번호 제&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp호</div>

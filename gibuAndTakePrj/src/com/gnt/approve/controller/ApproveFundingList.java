@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/approve/fundinglist")
+@WebServlet(urlPatterns = "/manager/fundinglist")
 public class ApproveFundingList extends HttpServlet{
 	
 	@Override

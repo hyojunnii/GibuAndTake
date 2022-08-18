@@ -290,7 +290,7 @@
 			<input id="btn1" class="input" type="submit" value="사용자 제재">
 		</form>
 		
-		<form action="/gibuAndTakePrj/approve/list" method="get">
+		<form action="/gibuAndTakePrj/manager/approvelist" method="get">
 			<input id="btn2" class="input" type="submit" value="승인목록">
 		</form>
 	 </div>

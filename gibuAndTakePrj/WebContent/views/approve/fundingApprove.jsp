@@ -206,7 +206,7 @@
     
 	<div id="title">펀딩 승인</div>
 	
-	<form action="/gibuAndTakePrj/approve/fundinglist" method="get">
+	<form action="/gibuAndTakePrj/manager/fundinglist" method="get">
      <div class="wrap">
 	<div id="one">
 		<div id="a">승인번호 제&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp호</div>

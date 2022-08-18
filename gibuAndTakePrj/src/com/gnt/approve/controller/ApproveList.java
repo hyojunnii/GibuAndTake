@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/approve/list")
+@WebServlet(urlPatterns = "/manager/approvelist")
 public class ApproveList extends HttpServlet{
 
 	@Override
