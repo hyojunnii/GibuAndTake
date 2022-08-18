@@ -183,33 +183,42 @@
     <%@ include file="/views/common/header.jsp" %>
 
     <div id="body">
-      <div id="search">
-        <select name="" class="form-select search-category" id="inputGroupSelect01" required>
-          <option selected value="1">기부</option>
-          <option value="2">펀딩</option>
-          <option value="3">캠페인</option>
+      <form id="search" action="/search/contents" method="post">
+        <select name="category" class="form-select search-category" id="inputGroupSelect01" required>
+          <option selected value="10">기부</option>
+          <option value="20">펀딩</option>
+          <option value="30">캠페인</option>
         </select>
-        <input name="" type="text" class="form-control search-bar" placeholder="검색어를 입력하세요." />
-        <button id="search-icon"><img src="resources/img/free-icon-search-7233469.png" /></button>
-      </div>
+        <input name="search" type="text" class="form-control search-bar" placeholder="검색어를 입력하세요." />
+        <button type="submit" id="search-icon"><img src="resources/img/free-icon-search-7233469.png" /></button>
+      </form>
       <div id="category-search-outer">
         <div class="category-search-title"><h6>주제별 찾기</h6></div>
         <div class="category-search-menu">
           <span class="category-search-subtitle" id="">기부</span>
           <button class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/search/donation?c=10">아동/청소년</a></li>
             <li><a class="dropdown-item" href="#">어르신</a></li>
-            <li><a class="dropdown-item" href="#">아동/청소년</a></li>
-            <li><a class="dropdown-item" href="#">환경</a></li>
+            <li><a class="dropdown-item" href="#">장애인</a></li>
+            <li><a class="dropdown-item" href="#">다문화</a></li>
+            <li><a class="dropdown-item" href="#">지구촌</a></li>
+            <li><a class="dropdown-item" href="#">가족/여성</a></li>
+            <li><a class="dropdown-item" href="#">시민사회</a></li>
+            <li><a class="dropdown-item" href="#">동물</a></li>
           </ul>
         </div>
         <div class="category-search-menu">
           <span class="category-search-subtitle" id="">펀딩</span>
           <button class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">어르신</a></li>
-            <li><a class="dropdown-item" href="#">아동/청소년</a></li>
-            <li><a class="dropdown-item" href="#">환경</a></li>
+            <li><a class="dropdown-item" href="#">일자리창출</a></li>
+            <li><a class="dropdown-item" href="#">공정무역</a></li>
+            <li><a class="dropdown-item" href="#">친환경</a></li>
+            <li><a class="dropdown-item" href="#">기부</a></li>
+            <li><a class="dropdown-item" href="#">작은가게</a></li>
+            <li><a class="dropdown-item" href="#">미디어</a></li>
+            <li><a class="dropdown-item" href="#">창작자</a></li>
           </ul>
         </div>
       </div>
