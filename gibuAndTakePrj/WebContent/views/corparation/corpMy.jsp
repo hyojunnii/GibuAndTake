@@ -49,13 +49,13 @@
 			margin-top:-1090px;
 			width:200px;
    			height:550px;
-   			margin-left:450px;
+   			margin-left:0px;
 		}
 		
 		
 		#btn_group{
 			margin-top:700px;
-			margin-left:750px;
+			margin-left:730px;
 		}
 		#fundingI{
 			margin-right:-4px;
@@ -131,14 +131,14 @@
 					</p>
 				</div>
 			
-			</div>		
+					
 		
 			
 			
 			
 			
 		<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
-	
+		</div>
 		
 		<div id="btn_group">
 		<a href="/"><button id="fundingI" style="font-size: 25px"> 신청 </button></a>
