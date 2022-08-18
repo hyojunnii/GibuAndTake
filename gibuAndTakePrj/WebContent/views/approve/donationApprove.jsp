@@ -196,7 +196,7 @@
     
 	<div id="title">기부 승인</div>
 	
-	<form action="/gibuAndTakePrj/approve/list" method="get">
+	<form action="/gibuAndTakePrj/manager/approvelist" method="get">
      <div class="wrap">
 		<div id="one">
 			<div id="a">승인번호 제&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp호</div>

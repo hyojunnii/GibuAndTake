@@ -151,15 +151,15 @@
     <div id="title">승인목록</div>
     
 	 <div style="border: 1px solid #72d09e; float: left; width: 20%; height:600px; padding:10px;">
-		<form action="/gibuAndTakePrj/approve/list" method="get">
+		<form action="/gibuAndTakePrj/manager/approvelist" method="get">
 			<input class="input" type="submit" value="기부승인">
 		</form>
 		
-		<form action="/gibuAndTakePrj/approve/fundinglist" method="get">
+		<form action="/gibuAndTakePrj/manager/fundinglist" method="get">
 			<input class="input" type="submit" value="펀딩승인">
 		</form>
 		
-		<form action="/gibuAndTakePrj/approve/campaignlist" method="get">
+		<form action="/gibuAndTakePrj/manager/campaignlist" method="get">
 			<input id="campaign" class="input" type="submit" value="캠페인승인">
 		</form>
 	 </div>
@@ -195,7 +195,7 @@
         </table>
     	</div>
     	
- 		<form action="/gibuAndTakePrj/approve/funding" method="get">
+ 		<form action="/gibuAndTakePrj/manager/approvefunding" method="get">
 			<input id="approve"  type="submit" value="승인">
 		</form>   	
     
