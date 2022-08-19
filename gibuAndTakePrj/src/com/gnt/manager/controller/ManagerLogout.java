@@ -18,6 +18,6 @@ public class ManagerLogout extends HttpServlet{
 		req.getSession().invalidate();
 		
 		//로그인 창 보여주기
-		resp.sendRedirect(req.getContextPath());
+		resp.sendRedirect("/gibuAndTakePrj/manager/login.jsp");
 	}
 }
