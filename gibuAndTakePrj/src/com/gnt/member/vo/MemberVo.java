@@ -5,53 +5,45 @@ import java.security.Timestamp;
 public class MemberVo {
 	
 	
+	public MemberVo() {
 	
-	  public MemberVo() {
-		  
-	  }
-	 
-	  
-	  public MemberVo(int no, String mclass, String num, String name, String id, String pwd, String pwd2, String nick,
-			String email, String addr, String phone, Timestamp enrolDate, String delete, String ban,
-			Timestamp modifyDate, String content, String cat) {
+	}
+	
+	
+	public MemberVo(int no, int clas, int regnum, String name, String id, String pwd, String nick, String email,
+			String addr, String phone, Timestamp date, String del, String ban, Timestamp mod) {
+		super();
 		this.no = no;
-		this.mclass = mclass;
-		this.num = num;
+		this.clas = clas;
+		this.regnum = regnum;
 		this.name = name;
 		this.id = id;
 		this.pwd = pwd;
-		this.pwd2 = pwd2;
 		this.nick = nick;
 		this.email = email;
 		this.addr = addr;
 		this.phone = phone;
-		this.enrolDate = enrolDate;
-		this.delete = delete;
+		this.date = date;
+		this.del = del;
 		this.ban = ban;
-		this.modifyDate = modifyDate;
-		this.content = content;
-		this.cat = cat;
+		this.mod = mod;
 	}
-	  
-	  private int no;
-	  private String mclass;
-	  private String num;            
-	  private String name;        
-	  private String id;
-	  private String pwd; 
-	  private String pwd2; 
-	  private String nick;          
-	  private String email;        
-	  private String addr;         
-	  private String phone; 
-	  private Timestamp enrolDate;    
-	  private String delete;
-	  private String ban;
-	  private Timestamp modifyDate;    
-	  private String content;
-	  private String cat;
-	  
-	  
+
+
+	private int no;
+	private int clas;
+	private int regnum;
+	private String name;
+	private String id;
+	private String pwd;
+	private String nick;
+	private String email;
+	private String addr;
+	private String phone;
+	private Timestamp date;
+	private String del;
+	private String ban;
+	private Timestamp mod;
 	public int getNo() {
 		return no;
 	}
@@ -62,23 +54,23 @@ public class MemberVo {
 	}
 
 
-	public String getMclass() {
-		return mclass;
+	public int getClas() {
+		return clas;
 	}
 
 
-	public void setMclass(String mclass) {
-		this.mclass = mclass;
+	public void setClas(int clas) {
+		this.clas = clas;
 	}
 
 
-	public String getNum() {
-		return num;
+	public int getRegnum() {
+		return regnum;
 	}
 
 
-	public void setNum(String num) {
-		this.num = num;
+	public void setRegnum(int regnum) {
+		this.regnum = regnum;
 	}
 
 
@@ -109,16 +101,6 @@ public class MemberVo {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
-	}
-
-
-	public String getPwd2() {
-		return pwd2;
-	}
-
-
-	public void setPwd2(String pwd2) {
-		this.pwd2 = pwd2;
 	}
 
 
@@ -162,23 +144,23 @@ public class MemberVo {
 	}
 
 
-	public Timestamp getEnrolDate() {
-		return enrolDate;
+	public Timestamp getDate() {
+		return date;
 	}
 
 
-	public void setEnrolDate(Timestamp enrolDate) {
-		this.enrolDate = enrolDate;
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
 
 
-	public String getDelete() {
-		return delete;
+	public String getDel() {
+		return del;
 	}
 
 
-	public void setDelete(String delete) {
-		this.delete = delete;
+	public void setDel(String del) {
+		this.del = del;
 	}
 
 
@@ -192,43 +174,26 @@ public class MemberVo {
 	}
 
 
-	public Timestamp getModifyDate() {
-		return modifyDate;
+	public Timestamp getMod() {
+		return mod;
 	}
 
 
-	public void setModifyDate(Timestamp modifyDate) {
-		this.modifyDate = modifyDate;
-	}
-
-
-	public String getContent() {
-		return content;
-	}
-
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-
-	public String getCat() {
-		return cat;
-	}
-
-
-	public void setCat(String cat) {
-		this.cat = cat;
+	public void setMod(Timestamp mod) {
+		this.mod = mod;
 	}
 
 
 	@Override
 	public String toString() {
-		return "MemberVo [no=" + no + ", mclass=" + mclass + ", num=" + num + ", name=" + name + ", id=" + id + ", pwd="
-				+ pwd + ", pwd2=" + pwd2 + ", nick=" + nick + ", email=" + email + ", addr=" + addr + ", phone=" + phone
-				+ ", enrolDate=" + enrolDate + ", delete=" + delete + ", ban=" + ban + ", modifyDate=" + modifyDate
-				+ ", content=" + content + ", cat=" + cat + "]";
+		return "MemberVo [no=" + no + ", clas=" + clas + ", regnum=" + regnum + ", name=" + name + ", id=" + id
+				+ ", pwd=" + pwd + ", nick=" + nick + ", email=" + email + ", addr=" + addr + ", phone=" + phone
+				+ ", date=" + date + ", del=" + del + ", ban=" + ban + ", mod=" + mod + "]";
 	}
+	
+	 
+	
+	
 	
 	
 }

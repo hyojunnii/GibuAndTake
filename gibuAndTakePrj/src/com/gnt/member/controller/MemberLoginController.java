@@ -21,9 +21,8 @@ public class MemberLoginController extends HttpServlet{
 		
 		//데이터 꺼내기
 		String memberId = req.getParameter("memberId");
-		System.out.println("아이디:"+ memberId);
 		String memberPwd = req.getParameter("memberPwd");
-		System.out.println("비밀번호:"+ memberPwd);
+		
 		
 		//데이터 뭉치기
 		MemberVo vo = new MemberVo();
@@ -32,8 +31,7 @@ public class MemberLoginController extends HttpServlet{
 			
 		//서비스 로직 실행
 		MemberVo loginMember = new MemberService().login(vo);
-		System.out.println("아이디:"+ memberId);
-		System.out.println("비밀번호:"+ memberPwd);
+		
 		
 		
 		if(loginMember != null) {
