@@ -4,12 +4,18 @@ public class GibuVo {
 	public GibuVo() {
 		
 	}
-	
+
 	
 
-	public GibuVo(String dno, String regno, String dclass, String dgmoney, String dpmoney, String dsdate, String dedate,
+
+
+
+
+	public GibuVo(String dno, String regno, String dclass, int dgmoney, int dpmoney, String dsdate, String dedate,
 			String dperson, String mno, String regclass, String regname, String regcontent, String regsdate,
-			String regfdate, String regpass, String regfin, String regdel, String regmod, String regcnt) {
+			String regfdate, String regpass, String regfin, String regdel, String regmod, int regcnt, String imgsrc,
+			double moneypercent) {
+		super();
 		this.dno = dno;
 		this.regno = regno;
 		this.dclass = dclass;
@@ -29,15 +35,21 @@ public class GibuVo {
 		this.regdel = regdel;
 		this.regmod = regmod;
 		this.regcnt = regcnt;
+		this.imgsrc = imgsrc;
+		this.moneypercent = moneypercent;
 	}
+
+
+
+
 
 
 
 	private String dno;
 	private String regno;
 	private String dclass;
-	private String dgmoney;
-	private String dpmoney;
+	private int dgmoney;
+	private int dpmoney;
 	private String dsdate;
 	private String dedate;
 	private String dperson;
@@ -51,8 +63,10 @@ public class GibuVo {
 	private String regfin;
 	private String regdel;
 	private String regmod;
-	private String regcnt;
+	private int regcnt;
 	
+	private String imgsrc;	//이미지경로
+	private double moneypercent;
 	public String getDno() {
 		return dno;
 	}
@@ -71,16 +85,16 @@ public class GibuVo {
 	public void setDclass(String dclass) {
 		this.dclass = dclass;
 	}
-	public String getDgmoney() {
+	public int getDgmoney() {
 		return dgmoney;
 	}
-	public void setDgmoney(String dgmoney) {
+	public void setDgmoney(int dgmoney) {
 		this.dgmoney = dgmoney;
 	}
-	public String getDpmoney() {
+	public int getDpmoney() {
 		return dpmoney;
 	}
-	public void setDpmoney(String dpmoney) {
+	public void setDpmoney(int dpmoney) {
 		this.dpmoney = dpmoney;
 	}
 	public String getDsdate() {
@@ -161,11 +175,23 @@ public class GibuVo {
 	public void setRegmod(String regmod) {
 		this.regmod = regmod;
 	}
-	public String getRegcnt() {
+	public int getRegcnt() {
 		return regcnt;
 	}
-	public void setRegcnt(String regcnt) {
+	public void setRegcnt(int regcnt) {
 		this.regcnt = regcnt;
+	}
+	public String getImgsrc() {
+		return imgsrc;
+	}
+	public void setImgsrc(String imgsrc) {
+		this.imgsrc = imgsrc;
+	}
+	public double getMoneypercent() {
+		return moneypercent;
+	}
+	public void setMoneypercent(double moneypercent) {
+		this.moneypercent = moneypercent;
 	}
 	@Override
 	public String toString() {
@@ -173,10 +199,10 @@ public class GibuVo {
 				+ dpmoney + ", dsdate=" + dsdate + ", dedate=" + dedate + ", dperson=" + dperson + ", mno=" + mno
 				+ ", regclass=" + regclass + ", regname=" + regname + ", regcontent=" + regcontent + ", regsdate="
 				+ regsdate + ", regfdate=" + regfdate + ", regpass=" + regpass + ", regfin=" + regfin + ", regdel="
-				+ regdel + ", regmod=" + regmod + ", regcnt=" + regcnt + "]";
+				+ regdel + ", regmod=" + regmod + ", regcnt=" + regcnt + ", imgsrc=" + imgsrc + ", moneypercent="
+				+ moneypercent + "]";
 	}
-	
-	
+
 	
 	
 	
