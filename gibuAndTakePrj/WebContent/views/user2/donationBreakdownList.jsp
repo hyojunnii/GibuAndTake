@@ -248,19 +248,19 @@
 						</tr>
 						<tr>
 							<td>신청번호</td>
-							<td>R123456789</td>
+							<td>${BreakdownVo.payNo }</td>
 						</tr>
 						<tr>
 							<td>결제방법</td>
-							<td>신용카드</td>
+							<td>${BreakdownVo.payName }</td>
 						</tr>
 						<tr>
 							<td>기부금액</td>
-							<td>30,000 원</td>
+							<td>${BreakdownVo.payMoney }</td>
 						</tr>
 						<tr>
 							<td>기부일자</td>
-							<td>2022-08-07</td>
+							<td>${BreakdownVo.payDate }</td>
 						</tr>
 						<tr>
 							<td>기부증서</td>

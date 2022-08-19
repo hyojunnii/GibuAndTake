@@ -18,7 +18,7 @@ public class StmtReController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		ArrayList<StmtVo> list = new StmtReService().selectList();
 //		req.setAttribute("list", list);
-		
+//		
 		req.getRequestDispatcher("/views/user2/corpStatementList.jsp").forward(req, resp);
 	}
 }
