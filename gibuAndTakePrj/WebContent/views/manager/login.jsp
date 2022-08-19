@@ -150,7 +150,6 @@
 </style>
 <body>	
 		<div id="loginEvery">
-		<%if(loginMember == null){ %>
 		<form action="/gibuAndTakePrj/manager/login" method="post">
             <div id ="square">
                 <table id= "loginInfo">
@@ -176,13 +175,6 @@
                <%@ include file="../common/footer.jsp" %>
           		</div>
         </form>
-        
-         <%}else{%>
-			<%=loginMember.getName() %> 님 환영합니다.
-            	<br>
-            	<a href="/gibuAndTakePrj/manager/list">관리자</a>
-            	<a href="/gibuAndTakePrj/manager/logout">로그아웃</a>
-            <%}%>
        
 </body>
 </html>
