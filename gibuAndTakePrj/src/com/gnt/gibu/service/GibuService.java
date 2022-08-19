@@ -18,9 +18,9 @@ public class GibuService {
 		List<GibuVo> voList = null;
 		
 		conn = getConnection();
-		//DAO 호출
-		voList = dao.selectList(conn);
-		
+		//DAO 호출	
+			voList = dao.selectList(conn);
+			close(conn);
 		return voList;
 	}
 

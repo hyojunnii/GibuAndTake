@@ -1,5 +1,8 @@
+<%@page import="com.gnt.gibu.vo.GibuVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% List<GibuVo> list = (List<GibuVo>)request.getAttribute("gibuvo"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -351,6 +354,11 @@ progress::-webkit-progress-value{
     </div>
     <br clear="both">
 
+	<script>
+	function () {
+		colsole.log(list);
+	}
+	</script>
 	</div>
     <%@ include file="../common/footer.jsp" %>
     

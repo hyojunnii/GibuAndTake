@@ -5,141 +5,180 @@ public class GibuVo {
 		
 	}
 	
-	private String no;			//기업번호(사용자번호)
-	private String nick; 		//기업명(사용자이름)
-	private String category;	//카테고리(10
-	private String gibuCategory;//상세카테고리
-	private String title;		//제목
-	private String content; 	//내용
-	private String enrollSDate;	//시작날짜
-	private String enrollFDate;	//종료날짜
-	private String modDate;		//마지막수정일자
-	private int cnt;			//조회수
-	private int gMoney;			//목표금액
-	private int pMoney;			//참여금액
-	private String sDate;		//사업기간 시작
-	private String eDate;		//사업기간 종료
-	private String person;		//사업대상
 	
+
+	public GibuVo(String dno, String regno, String dclass, String dgmoney, String dpmoney, String dsdate, String dedate,
+			String dperson, String mno, String regclass, String regname, String regcontent, String regsdate,
+			String regfdate, String regpass, String regfin, String regdel, String regmod, String regcnt) {
+		this.dno = dno;
+		this.regno = regno;
+		this.dclass = dclass;
+		this.dgmoney = dgmoney;
+		this.dpmoney = dpmoney;
+		this.dsdate = dsdate;
+		this.dedate = dedate;
+		this.dperson = dperson;
+		this.mno = mno;
+		this.regclass = regclass;
+		this.regname = regname;
+		this.regcontent = regcontent;
+		this.regsdate = regsdate;
+		this.regfdate = regfdate;
+		this.regpass = regpass;
+		this.regfin = regfin;
+		this.regdel = regdel;
+		this.regmod = regmod;
+		this.regcnt = regcnt;
+	}
+
+
+
+	private String dno;
+	private String regno;
+	private String dclass;
+	private String dgmoney;
+	private String dpmoney;
+	private String dsdate;
+	private String dedate;
+	private String dperson;
+	private String mno;
+	private String regclass;
+	private String regname;
+	private String regcontent;
+	private String regsdate;
+	private String regfdate;
+	private String regpass;
+	private String regfin;
+	private String regdel;
+	private String regmod;
+	private String regcnt;
 	
-	
-	
-	public GibuVo(String no, String nick, String category, String gibuCategory, String title, String content,
-			String enrollSDate, String enrollFDate, String modDate, int cnt, int gMoney, int pMoney, String sDate,
-			String eDate, String person) {
-		this.no = no;
-		this.nick = nick;
-		this.category = category;
-		this.gibuCategory = gibuCategory;
-		this.title = title;
-		this.content = content;
-		this.enrollSDate = enrollSDate;
-		this.enrollFDate = enrollFDate;
-		this.modDate = modDate;
-		this.cnt = cnt;
-		this.gMoney = gMoney;
-		this.pMoney = pMoney;
-		this.sDate = sDate;
-		this.eDate = eDate;
-		this.person = person;
+	public String getDno() {
+		return dno;
 	}
-	public String getNo() {
-		return no;
+	public void setDno(String dno) {
+		this.dno = dno;
 	}
-	public void setNo(String no) {
-		this.no = no;
+	public String getRegno() {
+		return regno;
 	}
-	public String getNick() {
-		return nick;
+	public void setRegno(String regno) {
+		this.regno = regno;
 	}
-	public void setNick(String nick) {
-		this.nick = nick;
+	public String getDclass() {
+		return dclass;
 	}
-	public String getCategory() {
-		return category;
+	public void setDclass(String dclass) {
+		this.dclass = dclass;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public String getDgmoney() {
+		return dgmoney;
 	}
-	public String getGibuCategory() {
-		return gibuCategory;
+	public void setDgmoney(String dgmoney) {
+		this.dgmoney = dgmoney;
 	}
-	public void setGibuCategory(String gibuCategory) {
-		this.gibuCategory = gibuCategory;
+	public String getDpmoney() {
+		return dpmoney;
 	}
-	public String getTitle() {
-		return title;
+	public void setDpmoney(String dpmoney) {
+		this.dpmoney = dpmoney;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public String getDsdate() {
+		return dsdate;
 	}
-	public String getContent() {
-		return content;
+	public void setDsdate(String dsdate) {
+		this.dsdate = dsdate;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public String getDedate() {
+		return dedate;
 	}
-	public String getEnrollSDate() {
-		return enrollSDate;
+	public void setDedate(String dedate) {
+		this.dedate = dedate;
 	}
-	public void setEnrollSDate(String enrollSDate) {
-		this.enrollSDate = enrollSDate;
+	public String getDperson() {
+		return dperson;
 	}
-	public String getEnrollFDate() {
-		return enrollFDate;
+	public void setDperson(String dperson) {
+		this.dperson = dperson;
 	}
-	public void setEnrollFDate(String enrollFDate) {
-		this.enrollFDate = enrollFDate;
+	public String getMno() {
+		return mno;
 	}
-	public String getModDate() {
-		return modDate;
+	public void setMno(String mno) {
+		this.mno = mno;
 	}
-	public void setModDate(String modDate) {
-		this.modDate = modDate;
+	public String getRegclass() {
+		return regclass;
 	}
-	public int getCnt() {
-		return cnt;
+	public void setRegclass(String regclass) {
+		this.regclass = regclass;
 	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
+	public String getRegname() {
+		return regname;
 	}
-	public int getgMoney() {
-		return gMoney;
+	public void setRegname(String regname) {
+		this.regname = regname;
 	}
-	public void setgMoney(int gMoney) {
-		this.gMoney = gMoney;
+	public String getRegcontent() {
+		return regcontent;
 	}
-	public int getpMoney() {
-		return pMoney;
+	public void setRegcontent(String regcontent) {
+		this.regcontent = regcontent;
 	}
-	public void setpMoney(int pMoney) {
-		this.pMoney = pMoney;
+	public String getRegsdate() {
+		return regsdate;
 	}
-	public String getsDate() {
-		return sDate;
+	public void setRegsdate(String regsdate) {
+		this.regsdate = regsdate;
 	}
-	public void setsDate(String sDate) {
-		this.sDate = sDate;
+	public String getRegfdate() {
+		return regfdate;
 	}
-	public String geteDate() {
-		return eDate;
+	public void setRegfdate(String regfdate) {
+		this.regfdate = regfdate;
 	}
-	public void seteDate(String eDate) {
-		this.eDate = eDate;
+	public String getRegpass() {
+		return regpass;
 	}
-	public String getPerson() {
-		return person;
+	public void setRegpass(String regpass) {
+		this.regpass = regpass;
 	}
-	public void setPerson(String person) {
-		this.person = person;
+	public String getRegfin() {
+		return regfin;
+	}
+	public void setRegfin(String regfin) {
+		this.regfin = regfin;
+	}
+	public String getRegdel() {
+		return regdel;
+	}
+	public void setRegdel(String regdel) {
+		this.regdel = regdel;
+	}
+	public String getRegmod() {
+		return regmod;
+	}
+	public void setRegmod(String regmod) {
+		this.regmod = regmod;
+	}
+	public String getRegcnt() {
+		return regcnt;
+	}
+	public void setRegcnt(String regcnt) {
+		this.regcnt = regcnt;
 	}
 	@Override
 	public String toString() {
-		return "GibuVo [no=" + no + ", nick=" + nick + ", category=" + category + ", gibuCategory=" + gibuCategory
-				+ ", title=" + title + ", content=" + content + ", enrollSDate=" + enrollSDate + ", enrollFDate="
-				+ enrollFDate + ", modDate=" + modDate + ", cnt=" + cnt + ", gMoney=" + gMoney + ", pMoney=" + pMoney
-				+ ", sDate=" + sDate + ", eDate=" + eDate + ", person=" + person + "]";
+		return "GibuVo [dno=" + dno + ", regno=" + regno + ", dclass=" + dclass + ", dgmoney=" + dgmoney + ", dpmoney="
+				+ dpmoney + ", dsdate=" + dsdate + ", dedate=" + dedate + ", dperson=" + dperson + ", mno=" + mno
+				+ ", regclass=" + regclass + ", regname=" + regname + ", regcontent=" + regcontent + ", regsdate="
+				+ regsdate + ", regfdate=" + regfdate + ", regpass=" + regpass + ", regfin=" + regfin + ", regdel="
+				+ regdel + ", regmod=" + regmod + ", regcnt=" + regcnt + "]";
 	}
+	
+	
+	
+	
 	
 	
 	
