@@ -24,5 +24,10 @@ public MemberVo login(MemberVo vo) {
 		}
 		
 		return loginMember;
+		
 	}
+
+	
 }
+
+

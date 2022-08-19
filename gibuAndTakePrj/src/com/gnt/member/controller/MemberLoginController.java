@@ -15,14 +15,15 @@ import com.gnt.member.vo.MemberVo;
 @WebServlet(urlPatterns = "/member/login")
 public class MemberLoginController extends HttpServlet{
 
-
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//데이터 꺼내기
 		String memberId = req.getParameter("memberId");
+		System.out.println("아이디:"+ memberId);
 		String memberPwd = req.getParameter("memberPwd");
+		System.out.println("비밀번호:"+ memberPwd);
 		
 		//데이터 뭉치기
 		MemberVo vo = new MemberVo();
@@ -31,13 +32,18 @@ public class MemberLoginController extends HttpServlet{
 			
 		//서비스 로직 실행
 		MemberVo loginMember = new MemberService().login(vo);
+		System.out.println("아이디:"+ memberId);
+		System.out.println("비밀번호:"+ memberPwd);
+		
 		
 		if(loginMember != null) {
 			//로그인 성공 //세션에 로그인 유저 정보 담기
 			req.getSession().setAttribute("loginMember",loginMember);
 			req.getSession().setAttribute("alertMsg","로그인 성공!");
+			
 //			req.getRequestDispatcher("/semi").forward(req, resp);
 			resp.sendRedirect("/gibuAndTakePrj");
+			
 		}else {
 			//로그인 실패
 			req.setAttribute("errorMsg", "로그인 실패!");

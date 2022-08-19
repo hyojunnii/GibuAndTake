@@ -19,7 +19,7 @@ public class MemberDao {
 		ResultSet rs = null;
 		
 		//SQL 준비
-		String sql = "SELECT * FROM MEMBER WHERE M_ID = ? AND M_PWD = ? AND M_CLASS = 1 AND M_DEL = 'N'";
+		String sql = "SELECT M_ID , M_PWD , M_DEL FROM MEMBER WHERE M_ID = ? AND M_PWD = ?  AND M_DEL = 'N'";
 		
 		try {
 			//SQL 객체에 담고, 물음표 채우기
