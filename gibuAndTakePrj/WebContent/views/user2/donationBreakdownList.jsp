@@ -247,11 +247,11 @@
 							<th colspan="2">기부 내역</th>
 						</tr>
 						<tr>
-							<td>신청번호</td>
+							<td>결제번호</td>
 							<td>${BreakdownVo.payNo }</td>
 						</tr>
 						<tr>
-							<td>결제방법</td>
+							<td>결제수단</td>
 							<td>${BreakdownVo.payName }</td>
 						</tr>
 						<tr>
