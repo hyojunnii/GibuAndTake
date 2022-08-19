@@ -17,7 +17,7 @@ public class ManagerDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM MANAGER WHERE ID = ? AND PWD = ? AND STATUS ='N'";
+		String sql = "SELECT * FROM Manager WHERE MN_ID = ? AND MN_PWD = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -27,23 +27,15 @@ public class ManagerDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-			 	int no = rs.getInt("NO");
-				String id = rs.getString("ID");
-				String name = rs.getString("NAME");
-				String phone = rs.getString("PHONE");
-				String email = rs.getString("EMAIL");
-				Timestamp enrollDate = rs.getTimestamp("ENROLL_DATE");
-				Timestamp modifyDate = rs.getTimestamp("MODIFY_DATE");
+			 	int no = rs.getInt("MN_NO");
+				String id = rs.getString("MN_ID");
+				String nick = rs.getString("MN_NICK");
 				
 				
 				loginMember = new ManagerVo();
 				loginMember.setNo(no);
 				loginMember.setId(id);
-				loginMember.setName(name);
-				loginMember.setPhone(phone);
-				loginMember.setEmail(email);
-				loginMember.setEnrollDate(enrollDate);
-				loginMember.setModifyDate(modifyDate);
+				loginMember.setNick(nick);
 		}
 			
 		}finally {

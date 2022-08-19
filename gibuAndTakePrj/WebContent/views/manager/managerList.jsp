@@ -440,7 +440,7 @@
             		</c:when>
             		<c:otherwise>
         	    		<%if(loginMember != null){%>
-							<a href="/gibuAndTakePrj/manager/login">로그아웃</a>
+							<a href="/gibuAndTakePrj/manager/logout">로그아웃</a>
 						<%}else{%>
 							<a href="/gibuAndTakePrj/manager/login">로그인</a>
 						<%}%>&nbsp&nbsp
