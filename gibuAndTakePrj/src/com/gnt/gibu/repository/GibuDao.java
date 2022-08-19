@@ -14,7 +14,7 @@ public class GibuDao {
 	public List<GibuVo> selectList(Connection conn) {
 		
 		//sql 준비
-		String sql = "SELECT * FROM DONATION ,REGIST";
+		String sql = "SELECT * FROM DONATION D, REGIST R, REGIMG RI WHERE D.REG_NO = R.REG_NO AND D.REG_NO= RI.REG_NO ORDER BY M_NO";
 		
 		PreparedStatement pstmt = null;
 		List<GibuVo> list  = new ArrayList<GibuVo>();
@@ -30,8 +30,8 @@ public class GibuDao {
 				String dno = rs.getString("D_NO");
 				String regno = rs.getString("REG_NO");
 				String dclass = rs.getString("D_CLASS");
-				String dgmoney = rs.getString("D_GMONEY");
-				String dpmoney = rs.getString("D_PMONEY");
+				int dgmoney = rs.getInt("D_GMONEY");
+				int dpmoney = rs.getInt("D_PMONEY");
 				String dsdate = rs.getString("D_SDATE");
 				String dedate = rs.getString("D_EDATE");
 				String dperson = rs.getString("D_PERSON");
@@ -45,8 +45,11 @@ public class GibuDao {
 				String regfin = rs.getString("REG_FIN");
 				String regdel = rs.getString("REG_DEL");
 				String regmod = rs.getString("REG_MOD");
-				String regcnt = rs.getString("REG_CNT");
-				
+				int regcnt = rs.getInt("REG_CNT");
+				String imgsrc = rs.getString("URL");
+				double per = (double)dpmoney / (double)dgmoney * 100;
+				//수정해야됨
+				Double moneyper = per ;
 				
 				GibuVo vo = new GibuVo();
 				vo.setDno(dno);
@@ -68,8 +71,8 @@ public class GibuDao {
 				vo.setRegdel(regdel);
 				vo.setRegmod(regmod);
 				vo.setRegcnt(regcnt);
-				
-
+				vo.setImgsrc(imgsrc);
+				vo.setMoneypercent(moneyper);
 				list.add(vo);
 			}
 		} catch (Exception e) {

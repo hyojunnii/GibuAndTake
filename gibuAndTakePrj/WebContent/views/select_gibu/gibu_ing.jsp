@@ -219,137 +219,23 @@ progress::-webkit-progress-value{
       
        <p>진행중인 기부모금함 <span id="titleNo">??</span>개</p>
         
-       
-        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
+       <%for(GibuVo g : list) {%>
+        <a href="/gibuAndTakePrj/view/gibu_detail?type=0&num=<%=g.getRegno() %>" class="card">
             <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
+            <!-- ../resources/img/select_icon/1all.png -->
+                <img src="<%= g.getImgsrc()%>" alt="">
             </div>
             <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
+                <p align="center"><%= g.getRegname() %></p>
+                <pre><%= g.getDclass() %></pre>
                 <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
+                <span class="i_prog_percent"><%= g.getMoneypercent() %>%</span>
+                <span class="i_total_money"><%= g.getDpmoney() %>원</span>
             </div>
         </a>
-
-        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a><a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a><a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a><a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a><a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a><a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a>
-
-        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a>
-        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a>
-        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a>
-      
-        <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-            <div>
-                <img src="../resources/img/select_icon/1all.png" alt="">
-            </div>
-            <div>
-                <p align="center">기부 제목</p>
-                <pre>기업이름</pre>
-                <progress id="i_progress" value="20" max="100"></progress>
-                <span class="i_prog_percent">20%</span>
-                <span class="i_total_money">1,000,000,000원</span>
-            </div>
-        </a>
+        	
+		<%} %>
+        
 
     </div>
     <br clear="both">
