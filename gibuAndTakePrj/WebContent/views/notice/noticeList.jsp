@@ -1,6 +1,12 @@
+<%@page import="com.gnt.manager.vo.ManagerVo"%>
+<%@page import="com.gnt.notice.vo.NoticeVo"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ManagerVo loginMember = (ManagerVo)session.getAttribute("loginMember");
+	ArrayList<NoticeVo> voList = (ArrayList<NoticeVo>)request.getAttribute("voList");
+%>
     
 <!DOCTYPE html>
 <html>
@@ -172,13 +178,14 @@
                         <td>30</td>
                         <td>22/08/01</td>
                     </tr>
+                   
             </tbody>            
         </table>
     </div>
     
-    <%-- <% if(loginMember != null && "admin".equals(loginMember.getId())) {%> --%>
+     <% if(loginMember != null && "admin".equals(loginMember.getId())) {%> 
     <button id="write" style="float: right" onclick="location.href='/gibuAndTakePrj/notice/write'">공지사항 작성</button>
-    <%-- <%} %> --%>
+    <%} %> 
     
     <div id="btn">
     	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
