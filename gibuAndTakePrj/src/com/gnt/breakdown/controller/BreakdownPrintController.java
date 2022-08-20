@@ -12,11 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 public class BreakdownPrintController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/views/user2/donationBreakdownPrint.jsp").forward(req, resp);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//MemberVo m = (MemberVo) req.getSession().getAttribute("loginMember");
 		
+		//임의로 로그인한 척 하기
+		
+		req.getRequestDispatcher("/views/user2/donationBreakdownPrint.jsp").forward(req, resp);
 	}
 }
