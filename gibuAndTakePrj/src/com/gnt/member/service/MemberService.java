@@ -56,7 +56,6 @@ public int memberjoin(MemberVo vo) {
 				result = new MemberDao().memberjoin(vo, conn);
 				
 				if(result == 1) {
-					result2 = new MemberDao().corpJoin(vo, conn);
 					commit(conn);
 				}else {
 					rollback(conn);
@@ -73,11 +72,6 @@ public int memberjoin(MemberVo vo) {
 			
 			return result;
 	}
-
-public int corpJoin(corpVo cvo) {
-	// TODO Auto-generated method stub
-	return 0;
-}
 
 
 

@@ -115,6 +115,10 @@ public class MemberDao {
 		return result;
 		
 	}
+
+	public Object corpJoin(MemberVo vo, Connection conn) {
+		return null;
+	}
 }
 
 
