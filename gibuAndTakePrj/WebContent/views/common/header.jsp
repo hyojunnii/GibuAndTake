@@ -77,6 +77,11 @@
         margin-right: 15px;
     }
 
+	#logout{
+		margin-right:25px;
+		margin-top:5px;
+	}
+    
     #login_serch>a{
         vertical-align: middle;
     }
@@ -164,8 +169,14 @@
             </div>
             <div id="login_serch" class="">
             	<c:choose>
-            		<c:when test="${!empty memberVo }">
-            			<a href="<%=path %>/member/MyPage"><span id="login">${memberVo.name}님</span></a>
+            		<c:when test="${!empty loginMember }">
+            			<c:if test="${loginMember.clas == 1}">
+	            			<a href="<%=path %>/member/MyPage"><span id="login">${loginMember.name}님</span></a>
+            			</c:if>
+            			<c:if test="${loginMember.clas == 2}">
+	            			<a href="<%=path %>/corp/corpMyPage"><span id="login">${loginMember.name}님</span></a>
+            			</c:if>
+                		<a href="<%=path %>/logout" id="logout">로그아웃</a>
                 		<a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
             		</c:when>
             		<c:otherwise>

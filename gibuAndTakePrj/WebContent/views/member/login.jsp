@@ -171,7 +171,7 @@
 	                   <td colspan="4"><input type="password" name="memberPwd" id="PWD" placeholder="비밀번호"></td>
 	                </tr>
 	                <tr>
-	                    <td><button type="button" id="login" onclick="location.href='/gibuAndTakePrj'">로그인</button></td>
+	                    <td><button id="login">로그인</button></td>
 	                </tr>
                    <tr id="alink">
                     <td><a onclick="location.href='/gibuAndTakePrj/member/Join'"  class="log">일반 회원가입 |</a></td>

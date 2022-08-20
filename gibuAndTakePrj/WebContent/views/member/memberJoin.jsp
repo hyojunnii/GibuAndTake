@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style>
 
 	#every{
@@ -122,7 +123,7 @@
         transition:background 0.7s ease-in-out;
     }
 	
-	#input{
+	.input{
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
@@ -203,11 +204,11 @@
 		
 		<div id="line"></div>
 		<h3 align="center" style="font-size: 25px">일반 회원 가입 페이지</h3>
-		<form action="gibuAndTakePrj/member/join" method="post">
+		<form action="/gibuAndTakePrj/member/Join" method="post" name="memberJoin">
 			<table>
 				<tr>
-					<td class="first" style="font-weight: bold">아이디 *</span></td>
-					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" onkeydown="inputIdchk()" >
+					<td class="first" style="font-weight: bold">아이디 *</td>
+					<td><input type="text" name="memberId" id="inputId" require placeholder="4글자 이상 입력">
 					<td><input type="button" id="check_button" value="중복확인" onclick="openIdChk()" >
 						<input type="hidden" name="idDuplication" value="idUncheck"><td>
 						
@@ -216,59 +217,64 @@
 				
 				<tr>
 					<td class="first" style="font-weight: bold">비밀번호 *</td>
-					<td><input type="password" name="memberPwd" id="input" maxlength="10" required placeholder="영문+숫자 4글자 이상"></td>
+					<td><input type="password" name="memberPwd" class="input" id="memberPwd" oninput="pwdChk()" placeholder="4글자 이상 입력" required></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">비밀번호 확인 *</td>
-					<td><input type="password" id="input" name="memberPwd2" required></td>
-					<td></td>
+					<td><input type="password" class="input" name="memberPwd2" id="memberPwd2" oninput="pwdChk2()" placeholder="4글자 이상 입력" required></td>
+					<td>
+						<span id="pwdSuccess" style="color:green" hidden>비밀번호가 일치합니다.</span>
+						<span id="pwdFail" style="color:red" hidden>비밀번호가 일치하지 않습니다.</span>
+					</td>
 				</tr>
 				<tr>
 					<td  class="first" style="font-weight: bold">이름 *</td>
-					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
+					<td><input type="text" name="memberName" id="memberName" class="input" maxlength="3" required></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberNick" id="input" maxlength="3" required></td>
+					<td><input type="text" name="memberNick" class="input" maxlength="10" required></td>
 					
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주민등록번호 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
+					<td><input type="tel" name="memberRegnum" class="input" placeholder="- 없이 입력"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
+					<td><input type="tel" name="memberPhone" class="input" placeholder="- 없이 입력"></td>
 					<td></td>
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="memberEmail" id="input"></td>
+					<td><input type="email" name="memberEmail" class="input"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="memberAddr" id="input"></td>
+					<td><input type="text" name="memberAddr" class="input"></td>
 					<td></td>
 				</tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr>
 					<td  style="font-weight: bold"></td>
-					<td><button type="button" id="join" onclick="location.href='/gibuAndTakePrj/login'">가입하기</button></td>
+					<td><button type="button" id="join" onclick="onJoin()">가입하기</button></td>
 					<td></td>
 				</tr>
 
 			</table>
+			</form>
 						</div>
+						
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
 
-		</form>
+		
 	</main>
 
 	<script>
@@ -278,6 +284,61 @@
 		window.open("IdCheckForm.jsp",
 				"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
 	}
+	
+	function pwdChk() {
+		var pwd1 = $("#memberPwd");
+		var pwd2 = $("#memberPwd2");
+		
+		if (pwd2.val() != null || pwd2.val() != "") {
+			if (pwd1.val() == pwd2.val()) {
+				$("#pwdSuccess").show();
+				$("#pwdFail").hide();
+			} else if (pwd1.val() != pwd2.val()){
+				$("#pwdSuccess").hide();
+				$("#pwdFail").show();
+			}
+		}
+		
+		if (pwd1.val() == null || pwd1.val() == "" &&
+			pwd2.val() == null || pwd2.val() == "") {
+			$("#pwdSuccess").hide();
+			$("#pwdFail").hide();
+		}
+	}
+	
+	function pwdChk2() {
+		var pwd1 = $("#memberPwd");
+		var pwd2 = $("#memberPwd2");
+		
+		if (pwd1.val() == pwd2.val()) {
+			$("#pwdSuccess").show();
+			$("#pwdFail").hide();
+		} else if (pwd1.val() != pwd2.val()){
+			$("#pwdSuccess").hide();
+			$("#pwdFail").show();
+		}
+		
+		if (pwd1.val() == null || pwd1.val() == "" &&
+			pwd2.val() == null || pwd2.val() == "") {
+			$("#pwdSuccess").hide();
+			$("#pwdFail").hide();
+		}
+	}
+	
+	function onJoin(){
+		var memberJoinForm = document.memberJoin;
+		var id = $("#inputId").val().length;
+		var pwd1 = $("#memberPwd");
+		var pwd2 = $("#memberPwd2");
+		
+		if(pwd1.val() != pwd2.val()) {
+			window.alert("비밀번호가 일치하지 않습니다.");
+			return;
+		} else {
+			memberJoinForm.submit();
+		}
+	}
+	
 	</script>
 </body>
 </html>
