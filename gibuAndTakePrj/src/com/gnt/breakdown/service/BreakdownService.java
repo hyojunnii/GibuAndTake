@@ -5,20 +5,27 @@ import java.util.ArrayList;
 
 import com.gnt.breakdown.repository.BreakdownDao;
 import com.gnt.breakdown.vo.BreakdownVo;
+import com.gnt.member.vo.MemberVo;
+
 import static com.gnt.common.JDBCTemplate.*;
 
 public class BreakdownService {
 	
-	private final 
+	private final BreakdownDao dao = new BreakdownDao();
 
-	public ArrayList<BreakdownVo> showList() {
+	public ArrayList<BreakdownVo> showList(MemberVo m) {
 		Connection conn = null;
-		ArrayList<BreakdownVo> voList = null;
+		ArrayList<BreakdownVo> list = null;
 		
-		conn=getConnection();
-		voList = new BreakdownDao().showList(conn);
-		
-		return voList;
+		try {
+			conn = getConnection();
+			list = dao.showList(conn, m);			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		return list;
 	}
 	
 

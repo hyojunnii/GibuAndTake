@@ -1,7 +1,10 @@
+<%@page import="com.gnt.breakdown.vo.BreakdownVo"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
+	ArrayList<BreakdownVo> voList = (ArrayList<BreakdownVo>)request.getAttribute("voList"); 
 %>
 <!DOCTYPE html>
 <html>
@@ -132,12 +135,6 @@
         border: 1px solid #acdac2;
 	}
 
-	#modal-form-file {
-        width: 90%;
-        margin: 0 auto;
-        border-radius: 15px;
-	}
-
 	#modal-form-info {
         margin: 5% 7%;
         font-size: 11px;
@@ -221,6 +218,10 @@
         cursor: pointer;
     }
 
+	#modal-body {
+		display: flex;
+	}
+
 
 </style>
 </head>
@@ -235,54 +236,55 @@
 		</div>
 		<div id="nav">
 			<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
-			
-			<form action="<%=contextPath%>/member/breakPrint" method="post">
-				<table id="body-table">
-					<thead>
-						<tr>
-							<th colspan="2" style=" font-size: 20px;">참여한 프로젝트 이름</th>
-						</tr>
-					<tbody>
-						<tr>
-							<th colspan="2">기부 내역</th>
-						</tr>
-						<tr>
-							<td>결제번호</td>
-							<td>${BreakdownVo.payNo }</td>
-						</tr>
-						<tr>
-							<td>결제수단</td>
-							<td>${BreakdownVo.payName }</td>
-						</tr>
-						<tr>
-							<td>기부금액</td>
-							<td>${BreakdownVo.payMoney }</td>
-						</tr>
-						<tr>
-							<td>기부일자</td>
-							<td>${BreakdownVo.payDate }</td>
-						</tr>
-						<tr>
-							<td>기부증서</td>
-							<td><input id="certificate" type="button" value="출력" data-bs-toggle="modal" data-bs-target="#certificatePrint"></button></td>
-						</tr>
-						<tr>
-							<td>기부금영수증</td>
-							<td><input id="receipt" type="submit" value="출력"></button></td>
-						</tr>
-					</tbody>
-					</thead>
-				</table>
-			</form>
-
-			<hr>
+			<%for (int i = 0; i < voList.size(); i++) {%>
+				<form action="<%=contextPath%>/member/breakPrint" method="get">
+					<table id="body-table">
+						<thead>
+							<tr>
+								<th colspan="2" style=" font-size: 20px;" id="regName"><%=voList.get(i).getRegName() %></th>
+							</tr>
+						<tbody>
+							<tr>
+								<th colspan="2">기부 내역</th>
+							</tr>
+							<tr>
+								<td>결제번호</td>
+								<td id="payNo"><%=voList.get(i).getPayNo() %></td>
+							</tr>
+							<tr>
+								<td>결제수단</td>
+								<td id="payName"><%=voList.get(i).getPayName() %></td>
+							</tr>
+							<tr>
+								<td>기부금액</td>
+								<td id="payMoney"><%=voList.get(i).getPayMoney() %></td>
+							</tr>
+							<tr>
+								<td>기부일자</td>
+								<td id="payDate"><%=voList.get(i).getPayDate() %></td>
+							</tr>
+							<tr>
+								<td>기부증서</td>
+								<td><input id="certificate" type="button" value="출력" data-bs-toggle="modal" data-bs-target="#certificatePrint"></button></td>
+							</tr>
+							<tr>
+								<td>기부금영수증</td>
+								<td><input id="receipt" type="submit" value="출력"></button></td>
+							</tr>
+						</tbody>
+						</thead>
+					</table>
+				</form>
+	
+				<hr>
+			<%} %>
 		
 		</div>
 		
 	</div>
 	
 	<%@include file="/views/common/footer.jsp" %>
-
+	<!-- 모달창 데이터 받아오는 거 구현해야함! -->
   <!-- Modal -->
 	<div class="modal" id="certificatePrint" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">   <div class="modal-dialog modal-dialog-centered" id="modal-outer">
 		<div class="modal-content" id="modal-form">
@@ -295,8 +297,8 @@
 		  		
 				<table id="modal-table">
 					<tr>
-						<td>기 부 자 번 호:</td>
-						<td>R123456789</td>
+						<td>기 부 번 호:</td>
+						<td id="modalNo"></td>
 					</tr>
 					<tr>
 						<td>기 부 자 명:</td>
@@ -334,6 +336,10 @@
 			</form>
 	  	</div>
 	</div>
+
+	<script>
+		
+	</script>
 
 </body>
 </html>
