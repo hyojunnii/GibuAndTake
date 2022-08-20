@@ -7,6 +7,7 @@ import static com.gnt.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 
+import com.gnt.corp.repository.CorpDao;
 import com.gnt.corp.repository.corpDao;
 import com.gnt.corp.vo.corpVo;
 import com.gnt.member.repository.MemberDao;
@@ -14,21 +15,13 @@ import com.gnt.member.vo.MemberVo;
 
 public class corpService {
 	
-	public int corpjoin(MemberVo vo) {
+	
+	
+	public int corpjoin(corpVo vo) {
 		
 		//id 유효성 검사 (4글자 이상인지)
 		
-				if(vo.getId().length() < 4) {
-					// 회원가입 불가. 다음단계 진행 x 
-					return -1;
-				}
-				
-				//pwd 검사 (4글자 이상인지)
-				if(vo.getPwd().length() < 4) {
-					// 회원가입 불가. 다음단계 진행 x 
-					return -2;
-				}
-				
+			
 				//아이디 중복 검사
 				
 				//vo 를 DB에 insert 
@@ -37,18 +30,21 @@ public class corpService {
 				Connection conn = null;
 				int result = 0;
 				try {
+					
 					conn = getConnection(); 
 					
 					result = new MemberDao().memberjoin(vo, conn);
+					int result = 0;
+					int result2 = 0;
 					
 					if(result == 1) {
-							result2 = new corpDao().corpjoin(vo, conn);
+							result2 = new CorpDao().corpjoin(vo, conn);
 						if(result2 == 1) {
 							commit(conn);
 						} else {
 							rollback(conn);
 						}
-						commit(conn);
+							commit(conn);
 					}else {
 						rollback(conn);
 					}
@@ -65,10 +61,8 @@ public class corpService {
 				return result;
 		}
 
-	public int corpjoin(corpVo cvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
+	
 
 	
 

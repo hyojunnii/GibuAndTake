@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import com.gnt.corp.vo.corpVo;
 
-public class corpDao {
+public class CorpDao {
 
 	public int corpjoin(corpVo vo, Connection conn) throws Exception {
 		
