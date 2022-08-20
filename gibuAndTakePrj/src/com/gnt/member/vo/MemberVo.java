@@ -1,6 +1,6 @@
 package com.gnt.member.vo;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class MemberVo {
 	
@@ -10,7 +10,7 @@ public class MemberVo {
 	}
 	
 	
-	public MemberVo(int no, int clas, int regnum, String name, String id, String pwd, String nick, String email,
+	public MemberVo(int no, int clas, String regnum, String name, String id, String pwd, String nick, String email,
 			String addr, String phone, Timestamp date, String del, String ban, Timestamp mod) {
 		super();
 		this.no = no;
@@ -32,7 +32,7 @@ public class MemberVo {
 
 	private int no;
 	private int clas;
-	private int regnum;
+	private String regnum;
 	private String name;
 	private String id;
 	private String pwd;
@@ -64,12 +64,12 @@ public class MemberVo {
 	}
 
 
-	public int getRegnum() {
+	public String getRegnum() {
 		return regnum;
 	}
 
 
-	public void setRegnum(int regnum) {
+	public void setRegnum(String regnum) {
 		this.regnum = regnum;
 	}
 
@@ -149,8 +149,8 @@ public class MemberVo {
 	}
 
 
-	public void setDate(Timestamp date) {
-		this.date = date;
+	public void setDate(Timestamp enrolDate) {
+		this.date = enrolDate;
 	}
 
 
@@ -183,7 +183,7 @@ public class MemberVo {
 		this.mod = mod;
 	}
 
-
+	
 	@Override
 	public String toString() {
 		return "MemberVo [no=" + no + ", clas=" + clas + ", regnum=" + regnum + ", name=" + name + ", id=" + id

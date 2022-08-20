@@ -266,7 +266,7 @@
 			<table>
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</span></td>
-					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" onkeydown="inputIdchk()" >
+					<td><input type="text" name="corpId" id="inputId" maxlength="10" required="required" placeholder="영문+숫자 4글자 이상" onkeydown="inputIdchk()" >
 					<td><input type="button" id="check_button" value="중복확인" onclick="openIdChk()">
 						<input type="hidden" name="idDuplication" value="idUncheck"><td>
 						
