@@ -12,14 +12,12 @@ public class corpVo {
 	public corpVo(int cno, String cname, String content, String classs) {
 		super();
 		this.cno = cno;
-		this.cname = cname;
 		this.content = content;
 		this.classs = classs;
 	}
 
 
 	private int cno;
-	private String cname;
 	private String content;
 	private String classs;
 	
@@ -33,14 +31,6 @@ public class corpVo {
 	}
 
 
-	public String getCname() {
-		return cname;
-	}
-
-
-	public void setCname(String cname) {
-		this.cname = cname;
-	}
 
 
 	public String getContent() {
@@ -65,7 +55,7 @@ public class corpVo {
 
 	@Override
 	public String toString() {
-		return "corpVo [cno=" + cno + ", cname=" + cname + ", content=" + content + ", classs=" + classs + "]";
+		return "corpVo [cno=" + cno + ",  content=" + content + ", classs=" + classs + "]";
 	}
 	
 	

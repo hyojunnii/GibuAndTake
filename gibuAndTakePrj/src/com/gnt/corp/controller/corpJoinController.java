@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gnt.corp.service.corpService;
 import com.gnt.corp.vo.corpVo;
 import com.gnt.member.service.MemberService;
 import com.gnt.member.vo.MemberVo;
 
 @WebServlet(urlPatterns= "/corp/Join")
-public class CorpJoinController extends HttpServlet {
+public class corpJoinController extends HttpServlet {
 	
 	/*
 	 * 회원가입 화면 보여주기
@@ -51,7 +52,7 @@ public class CorpJoinController extends HttpServlet {
 		mvo.setId(corpId);
 		mvo.setPwd(corpPwd);
 		mvo.setName(rprName);
-		cvo.setCname(corpName);
+		mvo.setNick(corpName);
 		mvo.setPhone(corpPhone);
 		mvo.setEmail(corpEmail);
 		mvo.setAddr(corpAddr);
@@ -62,7 +63,7 @@ public class CorpJoinController extends HttpServlet {
 		
 		//객체 이용해서 회원가입 진행
 		int result = new MemberService().memberjoin(mvo);
-		int result2 = new MemberService().memberjoin(cvo);
+		int result2 = new corpService().corpjoin(cvo);
 		
 		//insert 결과를 가지고 화면 선택
 		if(result == 1) {
