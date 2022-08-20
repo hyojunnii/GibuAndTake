@@ -24,4 +24,15 @@ public class GibuService {
 		return voList;
 	}
 
+	//게시글 총 개수 구하기
+	public int getListCount() {
+		Connection conn = null;
+		int result = 0;
+		conn = getConnection();
+		//DAO 호출
+			result = dao.getListCount(conn);
+			close(conn);
+		return result;
+	}
+
 }

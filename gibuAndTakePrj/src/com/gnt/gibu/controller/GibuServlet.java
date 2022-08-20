@@ -28,8 +28,10 @@ public class GibuServlet extends HttpServlet{
 		int endPage;		//페이징바의 끝
 		
 		List<GibuVo> gibuvo = new GibuService().selectList();
-		System.out.println(gibuvo);
+		int gibucnt = new GibuService().getListCount();
+		// System.out.println(gibuvo);
 		req.setAttribute("gibuvo", gibuvo);
+		req.setAttribute("gibucnt", gibucnt);
 		
 		
 		req.getRequestDispatcher("/views/select_gibu/gibu_ing.jsp").forward(req, resp);
