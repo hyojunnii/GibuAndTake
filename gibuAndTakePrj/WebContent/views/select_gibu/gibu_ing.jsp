@@ -5,6 +5,7 @@
 <% 
 	List<GibuVo> list = (List<GibuVo>)request.getAttribute("gibuvo"); 
 	int gibucnt = (Integer)request.getAttribute("gibucnt");
+	int regtype = (Integer)request.getAttribute("regtype");
 %>
 <!DOCTYPE html>
 <html>
@@ -223,7 +224,7 @@ progress::-webkit-progress-value{
        <p>진행중인 기부모금함 <span id="titleNo"><%= gibucnt %></span>개</p>
         
        <%for(GibuVo g : list) {%>
-        <a href="/gibuAndTakePrj/view/gibu_detail?type=0&num=<%=g.getRegno() %>" class="card">
+        <a href="/gibuAndTakePrj/view/gibu_detail?type=<%=regtype %>&num=<%=g.getRegno() %>" class="card">
             <div>
             <!-- ../resources/img/select_icon/1all.png -->
                 <img src="<%= g.getImgsrc()%>" alt="">
