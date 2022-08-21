@@ -11,7 +11,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
+    <!-- cssForm -->
     <link rel="stylesheet" href="../../resources/css/pmForm.css" type="text/css" />
+    
+    <!-- summerNote -->
+    <script src="../../resources/js/summernote/summernote-lite.js"></script>
+	<script src="../../resources/js/summernote/lang/summernote-ko-KR.js"></script>
+	<link rel="stylesheet" href="../../resources/css/summernote/summernote-lite.css">
 
     <style>
       #body {
@@ -21,7 +27,6 @@
 
       #pm-form-outer {
         margin-bottom: 10%;
-        /*왜 css파일에 넣으면 안먹힐까..*/
       }
 
       .form-subtitle {
@@ -36,6 +41,11 @@
         width: 8%;
       }
       
+      #pm-table2 {
+	  	padding: 0px;
+	  	border-spacing: 2px 5px;
+	  }
+      
     </style>
   </head>
   <body>
@@ -45,8 +55,7 @@
         <h1><a>펀딩 프로젝트 신청</a></h1>
       </div>
       <div id="pm-form-outer">
-        <form action="<%=path%>/pm/apply/funding" method="post">
-          <!-- name 안채움 -->
+        <form action="<%=path%>/pm/apply/funding" method="post" enctype="multipart/form-data">
           <table id="pm-table">
             <tr>
               <td class="form-subtitle">카테고리*</td>
@@ -78,22 +87,22 @@
               <td class="form-content-sub">펀딩 종료일</td>
               <td class="form-content-date" colspan="3"><input name="fDate" type="date" class="form-control form-content" required /></td>
             </tr>
+            <tr id="file">
+              <td class="form-subtitle">대표 이미지 첨부*</td>
+              <td colspan="4">
+                <input type="file" name="file" class="form-control form-content" accept="image/*" required />
+              </td>
+            </tr>
             <tr>
               <td class="form-subtitle">프로젝트 소개*</td>
               <td colspan="4">
                 <textarea
+                  id="summernote"
                   name="content"
                   class="form-control form-content form-content-textarea"
                   aria-label="With textarea"
-                  placeholder="진행하는 프로젝트에 대한 설명을 입력하세요."
                   required
                 ></textarea>
-              </td>
-            </tr>
-            <tr id="file">
-              <td class="form-subtitle">사진 첨부*</td>
-              <td colspan="4">
-                <input type="file" name="files" class="form-control form-content" accept="image/*" multiple />
               </td>
             </tr>
             <tr>
@@ -142,6 +151,24 @@
     <%@ include file="/views/common/footer.jsp" %>
 
     <script>
+	    $(document).ready(function() {
+	    	$('#summernote').summernote({
+				  height: 400,                 // 에디터 높이
+				  minHeight: 400,             // 최소 높이
+				  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+				  lang: "ko-KR",					// 한글 설정
+				  placeholder: '프로젝트의 정보를 입력해주세요.',	//placeholder 설정
+				  toolbar: [
+				    ['fontsize', ['fontsize']],
+				    ['style', ['bold', 'italic', 'underline']],
+				    ['color', ['forecolor','color']],
+				  	['para', ['paragraph']],
+				  	['height', ['height']],
+				  ],
+			  	  fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+	    	});
+	    });
+    
       function addRow() {
         const table = document.getElementById("pm-table2");
 

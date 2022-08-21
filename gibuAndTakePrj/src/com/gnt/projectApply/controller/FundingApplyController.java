@@ -1,18 +1,28 @@
 package com.gnt.projectApply.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
-import com.gnt.project.vo.FundingRewardVo;
 import com.gnt.project.vo.FundingVo;
 import com.gnt.project.vo.RegistVo;
 import com.gnt.projectApply.service.ProjectApplyService;
 
+@MultipartConfig(
+		maxFileSize = 1024 * 1024 * 50, //50mb
+		maxRequestSize = 1024 * 1024 * 50 * 5
+		)
 @WebServlet(urlPatterns = "/pm/apply/funding")
 public class FundingApplyController extends HttpServlet{
 	//펀딩 신청 페이지
@@ -26,11 +36,9 @@ public class FundingApplyController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		
-		//파일 Vo
-		//Part files = req.getPart("files");
-		//AttachmentVo avo = null;
-		
 		//등록 Vo
+		RegistVo rvo = new RegistVo();
+		
 		String regCategory = "펀딩";
 		// String corpNo = req.getParameter("corpNo"); //사용자번호 받아와야
 		String corpNo = "1";
@@ -39,33 +47,62 @@ public class FundingApplyController extends HttpServlet{
 		String content = req.getParameter("content");
 		String fDate = req.getParameter("fDate");
 		
-		RegistVo rvo = new RegistVo();
 		rvo.setCategory(regCategory);
-		rvo.setuNo(corpNo);
+		rvo.setmNo(corpNo);
 		rvo.setTitle(title);
 		rvo.setContent(content);
 		rvo.setfDate(fDate);
 		
 		//펀딩 Vo
+		FundingVo fvo = new FundingVo();
+		//funding
 		String category = req.getParameter("category");
 		String gMoney = req.getParameter("gMoney");
 		
-		FundingVo fvo = new FundingVo();
-		fvo.setCategory(category);
+		fvo.setFundCategory(category);
 		fvo.setgMoney(gMoney);
 		
-		//리워드 Vo
+		//reward
 		String[] rName = req.getParameterValues("rName");
 		String[] rMoney = req.getParameterValues("rMoney");
 		String[] rCount = req.getParameterValues("rCount");
 		
-		FundingRewardVo frvo = new FundingRewardVo();
-		frvo.setName(rName);
-		frvo.setMoney(rMoney);
-		frvo.setCount(rCount);
+		fvo.setName(rName);
+		fvo.setMoney(rMoney);
+		fvo.setCount(rCount);
+		
+		//파일 Vo
+		Part file = req.getPart("file");
+		String savePath = "";
+		String changeName = "";
+		if(file.getSubmittedFileName().length() > 0) {
+			//파일 업로드
+			String originName = file.getSubmittedFileName();	//원본 파일명 얻기
+			changeName = new ProjectApplyService().createChangeName(originName);
+			
+			//인풋 스트림 준비
+			InputStream is = file.getInputStream();
+			BufferedInputStream bis = new BufferedInputStream(is);
+			
+			//아웃풋 스트림 준비 (서버에 저장)
+			String realPath = req.getServletContext().getRealPath("/resources/upload");
+			savePath = realPath + File.separator + changeName;
+			FileOutputStream os = new FileOutputStream(savePath);
+			BufferedOutputStream bos = new BufferedOutputStream(os);
+			
+			byte[] buf = new byte[1024];
+			int size = 0;
+			while((size = bis.read(buf)) != -1) {
+				bos.write(buf, 0, size);
+			}
+			
+			bos.flush();
+			bis.close();
+			bos.close();
+		}
 		
 		//서비스 호출
-		int result = ProjectApplyService.fundingApply(rvo, fvo, frvo);
+		int result = new ProjectApplyService().fundingApply(rvo, fvo, changeName);
 		
 		if(result == 1) {
 			//성공시 apply/main + 알람

@@ -4,10 +4,10 @@ public class RegistVo {
 	public RegistVo() {
 	}
 	
-	public RegistVo(int regNo, String uNo, String category, String title, String content, String sDate, String fDate,
-			String pass, String fin, String del, String mod, String cnt) {
+	public RegistVo(int regNo, String mNo, String category, String title, String content, String sDate, String fDate,
+			String pass, String fin, String del, String mod, String cnt, String deny, String url) {
 		this.regNo = regNo;
-		this.uNo = uNo;
+		this.mNo = mNo;
 		this.category = category;
 		this.title = title;
 		this.content = content;
@@ -18,11 +18,13 @@ public class RegistVo {
 		this.del = del;
 		this.mod = mod;
 		this.cnt = cnt;
+		this.deny = deny;
+		this.url = url;
 	}
 
 	private int regNo;
-	private String uNo;
-	private String category;
+	private String mNo;
+	private String category; //기부/펀딩/캠페인
 	private String title;
 	private String content;
 	private String sDate;
@@ -32,6 +34,9 @@ public class RegistVo {
 	private String del;
 	private String mod;
 	private String cnt;
+	private String deny;
+	
+	private String url;
 	
 	public int getRegNo() {
 		return regNo;
@@ -41,12 +46,12 @@ public class RegistVo {
 		this.regNo = regNo;
 	}
 
-	public String getuNo() {
-		return uNo;
+	public String getmNo() {
+		return mNo;
 	}
 
-	public void setuNo(String uNo) {
-		this.uNo = uNo;
+	public void setmNo(String mNo) {
+		this.mNo = mNo;
 	}
 
 	public String getCategory() {
@@ -129,12 +134,27 @@ public class RegistVo {
 		this.cnt = cnt;
 	}
 
-	@Override
-	public String toString() {
-		return "RegistVo [regNo=" + regNo + ", uNo=" + uNo + ", category=" + category + ", title=" + title
-				+ ", content=" + content + ", sDate=" + sDate + ", fDate=" + fDate + ", pass=" + pass + ", fin=" + fin
-				+ ", del=" + del + ", mod=" + mod + ", cnt=" + cnt + "]";
+	public String getDeny() {
+		return deny;
+	}
+
+	public void setDeny(String deny) {
+		this.deny = deny;
 	}
 	
-	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	@Override
+	public String toString() {
+		return "RegistVo [regNo=" + regNo + ", mNo=" + mNo + ", category=" + category + ", title=" + title
+				+ ", content=" + content + ", sDate=" + sDate + ", fDate=" + fDate + ", pass=" + pass + ", fin=" + fin
+				+ ", del=" + del + ", mod=" + mod + ", cnt=" + cnt + ", deny=" + deny + ", url=" + url + "]";
+	}
+
 }

@@ -299,21 +299,21 @@
         <div id="info-content">
           <h3><a href="<%=path%>/story">오늘의 참여현황</a></h3>
           <p>오늘의 마음이 이만큼 모였어요</p>
-          <span>2022.08.14</span>
+          <span>${todayStory.getToday()}</span>
         </div>
         <div id="info-content2">
           <table>
             <tr>
               <td class="t-title">기부참여</td>
-              <td>10,000명</td>
+              <td>${todayStory.getdPeople()}명</td>
               <td class="t-title">기부총액</td>
-              <td>10,000,000원</td>
+              <td>${todayStory.getdMoney()}원</td>
             </tr>
             <tr>
               <td class="t-title">펀딩참여</td>
-              <td>10,000명</td>
+              <td>${todayStory.getfPeople()}명</td>
               <td class="t-title">펀딩총액</td>
-              <td>10,000,000원</td>
+              <td>${todayStory.getfMoney()}원</td>
             </tr>
           </table>
         </div>

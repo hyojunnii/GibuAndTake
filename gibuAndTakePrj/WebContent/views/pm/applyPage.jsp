@@ -16,13 +16,36 @@
         width: 1200px;
         margin: 0 auto;
       }
-
+      
+      a{
+      	text-decoration: none;
+      	color: #000000;
+      }
+      
       #pm-header {
         width: 100%;
         height: 100px;
         background-color: #8bdcb1;
         display: flex;
         align-items: center;
+      }
+      
+      #pm-nav ul {
+      	margin: 0 auto;
+       	width: 100%;
+       	text-align: center;
+      }
+      
+      #pm-nav ul li {
+      	width: 50%;
+      	height: 50px;
+      	padding-top: 10px;
+      	font-size: 18px;
+      	font-weight: 600;
+      }
+      
+      .current-nav {
+      	background-color: #dff9ed;
       }
 
       #pm-header h1 {
@@ -115,25 +138,30 @@
       <div id="pm-header">
         <h1><a>프로젝트 관리</a></h1>
       </div>
+      <nav id="pm-nav">
+      	<ul class="list-group list-group-horizontal">
+        	<li class="list-group-item current-nav"><a href="<%=path%>/pm/apply/main">프로젝트 신청</a></li>
+        	<li class="list-group-item"><a href="<%=path%>/pm/apply/list">신청내역 조회</a></li>
+      	</ul>
+      </nav>
       <div id="apply-title">
-        <h1>프로젝트 신청</h1>
+        <h1>기부앤테이크 프로젝트 신청</h1>
       </div>
       <div id="apply-menu">
         <div class="apply">
           <img src="../../resources/img/free-icon-donation-2904948.png" />
           <div class="apply-subtitle">기부</div>
-          <!-- 버튼 태그 나중에 경로 안보이게 수정 -->
-          <button class="button"><a href="<%=request.getContextPath()%>/pm/apply/donation">신청하기</a></button>
+          <button class="button"><a href="<%=path%>/pm/apply/donation">신청하기</a></button>
         </div>
         <div class="apply">
           <img src="../../resources/img/free-icon-donation-3208275.png" />
           <div class="apply-subtitle">펀딩</div>
-          <button class="button"><a href="<%=request.getContextPath()%>/pm/apply/funding">신청하기</a></button>
+          <button class="button"><a href="<%=path%>/pm/apply/funding">신청하기</a></button>
         </div>
         <div class="apply">
           <img src="../../resources/img/premium-icon-donation-3843326.png" />
           <div class="apply-subtitle">캠페인</div>
-          <button class="button"><a href="<%=request.getContextPath()%>/pm/apply/campaign">신청하기</a></button>
+          <button class="button"><a href="<%=path%>/pm/apply/campaign">신청하기</a></button>
         </div>
       </div>
     </div>
