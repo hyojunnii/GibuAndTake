@@ -1,6 +1,13 @@
+<%@page import="com.gnt.funding.vo.FundingVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	List<FundingVo> list = (List<FundingVo>)request.getAttribute("fundingvo"); 
+	int fundingcnt = (Integer)request.getAttribute("fundingcnt");
+%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -137,56 +144,56 @@
         <ul>
             <li>
 
-                <a href="/gibuAndTakePrj/view/funding">
+                <a href="/gibuAndTakePrj/view/funding?type=0">
                     <br>
                     <span>전체보기</span>
                 </a>
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/funding?type=1">
                     <br>
                     <span>일자리 창출</span>
                 </a>
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/funding?type=2">
                     <br>
                     <span>공정 무역</span>
                 </a>
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/funding?type=3">
                     <br>
                     <span>친환경</span>
                 </a>
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/funding?type=4">
                     <br>
                     <span>기부</span>
                 </a>
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/funding?type=5">
                     <br>
                     <span>작은가게</span>
                 </a>
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/funding?type=6">
                     <br>
                     <span>미디어</span>
                 </a>
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/funding?type=7">
                     <br>
                     <span>창작자</span>
                 </a>
@@ -198,23 +205,23 @@
 
     <div class="container">
       
-        <p>진행중인 펀딩 <span id="titleNo">??</span>개</p>
+        <p>진행중인 펀딩 <span id="titleNo"><%= fundingcnt %></span>개</p>
          
-        
-         <a href="/gibuAndTakePrj/view/funding_detail" class="card">
+        <%for(FundingVo f : list) {%>
+         <a href="/gibuAndTakePrj/view/funding_detail?type=0&num=<%=f.getRegno() %>" class="card">
              <div>
-                 <img src="../resources/img/sample.png" alt="">
+                 <img src="<%= f.getImgsrc()%>" alt="">
              </div>
              <div>
-                 <p align="center">펀딩 제목</p>
-                 <pre>기업이름</pre>
+                 <p align="center"><%= f.getRegname() %></p>
+                 <pre><%= f.getMnick() %></pre>
                  <span class="i_date">14일 남음</span>
-                 <span class="i_prog_percent">45%</span>
-                 <span class="i_total_money">1,000,000,000원</span>
+                 <span class="i_prog_percent"><%= f.getMoneypercent() %>%</span>
+                 <span class="i_total_money"><%= f.getFpmoney() %>원</span>
              </div>
          </a>
 
-                  
+         <%} %>        
         
 
         

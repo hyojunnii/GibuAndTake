@@ -27,9 +27,17 @@ public class GibuServlet extends HttpServlet{
 		int startPage;		//페이징바의 시작
 		int endPage;		//페이징바의 끝
 		
-		List<GibuVo> gibuvo = new GibuService().selectList();
-		int gibucnt = new GibuService().getListCount();
+		String paratype = req.getParameter("type");	
+		if(paratype ==null) {
+			paratype = "0";
+		}
+		int type = Integer.parseInt(paratype);
+		
+		
+		List<GibuVo> gibuvo = new GibuService().selectList(type);
+		int gibucnt = new GibuService().getListCount(type);
 		// System.out.println(gibuvo);
+		req.setAttribute("regtype", type);
 		req.setAttribute("gibuvo", gibuvo);
 		req.setAttribute("gibucnt", gibucnt);
 		

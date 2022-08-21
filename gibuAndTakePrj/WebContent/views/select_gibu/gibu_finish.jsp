@@ -1,5 +1,12 @@
+<%@page import="com.gnt.gibu.vo.GibuVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	List<GibuVo> list = (List<GibuVo>)request.getAttribute("gibuvo"); 
+	int gibucnt = (Integer)request.getAttribute("gibucnt");
+	int regtype = (Integer)request.getAttribute("regtype");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,7 +144,7 @@ progress::-webkit-progress-value{
         <ul>
             <li>
 
-                <a href="/gibuAndTakePrj/view/gibu_done">
+                <a href="/gibuAndTakePrj/view/gibu_done?type=0">
                     <img src="../resources/img/select_icon/1all.png" alt="전체보기">
                     <br>
                     <span>전체보기</span>
@@ -145,7 +152,7 @@ progress::-webkit-progress-value{
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/gibu_done?type=1">
                     <img src="../resources/img/select_icon/2kid.png" alt="아동 | 청소년">
                     <br>
                     <span>아동 | 청소년</span>
@@ -153,7 +160,7 @@ progress::-webkit-progress-value{
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/gibu_done?type=2">
                     <img src="../resources/img/select_icon/3old.png" alt="어르신">
                     <br>
                     <span>어르신</span>
@@ -161,7 +168,7 @@ progress::-webkit-progress-value{
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/gibu_done?type=3">
                     <img src="../resources/img/select_icon/4dis.png" alt="장애인">
                     <br>
                     <span>장애인</span>
@@ -169,7 +176,7 @@ progress::-webkit-progress-value{
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/gibu_done?type=4">
                     <img src="../resources/img/select_icon/5multi.png" alt="다문화">
                     <br>
                     <span>다문화</span>
@@ -177,7 +184,7 @@ progress::-webkit-progress-value{
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/gibu_done?type=5">
                     <img src="../resources/img/select_icon/6earth.png" alt="지구촌">
                     <br>
                     <span>지구촌</span>
@@ -185,7 +192,7 @@ progress::-webkit-progress-value{
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/gibu_done?type=6">
                     <img src="../resources/img/select_icon/7woman.png" alt="가족 | 여성">
                     <br>
                     <span>가족 | 여성</span>
@@ -193,7 +200,7 @@ progress::-webkit-progress-value{
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/gibu_done?type=7">
                     <img src="../resources/img/select_icon/8society.png" alt="시민사회">
                     <br>
                     <span>시민사회</span>
@@ -201,7 +208,7 @@ progress::-webkit-progress-value{
             </li>
 
             <li>
-                <a href="">
+                <a href="/gibuAndTakePrj/view/gibu_done?type=8">
                     <img src="../resources/img/select_icon/9animal.png" alt="동물">
                     <br>
                     <span>동물</span>
@@ -213,21 +220,24 @@ progress::-webkit-progress-value{
 
     <div class="container">
       
-        <p>만료된 기부모금함 <span id="titleNo">??</span>개</p>
+        <p>만료된 기부모금함 <span id="titleNo"><%= gibucnt %></span>개</p>
          
-        
-         <a href="/gibuAndTakePrj/view/gibu_detail" class="card">
-             <div>
-                 <img src="../resources/img/select_icon/1all.png" alt="">
-             </div>
-             <div>
-                 <p align="center">기부 제목</p>
-                 <pre>기업이름</pre>
-                 <progress id="i_progress" value="20" max="100"></progress>
-                 <span class="i_prog_percent">20%</span>
-                 <span class="i_total_money">1,000,000,000원</span>
-             </div>
-         </a>
+        <%for(GibuVo g : list) {%>
+        <a href="/gibuAndTakePrj/view/gibu_detail?type=<%=regtype %>&num=<%=g.getRegno() %>" class="card">
+            <div>
+            <!-- ../resources/img/select_icon/1all.png -->
+                <img src="<%= g.getImgsrc()%>" alt="">
+            </div>
+            <div>
+                <p align="center"><%= g.getRegname() %></p>
+                <pre><%= g.getMnick() %></pre>
+                <progress id="i_progress" value="<%= g.getMoneypercent() %>" max="100"></progress>
+                <span class="i_prog_percent"><%= g.getMoneypercent() %>%</span>
+                <span class="i_total_money"><%= g.getDpmoney() %>원</span>
+            </div>
+        </a>
+        	
+		<%} %>
  
          
  

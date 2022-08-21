@@ -1,5 +1,12 @@
+<%@page import="com.gnt.campaign.vo.CampaignVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	List<CampaignVo> list = (List<CampaignVo>)request.getAttribute("campaignvo"); 
+	int campaigncnt = (Integer)request.getAttribute("campaigncnt");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -297,23 +304,23 @@
 
     <div class="container">
       
-        <p>진행중인 캠페인 <span id="titleNo">??</span>개</p>
+        <p>진행중인 캠페인 <span id="titleNo"><%= campaigncnt %></span>개</p>
          
-        
-         <a href="/gibuAndTakePrj/view/campaign_detail" class="card">
+        <%for(CampaignVo c : list){ %>
+         <a href="/gibuAndTakePrj/view/campaign_detail?num=<%=c.getRegno() %>" class="card">
              <div>
-                 <img src="../resources/img/sample.png" alt="">
+                 <img src="<%= c.getImgsrc() %>" alt="">
              </div>
              <div>
-                 <p align="center">캠페인 제목</p>
-                 <pre>기업이름</pre>
+                 <p align="center"><%= c.getRegname() %></p>
+                 <pre><%= c.getMnick() %></pre>
 
-                 <span class="i_prog_percent">45%</span>
-                 <span class="i_total_do">?????? 명 행동중</span>
+                 <span class="i_prog_percent"><%= c.getMoneypercent() %>%</span>
+                 <span class="i_total_do"><%= c.getCamppeople() %> 명 행동중</span>
              </div>
          </a>
 
-                  
+       	<%} %>           
         
 
         
