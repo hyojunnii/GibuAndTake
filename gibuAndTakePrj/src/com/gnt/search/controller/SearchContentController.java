@@ -13,14 +13,18 @@ import com.gnt.common.PageVo;
 import com.gnt.project.vo.RegistVo;
 import com.gnt.search.service.SearchService;
 
-@WebServlet(urlPatterns = "/search")
-public class SearchController extends HttpServlet{
-	//기본 추천목록
+@WebServlet(urlPatterns = "/search/content")
+public class SearchContentController extends HttpServlet{
+	
+	//통합검색
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		
 		req.getSession().removeAttribute("searchedList");
+		
+		String search = req.getParameter("search");
+		System.out.println(search);
 		
 		//----------페이징 처리-----------
 		int listCount;		//현재 총 게시글 갯수
@@ -31,7 +35,7 @@ public class SearchController extends HttpServlet{
 		int startPage;		//페이징바의 시작
 		int endPage;		//페이징바의 끝
 		
-		listCount = new SearchService().getCount();
+		listCount = new SearchService().getSearchCount(search);
 		
 		//나중에 헤더 수정
 		if(req.getParameter("p") != null) {
@@ -63,14 +67,18 @@ public class SearchController extends HttpServlet{
 		pageVo.setEndPage(endPage);
 		
 		req.getSession().setAttribute("pv", pageVo);
-			
+	
 		String s = req.getParameter("s");
 		
-		List<RegistVo> recommendList = new SearchService().recommendList(pageVo, s);
+		List<RegistVo> searchedList = new SearchService().searchList(search, pageVo, s);
 		
-		req.getSession().setAttribute("recommendList", recommendList);
-		
+		if(searchedList.size() == 0 || searchedList == null) {
+			req.setAttribute("NullList", 0);
+		} else {
+			req.getSession().setAttribute("searchedList", searchedList);
+			req.setAttribute("par", search);
+		}
 		req.getRequestDispatcher("/views/search/searchPage.jsp").forward(req, resp);
+		
 	}
-	
 }

@@ -1,4 +1,10 @@
+<%@page import="com.gnt.project.vo.DonationVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<% 
+	DonationVo dvo = (DonationVo)session.getAttribute("editVo");
+%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,8 +17,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
+    <!-- cssForm -->
     <link rel="stylesheet" href="../../resources/css/pmForm.css" type="text/css" />
-
+    
+    <!-- summerNote -->
+    <script src="../../resources/js/summernote/summernote-lite.js"></script>
+	<script src="../../resources/js/summernote/lang/summernote-ko-KR.js"></script>
+	<link rel="stylesheet" href="../../resources/css/summernote/summernote-lite.css">
+	
     <style>
       #body {
         width: 1200px;
@@ -21,8 +33,16 @@
 
       #pm-form-outer {
         margin-bottom: 10%;
-        /*왜 css파일에 넣으면 안먹힐까..*/
       }
+      
+      #pm-table2 {
+	  	padding: 0px;
+	  	border-spacing: 2px 5px;
+	  }
+	  
+	  .form-subtitle2{
+	  	width: 21%;
+	  }
     </style>
   </head>
   <body>
@@ -32,50 +52,49 @@
         <h1><a>기부 프로젝트 수정</a></h1>
       </div>
       <div id="pm-form-outer">
-        <form action="">
-          <!-- name 안채움 -->
+        <form action="<%=path%>/pm/edit/donation" method="post">
           <table id="pm-table">
             <tr>
-              <td class="form-subtitle">카테고리*</td>
+              <td class="form-subtitle">카테고리</td>
               <td colspan="4">
-                <select name="" class="form-select form-content" id="inputGroupSelect01" required>
-                  <option disabled="disabled" selected>기본값</option>
+                <select name="category" class="form-select form-content" id="inputGroupSelect01">
+                  <option disabled="disabled" selected>${editVo.donaCategory}</option>
                 </select>
               </td>
             </tr>
             <tr>
-              <td class="form-subtitle">단체명*</td>
+              <td class="form-subtitle">단체명</td>
               <td colspan="4">
-                <input name="" type="text" class="form-control form-content" placeholder="단체명을 입력하세요." required readonly />
+                <input value="" name="corp" type="text" class="form-control form-content" placeholder="단체명을 입력하세요." readonly />
               </td>
             </tr>
             <tr>
-              <td class="form-subtitle">프로젝트 제목*</td>
+              <td class="form-subtitle">프로젝트 제목</td>
               <td colspan="4">
-                <input name="" type="text" class="form-control form-content" placeholder="프로젝트의 제목을 입력하세요." required readonly />
+                <input value="${editVo.title}" name="title" type="text" class="form-control form-content" placeholder="프로젝트의 제목을 입력하세요." readonly />
               </td>
             </tr>
             <tr>
-              <td class="form-subtitle">모금 기간*</td>
+              <td class="form-subtitle">모금 기간</td>
               <td class="form-content-sub">모금 종료일</td>
-              <td class="form-content-date" colspan="3"><input name="" type="date" class="form-control form-content" required readonly /></td>
+              <td class="form-content-date" colspan="3"><input value="${editVo.fDate}" name="fDate" type="date" class="form-control form-content" required /></td>
             </tr>
             <tr>
               <td class="form-subtitle">프로젝트 소개*</td>
               <td colspan="4">
                 <textarea
-                  name=""
+                  id="summernote"
+                  name="content"
                   class="form-control form-content form-content-textarea"
                   aria-label="With textarea"
-                  placeholder="진행하는 프로젝트에 대한 설명을 입력하세요."
                   required
-                ></textarea>
+                  >${editVo.content}</textarea>
               </td>
             </tr>
-            <tr id="file">
-              <td class="form-subtitle">사진 첨부*</td>
+            <tr>
+              <td class="form-subtitle">목표 금액</td>
               <td colspan="4">
-                <input type="file" name="files" class="form-control form-content" accept="image/*" multiple />
+                <input value="${editVo.gMoney}" name="goalMoney" type="text" class="form-control form-content" placeholder="목표 금액을 입력하세요." readonly />
               </td>
             </tr>
             <tr>
@@ -83,41 +102,55 @@
             </tr>
             <tr>
               <td class="form-subtitle">사업 대상*</td>
-              <td colspan="4"><input name="" type="text" class="form-control form-content" placeholder="사업 대상을 입력하세요." required /></td>
+              <td colspan="4"><input value="${editVo.person}" name="exePerson" type="text" class="form-control form-content" placeholder="사업 대상을 입력하세요." required /></td>
             </tr>
             <tr>
               <td class="form-subtitle">사업 기간*</td>
               <td class="form-content-sub">사업 시작일</td>
               <td class="form-content-date">
-                <input name="" type="date" class="form-control form-content" required />
+                <input value="${editVo.exeSDate}" name="exeStartDate" type="date" class="form-control form-content" required />
               </td>
               <td class="form-content-sub">사업 종료일</td>
-              <td class="form-content-date"><input name="" type="date" class="form-control form-content" required /></td>
-            </tr>
-            <tr>
-              <td class="form-subtitle">목표 금액*</td>
-              <td colspan="4">
-                <input name="" type="text" class="form-control form-content" placeholder="목표 금액을 입력하세요." required readonly />
+              <td class="form-content-date">
+              	<input value="${editVo.exeEDate}" name="exeFinishDate" type="date" class="form-control form-content" required />
               </td>
             </tr>
-            <table id="pm-table2">
+         </table>
+         <table id="pm-table2">
+            <tr>
+              <td class="form-subtitle form-subtitle2">사업 세부 사항*</td>
+              <td>
+                <select name="exeCategory" class="form-select form-content" id="inputGroupSelect01" required>
+                  <option value="${editVo.donaExecategory[0]}">${editVo.donaExecategory[0]}</option>
+                  <option value="사업비">사업비</option>
+                  <option value="인건비">인건비</option>
+                  <option value="운영비">운영비</option>
+                  <option value="행사홍보비">행사홍보비</option>
+                </select>
+              </td>
+              <td><input value="${editVo.donaExecontent[0]}" name="exeContent" type="text" class="form-control form-content" placeholder="사용 내용" required /></td>
+              <td>
+                <input value="${editVo.money[0]}" name="exeMoney" type="text" class="form-control form-content" placeholder="사용 금액" required />
+              </td>
+            </tr>
+            <%for(int i = 1; i < (dvo.getDonaExecategory().length); i++) {%>
               <tr>
-                <td class="form-subtitle form-subtitle2">사업 세부 사항*</td>
-                <td>
-                  <select name="" class="form-select form-content" id="inputGroupSelect01" required>
-                    <option selected>분류</option>
-                    <option value="">사업비</option>
-                    <option value="">인건비</option>
-                    <option value="">운영비</option>
-                    <option value="">행사홍보비</option>
-                  </select>
-                </td>
-                <td><input name="" type="text" class="form-control form-content" placeholder="사용 내용" required /></td>
-                <td>
-                  <input name="" type="text" class="form-control form-content" placeholder="사용 금액" required />
-                </td>
-              </tr>
-            </table>
+            	<td class="form-subtitle form-subtitle2"></td>
+            	<td>
+                <select name="exeCategory" class="form-select form-content" id="inputGroupSelect01" required>
+                  <option value="<%=dvo.getDonaExecategory()[i]%>"><%=dvo.getDonaExecategory()[i]%></option>
+                  <option value="사업비">사업비</option>
+                  <option value="인건비">인건비</option>
+                  <option value="운영비">운영비</option>
+                  <option value="행사홍보비">행사홍보비</option>
+                </select>
+	            </td>
+	            <td><input value="<%=dvo.getDonaExecontent()[i]%>" name="exeContent" type="text" class="form-control form-content" placeholder="사용 내용" required /></td>
+	            <td>
+	              <input value="<%=dvo.getMoney()[i]%>" name="exeMoney" type="text" class="form-control form-content" placeholder="사용 금액" required />
+	            </td>
+		      </tr>
+		     <%}%>
           </table>
           <input type="button" onclick="addRow()" class="button add-button" value="추가" />
           <input type="button" onclick="deleteRow()" class="button" value="삭제" />
@@ -144,28 +177,47 @@
     <%@ include file="/views/common/footer.jsp" %>
 
     <script>
-      function addRow() {
-        const table = document.getElementById("pm-table2");
+	    $(document).ready(function() {
+	    	$('#summernote').summernote('code', '${editVo.content}');
+	    	$('#summernote').summernote({
+				  height: 500,                 // 에디터 높이
+				  minHeight: 500,             // 최소 높이
+				  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+				  lang: "ko-KR",					// 한글 설정
+				  placeholder: '프로젝트의 정보를 입력해주세요.',	//placeholder 설정
+				  toolbar: [
+				    ['fontsize', ['fontsize']],
+				    ['style', ['bold', 'italic', 'underline']],
+				    ['color', ['forecolor','color']],
+				  	['para', ['paragraph']],
+				  	['height', ['height']],
+				  ],
+			  	  fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+	    	});
+	    });
+	    
+		function addRow() {
+		  const table = document.getElementById("pm-table2");
+		
+		  const newRow = table.insertRow();
+		
+		  const newCell1 = newRow.insertCell(0);
+		  const newCell2 = newRow.insertCell(1);
+		  const newCell3 = newRow.insertCell(2);
+		  const newCell4 = newRow.insertCell(3);
+		
+		  newCell1.innerHTML = '<td class="form-subtitle form-subtitle2"></td>';
+		  newCell2.innerHTML =
+		    '<td><select name="exeCategory" class="form-select form-content" id="inputGroupSelect01" required><option value="사업비" selected>사업비</option><option value="인건비">인건비</option><option value="운영비">운영비</option><option value="행사홍보비">행사홍보비</option></select></td>';
+		  newCell3.innerHTML = '<td colspan="2"><input name="exeContent" type="text" class="form-control form-content" placeholder="사용 내용" /></td>';
+		  newCell4.innerHTML = '<td><input name="exeMoney" type="text" class="form-control form-content" placeholder="사용 금액" /></td>';
+		}
 
-        const newRow = table.insertRow();
-
-        const newCell1 = newRow.insertCell(0);
-        const newCell2 = newRow.insertCell(1);
-        const newCell3 = newRow.insertCell(2);
-        const newCell4 = newRow.insertCell(3);
-
-        newCell1.innerHTML = '<td class="form-subtitle form-subtitle2"></td>';
-        newCell2.innerHTML =
-          '<td><select class="form-select form-content" id="inputGroupSelect01"><option selected>분류</option><option value="1">사업비</option><option value="2">기타</option><option value="3">장애인</option></select></td>';
-        newCell3.innerHTML = '<td colspan="2"><input type="text" class="form-control form-content" placeholder="사용 내용" /></td>';
-        newCell4.innerHTML = '<td><input type="text" class="form-control form-content" placeholder="사용 금액" /></td>';
-      }
-
-      function deleteRow() {
-        const table = document.getElementById("pm-table2");
-        if (table.rows.length <= 1) return;
-        table.deleteRow(table.rows.length - 1);
-      }
+		function deleteRow() {
+		  const table = document.getElementById("pm-table2");
+		  if (table.rows.length <= 1) return;
+		  table.deleteRow(table.rows.length - 1);
+		}
     </script>
   </body>
 </html>

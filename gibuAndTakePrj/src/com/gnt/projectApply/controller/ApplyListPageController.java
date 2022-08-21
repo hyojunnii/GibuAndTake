@@ -1,4 +1,4 @@
-package com.gnt.search.controller;
+package com.gnt.projectApply.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,16 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gnt.common.PageVo;
 import com.gnt.project.vo.RegistVo;
+import com.gnt.projectApply.service.ApplyListService;
 import com.gnt.search.service.SearchService;
 
-@WebServlet(urlPatterns = "/search")
-public class SearchController extends HttpServlet{
-	//기본 추천목록
+@WebServlet(urlPatterns = "/pm/apply/list")
+public class ApplyListPageController extends HttpServlet{
+	
+	//프로젝트 신청 내역
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		
-		req.getSession().removeAttribute("searchedList");
+		//신청 내역 가져오기
+		int mno = 1;
 		
 		//----------페이징 처리-----------
 		int listCount;		//현재 총 게시글 갯수
@@ -62,15 +63,13 @@ public class SearchController extends HttpServlet{
 		pageVo.setStartPage(startPage);
 		pageVo.setEndPage(endPage);
 		
-		req.getSession().setAttribute("pv", pageVo);
-			
-		String s = req.getParameter("s");
+		req.setAttribute("pv", pageVo);
 		
-		List<RegistVo> recommendList = new SearchService().recommendList(pageVo, s);
+		List<RegistVo> applyList = new ApplyListService().getList(pageVo, mno);
 		
-		req.getSession().setAttribute("recommendList", recommendList);
+		req.setAttribute("applyList", applyList);
 		
-		req.getRequestDispatcher("/views/search/searchPage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/pm/applyListPage.jsp").forward(req, resp);
 	}
-	
+
 }

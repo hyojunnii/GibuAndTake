@@ -1,4 +1,15 @@
+<%@page import="com.gnt.common.PageVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%
+	PageVo pv = (PageVo)session.getAttribute("pv");
+	
+	int currentPage = pv.getCurrentPage();
+	int startPage = pv.getStartPage();
+	int endPage = pv.getEndPage();
+	int maxPage = pv.getMaxPage();
+%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,6 +27,11 @@
         width: 1200px;
         margin: 0 auto;
       }
+      
+      a{
+      	text-decoration: none;
+      	color: #000000;
+      }
 
       #search {
         width: 100%;
@@ -27,27 +43,24 @@
         padding: 0 14%;
       }
 
-      .search-category {
-        width: 150px;
-        margin-right: 25px;
-        height: 40px;
-      }
-
       .search-bar {
         height: 40px;
+        width: 90%;
       }
 
-      #search-icon {
+      .search-icon {
         width: 30px;
         height: 40px;
-        margin: 0 10px;
+        margin: 0 20px;
         border: none;
         background-color: rgba(255, 255, 255, 0);
       }
 
-      #search-icon img {
-        width: 40px;
-        height: 40px;
+      .search-icon img {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        top: -6px;
       }
 
       #category-search-outer {
@@ -104,17 +117,23 @@
         position: relative;
         top: -1px;
       }
-
+      
       #searched-header-title {
+        font-size: 18px;
+      }
+      
+      #searched-content-body {
+      	min-height: 800px;
+      }
+
+      .searched-none {
         font-weight: 600;
-        position: relative;
-        top: 4px;
       }
 
       .contents {
         margin: 1% 10% 2%;
         background-color: #e3f3ec;
-        height: 120px;
+        height: 140px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -132,37 +151,50 @@
       }
 
       .content-info-title {
-        margin: auto 2%;
+        margin: auto 4%;
         display: flex;
         flex-direction: column;
       }
 
       .content-info-title span {
-        padding: 3px 0;
+        padding: 4px 0;
+        font-size: 15px;
+      }
+      
+      .content-info-title span:first-child {
+        padding: 2px 0;
+        font-size: 14px;
+      }
+      
+      .content-info-title span:nth-child(2) {
+      	font-size : 18px;
+      	font-weight: 600;
       }
 
       .content-info img {
         width: 130px;
         height: 90px;
-        margin-left: 2%;
+        margin-left: 5%;
       }
 
       .content-info-state {
         color: #2e6c4a;
         font-weight: 600;
-        margin-right: 12%;
-        font-size: 15px;
+        margin-right: 25%;
+        font-size: 20px;
+      }
+      
+      .content-info-state2 {
+        color: gray;
+        font-weight: 600;
+        margin-right: 25%;
+        font-size: 20px;
       }
 
       .content-info-status {
         display: flex;
         flex-direction: column;
         margin-right: 8%;
-      }
-
-      .content-info-status span {
-        padding: 2px 0;
-        font-size: 15px;
       }
 
       #searched-page-area {
@@ -175,146 +207,204 @@
       #searched-page-area a {
         color: #2e6c4a;
         font-weight: 600;
-        padding: 0 10px;
+        margin: 0 3px;
+        padding: 0 7px;
       }
+      
+      .currentPage {
+      	background-color: #e3f3ec;
+      	border-radius: 10px;
+      }
+      
     </style>
   </head>
   <body>
     <%@ include file="/views/common/header.jsp" %>
 
     <div id="body">
-      <form id="search" action="/search/contents" method="post">
-        <select name="category" class="form-select search-category" id="inputGroupSelect01" required>
-          <option selected value="10">기부</option>
-          <option value="20">펀딩</option>
-          <option value="30">캠페인</option>
-        </select>
-        <input name="search" type="text" class="form-control search-bar" placeholder="검색어를 입력하세요." />
-        <button type="submit" id="search-icon"><img src="resources/img/free-icon-search-7233469.png" /></button>
+      <form id="search" action="<%=path%>/search/content" method="post" name="searchform">
+        <c:choose>
+        	<c:when test="${not empty searchedList}">
+        		<input name="search" type="text" class="form-control search-bar" value="${par}" readonly />
+        		<input type="hidden" name="s" value="0"/>
+        		<a class="search-icon" href="<%=path%>/search"><img src="../resources/img/premium-icon-reset-2618245.png"></a>
+        	</c:when>
+        	<c:when test="${NullList eq 0}">
+        		<input name="search" type="text" class="form-control search-bar" value="${param.search}" readonly />
+        		<a class="search-icon" href="<%=path%>/search"><img src="../resources/img/premium-icon-reset-2618245.png"></a>
+        	</c:when>
+        	<c:otherwise>
+        		<input name="search" type="text" class="form-control search-bar" placeholder="검색어를 입력하세요." />
+        		<button type="submit" class="search-icon"><img src="resources/img/free-icon-search-7233469.png" /></button>
+        	</c:otherwise>
+        </c:choose>
       </form>
       <div id="category-search-outer">
         <div class="category-search-title"><h6>주제별 찾기</h6></div>
         <div class="category-search-menu">
           <span class="category-search-subtitle" id="">기부</span>
-          <button class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
-          <ul class="dropdown-menu">
+          <button id="donation-status" class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">카테고리</button>
+          <ul id="donation-type" class="dropdown-menu">
             <li><a class="dropdown-item" href="/search/donation?c=10">아동/청소년</a></li>
-            <li><a class="dropdown-item" href="#">어르신</a></li>
-            <li><a class="dropdown-item" href="#">장애인</a></li>
-            <li><a class="dropdown-item" href="#">다문화</a></li>
-            <li><a class="dropdown-item" href="#">지구촌</a></li>
-            <li><a class="dropdown-item" href="#">가족/여성</a></li>
-            <li><a class="dropdown-item" href="#">시민사회</a></li>
-            <li><a class="dropdown-item" href="#">동물</a></li>
+            <li><a class="dropdown-item" href="/search/donation?c=20">어르신</a></li>
+            <li><a class="dropdown-item" href="/search/donation?c=30">장애인</a></li>
+            <li><a class="dropdown-item" href="/search/donation?c=40">다문화</a></li>
+            <li><a class="dropdown-item" href="/search/donation?c=50">지구촌</a></li>
+            <li><a class="dropdown-item" href="/search/donation?c=60">가족/여성</a></li>
+            <li><a class="dropdown-item" href="/search/donation?c=70">시민사회</a></li>
+            <li><a class="dropdown-item" href="/search/donation?c=80">동물</a></li>
           </ul>
         </div>
         <div class="category-search-menu">
           <span class="category-search-subtitle" id="">펀딩</span>
-          <button class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">일자리창출</a></li>
-            <li><a class="dropdown-item" href="#">공정무역</a></li>
-            <li><a class="dropdown-item" href="#">친환경</a></li>
-            <li><a class="dropdown-item" href="#">기부</a></li>
-            <li><a class="dropdown-item" href="#">작은가게</a></li>
-            <li><a class="dropdown-item" href="#">미디어</a></li>
-            <li><a class="dropdown-item" href="#">창작자</a></li>
+          <button id="funding-status" class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">카테고리</button>
+          <ul id="funding-type" class="dropdown-menu">
+            <li><a class="dropdown-item" href="/search/funding?c=10">일자리창출</a></li>
+            <li><a class="dropdown-item" href="/search/funding?c=20">공정무역</a></li>
+            <li><a class="dropdown-item" href="/search/funding?c=30">친환경</a></li>
+            <li><a class="dropdown-item" href="/search/funding?c=40">기부</a></li>
+            <li><a class="dropdown-item" href="/search/funding?c=50">작은가게</a></li>
+            <li><a class="dropdown-item" href="/search/funding?c=60">미디어</a></li>
+            <li><a class="dropdown-item" href="/search/funding?c=70">창작자</a></li>
           </ul>
         </div>
       </div>
       <div id="searched-content">
-        <div id="searched-content-header">
-          <div id="searched-header-title">
-            <!-- <span>추천 목록</span> -->
-            <span id="searched-num">검색 결과 n건</span>
-          </div>
-          <div id="searched-header-sort">
-            <span><a>최신순</a> | <a>금액순</a></span>
-            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">전체</button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">진행중</a></li>
-              <li><a class="dropdown-item" href="#">종료</a></li>
-            </ul>
-          </div>
-        </div>
-        <div id="searched-content-body">
-          <div class="contents">
-            <div class="content-info">
-              <img src="resources/img/premium-icon-donation-3843326.png" />
-              <div class="content-info-title">
-                <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
-                <span>단체명</span>
-              </div>
-            </div>
-            <div class="content-info2">
-              <span class="content-info-state">진행중</span>
-              <div class="content-info-status">
-                <span>1,000,000원 모금</span>
-                <span>1,000명 참여</span>
-              </div>
-            </div>
-          </div>
-          <div class="contents">
-            <div class="content-info">
-              <img src="resources/img/premium-icon-donation-3843326.png" />
-              <div class="content-info-title">
-                <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
-                <span>단체명</span>
-              </div>
-            </div>
-            <div class="content-info2">
-              <span class="content-info-state">진행중</span>
-              <div class="content-info-status">
-                <span>1,000,000원 모금</span>
-                <span>1,000명 참여</span>
-              </div>
-            </div>
-          </div>
-          <div class="contents">
-            <div class="content-info">
-              <img src="resources/img/premium-icon-donation-3843326.png" />
-              <div class="content-info-title">
-                <span>제목입니다 제목입니다 제목입니다 제목입니다</span>
-                <span>단체명</span>
-              </div>
-            </div>
-            <div class="content-info2">
-              <span class="content-info-state">진행중</span>
-              <div class="content-info-status">
-                <span>1,000,000원 모금</span>
-                <span>1,000명 참여</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="searched-page-area">
-          <a>&lt;</a>
-          <a>1</a>
-          <a>2</a>
-          <a>3</a>
-          <a>4</a>
-          <a>5</a>
-          <a>6</a>
-          <a>7</a>
-          <a>8</a>
-          <a>9</a>
-          <a>10</a>
-          <a>&gt;</a>
-        </div>
+          <c:choose>
+          	<c:when test="${not empty searchedList}">
+	          	<div id="searched-content-header">
+		          <div id="searched-header-title">
+		            <span class="searched-none">'${par}'</span>
+		            <span>검색 결과 ></span>
+		            <a href = "<%=path%>/search" style="font-size: 14px">돌아가기</a>
+		          </div>
+		          <div id="searched-header-sort">
+		         	<span><a href="#" onclick="location.href='<%=path%>/search/content?search=${par}'">최신순</a> | <a href="#" onclick="location.href='<%=path%>/search/content?search=${par}&s=1'">인기순</a></span>
+		          </div>
+		        </div>
+		        <div id="searched-content-body">
+	          		<c:forEach items ="${searchedList}" var="l">
+				         <div class="contents">
+				           <div class="content-info">
+				             <img src="../resources/upload/${l.url}" />
+				             <div class="content-info-title">
+				             	<span>${l.category}</span>
+				               <span>${l.title}</span>
+				               <span>${l.mNo}</span>
+				             </div>
+				           </div>
+				           <div class="content-info2">
+				             <span class="content-info-state">
+				             	<c:choose>
+				             		<c:when test="${l.fin eq 'N'}">진행중</c:when>
+				             		<c:otherwise>종료</c:otherwise>
+				             	</c:choose>
+				             </span>
+				           </div>
+				         </div>
+			        </c:forEach>
+			        <div id="searched-page-area">
+						<% if(currentPage != 1) {%>
+				      		<a href="<%=path%>/search/content?p=<%=currentPage-1%>&search=${par}">&lt;</a>
+				      	<%}%>
+				         
+						<% for(int i = startPage; i <= endPage; i++) {%>
+							<% if(i == currentPage) {%>
+						 		<a class="currentPage"><%=i%></a>
+							<%} else {%>
+						 		<a href="<%=path%>/search/content?p=<%=i%>&search=${par}"><%=i%></a>
+						 	<%} %>
+						 <%} %>
+						 
+						 <% if(currentPage != maxPage) {%>
+				        	<a href="<%=path%>/search/content?p=<%=currentPage+1%>&search=${par}">&gt;</a>
+				        <%} %>
+			        </div>
+			    </div>
+          	</c:when>
+          	<c:when test="${NullList eq 0}">
+	          	<div id="searched-content-header">
+		          <div id="searched-header-title">
+		            <span class="searched-none">'${param.search}'</span>
+		            <span>검색 결과 ></span>
+		            <a href = "<%=path%>/search" style="font-size: 14px">돌아가기</a>
+		          </div>
+		          <div id="searched-header-sort">
+		         	<span><a>최신순</a> | <a>인기순</a></span>
+		          </div>
+		        </div>
+		        <div id="searched-content-body">
+		        	<br>
+		        	<h4 align="center">검색 데이터가 없습니다.</h4>
+			    </div>
+          	</c:when>
+          	<c:when test="${empty recommendList}">
+	          	<div id="searched-content-header">
+		          <div id="searched-header-title">
+		            <span class="searched-none" id="searched-num">오늘의 프로젝트</span>
+		          </div>
+		          <div id="searched-header-sort">
+		         	<span><a>최신순</a> | <a>인기순</a></span>
+		          </div>
+		        </div>
+		        <div id="searched-content-body">
+		        	<br>
+		        	<h4 align="center">프로젝트가 없습니다.</h4>
+			    </div>
+          	</c:when>
+          	<c:otherwise>
+	          	<div id="searched-content-header">
+		          <div id="searched-header-title">
+		            <span class="searched-none" id="searched-num">오늘의 프로젝트</span>
+		          </div>
+		          <div id="searched-header-sort">
+		         	<span><a href="<%=path%>/search?p=1">최신순</a> | <a href="<%=path%>/search?p=1&s=1">인기순</a></span>
+		          </div>
+		        </div>
+		        <div id="searched-content-body">
+			        <c:forEach items ="${recommendList}" var="l">
+				         <div class="contents">
+				           <div class="content-info">
+				             <img src="resources/upload/${l.url}" />
+				             <div class="content-info-title">
+				               <span>${l.category}</span>
+				               <span>${l.title}</span>
+				               <span>${l.mNo}</span>
+				             </div>
+				           </div>
+				           <div class="content-info2">
+				             <span class="content-info-state">
+				             	<c:choose>
+				             		<c:when test="${l.fin eq 'N'}">진행중</c:when>
+				             		<c:otherwise>종료</c:otherwise>
+				             	</c:choose>
+				             </span>
+				           </div>
+				         </div>
+			        </c:forEach>
+			        <div id="searched-page-area">
+						<% if(currentPage != 1) {%>
+				      		<a href="<%=path%>/search?p=<%=currentPage-1%>">&lt;</a>
+				      	<%}%>
+				         
+						<% for(int i = startPage; i <= endPage; i++) {%>
+							<% if(i == currentPage) {%>
+						 		<a class="currentPage"><%=i%></a>
+							<%} else {%>
+						 		<a href="<%=path%>/search?p=<%=i%>"><%=i%></a>
+						 	<%} %>
+						 <%} %>
+						 
+						 <% if(currentPage != maxPage) {%>
+				        	<a href="<%=path%>/search?p=<%=currentPage+1%>">&gt;</a>
+				        <%} %>
+			        </div>
+			     </div>
+          	</c:otherwise>
+          </c:choose>
       </div>
     </div>
 
     <%@ include file="/views/common/footer.jsp" %>
-
-    <script>
-      $(document).ready(function () {
-        var num = $(".contents").length;
-
-        var countText = document.getElementById("searched-num");
-
-        countText.innerHTML = "검색 결과 " + num + "건";
-        $("#search-icon").click(function () {});
-      });
-    </script>
   </body>
 </html>
