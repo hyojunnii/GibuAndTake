@@ -1,0 +1,76 @@
+package com.gnt.review.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.gnt.review.vo.ReviewImgVo;
+import com.gnt.review.vo.ReviewVo;
+import com.gnt.common.JDBCTemplate;
+
+public class UploadImgDao {
+
+	
+	public int UploadImg(Connection conn, ReviewImgVo vo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			
+			//sql 준비
+			String sql = "INSERT INTO REVIMG(RVI_NO, REV_NO, URL) VALUES(SEQ_REVIMG_RVI_NO.nextval,SEQ_REVIEW_REV_NO.currentval,?)";
+			//sql 객체에 담기
+			pstmt = conn.prepareStatement(sql);
+			
+			//미완성 sql 완성
+			pstmt.setString(1, vo.getUrl());
+			
+			
+			
+			
+			//sql 실행 실행 결과 받기
+			result = pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			//다쓴 자원 정리하기
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
+		
+	}
+
+	public int InsertReview(Connection conn, ReviewVo vo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			
+			//sql 준비
+			String sql = "INSERT INTO REVIEW(REV_NO, M_NO, REV_NAME, REV_CONTENT, REV_CLASS) VALUES(SEQ_REVIEW_REV_NO.nextval,?,?,?,?)";
+			//sql 객체에 담기
+			pstmt = conn.prepareStatement(sql);
+			
+			//미완성 sql 완성
+			pstmt.setString(1, vo.getmNo());
+			pstmt.setString(2, vo.getRevName());
+			pstmt.setString(3, vo.getRevContent());
+			pstmt.setString(4, vo.getRevClass());
+			
+			
+			
+			
+			//sql 실행 실행 결과 받기
+			result = pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			//다쓴 자원 정리하기
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+}
