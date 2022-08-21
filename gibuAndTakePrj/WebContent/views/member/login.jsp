@@ -15,7 +15,7 @@
    
     #square{
      width: 500px;   
-     height: 500px;
+     height: 550px;
      border: solid black;
      margin: 0 auto;
      margin-top: 200px;
@@ -92,6 +92,7 @@
         border-width: 2px 2px 2px 2px;
         border-style: solid ;
     	border-color: #acdac2;
+    	margin-top:50px;
     }
 
     #PWD {
@@ -164,6 +165,12 @@
                     <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
                		 </a>
           			 </div>
+					    
+					    <tr>					    
+					    <td><input type="radio" name="check_log" id="member" value="member" checked><label for="member">일반 회원</label></td>
+          				<td><input type="radio" name="check_log" id="corp" value="corp" checked ><label for="corp">기업 회원</label></td>      			
+          				</tr>
+
 	                <tr>
 	                    <td colspan="4"><input type="text" name="memberId" id="ID" placeholder="아이디"></td>
 	                </tr>
@@ -175,7 +182,7 @@
 	                </tr>
                    <tr id="alink">
                     <td><a onclick="location.href='/gibuAndTakePrj/member/Join'"  class="log">일반 회원가입 |</a></td>
-                    <td><a onclick="location.href='/gibuAndTakePrj/corp/corpJoin'"  class="log"> &nbsp;기업 회원가입</a></td>
+                    <td><a onclick="location.href='/gibuAndTakePrj/corp/Join'"  class="log"> &nbsp;기업 회원가입</a></td>
                     <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> 
                     <td><a onclick="location.href='/gibuAndTakePrj/IdFound/idSearch'"class="log">아이디 찾기 |</a></td>
                     <td><a onclick="location.href='/gibuAndTakePrj/PwdSearch/pwdSearch'"> &nbsp;비밀번호 찾기</a></td>

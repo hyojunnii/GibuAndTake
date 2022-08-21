@@ -1,5 +1,14 @@
+<%@page import="com.gnt.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	session.removeAttribute("alertMsg");
+	
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -219,7 +228,7 @@
         align:center;
     }
 
-	#input{
+	.input{
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
@@ -305,24 +314,24 @@
 			
 				<tr>
 					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberName" id="input" maxlength="3" required></td>
+					<td><input type="text" name="memberNick" id="memberNick" class="input" maxlength="10" required></td>
 					
 				</tr>
 			
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" id="input" placeholder="- 없이 입력"></td>
+					<td><input type="tel" name="memberPhone" id ="memberPhone" class="input" placeholder="- 없이 입력"></td>
 					<td></td>
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="memberEmail" id="input"></td>
+					<td><input type="email" name="memberEmail" name="memberEmail" class="input"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="memberAddr" id="input"></td>
+					<td><input type="text" name="memberAddr" id="memberAddr" class="input"></td>
 					<td></td>
 				</tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr>
@@ -331,8 +340,8 @@
 			</table>
 			
 				<div id="memberUdq">
-					<a href="" class="log2" style="font-weight:bold">수정하기 /</a>
-					<a href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
+					<a onclick="location.href='/gibuAndTakePrj/member/MemberInfo'" class="log2" style="font-weight:bold">수정하기 /</a>
+					<a onclick="location.href='/gibuAndTakePrj/member/quit'"href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
                  	<a href="" onclick="pwdCh"  data-bs-toggle="modal" data-bs-target="#pwdChange"style="font-weight:bold"> 비밀번호 변경</a>
 				</div>
 			</form>
@@ -340,8 +349,8 @@
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
-				</div>
-		</form>
+		
+		
 		
 	</main>
 	<!-- The Modal -->

@@ -1,5 +1,16 @@
+<%@page import="com.gnt.corp.vo.corpVo"%>
+<%@page import="com.gnt.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+	corpVo loginMemVo = (corpVo)session.getAttribute("loginMember");
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	session.removeAttribute("alertMsg");
+	
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -225,7 +236,7 @@
         transition:background 0.7s ease-in-out;
     }
 	
-	#input {
+	.input {
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
@@ -332,64 +343,65 @@
 		
 		<div id="line"></div>
 		<h3 align="center" id="corpPage" >기업 정보 페이지</h3>
-		<form action="gibuAndTakePrj/member/join" method="post">
+		<form action="gibuAndTakePrj/corp/corpinfo" method="post">
+		<input type="hidden" value="<%=loginMember.getNo()%>" name="memberNo">
 			<table>
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</span></td>
 						<%--input 안에다가 히든밸류 값 넣어주기 getNo... --%>
-					<td><input type="text" name="corpId" id="input"required readonly></td>
+					<td><input type="text" name="corpId" id="corpId" class="input" value="<%=loginMember.getId() %>"  readonly></td>
 					
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">비밀번호 확인*</td>
-					<td><input type="password" name="corpPwd" id="input"  required readonly></td>
+					<td><input type="password" name="corpPwd" id="corpId"  value="<%=loginMember.getPwd() %>" class="input"   readonly></td>
 					<td><input type="button" id="txt" value="비밀번호변경" class="btn" style="background-color: #d8eee2 ;"
 							data-bs-toggle="modal" data-bs-target="#pwdChange" style="font-weight: bold">
 					</td>
 				</tr>
 				<tr>
-					<td  class="first" style="font-weight: bold">대표자명 *</td>
-					<td><input type="text" name="rprName" id="input"required readonly></td>
+					<td class="first" style="font-weight: bold ">대표자명 *</td>
+					<td><input type="text" name="rprName" id="rprName" class="input"  value="<%=loginMember.getName() %>" readonly></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">기업명 *</td>
-					<td><input type="text" name="corpName" id="input" required readonly></td>
+					<td><input type="text" name="corpName" id="corpName" value= <%=loginMember.getNick() %> class="input"  readonly></td>
 					<td></td>
 					
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">사업자등록번호 *</td>
-					<td><input type="tel" name="compNum" id="input" required readonly></td>
+					<td><input type="tel" name="compNum" id="compNum"  value=<%=loginMember.getRegnum() %> class="input"  readonly></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="corpPhone" id="input" required readonly></td>
+					<td><input type="tel" name="corpPhone"id="corpPhone"   value=<%=loginMember.getPhone() %>  class="input"  readonly></td>
 					<td></td>
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="corpEmail" id="input" required readonly></td>
+					<td><input type="email" name="corpEmail" id="corpEmail" value=  <%=loginMember.getEmail() %> class="input"  readonly></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="corpAddr" id="input" required readonly></td>
+					<td><input type="text" name="corpAddr" id="corpAddr"  value= <%=loginMember.getAddr() %>  class="input"  readonly></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">사업 유형 *</td>
-					<td><input type="text" name="corpType" id="input" required readonly></td>
+					<td><input type="text" name="corpType" id="corpType"  value= <%=loginMemVo.getClasss()%> class="input"  readonly></td>
 					<td></td>
 				</tr>
 				<tr>
-					<td class="corpText" style="font-weight: bold">기업 설명 *</td>
+					<td class="corpText" id="corpText" style="font-weight: bold" >기업 설명 *</td>
 					<td>
-						 <textarea required readonly></textarea></td>
-					</td>
+						 <textarea  readonly value= <%=loginMemVo.getContent() %>></textarea></td>
+					
 				</tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 				
@@ -398,15 +410,16 @@
 			
 				<div id="corpDelQuit">
 					<a onclick="location.href='/gibuAndTakePrj/corp/corpUpdate'" class="delQu">기업 정보 수정 /</a>
-                    <a href="" class="delQu">회원 탈퇴</a>
+                    <a onclick="location.href='/gibuAndTakePrj/corp/quit'"class="delQu">회원 탈퇴</a>
 				
 				</div>
+				</form>
 			</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
 
-		</form>
+		
 	</main>
 	<!-- The Modal -->
 	<div class="modal" id="pwdChange">
