@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+String category = (String)request.getAttribute("category");    
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,12 +101,13 @@
 <%@include file="/views/common/header.jsp" %>
 
     <section>
-        <form action="" method="post">
+        <form action="/review/create" method="post">
+        <input name="category" type="hidden" value="${category}"></div>
         <div id="review_create_wrap">
             <div class="review_create_header">
                 <label for="review_header_img_btn">상단배경선택</label>
-                <input type="file" id="review_header_img_btn" value="사진첨부하기">
-                <input type="text" class="review_header_title" placeholder="후기제목"></input>
+                <input type="file" id="review_header_img_btn" value="사진첨부하기"  name="f">
+                <input type="text" class="review_header_title" placeholder="후기제목" name="title"></input>
             </div>
             <div id="review_body_content">
                 <textarea id="summernote" name="editordata"></textarea>
@@ -162,13 +168,15 @@
 	/**
 	* 이미지 파일 업로드
 	*/
+	
 	function uploadSummernoteImageFile(file, editor) {
+		const category = "<c:out value="${category}"/>"
 		data = new FormData();
 		data.append("file", file);
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/uploadSummernoteImageFile",
+			url : "/uploadSummernoteImageFile?",
 			contentType : false,
 			processData : false,
 			success : function(data) {
@@ -177,6 +185,7 @@
 			}
 		});
 	}
+	
 </script>
 
 

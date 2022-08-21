@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	String category = (String)request.getAttribute("category");    
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,7 +111,7 @@
 
     <div id="create_review">
         <div>
-            <input type="button" value="후기 작성하기" class="review_btn" onclick="location.href='<%=request.getContextPath()%>/campaign/review/create'">
+            <input type="button" value="후기 작성하기" class="review_btn" onclick="location.href='<%=request.getContextPath()%>/campaign/review/create?category=${category}'">
         </div>
     </div> 
 
