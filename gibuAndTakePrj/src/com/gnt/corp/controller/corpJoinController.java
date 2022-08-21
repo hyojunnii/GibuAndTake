@@ -23,7 +23,7 @@ public class corpJoinController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//다른애한테 떠넘기기
-		req.getRequestDispatcher("/views/corp/corpJoin.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/corparation/corpJoin.jsp").forward(req, resp);
 		
 	}
 	
@@ -46,24 +46,21 @@ public class corpJoinController extends HttpServlet {
 		String corpType = req.getParameter("corpType");
 		String corpText = req.getParameter("corpText");
 		
-		MemberVo mvo = new MemberVo();
 		corpVo cvo = new corpVo();
 		
-		mvo.setId(corpId);
-		mvo.setPwd(corpPwd);
-		mvo.setName(rprName);
-		mvo.setNick(corpName);
-		mvo.setPhone(corpPhone);
-		mvo.setEmail(corpEmail);
-		mvo.setAddr(corpAddr);
+		cvo.setId(corpId);
+		cvo.setPwd(corpPwd);
+		cvo.setName(rprName);
+		cvo.setNick(corpName);
+		cvo.setRegnum(compNum);
+		cvo.setPhone(corpPhone);
+		cvo.setEmail(corpEmail);
+		cvo.setAddr(corpAddr);
 		cvo.setContent(corpText);
-		cvo.setClasss(corpText);
-		
-		
+		cvo.setClasss(corpType);
 		
 		//객체 이용해서 회원가입 진행
-		int result = new MemberService().memberjoin(mvo);
-		int result2 = new corpService().corpjoin(cvo);
+		int result = new corpService().corpjoin(cvo);
 		
 		//insert 결과를 가지고 화면 선택
 		if(result == 1) {

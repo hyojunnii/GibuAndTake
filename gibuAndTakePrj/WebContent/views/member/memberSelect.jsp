@@ -1,5 +1,14 @@
+<%@page import="com.gnt.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	session.removeAttribute("alertMsg");
+	
+	String contextPath = request.getContextPath();
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,7 +119,7 @@
         
     }
 	
-	#input{
+	.input{
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
@@ -174,44 +183,45 @@
 		
 		<div id="line"></div>
 		<h3 align="center" style="font-size: 25px; ">회원 정보 조회</h3>
-		<form action="gibuAndTakePrj/member/memberSelect" method="post">
+		<form action="gibuAndTakePrj/member/memberInfo" method="post">
+		<input type="hidden" value="<%=loginMember.getNo()%>" name="memberNo">
 			<table>
 				<tr>
-					<td class="first" style="font-weight: bold">아이디 *</span></td>
+					<td class="first" style="font-weight: bold">아이디 *</td>
 					<%--input 안에다가 히든밸류 값 넣어주기 getNo... --%>
-					<td><input type="text" name="memberId" id="input"  required readonly ></td>
+					<td><input type="text" name="memberId" class="input" id="memberId" value="<%=loginMember.getId() %>"   readonly ></td>
 					
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">이름 *</td>
-					<td><input type="password" name="memberPwd" id="input" required readonly></td>
+					<td><input type="text" name="memberName" id="memberName" class="input"  value="<%=loginMember.getName() %>" readonly></td>
 			
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="password" id="input" name="memberPwd2" required readonly></td>
+					<td><input type="text" class="input" name="memberNick"  id="memberNick"   value="<%=loginMember.getNick() %>"  readonly></td>
 					
 				</tr>
 				<tr>
 					<td  class="first" style="font-weight: bold">주민등록번호 *</td>
-					<td><input type="text" name="memberName" id="input"  required readonly></td>
+					<td><input type="text" name="memberRegnum" id="memberRegnum" class="input"    value="<%=loginMember.getRegnum() %>"  readonly></td>
 				
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="text" name="memberName" id="input" required readonly></td>
+					<td><input type="text" name="memberPhone"  id="memberPhone" class="input" value="<%=loginMember.getPhone() %>"  readonly></td>
 					
 					
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="tel" name="memberPhone" id="input" required readonly ></td>
+					<td><input type="tel" name="memberEmail" id = "memberEmail" class="input" value="<%=loginMember.getEmail() %>" required readonly ></td>
 				
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="tel" name="memberPhone" id="input" required readonly ></td>
+					<td><input type="tel" id="memberAddr"  name="memberAddr" class="input"  value="<%=loginMember.getAddr() %>" required readonly ></td>
 				
 				</tr>
 				
@@ -222,16 +232,17 @@
 			
 				<div id="memberDelQuit">
 					<a onclick="location.href='/gibuAndTakePrj/member/MyUpdate'" class="log">회원 정보 수정 /</a>
-                    <a href="" class="log">회원 탈퇴</a>
+                    <a onclick="location.href='/gibuAndTakePrj/member/quit'" class="log">회원 탈퇴</a>
 				
 				</div>
+				</form>
 			</div>
 
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>
           		</div>
 
-		</form>
+		
 	</main>
 
 	
