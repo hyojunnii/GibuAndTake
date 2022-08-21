@@ -7,13 +7,15 @@ public class NoticeVo {
 	}
 	
 	
-	public NoticeVo(String no, String cate, String title, String content, String cnt, String date, String mod,
-			String status) {
+
+	public NoticeVo(String no, String cate, String title, String content, String writer, String cnt, String date,
+			String mod, String status) {
 		super();
 		this.no = no;
 		this.cate = cate;
 		this.title = title;
 		this.content = content;
+		this.writer = writer;
 		this.cnt = cnt;
 		this.date = date;
 		this.mod = mod;
@@ -21,18 +23,22 @@ public class NoticeVo {
 	}
 
 
+
 	private String no;
 	private String cate;
 	private String title;
 	private String content;
+	private String writer;
 	private String cnt;
 	private String date;
 	private String mod;
 	private String status;
 	
+	
 	public String getNo() {
 		return no;
 	}
+
 
 
 	public void setNo(String no) {
@@ -40,9 +46,11 @@ public class NoticeVo {
 	}
 
 
+
 	public String getCate() {
 		return cate;
 	}
+
 
 
 	public void setCate(String cate) {
@@ -50,9 +58,11 @@ public class NoticeVo {
 	}
 
 
+
 	public String getTitle() {
 		return title;
 	}
+
 
 
 	public void setTitle(String title) {
@@ -60,9 +70,11 @@ public class NoticeVo {
 	}
 
 
+
 	public String getContent() {
 		return content;
 	}
+
 
 
 	public void setContent(String content) {
@@ -70,9 +82,23 @@ public class NoticeVo {
 	}
 
 
+
+	public String getWriter() {
+		return writer;
+	}
+
+
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+
+
 	public String getCnt() {
 		return cnt;
 	}
+
 
 
 	public void setCnt(String cnt) {
@@ -80,9 +106,11 @@ public class NoticeVo {
 	}
 
 
+
 	public String getDate() {
 		return date;
 	}
+
 
 
 	public void setDate(String date) {
@@ -90,9 +118,11 @@ public class NoticeVo {
 	}
 
 
+
 	public String getMod() {
 		return mod;
 	}
+
 
 
 	public void setMod(String mod) {
@@ -100,9 +130,11 @@ public class NoticeVo {
 	}
 
 
+
 	public String getStatus() {
 		return status;
 	}
+
 
 
 	public void setStatus(String status) {
@@ -110,10 +142,13 @@ public class NoticeVo {
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "NoticeVo [no=" + no + ", cate=" + cate + ", title=" + title + ", content=" + content + ", cnt=" + cnt
-				+ ", date=" + date + ", mod=" + mod + ", status=" + status + "]";
+		return "NoticeVo [no=" + no + ", cate=" + cate + ", title=" + title + ", content=" + content + ", writer="
+				+ writer + ", cnt=" + cnt + ", date=" + date + ", mod=" + mod + ", status=" + status + "]";
 	}
+	
+	
 	
 }
