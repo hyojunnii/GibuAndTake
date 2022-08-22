@@ -114,4 +114,66 @@ public class NoticeDao {
 		return list;
 	}
 
+	public int increaseNotice(Connection conn, String num) {
+		
+		String sql ="UPDATE Notice SET N_CNT = N_CNT+1 WHERE N_NO = ? AND STATUS = 'N'";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public NoticeVo selectNum(Connection conn, String num) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		NoticeVo vo = null;
+		
+		String sql = "SELECT N.N_NO ,N.N_TITLE , N.N_CONTENT , N.N_CNT , N.N_DATE, N.N_MOD, N.STATUS ,MN.MN_NICK AS N_WRITER FROM Notice N JOIN Manager MN ON N.N_WRITER = MN.MN_NO WHERE N.STATUS = 'N' AND N.N_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String no = rs.getString("N_NO");
+				String title = rs.getString("N_TITLE");
+				String content = rs.getString("N_CONTENT");
+				String writer = rs.getString("N_WRITER");
+				String cnt = rs.getString("N_CNT");
+				String date = rs.getString("N_DATE");
+				String mod = rs.getString("N_MOD");
+				String status = rs.getString("STATUS");
+				
+				vo = new NoticeVo();
+				vo.setNo(no);
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setWriter(writer);
+				vo.setCnt(cnt);
+				vo.setDate(date);
+				vo.setMod(mod);
+				vo.setStatus(status);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return vo;
+	}
+
 }
