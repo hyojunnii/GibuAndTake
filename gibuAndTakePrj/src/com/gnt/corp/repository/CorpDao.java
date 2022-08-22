@@ -5,6 +5,7 @@ import static com.gnt.common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import com.gnt.corp.vo.corpVo;
@@ -55,7 +56,7 @@ public class CorpDao {
 
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
+
 		try {
 
 			//SQL 준비
@@ -82,6 +83,259 @@ public class CorpDao {
 		return result;
 
 	}
+
+
+	public corpVo login(Connection conn, corpVo vo) throws Exception {
+
+		corpVo loginMember = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		//SQL 준비
+		String sql = "SELECT * FROM MEMBER M JOIN CORPORATION C USING (M_NO) WHERE M.M_ID = ? AND M.M_PWD = ? AND M.M_CLASS = '2' AND M.M_DEL = 'N'";
+
+		try {
+			//SQL 객체에 담고, 물음표 채우기
+			pstmt =  conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPwd());
+
+			//SQL 실행 및 결과저장
+			rs = pstmt.executeQuery();
+
+			//rs 에서 데이터 꺼내서 객체로 만들기
+			if(rs.next()) {
+				int no = rs.getInt("M_NO");
+				int cno = rs.getInt("CORP_NO");
+				int m = rs.getInt("M_CLASS");
+				String num = rs.getString("M_REGNUM");
+				String name = rs.getString("M_NAME");									
+				String id = rs.getString("M_ID");
+				String pwd = rs.getString("M_PWD");
+				String nick = rs.getString("M_NICK");
+				String email = rs.getString("M_EMAIL");
+				String addr = rs.getString("M_ADD");
+				String phone = rs.getString("M_PHONE");
+				Timestamp enrolDate = rs.getTimestamp("M_DATE");
+				String delete = rs.getString("M_DEL");
+				String ban = rs.getString("M_BAN");
+				Timestamp modifyDate = rs.getTimestamp("M_MOD");
+				String content = rs.getString("CORP_CONTENT");
+				String classs = rs.getString("CORP_CLASS");
+
+
+				loginMember = new corpVo();
+
+				loginMember.setNo(no);
+				loginMember.setCno(cno);
+				loginMember.setClas(m);
+				loginMember.setRegnum(num);
+				loginMember.setName(name);
+				loginMember.setId(id);
+				loginMember.setPwd(pwd);
+				loginMember.setNick(nick);
+				loginMember.setEmail(email);
+				loginMember.setAddr(addr);
+				loginMember.setPhone(phone);
+				loginMember.setDate(enrolDate);
+				loginMember.setDel(delete);
+				loginMember.setBan(ban);
+				loginMember.setMod(modifyDate);
+				loginMember.setContent(content);
+				loginMember.setClasss(classs);
+
+			}
+		}
+		finally {
+			//자원 반납
+			close(pstmt);
+			close(rs);
+		}
+
+		//만들어진 객체 리턴
+		return loginMember;
+
+	}	
+	public int corpSelect(corpVo cvo, Connection conn) throws Exception {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		try {
+
+			//SQL 준비
+			String sql = "SELECT * FROM MEMBER M JOIN CORPORATION C USING (M_NO) WHERE M.M_ID = ? AND M.M_PWD = ? AND M.M_CLASS = '2' AND M.M_DEL = 'N'";
+
+			//SQL 객체에 담기
+			pstmt = conn.prepareStatement(sql);
+
+			//SQL 객체에 담고, SQL 완성하기
+			pstmt.setString(1, cvo.getId());
+			pstmt.setString(2, cvo.getPwd());
+			pstmt.setString(3, cvo.getName());
+			pstmt.setString(4, cvo.getNick());
+			pstmt.setString(5, cvo.getRegnum());
+			pstmt.setString(6, cvo.getPhone());
+			pstmt.setString(7, cvo.getEmail());
+			pstmt.setString(8, cvo.getAddr());
+			pstmt.setString(9, cvo.getClasss());
+			pstmt.setString(10, cvo.getContent());
+
+
+			//SQL 실행 및 실행결과 받기
+			result = pstmt.executeUpdate();
+
+
+		} catch (Exception e) {
+			//롤백해야함
+			throw e;
+		} finally {
+			//다 쓴 자원 정리하기
+			close(pstmt);
+		}
+		return result;
+	}
 	
+	public int memberUpdate(Connection conn, MemberVo vo) throws Exception {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		try {
+
+			//SQL 준비
+			String sql = "UPDATE MEMBER SET M_NICK = ? , M_PHONE = ? , M_EMAIL = ? , M_ADD= ?  M_NAME = ? WHERE M_NO = ?";
+
+			//SQL 객체에 담기
+			pstmt = conn.prepareStatement(sql);
+
+			//SQL 객체에 담고, SQL 완성하기
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getPhone());
+			pstmt.setString(3, vo.getEmail());
+			pstmt.setString(4, vo.getAddr());
+			pstmt.setString(5, vo.getNick());
+			pstmt.setInt(6, vo.getNo());
+
+			//SQL 실행 및 실행결과 받기
+			result = pstmt.executeUpdate();
+
+
+		} catch (Exception e) {
+			//롤백해야함
+			throw e;
+		} finally {
+			//다 쓴 자원 정리하기
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int corpUpdate(Connection conn, corpVo vo) throws Exception {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		try {
+
+			//SQL 준비
+			String sql = "UPDATE CORPORATION SET CORP_CONTENT = ? , CORP_CLASS = ?  WHERE M_NO = ?";
+	
+			//SQL 객체에 담기
+			pstmt = conn.prepareStatement(sql);
+	
+			//SQL 객체에 담고, SQL 완성하기
+			pstmt.setString(1, vo.getContent());
+			pstmt.setNString(2, vo.getClasss());
+	
+			//SQL 실행 및 실행결과 받기
+			result = pstmt.executeUpdate();
+	
+	
+		} catch (Exception e) {
+			//롤백해야함
+			throw e;
+		} finally {
+			//다 쓴 자원 정리하기
+			close(pstmt);
+		}
+		return result;
+		}
+
+	
+	public corpVo selectOneByNo(Connection conn, int number) {
+		//connection 준비
+		
+		//SQL 준비
+		String sql = "SELECT * FROM MEMBER WHERE M_NO = ? AND M_DEL = 'N'";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		corpVo vo = null;
+		
+		
+		try {
+			
+			//SQL 객체에 담기 및 쿼리 완성
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, number);
+		
+			//SQL 실행 및 결과저장
+		
+			rs = pstmt.executeQuery();
+		
+		
+			//ResultSet -> 자바객체(MemberVo)
+		
+			if(rs.next()) {
+				
+				int no = rs.getInt("M_NO");
+				int m = rs.getInt("M_CLASS");
+				String num = rs.getString("M_REGNUM");
+				String name = rs.getString("M_NAME");									
+				String id = rs.getString("M_ID");
+				String pwd = rs.getString("M_PWD");
+				String nick = rs.getString("M_NICK");
+				String email = rs.getString("M_EMAIL");
+				String addr = rs.getString("M_ADD");
+				String phone = rs.getString("M_PHONE");
+				Timestamp enrolDate = rs.getTimestamp("M_DATE");
+				String delete = rs.getString("M_DEL");
+				String ban = rs.getString("M_BAN");
+				Timestamp modifyDate = rs.getTimestamp("M_MOD");
+				String content = rs.getString("CORP_CONTENT");
+				String classs = rs.getString("CORP_CLASS");
+				
+				vo = new corpVo();
+				
+				vo.setNo(no);
+				vo.setClas(m);
+				vo.setRegnum(num);
+				vo.setName(name);
+				vo.setId(id);
+				vo.setPwd(pwd);
+				vo.setNick(nick);
+				vo.setEmail(email);
+				vo.setAddr(addr);
+				vo.setPhone(phone);
+				vo.setDate(enrolDate);
+				vo.setDel(delete);
+				vo.setBan(ban);
+				vo.setMod(modifyDate);
+				vo.setContent(content);
+				vo.setClasss(classs);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		//SQL 실행결과(자바객체) 리턴
+		return vo;
+	}
 }
+
 

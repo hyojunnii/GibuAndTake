@@ -355,7 +355,7 @@
 				
 				<tr>
 					<td class="first" style="font-weight: bold">비밀번호 확인*</td>
-					<td><input type="password" name="corpPwd" id="corpId"  value="<%=loginMember.getPwd() %>" class="input"   readonly></td>
+					<td><input type="password" name="corpPwd" id="corpId"  value="<%=loginMember.getPwd() %>" class="input"  readonly></td>
 					<td><input type="button" id="txt" value="비밀번호변경" class="btn" style="background-color: #d8eee2 ;"
 							data-bs-toggle="modal" data-bs-target="#pwdChange" style="font-weight: bold">
 					</td>
@@ -400,7 +400,7 @@
 				<tr>
 					<td class="corpText" id="corpText" style="font-weight: bold" >기업 설명 *</td>
 					<td>
-						 <textarea  readonly value= <%=loginMemVo.getContent() %>></textarea></td>
+						 <textarea name="corpContent" id ="corpContent" readonly value= <%=loginMemVo.getContent() %>></textarea></td>
 					
 				</tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr>
@@ -410,7 +410,7 @@
 			
 				<div id="corpDelQuit">
 					<a onclick="location.href='/gibuAndTakePrj/corp/corpUpdate'" class="delQu">기업 정보 수정 /</a>
-                    <a onclick="location.href='/gibuAndTakePrj/corp/quit'"class="delQu">회원 탈퇴</a>
+                    <a onclick="location.href='/gibuAndTakePrj/member/quit'"class="delQu">회원 탈퇴</a>
 				
 				</div>
 				</form>

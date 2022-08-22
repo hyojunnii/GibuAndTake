@@ -6,6 +6,7 @@
 <%
 	String path = request.getContextPath();
 	MemberVo memberVo = (MemberVo)request.getSession().getAttribute("loginMember");
+													
 %>
 
 <c:set var="path" value="<%=path %>"/>
