@@ -1,9 +1,12 @@
+<%@page import="com.gnt.common.ReplyVo"%>
+<%@page import="java.util.List"%>
 <%@page import="com.gnt.gibu.vo.GibuVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%
 	GibuVo vo = (GibuVo)request.getAttribute("gibuvo");
+	List<ReplyVo> list = (List<ReplyVo>)request.getAttribute("replyvo");
 %>    
 <!DOCTYPE html>
 <html>
@@ -172,7 +175,7 @@
             <tr>
                 <td width="20%"></td>
                 <td colspan="3" width="60%"><h1><%=vo.getRegname() %></h1></td>
-                <td width="20%"><button class="btn">수정하기</button></td>
+                <td width="20%"><button class="btn" hidden>수정하기</button></td>
             </tr>
         </table>
             <p class="comName">By <%=vo.getMnick() %></p>
@@ -191,11 +194,11 @@
                     </tr>
                     <tr>
                         <th>모금기간</th>
-                        <td>2100년 8월 8일 ~ 2105년 8월 8일</td>
+                        <td><%= vo.getRegsdate() %> ~ <%= vo.getRegfdate() %></td>
                     </tr>
                     <tr>
                         <th>사업대상</th>
-                        <td>어르신</td>
+                        <td><%= vo.getDperson() %></td>
                     </tr>
                     </tbody>
                 </table>
@@ -225,18 +228,42 @@
         <div class="tabcontent">
          
           <div id="comments">
+          	
+          	<script>
+          		function repEdit() {
+					const done = confirm("수정하시겠습니까?");
+					var repno = ${'#comments_num'}.va();
+					console.log(repno);
+				}
+          		function repDel() {
+          			const done = confirm("삭제하시겠습니까?");
+          			if(done==1){
+          					
+          			}
+				}
+          		function repBan() {
+					const done = confirm("신고하시겠습니까?");
+					if(done==1){
+						
+					}
+				}
+          	</script>
+          	
+          	
+          	<%for(ReplyVo rp : list) {%>
             <table id="comments_table">
                 <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                        <button value="수정" class="btn">수정</button>
-                        <button value="삭제" class="btn">삭제</button>
-                        <button value="신고" class="btn">신고</button>
+                	<td hidden id="comments_num"><%= rp.getRep_no() %></td>
+                    <td id="comments_name" width="30%"><%= rp.getMnick() %></td>
+                    <td id="comments_date" align="right" width="50%"><%= rp.getRepmod() %></td>
+                    <td align="right" width="20%">
+                        <button value="수정" class="btn" onclick="repEdit()">수정</button>
+                        <button value="삭제" class="btn" onclick="repDel()">삭제</button>
+                        <button value="신고" class="btn" onclick="repBan()">신고</button>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
+                    <td colspan="5" id="comments_content"><%= rp.getRepcontent() %></td>
                 </tr>
                 <!-- <tr>
                     <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
@@ -244,126 +271,8 @@
                 
             </table>
             <hr>
-
-            <table id="comments_table">
-                <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                        <button value="수정" class="btn">수정</button>
-                        <button value="삭제" class="btn">삭제</button>
-                        <button value="신고" class="btn">신고</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
-                </tr>
-                <!-- <tr>
-                    <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
-                </tr> -->
-                
-            </table>
-            <hr>
-
-            <table id="comments_table">
-                <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                        <button value="수정" class="btn">수정</button>
-                        <button value="삭제" class="btn">삭제</button>
-                        <button value="신고" class="btn">신고</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
-                </tr>
-                <!-- <tr>
-                    <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
-                </tr> -->
-                
-            </table>
-            <hr>
-
-            <table id="comments_table">
-                <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                        <button value="수정" class="btn">수정</button>
-                        <button value="삭제" class="btn">삭제</button>
-                        <button value="신고" class="btn">신고</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
-                </tr>
-                <!-- <tr>
-                    <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
-                </tr> -->
-                
-            </table>
-            <hr>
-
-            <table id="comments_table">
-                <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                        <button value="수정" class="btn">수정</button>
-                        <button value="삭제" class="btn">삭제</button>
-                        <button value="신고" class="btn">신고</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
-                </tr>
-                <!-- <tr>
-                    <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
-                </tr> -->
-                
-            </table>
-            <hr>
-
-            <table id="comments_table">
-                <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                        <button value="수정" class="btn">수정</button>
-                        <button value="삭제" class="btn">삭제</button>
-                        <button value="신고" class="btn">신고</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
-                </tr>
-                <!-- <tr>
-                    <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
-                </tr> -->
-                
-            </table>
-            <hr>
-
-            <table id="comments_table">
-                <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                        <button value="수정" class="btn">수정</button>
-                        <button value="삭제" class="btn">삭제</button>
-                        <button value="신고" class="btn">신고</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
-                </tr>
-                <!-- <tr>
-                    <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
-                </tr> -->
-                
-            </table>
-            <hr>
+			<%} %>
+            
 
 
             <!-- 댓글 -->

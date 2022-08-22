@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.gnt.common.JDBCTemplate.*;
+
+import com.gnt.common.ReplyVo;
 import com.gnt.gibu.vo.GibuVo;
 
 public class GibuDao {
@@ -410,6 +412,81 @@ public class GibuDao {
 					close(rs);
 				}
 				return vo;
+	}
+
+	public List<ReplyVo> selectReply(Connection conn, int type, int num) {
+		// sql 준비
+		String sql = "SELECT * FROM REPLY RP JOIN MEMBER M ON RP.M_NO = M.M_NO WHERE RP.REG_NO=? AND RP.REP_DEL= 'N' ORDER BY RP.REP_NO DESC";
+		String paraclass = "";
+		if(type!=0) {
+			sql = "";	
+		}			
+		
+		
+//		if (type==1) {
+//			paraclass = "아동청소년"; 
+//		}else if(type==2) {
+//			paraclass = "어르신"; 
+//		}else if(type==3) {
+//			paraclass = "장애인"; 
+//		}else if(type==4) {
+//			paraclass = "다문화"; 
+//		}else if(type==5) {
+//			paraclass = "지구촌"; 
+//		}else if(type==6) {
+//			paraclass = "가족여성"; 
+//		}else if(type==7) {
+//			paraclass = "시민사회"; 
+//		}else if(type==8) {
+//			paraclass = "동물"; 
+//		}
+		
+		PreparedStatement pstmt = null;
+		List<ReplyVo> volist = new ArrayList<ReplyVo>();
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+//			if(type!=0) {
+//				pstmt.setString(2, paraclass);
+//			}
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+
+				// 테스트
+				String rep_no = rs.getString("REP_NO");		//댓글번호
+				String mno = rs.getString("M_NO");			//사용자번호
+				String regno = rs.getString("REG_NO");		//등록번호
+				String repcontent = rs.getString("REP_CONTENT");	//댓글내용
+				String repdate = rs.getString("REP_DATE");		//작성일
+				String repdel = rs.getString("REP_DEL");		//삭제여부
+				String repban = rs.getString("REP_BAN");		//신고여부
+				String repmod = rs.getString("REP_MOD");		//마지막수정일자
+				String mnick = rs.getString("M_NICK");
+
+				ReplyVo vo = new ReplyVo();
+				vo.setRep_no(rep_no);
+				vo.setMno(mno);
+				vo.setRegno(regno);
+				vo.setRepcontent(repcontent);
+				vo.setRepdate(repdate);
+				vo.setRepdel(repdel);
+				vo.setRepban(repban);
+				vo.setRepmod(repmod);
+				vo.setMnick(mnick);;
+				
+				volist.add(vo);
+				
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return volist;
+
 	}
 
 }

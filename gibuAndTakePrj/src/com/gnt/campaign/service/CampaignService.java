@@ -33,6 +33,16 @@ public class CampaignService {
 		return result;
 	}
 
+	public List<CampaignVo> selectbanner() {
+		Connection conn = null;
+		List<CampaignVo> voList = null;
+		conn = getConnection();
+		//DAO 호출	
+			voList = dao.selectbanner(conn);
+			close(conn);
+		return voList;
+	}
+
 
 	
 }

@@ -19,9 +19,11 @@ public class CampaignServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		List<CampaignVo> campaignvo =  new CampaignService().selectList();
+		List<CampaignVo> campaignbannervo = new CampaignService().selectbanner();
 		int campaigncnt =  new CampaignService().getListCount();
 		
 		req.setAttribute("campaignvo", campaignvo);
+		req.setAttribute("campaignbannervo", campaignbannervo);
 		req.setAttribute("campaigncnt", campaigncnt);
 		
 		
