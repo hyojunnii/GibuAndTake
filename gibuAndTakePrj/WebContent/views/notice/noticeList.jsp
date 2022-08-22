@@ -1,3 +1,4 @@
+<%@page import="com.gnt.common.PageVo"%>
 <%@page import="com.gnt.manager.vo.ManagerVo"%>
 <%@page import="com.gnt.notice.vo.NoticeVo"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,11 +8,15 @@
 	ManagerVo loginMember = (ManagerVo)session.getAttribute("loginMember");
 	ArrayList<NoticeVo> voList = (ArrayList<NoticeVo>)request.getAttribute("voList");
 	
-	String alertMsg = (String)session.getAttribute("alertMsg");
-	session.removeAttribute("alertMsg");
-	
 	String contextPath = request.getContextPath();
 	String path = request.getContextPath();
+	
+	PageVo pv = (PageVo)request.getAttribute("pv");
+	
+	int currentPage = pv.getCurrentPage();
+	int startPage = pv.getStartPage();
+	int endPage = pv.getEndPage();
+	int maxPage = pv.getMaxPage();
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
@@ -93,57 +98,20 @@
         cursor: pointer;
     }
     
-    #btn{
-    	margin-top: 100px;
-    	text-align: center;
-    }
-    
-    #a:hover{
-    	cursor: pointer;
-    }
-    
-    #b:hover{
-    	cursor: pointer;
-    }
-    
-    #c:hover{
-    	cursor: pointer;
-    }
-    
-    #a{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
-    }
-    
-    #b{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
-    }
-    
-    #c{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
-    }
     
     #last {    
         padding: 80px;
     }
     
-    /*#page-area{
-		width: 80%;
+    #page-area{
 		text-align: center;
 		margin: auto;
 		padding-top: 30px;
-	}*/
+		width: 150px;
+    	height: 40px;
+    	color: #2e6c4a;
+        font-weight: bold;
+	}
 	
 	#site_header{
         width: 100%;
@@ -336,32 +304,23 @@
     <button id="write" style="float: right" onclick="location.href='/gibuAndTakePrj/notice/write'">공지사항 작성</button>
     <%} %> 
     
-    <div id="btn">
-    	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
-        <a id="b">&nbsp&nbsp1&nbsp&nbsp</a>
-        <a id="b">&nbsp&nbsp2&nbsp&nbsp</a>
-        <a id="b">&nbsp&nbsp3&nbsp&nbsp</a>
-        <a id="b">&nbsp&nbsp4&nbsp&nbsp</a>
-        <a id="b">&nbsp&nbsp5&nbsp&nbsp</a>
-        <a id="c">&nbsp&nbsp>&nbsp&nbsp</a>
-    </div>
-    
-   		<%-- <div id="page-area">
+   		<div id="page-area">
 				<%if(currentPage != 1){%>
-					<a class="btn btn-sm btn-primary" href="/semi/board/list?p=<%=currentPage-1%>"> &lt; </a>
+					<a href="/gibuAndTakePrj/notice/list?p=<%=currentPage-1%>"> &lt; </a>
 				<%} %>
 				<% for(int i = startPage; i <= endPage; ++i) {%>
 					<%if(i == currentPage) {%>
-						<a class="btn btn-sm btn-primary"><%=i%></a>
+						<a><%=i%></a>
 					<%}else{ %>
-						<a class="btn btn-sm btn-primary" href="<%=contextPath%>/board/list?p=<%=i%>"><%=i%></a>
+						<a href="/gibuAndTakePrj/notice/list?p=<%=i%>"><%=i%></a>
 					<%} %>
 				<%} %>
 				
 				<%if(currentPage != maxPage){%>
-					<a class="btn btn-sm btn-primary" href="/semi/board/list?p=<%=currentPage+1%>"> &gt; </a>
+					<a href="/gibuAndTakePrj/notice/list?p=<%=currentPage+1%>"> &gt; </a>
 				<%} %>
-			</div> --%>
+				
+			</div>
     
     <div id="last"></div>
     
