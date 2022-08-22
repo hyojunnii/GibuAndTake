@@ -56,4 +56,44 @@ public class NoticeService {
 		return list;
 	}
 
+	public int increaseNotice(String num) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = getConnection();
+			//DAO 호출
+			result = new NoticeDao().increaseNotice(conn, num);
+			
+			if(result == 1) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+	public NoticeVo selectNum(String num) {
+		Connection conn = null;
+		NoticeVo vo = null;
+		
+		try {
+			conn = getConnection();
+			vo = new NoticeDao().selectNum(conn, num);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		return vo;
+	}
+
 }

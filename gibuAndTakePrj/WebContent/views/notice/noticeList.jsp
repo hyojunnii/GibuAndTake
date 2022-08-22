@@ -319,8 +319,6 @@
             </thead>
             
             <tbody>        
-                    
-                    
                    <%for(int i = 0; i < voList.size(); i++) {%>
                     <tr>
                         <td><%= voList.get(i).getNo() %></td>
