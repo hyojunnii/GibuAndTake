@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class StoryController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+//		여기부터
 		req.getRequestDispatcher("views/story/storyView.jsp").forward(req, resp);
 	}
 }
