@@ -6,24 +6,23 @@ import java.util.List;
 
 import static com.gnt.common.JDBCTemplate.*;
 
+import com.gnt.common.PageVo;
 import com.gnt.managercategory.vo.CategoryVo;
 import com.gnt.notice.repository.NoticeDao;
 import com.gnt.notice.vo.NoticeVo;
 
 public class NoticeService {
 
-	public ArrayList<NoticeVo> selectList() {
+	public ArrayList<NoticeVo> selectList(PageVo pageVo) {
 		Connection conn = null;
 		ArrayList<NoticeVo> voList = null;
 		
-		try {
+		
 			conn = getConnection();
-			voList = new NoticeDao().selectList(conn);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
+			voList = new NoticeDao().selectList(conn, pageVo);
+		
 			close(conn);
-		}
+		
 		return voList;
 	}
 
@@ -94,6 +93,23 @@ public class NoticeService {
 		}
 		
 		return vo;
+	}
+
+	public int getCount() {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = getConnection();
+			
+			result = new NoticeDao().getCount(conn);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		return result;
 	}
 
 }

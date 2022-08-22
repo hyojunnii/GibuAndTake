@@ -9,14 +9,15 @@ import java.util.List;
 
 import static com.gnt.common.JDBCTemplate.*;
 
+import com.gnt.common.PageVo;
 import com.gnt.managercategory.vo.CategoryVo;
 import com.gnt.notice.vo.NoticeVo;
 
 public class NoticeDao {
 
-	public ArrayList<NoticeVo> selectList(Connection conn) {
+	public ArrayList<NoticeVo> selectList(Connection conn, PageVo pageVo) {
 		
-		String sql = "SELECT N.N_NO ,N.N_TITLE , N.N_CONTENT , N.N_CNT , TO_CHAR(N.N_DATE, 'YY/MM/DD HH:MI') AS N_DATE, TO_CHAR(N.N_MOD, 'YY/MM/DD HH:MI') AS N_MOD , N.STATUS ,MN.MN_NICK AS N_WRITER FROM Notice N JOIN Manager MN ON N.N_WRITER = MN.MN_NO WHERE N.STATUS = 'N' ORDER BY N.N_NO DESC";
+		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , RM.* FROM ( SELECT N.N_NO, N.N_CATE , N.N_TITLE , N.N_CONTENT , N.N_CNT , N.N_DATE FROM Notice N  WHERE N.N_WRITER = 1 AND N.STATUS = 'N' ORDER BY N.N_NO DESC ) RM ) WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -24,6 +25,13 @@ public class NoticeDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int start = (pageVo.getCurrentPage()-1)*pageVo.getBoardLimit() + 1;
+			int end = start + pageVo.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -89,14 +97,14 @@ public class NoticeDao {
 		ResultSet rs = null;
 		List<CategoryVo> list = new ArrayList<CategoryVo>();
 		
-		//SQL을 객체에 담기 및 완성
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			//SQL 실행 및 결과저장
+			
 			rs = pstmt.executeQuery();
 			
-			//rs를 java로 변환
+			
 			while(rs.next()) {
 				list.add(new CategoryVo(
 						rs.getString("CATEGORY_NO")
@@ -110,7 +118,7 @@ public class NoticeDao {
 			close(rs);
 		}
 		
-		//결과 리턴
+		
 		return list;
 	}
 
@@ -174,6 +182,34 @@ public class NoticeDao {
 		}
 		
 		return vo;
+	}
+
+	public int getCount(Connection conn) {
+
+				String sql = "SELECT COUNT(N_NO) AS COUNT FROM Notice WHERE STATUS = 'N' AND N_WRITER = 1";
+				
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				int count = 0;
+				
+				try {
+					
+					pstmt = conn.prepareStatement(sql);
+					
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						count = rs.getInt("COUNT");
+					}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					close(pstmt);
+					close(rs);
+				}
+				
+				
+				return count;
 	}
 
 }
