@@ -27,6 +27,23 @@ public class BreakdownService {
 		}
 		return list;
 	}
+
+	public BreakdownVo printList(String payNo, MemberVo m) {
+		Connection conn = null;
+		BreakdownVo vo = null;
+		
+		try {
+			conn = getConnection();
+			vo = dao.printList(conn, payNo, m);			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		
+		return vo;
+	}
 	
 
 }
