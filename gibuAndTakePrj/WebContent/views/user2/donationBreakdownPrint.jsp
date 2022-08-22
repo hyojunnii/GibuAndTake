@@ -12,6 +12,10 @@
 <title>기부금 영수증 출력</title>
 <style>
 
+	td {
+		text-align: center;
+	}
+
     #nav{
 		display: flex;
 	}
@@ -251,31 +255,17 @@
                         <th>단가</th>
                     </tr>
                     <tr>
+                        <td>40</td>
+                        <td>금전</td>
+                        <td>
+                        	<fmt:parseDate var="parsedDate" value="${vo.payDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                        	<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd" />​
+                        </td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><fmt:formatNumber value="${vo.payMoney}" pattern="#,###"/></td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                 </table>
             
                 <hr>

@@ -1,5 +1,6 @@
 <%@page import="com.gnt.breakdown.vo.BreakdownVo"%>
 <%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -242,7 +243,7 @@
 					<table id="body-table">
 						<thead>
 							<tr>
-								<th colspan="2" style=" font-size: 20px;" id="regName"><%=voList.get(i).getRegName() %></th>
+								<th colspan="2" style=" font-size: 20px;" id="regName">${voList.get(i).regName}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -251,19 +252,22 @@
 							</tr>
 							<tr>
 								<td>결제번호</td>
-								<td id="payNo"><%=voList.get(i).getPayNo() %></td>
+								<td id="payNo">${voList.get(i).payNo }</td> <%--<%=voList.get(i).getPayNo() % --%>
 							</tr>
 							<tr>
 								<td>결제수단</td>
-								<td id="payName"><%=voList.get(i).getPayName() %></td>
+								<td id="payName">${voList.get(i).payName }</td>
 							</tr>
 							<tr>
 								<td>기부금액</td>
-								<td id="payMoney"><%=voList.get(i).getPayMoney() %></td>
+								<td id="payMoney"><fmt:formatNumber value="${voList.get(i).payMoney}" pattern="#,###,###"/></td>
 							</tr>
 							<tr>
 								<td>기부일자</td>
-								<td id="payDate"><%=voList.get(i).getPayDate() %></td>
+								<td id="payDate">
+									<fmt:parseDate var="parsedDate" value="${voList.get(i).payDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                        			<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd" />	
+								</td>
 							</tr>
 							<tr>
 								<td>기부증서</td>
@@ -339,6 +343,14 @@
 	</div>
 
 	<script>
+
+		const num = $('#payNo').data('${voList.get(i).payNo}');
+		
+		$(function () {
+			$("#certifiate").on("clikc", function () {
+				$("#payNo").html(num);
+			})
+		})
 
 	</script>
 
