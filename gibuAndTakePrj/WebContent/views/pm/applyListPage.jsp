@@ -99,8 +99,8 @@
       }
 
        .contents {
-        margin: 1% 20% 1%;
-        height: 140px;
+        margin: 0 20%;
+        height: 120px;
         display: flex;
         align-items: center;
         justify-content: space-between;

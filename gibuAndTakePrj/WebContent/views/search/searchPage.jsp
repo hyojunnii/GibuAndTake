@@ -166,7 +166,7 @@
         font-size: 14px;
       }
       
-      .content-info-title span:nth-child(2) {
+      .content-title {
       	font-size : 18px;
       	font-weight: 600;
       }
@@ -233,6 +233,10 @@
         		<input name="search" type="text" class="form-control search-bar" value="${param.search}" readonly />
         		<a class="search-icon" href="<%=path%>/search"><img src="../resources/img/premium-icon-reset-2618245.png"></a>
         	</c:when>
+        	<c:when test="${empty recommendList and empty searchedList or not empty searchedList}">
+        		<input name="search" type="text" class="form-control search-bar" value="" readonly />
+        		<a class="search-icon" href="<%=path%>/search"><img src="../resources/img/premium-icon-reset-2618245.png"></a>
+        	</c:when>
         	<c:otherwise>
         		<input name="search" type="text" class="form-control search-bar" placeholder="검색어를 입력하세요." />
         		<button type="submit" class="search-icon"><img src="resources/img/free-icon-search-7233469.png" /></button>
@@ -245,27 +249,27 @@
           <span class="category-search-subtitle" id="">기부</span>
           <button id="donation-status" class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">카테고리</button>
           <ul id="donation-type" class="dropdown-menu">
-            <li><a class="dropdown-item" href="/search/donation?c=10">아동/청소년</a></li>
-            <li><a class="dropdown-item" href="/search/donation?c=20">어르신</a></li>
-            <li><a class="dropdown-item" href="/search/donation?c=30">장애인</a></li>
-            <li><a class="dropdown-item" href="/search/donation?c=40">다문화</a></li>
-            <li><a class="dropdown-item" href="/search/donation?c=50">지구촌</a></li>
-            <li><a class="dropdown-item" href="/search/donation?c=60">가족/여성</a></li>
-            <li><a class="dropdown-item" href="/search/donation?c=70">시민사회</a></li>
-            <li><a class="dropdown-item" href="/search/donation?c=80">동물</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=기부&c=아동청소년">아동/청소년</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=기부&c=어르신">어르신</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=기부&c=장애인">장애인</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=기부&c=다문화">다문화</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=기부&c=지구촌">지구촌</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=기부&c=가족여성">가족/여성</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=기부&c=시민사회">시민사회</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=기부&c=동물">동물</a></li>
           </ul>
         </div>
         <div class="category-search-menu">
           <span class="category-search-subtitle" id="">펀딩</span>
           <button id="funding-status" class="category-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">카테고리</button>
           <ul id="funding-type" class="dropdown-menu">
-            <li><a class="dropdown-item" href="/search/funding?c=10">일자리창출</a></li>
-            <li><a class="dropdown-item" href="/search/funding?c=20">공정무역</a></li>
-            <li><a class="dropdown-item" href="/search/funding?c=30">친환경</a></li>
-            <li><a class="dropdown-item" href="/search/funding?c=40">기부</a></li>
-            <li><a class="dropdown-item" href="/search/funding?c=50">작은가게</a></li>
-            <li><a class="dropdown-item" href="/search/funding?c=60">미디어</a></li>
-            <li><a class="dropdown-item" href="/search/funding?c=70">창작자</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=펀딩&c=일자리창출">일자리창출</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=펀딩&c=공정무역">공정무역</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=펀딩&c=친환경">친환경</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=펀딩&c=기부">기부</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=펀딩&c=작은가게">작은가게</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=펀딩&c=미디어">미디어</a></li>
+            <li><a class="dropdown-item" href="<%=path%>/search/category?pr=펀딩&c=창작자">창작자</a></li>
           </ul>
         </div>
       </div>
@@ -289,7 +293,17 @@
 				             <img src="../resources/upload/${l.url}" />
 				             <div class="content-info-title">
 				             	<span>${l.category}</span>
-				               <span>${l.title}</span>
+				             	<c:choose>
+				             		<c:when test="${l.category eq '기부'}">
+				               			<a class="content-title" href="<%=path%>/view/gibu_detail?type=0&num=${l.regNo}">${l.title}</a>
+				             		</c:when>
+				             		<c:when test="${l.category eq '펀딩'}">
+				               			<a class="content-title" href="<%=path%>/view/funding_detail?type=0&num=${l.regNo}">${l.title}</a>
+				             		</c:when>
+				             		<c:when test="${l.category eq '캠페인'}">
+				               			<a class="content-title" href="<%=path%>/view/campaign_detail?num=${l.regNo}">${l.title}</a>
+				             		</c:when>
+				             	</c:choose>
 				               <span>${l.mNo}</span>
 				             </div>
 				           </div>
@@ -338,22 +352,68 @@
 		        	<h4 align="center">검색 데이터가 없습니다.</h4>
 			    </div>
           	</c:when>
-          	<c:when test="${empty recommendList}">
+          	<c:when test="${not empty categoryList}">
 	          	<div id="searched-content-header">
 		          <div id="searched-header-title">
-		            <span class="searched-none" id="searched-num">오늘의 프로젝트</span>
+		          	<span class="searched-none">'${c}'</span>
+		            <span>카테고리 검색 결과</span>
 		          </div>
 		          <div id="searched-header-sort">
-		         	<span><a>최신순</a> | <a>인기순</a></span>
+		         	<span><a href="#" onclick="location.href='<%=path%>/search/category?pr=${pr}&c=${c}'">최신순</a> | <a href="#" onclick="location.href='<%=path%>/search/category?pr=${pr}&c=${c}&s=1'">인기순</a></span>
 		          </div>
 		        </div>
 		        <div id="searched-content-body">
-		        	<br>
-		        	<h4 align="center">프로젝트가 없습니다.</h4>
+	          		<c:forEach items ="${categoryList}" var="l">
+				         <div class="contents">
+				           <div class="content-info">
+				             <img src="../resources/upload/${l.url}" />
+				             <div class="content-info-title">
+				             	<span>${l.category}</span>
+				             	<c:choose>
+				             		<c:when test="${l.category eq '기부'}">
+				               			<a class="content-title" href="<%=path%>/view/gibu_detail?type=0&num=${l.regNo}">${l.title}</a>
+				             		</c:when>
+				             		<c:when test="${l.category eq '펀딩'}">
+				               			<a class="content-title" href="<%=path%>/view/funding_detail?type=0&num=${l.regNo}">${l.title}</a>
+				             		</c:when>
+				             		<c:when test="${l.category eq '캠페인'}">
+				               			<a class="content-title" href="<%=path%>/view/campaign_detail?num=${l.regNo}">${l.title}</a>
+				             		</c:when>
+				             	</c:choose>
+				               <span>${l.mNo}</span>
+				             </div>
+				           </div>
+				           <div class="content-info2">
+				             <span class="content-info-state">
+				             	<c:choose>
+				             		<c:when test="${l.fin eq 'N'}">진행중</c:when>
+				             		<c:otherwise>종료</c:otherwise>
+				             	</c:choose>
+				             </span>
+				           </div>
+				         </div>
+			        </c:forEach>
+			        <div id="searched-page-area">
+						<% if(currentPage != 1) {%>
+				      		<a href="<%=path%>/search/category?pr=${pr}&c=${c}&p=<%=currentPage-1%>">&lt;</a>
+				      	<%}%>
+				         
+						<% for(int i = startPage; i <= endPage; i++) {%>
+							<% if(i == currentPage) {%>
+						 		<a class="currentPage"><%=i%></a>
+							<%} else {%>
+						 		<a href="<%=path%>/search/category?pr=${pr}&c=${c}&p=<%=i%>"><%=i%></a>
+						 	<%} %>
+						 <%} %>
+						 
+						 <% if(currentPage != maxPage) {%>
+				        	<a href="<%=path%>/search/category?pr=${pr}&c=${c}&p=<%=currentPage+1%>">&gt;</a>
+				        <%} %>
+			        </div>
 			    </div>
           	</c:when>
-          	<c:otherwise>
-	          	<div id="searched-content-header">
+          	<c:when test="${not empty recommendList}">
+          		<div id="searched-content-header">
 		          <div id="searched-header-title">
 		            <span class="searched-none" id="searched-num">오늘의 프로젝트</span>
 		          </div>
@@ -368,7 +428,17 @@
 				             <img src="resources/upload/${l.url}" />
 				             <div class="content-info-title">
 				               <span>${l.category}</span>
-				               <span>${l.title}</span>
+				               <c:choose>
+				             		<c:when test="${l.category eq '기부'}">
+				               			<a class="content-title" href="<%=path%>/view/gibu_detail?type=0&num=${l.regNo}">${l.title}</a>
+				             		</c:when>
+				             		<c:when test="${l.category eq '펀딩'}">
+				               			<a class="content-title" href="<%=path%>/view/funding_detail?type=0&num=${l.regNo}">${l.title}</a>
+				             		</c:when>
+				             		<c:when test="${l.category eq '캠페인'}">
+				               			<a class="content-title" href="<%=path%>/view/campaign_detail?num=${l.regNo}">${l.title}</a>
+				             		</c:when>
+				             	</c:choose>
 				               <span>${l.mNo}</span>
 				             </div>
 				           </div>
@@ -400,6 +470,21 @@
 				        <%} %>
 			        </div>
 			     </div>
+          	</c:when>
+          	<c:otherwise>
+	          	<div id="searched-content-header">
+		          <div id="searched-header-title">
+		            <span class="searched-none" id="searched-num">검색 결과</span>
+		            <a href = "<%=path%>/search" style="font-size: 14px">> 돌아가기</a>
+		          </div>
+		          <div id="searched-header-sort">
+		         	<span><a>최신순</a> | <a>인기순</a></span>
+		          </div>
+		        </div>
+		        <div id="searched-content-body">
+		        	<br>
+		        	<h4 align="center">프로젝트가 없습니다.</h4>
+			    </div>
           	</c:otherwise>
           </c:choose>
       </div>

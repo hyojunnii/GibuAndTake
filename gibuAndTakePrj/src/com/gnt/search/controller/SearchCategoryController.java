@@ -1,4 +1,4 @@
-package com.gnt.projectApply.controller;
+package com.gnt.search.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,17 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gnt.common.PageVo;
 import com.gnt.project.vo.RegistVo;
-import com.gnt.projectApply.service.ApplyListService;
 import com.gnt.search.service.SearchService;
 
-@WebServlet(urlPatterns = "/pm/apply/list")
-public class ApplyListPageController extends HttpServlet{
-	
-	//프로젝트 신청 내역
+@WebServlet(urlPatterns = "/search/category")
+public class SearchCategoryController extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//신청 내역 가져오기
-		int mno = 1;
+		
+		String project = req.getParameter("pr");
+		String category = req.getParameter("c");
+		System.out.println(project);
+		System.out.println(category);
 		
 		//----------페이징 처리-----------
 		int listCount;		//현재 총 게시글 갯수
@@ -32,7 +33,7 @@ public class ApplyListPageController extends HttpServlet{
 		int startPage;		//페이징바의 시작
 		int endPage;		//페이징바의 끝
 		
-		listCount = new SearchService().getCount();
+		listCount = new SearchService().getCategoryCount(project, category);
 		
 		//나중에 헤더 수정
 		if(req.getParameter("p") != null) {
@@ -43,7 +44,7 @@ public class ApplyListPageController extends HttpServlet{
 		
 		pageLimit = 10;
 		
-		boardLimit = 7;
+		boardLimit = 5;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
@@ -63,13 +64,17 @@ public class ApplyListPageController extends HttpServlet{
 		pageVo.setStartPage(startPage);
 		pageVo.setEndPage(endPage);
 		
-		req.setAttribute("pv", pageVo);
+		req.getSession().setAttribute("pv", pageVo);
 		
-		List<RegistVo> applyList = new ApplyListService().getList(pageVo, mno);
+		String s = req.getParameter("s");
 		
-		req.setAttribute("applyList", applyList);
+		List<RegistVo> categoryList = new SearchService().categorySearch(project, category, pageVo, s);
 		
-		req.getRequestDispatcher("/views/pm/applyListPage.jsp").forward(req, resp);
+		req.setAttribute("categoryList", categoryList);
+		if(categoryList != null) {
+			req.setAttribute("pr", project);
+			req.setAttribute("c", category);
+		}
+		req.getRequestDispatcher("/views/search/searchPage.jsp").forward(req, resp);
 	}
-
 }
