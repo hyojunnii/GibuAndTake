@@ -99,11 +99,12 @@
     }
     .i_date{
         color: red;
-        margin-right: 10%;
+        margin-right: 5%;
         font-weight: 500;
         display: block;
         text-align: right;
         margin-top: 5%;
+        font-size: 20px;
     }
     .i_prog_percent{
         color: red;
@@ -215,7 +216,7 @@
              <div>
                  <p align="center"><%= f.getRegname() %></p>
                  <pre><%= f.getMnick() %></pre>
-                 <span class="i_date">14일 남음</span>
+                 <span class="i_date"><%= f.getRegfdate() %>까지</span>
                  <span class="i_prog_percent"><%= f.getMoneypercent() %>%</span>
                  <span class="i_total_money"><%= f.getFpmoney() %>원</span>
              </div>

@@ -5,6 +5,8 @@
 <% 
 	List<CampaignVo> list = (List<CampaignVo>)request.getAttribute("campaignvo"); 
 	int campaigncnt = (Integer)request.getAttribute("campaigncnt");
+	List<CampaignVo> banner = (List<CampaignVo>)request.getAttribute("campaignbannervo"); 
+	
 %>
 
 <!DOCTYPE html>
@@ -242,55 +244,20 @@
 	<div id="outer">
     <div id="slider-wrap">
         <ul id="slider">
+        
+        	<%for(CampaignVo c : banner){ %>
+        
             <li>
                 <div>
-                	<a href="">
-                    <h3>Slide #1</h3>
-                    <span>Sub-title #1</span>
+                	<a href="/gibuAndTakePrj/view/campaign_detail?num=<%= c.getRegno()%>">
+                    <h3><%= c.getRegname() %></h3>
+                    <span><%= c.getMnick() %></span>
                 </div>
-                <img src="https://fakeimg.pl/350x200/960a96/000?text=11111">
+                <img src="<%= c.getImgsrc()%>">
                 </a>
             </li>
-    
-            <li>
-                <div>
-                	<a href="">
-                    <h3>Slide #2</h3>
-                    <span>Sub-title #2</span>
-                </div>
-                <img src="https://fakeimg.pl/350x200/D27328/000?text=22222">
-                </a>
-            </li>
-    
-            <li>
-                <div>
-                	<a href="">
-                    <h3>Slide #3</h3>
-                    <span>Sub-title #3</span>
-                </div>
-                <img src="https://fakeimg.pl/350x200/FF607F/000?text=33333">
-                </a>
-            </li>
-    
-            <li>
-                <div>
-                	<a href="">
-                    <h3>Slide #4</h3>
-                    <span>Sub-title #4</span>
-                </div>
-                <img src="https://fakeimg.pl/350x200/0A6E0A/000?text=44444">
-                </a>
-            </li>
-    
-            <li>
-                <div>
-                	<a href="">
-                    <h3>Slide #5</h3>
-                    <span>Sub-title #5</span>
-                </div>
-                <img src="https://fakeimg.pl/350x200/0064CD/000?text=55555">
-                </a>
-            </li>
+    		<%} %>
+            
         </ul>
     
         <div class="slider-btns" id="next"><span>▶</span></div>

@@ -58,6 +58,12 @@ public class GibuVo {
 	private String imgsrc;	//이미지경로
 	private String moneypercent; //퍼센트
 	private int rscnt;			//조회된게시글 수
+	
+//	private String corpno;		//기업번호
+//	private String corpcontent; //기업설명
+//	private String corpClass;	//기업유형
+	
+	
 	public String getDno() {
 		return dno;
 	}

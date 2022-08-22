@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gnt.common.ReplyVo;
 import com.gnt.gibu.service.GibuService;
 import com.gnt.gibu.vo.GibuVo;
 
@@ -21,9 +22,12 @@ public class GibuDetailServlet extends HttpServlet {
 		int type = Integer.parseInt(req.getParameter("type"));
 		int num = Integer.parseInt(req.getParameter("num"));
 		
-		GibuVo gibuvo = new GibuService().selectDetail(type, num);
 		
+		
+		GibuVo gibuvo = new GibuService().selectDetail(type, num);
+		List<ReplyVo> replyvo = new GibuService().selectReply(type, num);
 		req.setAttribute("gibuvo", gibuvo);
+		req.setAttribute("replyvo", replyvo);
 		
 		req.getRequestDispatcher("/views/select_gibu/gibu_detail.jsp").forward(req, resp);
 	}

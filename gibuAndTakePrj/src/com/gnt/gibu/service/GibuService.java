@@ -5,6 +5,7 @@ import java.util.List;
 
 import static com.gnt.common.JDBCTemplate.*;
 
+import com.gnt.common.ReplyVo;
 import com.gnt.gibu.repository.GibuDao;
 import com.gnt.gibu.vo.GibuVo;
 
@@ -66,6 +67,17 @@ public class GibuService {
 			vo = dao.selectDetail(conn, type, num);
 			close(conn);
 		return vo;
+	}
+
+	public List<ReplyVo> selectReply(int type, int num) {
+		Connection conn = null;
+		List<ReplyVo> volist = null;
+		
+		conn = getConnection();
+		//DAO 호출	
+			volist = dao.selectReply(conn, type, num);
+			close(conn);
+		return volist;
 	}
 
 }
