@@ -101,7 +101,7 @@ String category = (String)request.getAttribute("category");
 <%@include file="/views/common/header.jsp" %>
 
     <section>
-        <form action="/review/create" method="post">
+        <form action="${path}/review/create" method="post" enctype="multipart/form-data">
         <input name="category" type="hidden" value="${category}"></div>
         <div id="review_create_wrap">
             <div class="review_create_header">
@@ -171,17 +171,21 @@ String category = (String)request.getAttribute("category");
 	
 	function uploadSummernoteImageFile(file, editor) {
 		const category = "<c:out value="${category}"/>"
-		data = new FormData();
+		const data = new FormData();
 		data.append("file", file);
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/uploadSummernoteImageFile?",
+			url : "<%=path%>/uploadSummernoteImageFile",
 			contentType : false,
 			processData : false,
 			success : function(data) {
             	//항상 업로드된 파일의 url이 있어야 한다.
 				$(editor).summernote('insertImage', data.url);
+			},
+			error : function(data) {
+            	//항상 업로드된 파일의 url이 있어야 한다.
+				$(editor).summernote('insertImage', "1234");
 			}
 		});
 	}

@@ -1,7 +1,18 @@
+<%@page import="com.gnt.review.vo.ReviewPageVo"%>
+<%@page import="com.gnt.review.vo.ReviewVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	String category = (String)request.getAttribute("category");    
+
+	List<ReviewVo> voList = (List<ReviewVo>)request.getAttribute("boardVoList");
+	ReviewPageVo pageVo = (ReviewPageVo)request.getAttribute("PageVo");
+	
+	int currentPage = pageVo.getCurrentPage();
+	int startPage = pageVo.getStartPage();
+	int endPage = pageVo.getEndPage();
+	int maxPage = pageVo.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +26,10 @@
         display: flex;
         justify-content: center;
     }
-
+	
+	a{
+		text-decoration: none;	
+	}
 
     *{
         box-sizing: border-box;
@@ -69,6 +83,7 @@
         font-size: 15px;
         text-align: left;
         color: #828282;
+        text-overflow: ellipsis;
     }
 
     .review_view_more{
@@ -115,6 +130,17 @@
     </div>  
 	<section>
         <div id="review_card_wrap">
+        	
+			<c:forEach items="${boardVoList}" var="b">
+
+				<a href="${path}/campaign/review/view?id=${b.revNo}" class="review_card">
+	                <span class="review_card_corp">${b.revName}</span>
+	                <strong class="review_card_title">${b.revName}</strong>
+	                <img src="${b.revImg}" alt="후기 썸네일" class="review_card_img">
+	                <p class="review_card_text">${b.revContent}</p>
+	            </a>
+			</c:forEach>
+        
             <a href="" class="review_card">
                 <span class="review_card_corp">기업이름</span>
                 <strong class="review_card_title">후기 제목</strong>
@@ -122,49 +148,21 @@
                 <p class="review_card_text">후기 내용 ...</p>
             </a>
 
-            <a href="<%=request.getContextPath()%>/campaign/review/view" class="review_card">
-                <span class="review_card_corp">기업이름</span>
-                <strong class="review_card_title">후기 제목</strong>
-                <img src="" alt="후기 썸네일" class="review_card_img">
-                <p class="review_card_text">후기 내용 ...</p>
-            </a>
-
-            <a href="" class="review_card">
-                <span class="review_card_corp">기업이름</span>
-                <strong class="review_card_title">후기 제목</strong>
-                <img src="" alt="후기 썸네일" class="review_card_img">
-                <p class="review_card_text">후기 내용 ...</p>
-            </a>
-
-            <a href="" class="review_card">
-                <span class="review_card_corp">기업이름</span>
-                <strong class="review_card_title">후기 제목</strong>
-                <img src="" alt="후기 썸네일" class="review_card_img">
-                <p class="review_card_text">후기 내용 ...</p>
-            </a>
-
-            <a href="" class="review_card">
-                <span class="review_card_corp">기업이름</span>
-                <strong class="review_card_title">후기 제목</strong>
-                <img src="" alt="후기 썸네일" class="review_card_img">
-                <p class="review_card_text">후기 내용 ...</p>
-            </a>
-
-            <a href="" class="review_card">
-                <span class="review_card_corp">기업이름</span>
-                <strong class="review_card_title">후기 제목</strong>
-                <img src="" alt="후기 썸네일" class="review_card_img">
-                <p class="review_card_text">후기 내용 ...</p>
-            </a>
-
-            <a href="" class="review_card">
-                <span class="review_card_corp">기업이름</span>
-                <strong class="review_card_title">후기 제목</strong>
-                <img src="" alt="후기 썸네일" class="review_card_img">
-                <p class="review_card_text">후기 내용 ...</p>
-            </a>
-
-            <input type="button" value="더보기" class="review_view_more review_btn">
+            <div id="review_view_more">
+            <%if(startPage!=1){%>
+			<a href="<%=path%>/campaign/review/list?p=<%=startPage-1%>" class="review_btn">&lt;&lt;</a>
+			<%} %>
+			<%for(int i = startPage; i<=endPage; i++){ %>
+				<% if(i==currentPage){ %>
+					<Strong class="review_btn"><%=i %></Strong>
+				<%}else{%>
+				<a href="<%=path%>/campaign/review/list?p=<%=i%>" class="review_btn"><%=i %></a>
+				<%} %>
+			<%} %>
+			<%if(endPage!=maxPage){%>
+			<a href="<%=path%>/campaign/review/list?p=<%=endPage+1%>" class="review_btn">&gt;&gt;</a>
+			<%} %>
+			</div>
 
         </div>
 

@@ -31,8 +31,10 @@ public class UploadImgController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		System.out.println(req.getParameter("file"));
-		String reviewNo = req.getParameter("revNo");
+		String reviewNo = (String)req.getSession().getAttribute("CreateReviewNo");
 		Part f = req.getPart("file");
+		
+		
 		
 		String savePath = null;
 		if(f.getSubmittedFileName().length()!=0) {
@@ -65,6 +67,7 @@ public class UploadImgController extends HttpServlet {
 		
 		ReviewImgVo vo = new ReviewImgVo();
 		
+		vo.setRevNo(reviewNo);
 		vo.setUrl(savePath);
 		vo.setResponseCode("success");
 		

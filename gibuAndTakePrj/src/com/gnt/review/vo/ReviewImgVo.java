@@ -5,11 +5,15 @@ public class ReviewImgVo {
 		
 	}
 	
-	String url;
-	String responseCode;
+	private String revNo;
+	private String url;
+	private String responseCode;
 	
-	public ReviewImgVo(String url, String responseCode) {
+	
+
+	public ReviewImgVo(String revNo, String url, String responseCode) {
 		super();
+		this.revNo = revNo;
 		this.url = url;
 		this.responseCode = responseCode;
 	}
@@ -28,6 +32,14 @@ public class ReviewImgVo {
 
 	public void setResponseCode(String responseCode) {
 		this.responseCode = responseCode;
+	}
+	
+	public String getRevNo() {
+		return revNo;
+	}
+
+	public void setRevNo(String revNo) {
+		this.revNo = revNo;
 	}
 
 	@Override

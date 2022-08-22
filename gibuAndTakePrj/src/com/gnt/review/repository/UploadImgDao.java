@@ -16,11 +16,12 @@ public class UploadImgDao {
 		try {
 			
 			//sql 준비
-			String sql = "INSERT INTO REVIMG(RVI_NO, REV_NO, URL) VALUES(SEQ_REVIMG_RVI_NO.nextval,SEQ_REVIEW_REV_NO.currentval,?)";
+			String sql = "INSERT INTO REVIMG(RVI_NO, REV_NO, URL) VALUES(SEQ_REVIMG_RVI_NO.nextval,?,?)";
 			//sql 객체에 담기
 			pstmt = conn.prepareStatement(sql);
 			
 			//미완성 sql 완성
+			pstmt.setString(1, vo.getRevNo());
 			pstmt.setString(1, vo.getUrl());
 			
 			
@@ -47,15 +48,16 @@ public class UploadImgDao {
 		try {
 			
 			//sql 준비
-			String sql = "INSERT INTO REVIEW(REV_NO, M_NO, REV_NAME, REV_CONTENT, REV_CLASS) VALUES(SEQ_REVIEW_REV_NO.nextval,?,?,?,?)";
+			String sql = "INSERT INTO REVIEW(REV_NO, M_NO, REV_NAME, REV_CONTENT, REV_CLASS) VALUES(?,?,?,?,?)";
 			//sql 객체에 담기
 			pstmt = conn.prepareStatement(sql);
 			
 			//미완성 sql 완성
-			pstmt.setString(1, vo.getmNo());
-			pstmt.setString(2, vo.getRevName());
-			pstmt.setString(3, vo.getRevContent());
-			pstmt.setString(4, vo.getRevClass());
+			pstmt.setString(1, vo.getRevNo());
+			pstmt.setString(2, vo.getmNo());
+			pstmt.setString(3, vo.getRevName());
+			pstmt.setString(4, vo.getRevContent());
+			pstmt.setString(5, vo.getRevClass());
 			
 			
 			

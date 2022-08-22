@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.gnt.member.vo.MemberVo;
+import com.gnt.review.service.CreateReviewService;
 import com.gnt.review.service.UploadImgService;
 import com.gnt.review.vo.ReviewImgVo;
 import com.gnt.review.vo.ReviewVo;
@@ -25,6 +26,10 @@ public class CreateReviewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String getCreateReviewNo = new CreateReviewService().getCreateReviewNo();
+		
+		req.getSession().setAttribute("CreateReviewNo", getCreateReviewNo);
+		
 		String category = req.getParameter("category");
 		req.setAttribute("category", category);
 		req.getRequestDispatcher("/views/review/createReview.jsp").forward(req, resp);
@@ -32,13 +37,14 @@ public class CreateReviewController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		String revNo = (String)req.getSession().getAttribute("CreateReviewNo");
 		String title = req.getParameter("title");
 		String editordata = req.getParameter("editordata");
 		String category = req.getParameter("category");
 		MemberVo m = (MemberVo)req.getSession().getAttribute("loginMember");
 		String no = Integer.toString(m.getNo());
 		Part f = req.getPart("f");
+		req.getSession().removeAttribute("CreateReviewNo");
 		
 		String savePath = null;
 		if(f.getSubmittedFileName().length()!=0) {
@@ -72,12 +78,17 @@ public class CreateReviewController extends HttpServlet {
 		ReviewImgVo imgVo = new ReviewImgVo();
 		imgVo.setUrl(savePath);
 		ReviewVo reviewVo = new ReviewVo();
+		reviewVo.setRevNo(revNo);
 		reviewVo.setmNo(no);
 		reviewVo.setRevName(title);
 		reviewVo.setRevClass(category);
 		reviewVo.setRevContent(editordata);
 		
 		int result = new UploadImgService().InsertReview(reviewVo,imgVo);
+		
+		if(result==1) {
+			req.setAttribute("alertMsg", "후기 작성 성공");
+		}
 		
 		
 	}

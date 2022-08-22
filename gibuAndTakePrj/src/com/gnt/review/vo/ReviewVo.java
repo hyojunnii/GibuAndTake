@@ -13,9 +13,11 @@ public class ReviewVo {
 	private String revClass;
 	private String revMod;
 	private String revCnt;
+	private String revImg;
 	
+
 	public ReviewVo(String revNo, String mNo, String revName, String revContent, String revDate, String revClass,
-			String revMod, String revCnt) {
+			String revMod, String revCnt, String revImg) {
 		super();
 		this.revNo = revNo;
 		this.mNo = mNo;
@@ -25,6 +27,7 @@ public class ReviewVo {
 		this.revClass = revClass;
 		this.revMod = revMod;
 		this.revCnt = revCnt;
+		this.revImg = revImg;
 	}
 
 	public String getRevNo() {
@@ -89,6 +92,14 @@ public class ReviewVo {
 
 	public void setRevCnt(String revCnt) {
 		this.revCnt = revCnt;
+	}
+
+	public String getRevImg() {
+		return revImg;
+	}
+
+	public void setRevImg(String revImg) {
+		this.revImg = revImg;
 	}
 
 	@Override
