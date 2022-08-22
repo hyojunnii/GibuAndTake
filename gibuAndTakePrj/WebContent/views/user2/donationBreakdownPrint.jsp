@@ -1,5 +1,10 @@
+<%@page import="com.gnt.breakdown.vo.BreakdownVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	BreakdownVo vo = (BreakdownVo)request.getAttribute("vo");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,9 +139,13 @@
     }
 
     .name {
-        width: 800px;
-        margin: auto;
-        text-align: center;
+    	width:400px;
+    	text-align: right;
+    }
+    
+    #memName, #gntName {
+    	display: flex;
+    	justify-content: center;
     }
 
     .sign {
@@ -179,14 +188,14 @@
                         <td colspan="7">1 기부자</td>
                     </tr>
                     <tr>
-                        <th>성명(법인명)</td>
-                        <td colspan="2">홍길동(더미데이터)</td>
-                        <th  colspan="2">주민등록번호</td>
-                        <td colspan="2">990909-1999999</td>
+                        <th>성명</th>
+                        <td colspan="2"><%=vo.getMemberName() %></td>
+                        <th colspan="2">주민등록번호</th>
+                        <td colspan="2"><%=vo.getMemberRegNum() %></td>
                     </tr>
                     <tr>
                         <th>주소(소재지)</th>
-                        <td colspan="6"></td>
+                        <td colspan="6"><%=vo.getMemberAdd() %></td>
                     </tr>
                 </table>
                 <table id="second">
@@ -194,16 +203,16 @@
                         <td colspan="7">2 기부금 단체</td>
                     </tr>
                     <tr>
-                        <th>단체명</td>
-                        <td colspan="2">기부앤테이크짱짱</td>
-                        <th colspan="2">사업자등록번호</td>
-                        <td colspan="2">444-55-6666</td>
+                        <th>단체명</th>
+                        <td colspan="2"><%=vo.getCorpName() %></td>
+                        <th colspan="2">사업자등록번호</th>
+                        <td colspan="2"><%=vo.getCorpRegNum() %></td>
                     </tr>
                     <tr>
-                        <th>소재지</td>
-                        <td colspan="2">기부시 앤드구 테이크짱동</td>
+                        <th>소재지</th>
+                        <td colspan="2"><%=vo.getCorpAdd() %></td>
                         <th colspan="2">기부금공공제대상<br>
-                        공익법인등 근거법령</td>
+                        공익법인등 근거법령</th>
                         <td colspan="2"></td>
                     </tr>
                 </table>
@@ -213,10 +222,10 @@
                         <td colspan="7">3 기부금 모집처</td>
                     </tr>
                     <tr>
-                        <th>단체명</td>
+                        <th>단체명</th>
                         <td colspan="2">기부 앤 테이크</td>
-                        <th colspan="2">사업자등록번호</td>
-                        <td colspan="2">111-22-3333</td>
+                        <th colspan="2">사업자등록번호</th>
+                        <td colspan="2">444-55-666666</td>
                     </tr>
                     <tr>
                         <th>주소(소재지)</th>
@@ -275,10 +284,15 @@
                     「소득세법」제34조,「조세특례제한법」제76조·제88조의4 및 「법인세법」제24조에 따른 기부금을 위와 같이 기부하였음을 증명하여 주시기 바랍니다.
                 </div>
                 <div class="date">
-                    2022년 08월 05일
+                    <c:set var="now" value="<%=new java.util.Date() %>"></c:set>
+                    <fmt:formatDate value="${now }" pattern="yyyy-MM-dd" var="today"/>
+                    <c:out value="${today }"/>
                 </div>
-                <div class="name">
-                    신청인
+                <div id="memName">
+	                <div class="name">
+	                    신청인 
+	                </div>
+	                <div class="name"><%=vo.getMemberName() %></div>
                 </div>
                 <div class="sign">
                     (서명 또는 인)
@@ -290,10 +304,13 @@
                     위와 같이 기부금을 기부받았음을 증명합니다.
                 </div>
                 <div class="date">
-                    2022년 08월 05일
+                    <c:out value="${today }"/>
                 </div>
-                <div class="name">
-                    기부금 수령인
+                <div id="gntName">
+	                <div class="name">
+	                    기부금 수령인
+	                </div>
+	                <div class="name">(주) 기부 앤 테이크 (팀) 불사조</div>
                 </div>
                 <div class="sign">
                     (서명 또는 인)

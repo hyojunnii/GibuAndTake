@@ -17,13 +17,8 @@ import com.gnt.member.vo.MemberVo;
 public class BreakdownListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//MemberVo m = (MemberVo) req.getSession().getAttribute("loginMember");
+		MemberVo m = (MemberVo) req.getSession().getAttribute("loginMember");
 	
-		//임의로 로그인한 척 하기
-		MemberVo m = new MemberVo();
-		m.setId("USER01");
-		m.setName("박찬수");
-
 		ArrayList<BreakdownVo> result = new BreakdownService().showList(m);
 
 		System.out.println(result);

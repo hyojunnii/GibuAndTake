@@ -237,12 +237,14 @@
 		<div id="nav">
 			<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
 			<%for (int i = 0; i < voList.size(); i++) {%>
-				<form action="<%=contextPath%>/member/breakPrint" method="get">
+				<form action="<%=contextPath%>/member/breakPrint" method="post">
+					<input type="hidden" value="<%=voList.get(i).getPayNo() %>" name="payNo">
 					<table id="body-table">
 						<thead>
 							<tr>
 								<th colspan="2" style=" font-size: 20px;" id="regName"><%=voList.get(i).getRegName() %></th>
 							</tr>
+						</thead>
 						<tbody>
 							<tr>
 								<th colspan="2">기부 내역</th>
@@ -265,14 +267,13 @@
 							</tr>
 							<tr>
 								<td>기부증서</td>
-								<td><input id="certificate" type="button" value="출력" data-bs-toggle="modal" data-bs-target="#certificatePrint"></button></td>
+								<td><input id="certificate" type="button" value="출력" data-bs-toggle="modal" data-bs-target="#certificatePrint"></td>
 							</tr>
 							<tr>
 								<td>기부금영수증</td>
-								<td><input id="receipt" type="submit" value="출력"></button></td>
+								<td><input id="receipt" type="submit" value="출력"></td>
 							</tr>
 						</tbody>
-						</thead>
 					</table>
 				</form>
 	
@@ -338,7 +339,7 @@
 	</div>
 
 	<script>
-		
+
 	</script>
 
 </body>
