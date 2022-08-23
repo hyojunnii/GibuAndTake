@@ -205,8 +205,8 @@
 						<tr>
 							<th>사업비</th>
 							<td colspan="2" class="input-col">
-								<input type="text" size="40" placeholder=" 사용 내역을 등록해주세요.">
-								<input type="text" placeholder=" 금액을 등록해주세요.">
+								<input type="text" name="exeCnt" size="40" placeholder=" 사용 내역을 등록해주세요.">
+								<input type="number" name="exeMoney" placeholder=" 금액을 등록해주세요.">
 							</td>
 						</tr>
 				</table>

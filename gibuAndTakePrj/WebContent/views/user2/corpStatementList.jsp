@@ -1,8 +1,21 @@
+<%@page import="com.gnt.stmt.vo.StmtVo"%>
+<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<StmtVo> voList = (ArrayList<StmtVo>)request.getAttribute("result");
+	ArrayList<StmtVo> exeList = (ArrayList<StmtVo>)request.getAttribute("exeResult");
+%>
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <meta charset="UTF-8">
 <title>기업 명세서 목록</title>
 <style>
@@ -58,6 +71,9 @@
 		padding-left: 20px;
 	}
 
+	span {
+		font-weight: bold;
+	}
 	#first th, #second th {
 		border-right: 1px solid black;
 		width: 20%;
@@ -130,57 +146,67 @@
 		<div id="nav">
 			<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
 
-			<form action="/gibuAndTakePrj/corp/stmtRe" method="get">
-				<table id="first">
-					<div id="outer">
-						<div id="title">진행한 기부 프로그램 이름</div>
-						<input type="submit" value="수정하기">
-						
-						<div id="do_t">기부금 집행 내역 |</div>
-						<div id="do_ex">기부금이 어떻게 사용되었는지 등록해주세요.</div>
-						<div id="do_tt">최종 수정 일시 |</div>
-						<div id="do_tt2">2022-08-05 13:30</div>
-					</div>
-					<tr>
-						<th>집행기간</th>
-						<td colspan="2">2022년 7월 5일~2022년 8월 5일</td>
-					</tr>
-					<tr>
-						<th>총 모금 금액</th>
-						<td colspan="2">3,000,000원(목표 금액 3,000,000원)</td>
-					</tr>
-					<tr>
-						<th>사업 분야</th>
-						<td colspan="2">취약계층 아동·청소년</td>
-					</tr>
-				</table>
-				<table id="second">
-					<thead>
+			<%for(int i = 0; i < voList.size(); ++i) {%>
+				<form action="/gibuAndTakePrj/corp/stmtRe" method="post">
+					<table id="first">
+						<div id="outer">
+							<div id="title"><%=voList.get(i).getRegName() %></div>
+							<input type="submit" value="수정하기">
+							
+							<div id="do_t">기부금 집행 내역 |</div>
+							<div id="do_ex">기부금이 어떻게 사용되었는지 등록해주세요.</div>
+							<div id="do_tt">최종 수정 일시 |</div>
+							<div id="do_tt2">2022-08-05 13:30</div>
+						</div>
 						<tr>
-							<th>총 집행 금액</th>
-							<td colspan="2">3,000,000원(목표 금액 3,000,000원)</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th>사업비</th>
-							<td>프로그램 도서구매 3권(각1만)*20</td>
-							<td>600,000 원</td>
+							<th>집행기간</th>
+							<td colspan="2">
+								<fmt:parseDate var="parsedSdate" value="<%=voList.get(i).getDonaSdate() %>" pattern="yyyy-MM-dd HH:mm:ss"/>
+	                        	<fmt:formatDate value="${parsedSdate}" pattern="yyyy-MM-dd" />
+	                        	~
+	                        	<fmt:parseDate var="parsedEdate" value="<%=voList.get(i).getDonaEdate() %>" pattern="yyyy-MM-dd HH:mm:ss"/>
+	                        	<fmt:formatDate value="${parsedEdate}" pattern="yyyy-MM-dd" />
+							</td>
 						</tr>
 						<tr>
-							<th>사업비</th>
-							<td>프로그램 강사비 12주</td>
-							<td>1,200,000 원</td>
+							<th>총 모금 금액</th>
+							<td colspan="2"><span><fmt:formatNumber value="<%=voList.get(i).getDonaPmoney() %>" pattern="#,###"/></span>원(목표 금액 <fmt:formatNumber value="<%=voList.get(i).getDonaGmomey() %>" pattern="#,###"/>원)</td>
 						</tr>
 						<tr>
-							<th>사업비</th>
-							<td>필기구 및 간식 20*3천원*12주</td>
-							<td>720,000 원</td>
+							<th>사업 대상</th>
+							<td colspan="2"><%=voList.get(i).getDonaPerson() %></td>
 						</tr>
-					</tbody>
-				</table>
-				<hr>
-			</form>
+					</table>
+					<table id="second">
+						<thead>
+							<tr>
+								<th>총 집행 금액</th>
+								<td colspan="2"><fmt:formatNumber value="<%=voList.get(i).getDonaPmoney() %>" pattern="#,###"/>원(목표 금액 <fmt:formatNumber value="<%=voList.get(i).getDonaGmomey() %>" pattern="#,###"/>원)</td>
+							</tr>
+						</thead>
+						<tbody>
+							<%for(int j = 0; j < exeList.size(); ++j ) {%>
+								<tr>
+									<th>사업비</th>
+									<td><%=voList.get(j).getExeCnt() %></td>
+									<td><fmt:formatNumber value="<%=voList.get(j).getExeMoney() %>" pattern="#,###"/>원</td>
+								</tr>
+							<%} %>
+							<tr>
+								<th>사업비</th>
+								<td>프로그램 강사비 12주</td>
+								<td>1,200,000 원</td>
+							</tr>
+							<tr>
+								<th>사업비</th>
+								<td>필기구 및 간식 20*3천원*12주</td>
+								<td>720,000 원</td>
+							</tr>
+						</tbody>
+					</table>
+					<hr>
+				</form>
+			<%} %>
 		</div>
 		
 		
