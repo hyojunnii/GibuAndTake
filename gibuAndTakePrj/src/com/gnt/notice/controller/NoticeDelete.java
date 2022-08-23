@@ -17,11 +17,11 @@ public class NoticeDelete extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String num = req.getParameter("num");
 		
-		//int result = new NoticeService().delete(no);
+		int result = new NoticeService().delete(num);
 		
-	//	if(result == 1) {
+		if(result == 1) {
 			resp.sendRedirect("/gibuAndTakePrj/notice/list");
-		//}
+		}
 		
 	}
 }

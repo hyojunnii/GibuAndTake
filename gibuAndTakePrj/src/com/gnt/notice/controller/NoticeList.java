@@ -67,9 +67,7 @@ public class NoticeList extends HttpServlet{
 			ArrayList<NoticeVo> voList = new NoticeService().selectList(pageVo);
 			req.setAttribute("voList", voList);
 		
-		
 		req.getRequestDispatcher("/views/notice/noticeList.jsp").forward(req, resp);
-		
 		
 		
 	}

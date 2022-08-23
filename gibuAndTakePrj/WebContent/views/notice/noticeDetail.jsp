@@ -5,11 +5,8 @@
     pageEncoding="UTF-8"%>
 
 <%
-	NoticeVo vo = (NoticeVo)request.getAttribute("vo");
 	ManagerVo loginMember = (ManagerVo)session.getAttribute("loginMember");
-	
-	String alertMsg = (String)session.getAttribute("alertMsg");
-	session.removeAttribute("alertMsg");
+	NoticeVo vo = (NoticeVo)request.getAttribute("vo");
 	
 	String contextPath = request.getContextPath();
 	String path = request.getContextPath();
