@@ -79,9 +79,7 @@
     	font-weight: bold;
     }
     
-    #body1:hover{
-    	background-color: #93e1b7
-    }
+    
     
     #write{
     	background-color: #b3e0c9;
@@ -280,7 +278,6 @@
                 <tr>
                     <td>NO</td>
                     <td>제목</td>
-                    <td>작성자</td>
                     <td>조회수</td>
                     <td>작성일</td>
                 </tr>
@@ -289,9 +286,8 @@
             <tbody>        
                    <%for(int i = 0; i < voList.size(); i++) {%>
                     <tr>
-                        <td><%= voList.get(i).getNo() %></td>
+                        <td><%= voList.get(i).getNo()%></td>
                         <td><%= voList.get(i).getTitle() %></td>
-                        <td><%= voList.get(i).getWriter() %></td>
                         <td><%= voList.get(i).getCnt() %></td>
                         <td><%= voList.get(i).getDate() %></td>
                     </tr>

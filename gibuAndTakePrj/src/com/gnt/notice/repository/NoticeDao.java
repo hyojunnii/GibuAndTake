@@ -17,7 +17,7 @@ public class NoticeDao {
 
 	public ArrayList<NoticeVo> selectList(Connection conn, PageVo pageVo) {
 		
-		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , RM.* FROM ( SELECT N.N_NO, N.N_CATE , N.N_TITLE , N.N_CONTENT , N.N_CNT , N.N_DATE FROM Notice N  WHERE N.N_WRITER = 1 AND N.STATUS = 'N' ORDER BY N.N_NO DESC ) RM ) WHERE RNUM BETWEEN ? AND ?";
+		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM , RM.* FROM ( SELECT N.N_NO,  N.N_TITLE , N.N_CONTENT, MN.MN_NICK AS N_WRITER , N.N_CNT , N.N_DATE FROM Notice N JOIN Manager MN ON N.N_WRITER = MN.MN_NO  WHERE N.STATUS = 'N' ORDER BY N.N_NO DESC ) RM ) WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -41,8 +41,7 @@ public class NoticeDao {
 				String writer = rs.getString("N_WRITER");
 				String cnt = rs.getString("N_CNT");
 				String date = rs.getString("N_DATE");
-				String mod = rs.getString("N_MOD");
-				String status = rs.getString("STATUS");
+				
 				
 				NoticeVo vo = new NoticeVo();
 				vo.setNo(no);
@@ -51,8 +50,7 @@ public class NoticeDao {
 				vo.setWriter(writer);
 				vo.setCnt(cnt);
 				vo.setDate(date);
-				vo.setMod(mod);
-				vo.setStatus(status);
+				
 				
 				list.add(vo);
 			}
@@ -210,6 +208,27 @@ public class NoticeDao {
 				
 				
 				return count;
+	}
+
+	public int delete(Connection conn, String num) {
+		
+		String sql = "UPDATE Notice SET STATUS = 'Y' WHERE N_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

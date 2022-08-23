@@ -13,6 +13,8 @@ public class FaqList extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
 		req.getRequestDispatcher("/views/FAQ/faqList.jsp").forward(req, resp);
 	}
 }
