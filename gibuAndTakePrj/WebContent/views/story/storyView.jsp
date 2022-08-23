@@ -1,5 +1,13 @@
+<%@page import="com.gnt.story.vo.StoryVo"%>
+<%@page import="com.gnt.review.vo.ReviewVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    List<ReviewVo> voList = (List<ReviewVo>)request.getAttribute("boardVoList");
+	StoryVo storyVo = (StoryVo)request.getAttribute("storyVo");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +51,7 @@
         display: flex;
         justify-content: space-between;
         align-content: space-around;
-        width: 450px;
+        width: 600px;
         height: 65px;
         align-items: center;        
     }
@@ -142,11 +150,11 @@
         <table>
             <tr>
                 <td>누적 참여자</td>
-                <td>76,508,027명</td>
+                <td>${storyVo.totalCnt}명</td>
             </tr>
             <tr>
                 <td>누적 참여금액</td>
-                <td>2,650,802,700원</td>
+                <td>${storyVo.totalMoney}원</td>
             </tr>
         </table>
         </div>
@@ -155,12 +163,12 @@
         <div class="total_div">
         <table>
             <tr>
-                <td>누적 참여자</td>
-                <td>76,508,027명</td>
+                <td>누적 기부 참여자</td>
+                <td>${storyVo.totalDonateCnt}명</td>
             </tr>
             <tr>
-                <td>누적 참여금액</td>
-                <td>2,650,802,700원</td>
+                <td>누적 기부 참여금액</td>
+                <td>${storyVo.totalDonateMoney}원</td>
             </tr>
         </table>
         </div>
@@ -169,12 +177,12 @@
         <div class="total_div">
         <table>
             <tr>
-                <td>누적 참여자</td>
-                <td>76,508,027명</td>
+                <td>누적 펀딩 참여자</td>
+                <td>${storyVo.totalFundingCnt}명</td>
             </tr>
             <tr>
-                <td>누적 참여금액</td>
-                <td>2,650,802,700원</td>
+                <td>누적 펀딩 참여금액</td>
+                <td>${storyVo.totalFundingMoney}원</td>
             </tr>
         </table>
         </div>
@@ -183,12 +191,8 @@
         <div class="total_div">
         <table>
             <tr>
-                <td>누적 참여자</td>
-                <td>76,508,027명</td>
-            </tr>
-            <tr>
-                <td>누적 참여금액</td>
-                <td>2,650,802,700원</td>
+                <td>누적 캠페인 참여자</td>
+                <td>${storyVo.totalCampaignCnt}명</td>
             </tr>
         </table>
         </div>
@@ -198,19 +202,14 @@
             <span id="recommend_review_title">함께한 기부들</span>
             <div id="recommend_review_body">
 
-                <a href="" class="review_card">
-                    <span class="review_card_corp">기업이름</span>
-                    <strong class="review_card_title">후기 제목</strong>
-                    <img src="" alt="후기 썸네일" class="review_card_img">
-                    <p class="review_card_text">후기 내용 ...</p>
-                </a>
-
-                <a href="" class="review_card">
-                    <span class="review_card_corp">기업이름</span>
-                    <strong class="review_card_title">후기 제목</strong>
-                    <img src="" alt="후기 썸네일" class="review_card_img">
-                    <p class="review_card_text">후기 내용 ...</p>
-                </a>
+                <c:forEach items="${boardVoList}" var="b">
+				<a href="${path}/campaign/review/view?id=${b.revNo}" class="review_card">
+	                <span class="review_card_corp">${b.revName}</span>
+	                <strong class="review_card_title">${b.revName}</strong>
+	                <img src="${b.revImg}" alt="후기 썸네일" class="review_card_img">
+	                <p class="review_card_text">${b.revContent}</p>
+	            </a>
+				</c:forEach>
 
                 <a href="" class="review_card">
                     <span class="review_card_corp">기업이름</span>

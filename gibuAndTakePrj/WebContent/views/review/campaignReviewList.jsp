@@ -132,8 +132,7 @@
         <div id="review_card_wrap">
         	
 			<c:forEach items="${boardVoList}" var="b">
-
-				<a href="${path}/campaign/review/view?id=${b.revNo}" class="review_card">
+				<a href="${path}/campaign/review/view?id=${b.mNo}" class="review_card">
 	                <span class="review_card_corp">${b.revName}</span>
 	                <strong class="review_card_title">${b.revName}</strong>
 	                <img src="${b.revImg}" alt="후기 썸네일" class="review_card_img">

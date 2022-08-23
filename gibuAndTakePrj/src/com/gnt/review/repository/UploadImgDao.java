@@ -22,7 +22,7 @@ public class UploadImgDao {
 			
 			//미완성 sql 완성
 			pstmt.setString(1, vo.getRevNo());
-			pstmt.setString(1, vo.getUrl());
+			pstmt.setString(2, vo.getUrl());
 			
 			
 			
