@@ -115,4 +115,15 @@ public class GibuService {
 		return result;
 	}
 
+	public int GibuReplyDel(String num) {
+		Connection conn = null;
+		int result = 0;
+		
+		conn = getConnection();
+		//DAO 호출	
+			result = dao.GibuReplyDel(conn, num);
+			close(conn);
+		return result;
+	}
+
 }

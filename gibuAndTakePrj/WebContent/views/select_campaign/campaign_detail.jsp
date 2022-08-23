@@ -1,4 +1,11 @@
+<%@page import="com.gnt.campaign.vo.CampaignProofVo"%>
+<%@page import="java.util.List"%>
+<%@page import="com.gnt.campaign.vo.CampaignVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	CampaignVo vo = (CampaignVo)request.getAttribute("campaignvo");
+	List<CampaignProofVo> list = (List<CampaignProofVo>)request.getAttribute("proofvo");
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -290,17 +297,24 @@
     <div id="outer">
       <div id="campaign_detail_container">
         <br />
-        <img src="../resources/img/sample.png" alt="첫번째 이미지사진" />
+        <img src="<%= vo.getImgsrc() %>" alt="첫번째 이미지사진" />
         <div id="campaign_detail_container_div">
           <table id="title_table">
             <tr>
               <td width="20%"></td>
-              <td colspan="3" width="60%"><h1>여기는 캠페인 이름</h1></td>
-              <td width="20%"><button hidden>수정하기</button></td>
+              <td colspan="3" width="60%"><h1><%= vo.getRegname() %></h1></td>
+              <td width="20%">
+              <c:if test="${empty loginMember && empty loginCorp}">
+            	</td>
+           	</c:if>
+            <c:if test="${loginCorp.no == campaignvo.mno}">
+	    			<button class="btn">수정하기</button>
+				    </td>
+			 	</c:if>
             </tr>
           </table>
-          <p class="comName">By 기업 이름</p>
-          <p class="ingCnt">???명 행동중</p>
+          <p class="comName">By <%=vo.getMnick() %></p>
+          <p class="ingCnt"><%=vo.getCamppeople() %>명 행동중</p>
           <div class="campaign_btn_cover">
             <a href="#proofModal" class="campaign_btn_container" data-bs-toggle="modal">
               <div>행동하기</div>
@@ -317,104 +331,30 @@
               <div id="introduce">
                 <h3>캠페인 소개</h3>
                 <h2>사업대상</h2>
+                <p>
+                <%=vo.getRegcontent() %>
+                </p>
+                <br> <br> <br>
                 <div id="table_cover">
                   <table class="campaign_table">
                     <tbody>
                       <tr>
                         <th>기업이름</th>
-                        <td>삼성</td>
+                        <td><%=vo.getMnick() %></td>
                       </tr>
                       <tr>
-                        <th>모금기간</th>
-                        <td>2100년 8월 8일 ~ 2105년 8월 8일</td>
-                      </tr>
-                      <tr>
-                        <th>사업대상</th>
-                        <td>어르신</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <h2>사업대상</h2>
-                <div id="table_cover">
-                  <table class="campaign_table">
-                    <tbody>
-                      <tr>
-                        <th>기업이름</th>
-                        <td>삼성</td>
-                      </tr>
-                      <tr>
-                        <th>모금기간</th>
-                        <td>2100년 8월 8일 ~ 2105년 8월 8일</td>
-                      </tr>
-                      <tr>
-                        <th>사업대상</th>
-                        <td>어르신</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <h2>사업대상</h2>
-                <div id="table_cover">
-                  <table class="campaign_table">
-                    <tbody>
-                      <tr>
-                        <th>기업이름</th>
-                        <td>삼성</td>
-                      </tr>
-                      <tr>
-                        <th>모금기간</th>
-                        <td>2100년 8월 8일 ~ 2105년 8월 8일</td>
-                      </tr>
-                      <tr>
-                        <th>사업대상</th>
-                        <td>어르신</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <h2>사업대상</h2>
-                <div id="table_cover">
-                  <table class="campaign_table">
-                    <tbody>
-                      <tr>
-                        <th>기업이름</th>
-                        <td>삼성</td>
-                      </tr>
-                      <tr>
-                        <th>모금기간</th>
-                        <td>2100년 8월 8일 ~ 2105년 8월 8일</td>
-                      </tr>
-                      <tr>
-                        <th>사업대상</th>
-                        <td>어르신</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <h2>사업대상</h2>
-                <div id="table_cover">
-                  <table class="campaign_table">
-                    <tbody>
-                      <tr>
-                        <th>기업이름</th>
-                        <td>삼성</td>
-                      </tr>
-                      <tr>
-                        <th>모금기간</th>
-                        <td>2100년 8월 8일 ~ 2105년 8월 8일</td>
-                      </tr>
-                      <tr>
-                        <th>사업대상</th>
-                        <td>어르신</td>
+                        <th>행동기간</th>
+                        <td><%=vo.getRegsdate() %> ~ <%=vo.getRegfdate() %></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
 
+
+
               <div id="comments">
-                <table id="comments_table">
+                <!-- <table id="comments_table">
                   <tr>
                     <td colspan="3" id="comments_name">이름or닉네임</td>
                     <td id="comments_date" align="right">2022-08-05 19:36</td>
@@ -431,67 +371,37 @@
                     <td colspan="5"><img src="../resources/img/sample.png" alt="" id="comments_img" /></td>
                   </tr>
                 </table>
-              </div>
+              </div> -->
 
-              <div id="comments">
-                <table id="comments_table">
-                  <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                      <a value="수정" class="btn" href="#proofEditModal" data-bs-toggle="modal">수정</a>
-                      <button value="삭제" class="btn">삭제</button>
-                      <button value="신고" class="btn">신고</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
-                  </tr>
-                  <tr>
-                    <td colspan="5"><img src="../resources/img/sample.png" alt="" id="comments_img" /></td>
-                  </tr>
-                </table>
-              </div>
 
-              <div id="comments">
-                <table id="comments_table">
-                  <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                      <a value="수정" class="btn edit-btn" href="#proofEditModal" data-bs-toggle="modal">수정</a>
-                      <button value="삭제" class="btn">삭제</button>
-                      <button value="신고" class="btn">신고</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
-                  </tr>
-                  <tr>
-                    <td colspan="5"><img src="../resources/img/sample.png" alt="" id="comments_img" /></td>
-                  </tr>
-                </table>
-              </div>
 
-              <div id="comments">
-                <table id="comments_table">
-                  <tr>
-                    <td colspan="3" id="comments_name">이름or닉네임</td>
-                    <td id="comments_date" align="right">2022-08-05 19:36</td>
-                    <td align="right">
-                      <a value="수정" class="btn" href="#proofEditModal" data-bs-toggle="modal">수정</a>
-                      <button value="삭제" class="btn">삭제</button>
-                      <button value="신고" class="btn">신고</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="5" id="comments_content">진짜 좋은 경험이였습니다!</td>
-                  </tr>
-                  <tr>
-                    <td colspan="5"><img src="../resources/img/sample.png" alt="" id="comments_img" /></td>
-                  </tr>
-                </table>
-              </div>
+			<c:forEach var="pf" items="${proofvo}">
+          	<form action="/gibuAndTakePrj/view/CampaignDetail/edit" method="get">
+          	<input type="hidden" name=num value="${pf.camno }">
+	            <table id="comments_table">
+	                <tr>
+	                	<td hidden id="comments_num"> ${pf.cpno} </td>
+	                    <td id="comments_name" width="30%"> ${pf.mnick}</td>
+	                    <td id="comments_date" align="right" width="50%">${pf.cpmod}</td>
+	                    <td align="right" width="20%">
+	                    <c:if test="${loginMember.no == pf.mno}">
+	                        <button type="submit" value="수정" class="btn" formaction='/gibuAndTakePrj/view/CampaignDetail/edit?'>수정</button>
+	                        <button type="submit" value="삭제" class="btn" formaction='/gibuAndTakePrj/view/CampaignDetail/del?'>삭제</button>
+	                 	</c:if>
+	                        <button type="submit" value="신고" class="btn" formaction='/gibuAndTakePrj/view/CampaignDetail/ban?'>신고</button>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td colspan="5" id="comments_content">${pf.cpcontent}</td>
+	                </tr>
+	            </table>
+	            <hr>
+	            </form>
+			</c:forEach>
+
+
+			
+			</div>
             </div>
           </div>
         </div>

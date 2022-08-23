@@ -1,4 +1,4 @@
-package com.gnt.gibu.controller;
+package com.gnt.funding.controller;
 
 import java.io.IOException;
 
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.gnt.common.ReplyVo;
 import com.gnt.gibu.service.GibuService;
 
-@WebServlet(urlPatterns = "/view/gibuDetail/edit")
-public class GibuReplyEditController extends HttpServlet{
+@WebServlet(urlPatterns = "/view/fundingDetail/edit")
+public class FundingReplyEditController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String num = req.getParameter("num");
@@ -23,7 +23,7 @@ public class GibuReplyEditController extends HttpServlet{
 		
 		if(vo != null) {
 			req.setAttribute("vo", vo);
-			req.getRequestDispatcher("/views/reply/gibuReplyEdit.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/reply/fundingReplyEdit.jsp").forward(req, resp);
 		}else {
 			RequestDispatcher view = req.getRequestDispatcher("/views/error/errorPage.jsp");
 			view.forward(req, resp);
@@ -58,7 +58,7 @@ public class GibuReplyEditController extends HttpServlet{
 		//결과에 따라 화면 선택
 		if(result == 1) {
 			//성공
-			resp.sendRedirect(req.getContextPath()+ "/view/gibu_detail?type=0&num="+vo.getRegno());
+			resp.sendRedirect(req.getContextPath()+ "/view/funding_detail?type=0&num="+vo.getRegno());
 		}else {
 			//실패
 //			req.setAttribute("errorMsg", "공지사항 수정 실패...");

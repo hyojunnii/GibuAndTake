@@ -593,4 +593,26 @@ public class GibuDao {
 				
 	}
 
+	public int GibuReplyDel(Connection conn, String num) {
+		//SQL 준비
+				String sql = "UPDATE REPLY SET REP_DEL = 'Y' WHERE REP_NO = ?";
+				int result =0;
+				PreparedStatement pstmt = null;
+				//SQL 을 객체에 담기 && SQL 완성
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, num);
+					
+					//SQL 실행 및 결과저장
+					result = pstmt.executeUpdate();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					close(pstmt);
+				}
+				
+				//실행결과 리턴
+				return result;
+	}
+
 }

@@ -7,10 +7,13 @@ public class FundingVo {
 	}
 	
 	
+
+
+
 	public FundingVo(String fno, String regno, String fclass, int fgmoney, int fpmoney, int fppeople, String regclass,
 			String regname, String regcontent, String regsdate, String regfdate, String regpass, String regfin,
 			String regdel, String regmod, int regcnt, String mno, String mnick, String imgsrc, String moneypercent,
-			int rscnt) {
+			int rscnt, int rewno, String rewname, int rewmoney, int rewcnt) {
 		this.fno = fno;
 		this.regno = regno;
 		this.fclass = fclass;
@@ -32,7 +35,14 @@ public class FundingVo {
 		this.imgsrc = imgsrc;
 		this.moneypercent = moneypercent;
 		this.rscnt = rscnt;
+		this.rewno = rewno;
+		this.rewname = rewname;
+		this.rewmoney = rewmoney;
+		this.rewcnt = rewcnt;
 	}
+
+
+
 
 
 	private String fno;			//펀딩번호
@@ -58,6 +68,13 @@ public class FundingVo {
 	private String imgsrc;	//이미지경로
 	private String moneypercent; //퍼센트
 	private int rscnt;			//조회된게시글 수
+	
+	private int rewno;
+	private String rewname;
+	private int rewmoney;
+	private int rewcnt; 
+	
+	
 	public String getFno() {
 		return fno;
 	}
@@ -184,6 +201,47 @@ public class FundingVo {
 	public void setRscnt(int rscnt) {
 		this.rscnt = rscnt;
 	}
+	
+	public int getRewno() {
+		return rewno;
+	}
+
+
+	public void setRewno(int rewno) {
+		this.rewno = rewno;
+	}
+
+
+	public String getRewname() {
+		return rewname;
+	}
+
+
+	public void setRewname(String rewname) {
+		this.rewname = rewname;
+	}
+
+
+	public int getRewmoney() {
+		return rewmoney;
+	}
+
+
+	public void setRewmoney(int rewmoney) {
+		this.rewmoney = rewmoney;
+	}
+
+
+	public int getRewcnt() {
+		return rewcnt;
+	}
+
+
+	public void setRewcnt(int rewcnt) {
+		this.rewcnt = rewcnt;
+	}
+
+
 	@Override
 	public String toString() {
 		return "FundingVo [fno=" + fno + ", regno=" + regno + ", fclass=" + fclass + ", fgmoney=" + fgmoney
@@ -191,10 +249,10 @@ public class FundingVo {
 				+ ", regcontent=" + regcontent + ", regsdate=" + regsdate + ", regfdate=" + regfdate + ", regpass="
 				+ regpass + ", regfin=" + regfin + ", regdel=" + regdel + ", regmod=" + regmod + ", regcnt=" + regcnt
 				+ ", mno=" + mno + ", mnick=" + mnick + ", imgsrc=" + imgsrc + ", moneypercent=" + moneypercent
-				+ ", rscnt=" + rscnt + "]";
+				+ ", rscnt=" + rscnt + ", rewno=" + rewno + ", rewname=" + rewname + ", rewmoney=" + rewmoney
+				+ ", rewcnt=" + rewcnt + "]";
 	}
-	
-	
-	
+
+
 	
 }
