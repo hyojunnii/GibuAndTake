@@ -26,6 +26,7 @@ public class NoticeService {
 		return voList;
 	}
 
+	//공지사항 작성
 	public int writeNotice(NoticeVo vo) {
 		Connection conn = null;
 		int result = 0;
@@ -111,7 +112,10 @@ public class NoticeService {
 		
 		return result;
 	}
+	
+	
 
+	//공지사항 삭제
 	public int delete(String num) {
 		Connection conn = null;
 		int result = 0;
@@ -129,6 +133,39 @@ public class NoticeService {
 		}catch(Exception e) {
 			rollback(conn);
 			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+	//공지사항 수정
+	public int modify(NoticeVo vo) {
+		if(vo.getTitle().length() < 1) {
+			return -1;
+		}
+		
+		if(vo.getContent().length() < 1) {
+			return -2;
+		}
+		
+		Connection conn = null;
+		int result = 0;
+		
+		conn = getConnection();
+		
+		try {
+			result = new NoticeDao().modify(conn, vo);
+			
+			if(result == 1) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			rollback(conn);
 		}finally {
 			close(conn);
 		}

@@ -20,20 +20,15 @@ public class NoticeDetail extends HttpServlet{
 		String num = req.getParameter("num");
 		
 		int result = new NoticeService().increaseNotice(num);
-		System.out.println("오류");
 		
 		if(result == 1) {
 			NoticeVo vo = new NoticeService().selectNum(num);
+			
 			if(vo != null) {
 				req.setAttribute("vo", vo);
 				req.getRequestDispatcher("/views/notice/noticeDetail.jsp").forward(req, resp);
-				System.out.println("오류2");
-			}else {
-				System.out.println("오류3");
 			}
 		
-		}else {
-			System.out.println("오류4");
 		}
 		
 	}

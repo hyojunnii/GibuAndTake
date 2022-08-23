@@ -24,11 +24,19 @@ ALTER TABLE Notice ADD CONSTRAINT "PK_NOTICE" PRIMARY KEY (
 DROP SEQUENCE SEQ_Notice_NO;
 CREATE SEQUENCE SEQ_Notice_NO NOCACHE NOCYCLE;
 
+INSERT INTO NOTICE (N_NO, N_CATE ,N_TITLE ,N_CONTENT ,N_WRITER ) VALUES ( SEQ_NOTICE_NO.NEXTVAL ,'공지사항', '설날인사' , '설날인사드립니다' , 1);
+INSERT INTO NOTICE (N_NO, N_CATE ,N_TITLE ,N_CONTENT ,N_WRITER ) VALUES ( SEQ_NOTICE_NO.NEXTVAL ,'공지사항', '1분기 정기점검' , '오전 9시부로 1분기 정기점검 시작할 예정입니다.' , 1);
+INSERT INTO NOTICE (N_NO, N_CATE ,N_TITLE ,N_CONTENT ,N_WRITER ) VALUES ( SEQ_NOTICE_NO.NEXTVAL ,'공지사항', '서비스 오류 안내' , '서비스가 일시적으로 중단되는 현상이 나타나고 있습니다. 서비스 이용에불편을 드려 사과드립니다.' , 1);
+INSERT INTO NOTICE (N_NO, N_CATE ,N_TITLE ,N_CONTENT ,N_WRITER ) VALUES ( SEQ_NOTICE_NO.NEXTVAL ,'공지사항', '서비스 오픈안내' , '새로운 서비스 오픈 공지 드립니다.' , 1);
+INSERT INTO NOTICE (N_NO, N_CATE ,N_TITLE ,N_CONTENT ,N_WRITER ) VALUES ( SEQ_NOTICE_NO.NEXTVAL ,'공지사항', '2분기 정기점검' , '오전 9시부로 2분기 정기점검 시작할 예정입니다.' , 1);
+INSERT INTO NOTICE (N_NO, N_CATE ,N_TITLE ,N_CONTENT ,N_WRITER ) VALUES ( SEQ_NOTICE_NO.NEXTVAL ,'공지사항', '서비스 중단 안내' , '서비스 종료 안내 드립니다' , 1);
+INSERT INTO NOTICE (N_NO, N_CATE ,N_TITLE ,N_CONTENT ,N_WRITER ) VALUES ( SEQ_NOTICE_NO.NEXTVAL ,'공지사항', '3분기 정기점검' , '오전 9시부로 3분기 정기점검 시작할 예정입니다.' , 1);
 INSERT INTO NOTICE (N_NO, N_CATE ,N_TITLE ,N_CONTENT ,N_WRITER ) VALUES ( SEQ_NOTICE_NO.NEXTVAL ,'공지사항', '추석인사' , '추석인사드립니다' , 1);
+INSERT INTO NOTICE (N_NO, N_CATE ,N_TITLE ,N_CONTENT ,N_WRITER ) VALUES ( SEQ_NOTICE_NO.NEXTVAL ,'공지사항', '4분기 정기점검' , '오전 9시부로 4분기 정기점검 시작할 예정입니다.' , 1);
+
 COMMIT;
 
 SELECT * FROM Notice;
-
 --------------------------------
 -- FAQ
 --------------------------------
@@ -39,6 +47,7 @@ CREATE TABLE FAQ (
     "FAQ_CATE"	    VARCHAR2(100)               NOT NULL,
 	"FAQ_TITLE"	    VARCHAR2(100)		        NOT NULL,
 	"FAQ_CONTENT"	VARCHAR2(1000)		        NOT NULL,
+    "FAQ_WRITER"    NUMBER                      NOT NULL,
 	"FAQ_DATE"	    TIMESTAMP	DEFAULT SYSDATE	NOT NULL,
      STATUS         CHAR(1)     DEFAULT 'N' CHECK(STATUS IN ('Y','N'))
 );
@@ -51,6 +60,8 @@ COMMENT ON COLUMN FAQ."FAQ_CATE" IS '공지사항/FAQ';
 ALTER TABLE FAQ ADD CONSTRAINT "PK_FAQ" PRIMARY KEY (
 	"FAQ_NO"
 );
+
+INSERT INTO FAQ (FAQ_NO, FAQ_CATE , FAQ_TITLE , FAQ_CONTENT , FAQ_WRITER ) VALUES ( SEQ_FAQ_NO.NEXTVAL ,'기부', '기부하는법' , '기부신청은 홈페이지에서 확인하실수 있습니다' , 1);
 COMMIT;
 
 SELECT * FROM FAQ;

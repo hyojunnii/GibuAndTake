@@ -129,6 +129,9 @@ public class NoticeDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, num);
+			
+			result = pstmt.executeUpdate();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -212,7 +215,7 @@ public class NoticeDao {
 
 	public int delete(Connection conn, String num) {
 		
-		String sql = "UPDATE Notice SET STATUS = 'Y' WHERE N_NO = ?";
+		String sql = "DELETE Notice WHERE N_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -223,6 +226,31 @@ public class NoticeDao {
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	//공지사항 수정
+	public int modify(Connection conn, NoticeVo vo) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			String sql = "UPDATE Notice SET N_TITLE = ? , N_CONTENT = ? WHERE N_NO = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setString(3, vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			close(pstmt);

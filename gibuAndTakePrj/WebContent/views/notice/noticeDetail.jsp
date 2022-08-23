@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 
 	*{
@@ -66,24 +67,13 @@
         color: #2e6c4a;
         width: 100%;
         height: 600px;
+        vertical-align : top;
+        text-indent: 15px;
     }
 
-    #c{
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        width: 100%;
-        height: 60px;
-        text-indent: 40px;
-    }
-
-
-    #d{
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        width: 100%;
-        height: 60px;
-        text-indent: 40px;
-    }
+	#c{
+		padding: 10px 0px 0px 0px;
+	}
     
     .date{
         text-align: right;
@@ -292,29 +282,22 @@
 			<td class="date"><%=vo.getDate()%></td>
     	</tr>
     	<tr id="b" class="border">
-			<td><%=vo.getContent()%></td>
+			<td id="c"><%=vo.getContent()%></td>
 			<td></td>
     	</tr>
-    <%--	<tr id="c" class="border">
-			<td>이전내용</td>
-			<td class="date">등록일 2022-02-03</td>
-    	</tr>
-    	<tr id="d" class="border">
-			<td>다음내용</td>
-			<td class="date">등록일 2022-02-01</td>
-    	</tr> --%>
     </table>
-    
     
     <div id="tag">
         <a id="list" onclick="location.href='/gibuAndTakePrj/notice/list'">공지사항 목록</a>
+        
         <% if(loginMember != null && "admin".equals(loginMember.getId())) {%> 
-        <a id="modify" onclick="location.href='/gibuAndTakePrj/notice/modify'">수정/삭제</a>
+        <a id="modify" href="/gibuAndTakePrj/notice/modify?num=<%=vo.getNo()%>">수정/삭제</a>
     	<%} %> 
     </div>
         
     
     <%@include file="/views/common/footer.jsp" %>
-        
+      
+       
 </body>
 </html>
