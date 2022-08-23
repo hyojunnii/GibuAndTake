@@ -17,7 +17,7 @@ public class CorpUpdate extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.getRequestDispatcher("/views/corp/corpUpdate.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/corparation/corpUpdate.jsp").forward(req, resp);
 	
 	}
 	
@@ -48,7 +48,7 @@ public class CorpUpdate extends HttpServlet{
 				cvo.setClasss(corpType);
 				
 				
-				int no2 = ((corpVo)req.getSession().getAttribute("loginMember")).getNo();
+				int no2 = ((corpVo)req.getSession().getAttribute("loginCorp")).getNo();
 				
 				corpVo vo = new corpVo();
 
@@ -58,9 +58,9 @@ public class CorpUpdate extends HttpServlet{
 				//실행결과에 따라 화면 선택
 				if(updateVo != null) {
 					//성공 화면
-					req.getSession().setAttribute("loginMember", updateVo);
+					req.getSession().setAttribute("loginCorp", updateVo);
 					req.getSession().setAttribute("alertMsg", "회원 정보 수정 완료!");
-					resp.sendRedirect("/gibuAndTakePrj/member/MemberInfo");
+					resp.sendRedirect("/gibuAndTakePrj/corp/corpInfo");
 				}else {
 					//실패 화면
 					req.setAttribute("errorMsg", "회원 정보 수정 실패 !");

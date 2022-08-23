@@ -87,7 +87,7 @@ public class CorpDao {
 
 	public corpVo login(Connection conn, corpVo vo) throws Exception {
 
-		corpVo loginMember = null;
+		corpVo loginCorp = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -124,25 +124,25 @@ public class CorpDao {
 				String classs = rs.getString("CORP_CLASS");
 
 
-				loginMember = new corpVo();
-
-				loginMember.setNo(no);
-				loginMember.setCno(cno);
-				loginMember.setClas(m);
-				loginMember.setRegnum(num);
-				loginMember.setName(name);
-				loginMember.setId(id);
-				loginMember.setPwd(pwd);
-				loginMember.setNick(nick);
-				loginMember.setEmail(email);
-				loginMember.setAddr(addr);
-				loginMember.setPhone(phone);
-				loginMember.setDate(enrolDate);
-				loginMember.setDel(delete);
-				loginMember.setBan(ban);
-				loginMember.setMod(modifyDate);
-				loginMember.setContent(content);
-				loginMember.setClasss(classs);
+				loginCorp = new corpVo();
+				
+				loginCorp.setNo(no);
+				loginCorp.setCno(cno);
+				loginCorp.setClas(m);
+				loginCorp.setRegnum(num);
+				loginCorp.setName(name);
+				loginCorp.setId(id);
+				loginCorp.setPwd(pwd);
+				loginCorp.setNick(nick);
+				loginCorp.setEmail(email);
+				loginCorp.setAddr(addr);
+				loginCorp.setPhone(phone);
+				loginCorp.setDate(enrolDate);
+				loginCorp.setDel(delete);
+				loginCorp.setBan(ban);
+				loginCorp.setMod(modifyDate);
+				loginCorp.setContent(content);
+				loginCorp.setClasss(classs);
 
 			}
 		}
@@ -153,7 +153,7 @@ public class CorpDao {
 		}
 
 		//만들어진 객체 리턴
-		return loginMember;
+		return loginCorp;
 
 	}	
 	public int corpSelect(corpVo cvo, Connection conn) throws Exception {

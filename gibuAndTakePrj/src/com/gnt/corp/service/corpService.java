@@ -80,17 +80,17 @@ public class corpService {
 	public corpVo login(corpVo vo) {
 
 		Connection conn = null;
-		corpVo loginMember = null;
+		corpVo loginCorp = null;
 		try {
 			conn = getConnection();
 
 			//SQL 실행결과 리턴
-			loginMember = new CorpDao().login(conn, vo);
+			loginCorp = new CorpDao().login(conn, vo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return loginMember;
+		return loginCorp;
 
 	}
 

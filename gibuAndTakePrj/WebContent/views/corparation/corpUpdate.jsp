@@ -121,7 +121,7 @@
         align:center;
     }
 
-	#input {
+	.input {
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
@@ -218,7 +218,7 @@
 		<div class="corpUpWrap">
 		<div id="line"></div>
 		<h3 id= "corpUp">기업 정보 수정</h3>
-		<form action="gibuAndTakePrj/member/memberUpdate" method="post">
+		<form action="/gibuAndTakePrj/corp/corpUpdate" method="post">
 			<table>
 			
 				<tr>
@@ -270,8 +270,8 @@
 			</table>
 			</form>
 				<div id="corpQuit">
-					<a href="" class="log2">수정하기 /</a>
-                    <a href="" class="log2">회원 탈퇴</a>
+					<a onclick="location.href='/gibuAndTakePrj/corp/corpInfo'" class="log2">수정하기 /</a>
+                    <a onclick="location.href='/gibuAndTakePrj/member/quit'"class="log2">회원 탈퇴</a>
 				
 				</div>	
 					</div>

@@ -17,7 +17,6 @@ import com.gnt.main.vo.TodayStoryVo;
 public class MainPageController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("main called...............");//swy
 		//오늘의 참여현황
 		Date date = new Date();
 		SimpleDateFormat dbFormat = new SimpleDateFormat("yy/MM/dd");

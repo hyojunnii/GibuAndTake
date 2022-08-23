@@ -1,5 +1,8 @@
+<%@page import="com.gnt.corp.vo.corpVo"%>
+<%@page import="com.gnt.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -166,9 +169,11 @@
                		 </a>
           			 </div>
 					    
-					    <tr>					    
+					    <tr>
+						    
 					    <td><input type="radio" name="check_log" id="member" value="1" ><label for="member">일반 회원</label></td>
-          				<td><input type="radio" name="check_log" id="corp" value="2" ><label for="corp">기업 회원</label></td>      			
+						
+          				<td><input type="radio" name="check_log" id="corp" value="2" ><label for="corp">기업 회원</label></td>		
           				</tr>
 						
 	                <tr>
@@ -196,7 +201,7 @@
                <%@ include file="../common/footer.jsp" %>
           		</div>
     		
-				
+		
        
 </body>
 </html>

@@ -68,13 +68,13 @@ public class MemberLoginController extends HttpServlet{
 
 
 			//서비스 로직 실행
-			corpVo loginMember = new corpService().login(vo);
+			corpVo loginCorp = new corpService().login(vo);
 			
-			System.out.println(loginMember);
+			System.out.println(loginCorp);
 			
-			if(loginMember != null) {
+			if(loginCorp != null) {
 				//로그인 성공 세션에 로그인 유저 정보 담기
-				req.getSession().setAttribute("loginMember",loginMember);
+				req.getSession().setAttribute("loginCorp",loginCorp);
 				req.getSession().setAttribute("alertMsg","로그인 성공!");
 
 				resp.sendRedirect("/gibuAndTakePrj");
