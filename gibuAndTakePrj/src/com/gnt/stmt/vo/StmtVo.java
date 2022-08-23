@@ -7,8 +7,7 @@ public class StmtVo {
 	}
 
 	public StmtVo(int memberNo, String regNo, String donaNo, String regName, String donaClass, String donaGmomey,
-			String donaPmoney, String donaSdate, String donaEdate, String donaPerson, String exeNo, String exeCtg,
-			String exeCnt, String exeMoney) {
+			String donaPmoney, String donaSdate, String donaEdate, String donaPerson) {
 		super();
 		this.memberNo = memberNo;
 		this.regNo = regNo;
@@ -20,10 +19,6 @@ public class StmtVo {
 		this.donaSdate = donaSdate;
 		this.donaEdate = donaEdate;
 		this.donaPerson = donaPerson;
-		this.exeNo = exeNo;
-		this.exeCtg = exeCtg;
-		this.exeCnt = exeCnt;
-		this.exeMoney = exeMoney;
 	}
 
 	private int memberNo;
@@ -37,10 +32,6 @@ public class StmtVo {
 	private String donaEdate;
 	private String donaPerson; 
 	
-	private String exeNo;
-	private String exeCtg;
-	private String exeCnt;
-	private String exeMoney;
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -122,44 +113,11 @@ public class StmtVo {
 		this.donaPerson = donaPerson;
 	}
 
-	public String getExeNo() {
-		return exeNo;
-	}
-
-	public void setExeNo(String exeNo) {
-		this.exeNo = exeNo;
-	}
-
-	public String getExeCtg() {
-		return exeCtg;
-	}
-
-	public void setExeCtg(String exeCtg) {
-		this.exeCtg = exeCtg;
-	}
-
-	public String getExeCnt() {
-		return exeCnt;
-	}
-
-	public void setExeCnt(String exeCnt) {
-		this.exeCnt = exeCnt;
-	}
-
-	public String getExeMoney() {
-		return exeMoney;
-	}
-
-	public void setExeMoney(String exeMoney) {
-		this.exeMoney = exeMoney;
-	}
-
 	@Override
 	public String toString() {
 		return "StmtVo [memberNo=" + memberNo + ", regNo=" + regNo + ", donaNo=" + donaNo + ", regName=" + regName
 				+ ", donaClass=" + donaClass + ", donaGmomey=" + donaGmomey + ", donaPmoney=" + donaPmoney
-				+ ", donaSdate=" + donaSdate + ", donaEdate=" + donaEdate + ", donaPerson=" + donaPerson + ", exeNo="
-				+ exeNo + ", exeCtg=" + exeCtg + ", exeCnt=" + exeCnt + ", exeMoney=" + exeMoney + "]";
+				+ ", donaSdate=" + donaSdate + ", donaEdate=" + donaEdate + ", donaPerson=" + donaPerson + "]";
 	}
 	
 }

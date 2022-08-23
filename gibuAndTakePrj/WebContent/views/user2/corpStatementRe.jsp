@@ -1,9 +1,18 @@
+<%@page import="com.gnt.stmt.vo.ExeVo"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.gnt.stmt.vo.StmtVo"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	StmtVo donaVo = (StmtVo)request.getAttribute("donaVo");
+	ArrayList<ExeVo> exeVo = (ArrayList<ExeVo>)request.getAttribute("exeVo");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>기업 명세서 수정</title>
 <style>
 
@@ -174,26 +183,32 @@
 		
 				<table id="first">
 					<div id="outer">
-						<div id="title">진행한 기부 프로그램 이름</div>
-						<div id="do_t">기부금 집행 내역 수정하기</div>
+						<div id="title"><%=donaVo.getRegName() %></div>
+						<div id="do_t">기부금 집행 내역 추가하기</div>
 					</div>
 					<tr>
 						<th>집행기간</th>
-						<td colspan="2">2022년 7월 5일~2022년 8월 5일</td>
+						<td colspan="2">
+							<fmt:parseDate var="parsedSdate" value="<%=donaVo.getDonaSdate() %>" pattern="yyyy-MM-dd HH:mm:ss"/>
+                        	<fmt:formatDate value="${parsedSdate}" pattern="yyyy-MM-dd" />
+                        	~
+                        	<fmt:parseDate var="parsedEdate" value="<%=donaVo.getDonaEdate() %>" pattern="yyyy-MM-dd HH:mm:ss"/>
+                        	<fmt:formatDate value="${parsedEdate}" pattern="yyyy-MM-dd" />
+						</td>
 					</tr>
 					<tr>
 						<th>총 모금 금액</th>
-						<td colspan="2"><span class="total">3,000,000원</span>(목표금액 3,000,000원)</td>
+						<td colspan="2"><span class="total"><fmt:formatNumber value="<%=donaVo.getDonaPmoney() %>" pattern="#,###"/></span>원</span>(목표금액 3,000,000원)</td>
 					</tr>
 					<tr>
-						<th>사업 분야</th>
-						<td colspan="2">취약계층 아동·청소년</td>
+						<th>사업 대상</th>
+						<td colspan="2"><%=donaVo.getDonaPerson() %></td>
 					</tr>
 				</table>
 				<table id="second">
 					<div id="col-outer">
-						<div id="col-p">+</div>
-						<div id="col-m">-</div>
+						<div id="col-p" onclick='javascript:addItem();'>+</div>
+						<div id="col-m" onclick="delRow">-</div>
 					</div>
 					<thead>
 						<tr>
@@ -202,24 +217,60 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th>사업비</th>
-							<td colspan="2" class="input-col">
-								<input type="text" name="exeCnt" size="40" placeholder=" 사용 내역을 등록해주세요.">
-								<input type="number" name="exeMoney" placeholder=" 금액을 등록해주세요.">
-							</td>
-						</tr>
+						<% for (int i = 0; i < exeVo.size(); ++i) {%>
+							<tr>
+								<th>사업비</th>
+								<td colspan="2" class="input-col" id="input-cnt">
+									<input type="text" value="<%=exeVo.get(i).getExeCnt() %>" size="40" readonly="readonly">
+									<input type="number" value="<%=exeVo.get(i).getExeMoney() %>" readonly="readonly">
+								</td>
+							</tr>
+						<%} %>
 				</table>
 				<div id="re-outer">
-					<input type="submit" value="수정">
+					<input type="submit" value="완료">
 				</div>
 			</form>
-
+			<div id="add-col" style="display: none">
+				<ttr>
+					<tth>사업비</tth>
+					<ttd colspan="2" class="input-col" id="input-cnt">
+						<input type="text" name="exeCnt" size="40" placeholder=" 사용 내역을 등록해주세요.">
+						<input type="number" name="exeMoney" placeholder=" 금액을 등록해주세요.">
+					</ttd>
+				</ttr>
+			</div>
 
 		</div>
 	</div>
 
 	<%@include file="/views/common/footer.jsp" %>
+	
+	<!-- 로우 추가는 되는데 이상하게 됨. 수정. -->
+	<script type="text/javascript">
+	$(function replaceAll(str, ostr, rstr)
+		{
+			if(str == undefined) return str;
+			return str.split(ostr).join(rstr);
+	})
+	
+	$(function addCol() {
+		let append_tr = $("add-col").html();
+		append_tr = replaceAll(append_tr, 'tth', 'th');
+		append_tr = replaceAll(append_tr, 'ttr', 'tr');
+		append_tr = replaceAll(append_tr, 'ttd', 'td');
+		$("#second tbody").append(apeend_tr);
+	})
+	
+//		$(function () {
+//			$('#col-p').click(function () {
+//				console.log("클릭됨");
+//				const copyTh = $('#input-title').clone(true);
+//				const copyTd = $('#input-cnt').clone(true);
+//				$('#copy').append(copyTh, copyTd);
+			})
+		})
+	</script>
 
 </body>
 </html>

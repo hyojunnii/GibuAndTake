@@ -7,44 +7,40 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static com.gnt.common.JDBCTemplate.*;
+
+import com.gnt.corp.vo.corpVo;
 import com.gnt.member.vo.MemberVo;
+import com.gnt.stmt.vo.ExeVo;
 import com.gnt.stmt.vo.StmtVo;
 
 public class StmtDao {
 
-	public ArrayList<StmtVo> showList(Connection conn, MemberVo m) {
-		PreparedStatement donaPstmt = null;
-		PreparedStatement exePstmt = null;
-		ResultSet donaRs = null;
-		ResultSet exeRs = null;
+	public ArrayList<StmtVo> showList(Connection conn, corpVo loginCorp) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		ArrayList<StmtVo> list = new ArrayList<StmtVo>();
 		
-		String donaSql = "SELECT D.REG_NO, D_NO, REG_NAME, D_CLASS, D_GMONEY, D_PMONEY, D_SDATE, D_EDATE, D_PERSON FROM DONATION D JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE M.M_NO = ?";
-		String exeSql = "SELECT E_NO, E_CTG, E_CONTENT, E_MONEY FROM EXECUTE E JOIN DONATION D ON D.D_NO = E.D_NO JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE D.D_NO = ?";
+		String sql = "SELECT D.REG_NO, D_NO, REG_NAME, D_CLASS, D_GMONEY, D_PMONEY, D_SDATE, D_EDATE, D_PERSON FROM DONATION D JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE M.M_NO = ?";
+		
 		try {
-			donaPstmt = conn.prepareStatement(donaSql);
-			donaPstmt.setInt(1, m.getNo());
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, loginCorp.getNo());
 
-			donaRs = donaPstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
-			while(donaRs.next()) {
-				String regNo = donaRs.getString("REG_NO");
-				String donaNo = donaRs.getString("D_NO");
-				String regName = donaRs.getString("REG_NAME");
-				String donaClass = donaRs.getString("D_CLASS");
-				String donaGmoney = donaRs.getString("D_GMONEY");
-				String donaPmoney = donaRs.getString("D_PMONEY");
-				String donaSdate = donaRs.getString("D_SDATE");
-				String donaEdate = donaRs.getString("D_EDATE");
-				String donaPerson = donaRs.getString("D_PERSON");
-				
-				exePstmt = conn.prepareStatement(exeSql);
-				exePstmt.setString(1, donaNo);
-				
-				exeRs = exePstmt.executeQuery();
+			while(rs.next()) {
+				String regNo = rs.getString("REG_NO");
+				String donaNo = rs.getString("D_NO");
+				String regName = rs.getString("REG_NAME");
+				String donaClass = rs.getString("D_CLASS");
+				String donaGmoney = rs.getString("D_GMONEY");
+				String donaPmoney = rs.getString("D_PMONEY");
+				String donaSdate = rs.getString("D_SDATE");
+				String donaEdate = rs.getString("D_EDATE");
+				String donaPerson = rs.getString("D_PERSON");
 				
 				StmtVo vo = new StmtVo();
-				vo.setMemberNo(m.getNo());
+				vo.setMemberNo(loginCorp.getNo());
 				vo.setRegNo(regNo);
 				vo.setDonaNo(donaNo);
 				vo.setRegName(regName);
@@ -54,16 +50,6 @@ public class StmtDao {
 				vo.setDonaSdate(donaSdate);
 				vo.setDonaEdate(donaEdate);
 				vo.setDonaPerson(donaPerson);
-				
-				while(exeRs.next()) {
-					String exeNo = exeRs.getString("E_NO");
-					String exeCnt = exeRs.getString("E_CONTENT");
-					String exeMoney = exeRs.getString("E_MONEY");
-					
-					vo.setExeNo(exeNo);
-					vo.setExeCnt(exeCnt);
-					vo.setExeMoney(exeMoney);
-				}
 
 				list.add(vo);
 			}
@@ -71,15 +57,90 @@ public class StmtDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(donaPstmt);
-			close(exePstmt);
-			close(donaRs);
-			close(exeRs);
+			close(pstmt);
+			close(rs);
 		}
 		
 		
 		return list;
 	}
+
+	public StmtVo showStmt(Connection conn, String donaNo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StmtVo vo = null;
+		
+		String sql = "SELECT D.REG_NO, D_NO, REG_NAME, D_CLASS, D_GMONEY, D_PMONEY, D_SDATE, D_EDATE, D_PERSON FROM DONATION D JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE D_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, donaNo);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String regName = rs.getString("REG_NAME");
+				String donaClass = rs.getString("D_CLASS");
+				String donaGmoney = rs.getString("D_GMONEY");
+				String donaPmoney = rs.getString("D_PMONEY");
+				String donaSdate = rs.getString("D_SDATE");
+				String donaEdate = rs.getString("D_EDATE");
+				String donaPerson = rs.getString("D_PERSON");
+				
+				vo = new StmtVo();
+				vo.setRegName(regName);
+				vo.setDonaClass(donaClass);
+				vo.setDonaGmomey(donaGmoney);
+				vo.setDonaPmoney(donaPmoney);
+				vo.setDonaSdate(donaSdate);
+				vo.setDonaEdate(donaEdate);
+				vo.setDonaPerson(donaPerson);
+				
+				System.out.println(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return vo;
+	}
+	
+	public ArrayList<ExeVo> showExe(Connection conn, String donaNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<ExeVo> list = new ArrayList<ExeVo>();
+
+		String sql = "SELECT E_NO, E_CONTENT, E_MONEY FROM EXECUTE E JOIN DONATION D ON D.D_NO = E.D_NO JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE D.D_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, donaNo);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String exeNo = rs.getString("E_NO");
+				String exeCnt = rs.getString("E_CONTENT");
+				String exeMoney = rs.getString("E_MONEY");
+				
+				ExeVo vo = new ExeVo();
+				vo.setExeNo(exeNo);
+				vo.setExeCnt(exeCnt);
+				vo.setExeMoney(exeMoney);
+				
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {			
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
 
 	public int edit(Connection conn, StmtVo vo) {
 		String sql = "UPDATE";
