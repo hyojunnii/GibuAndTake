@@ -76,7 +76,76 @@ public class corpService {
 		
 		return result;
 	}
+
+	public corpVo login(corpVo vo) {
+
+		Connection conn = null;
+		corpVo loginCorp = null;
+		try {
+			conn = getConnection();
+
+			//SQL 실행결과 리턴
+			loginCorp = new CorpDao().login(conn, vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return loginCorp;
+
+	}
+
+	public corpVo corpUpdate(corpVo vo) {
+		//비지니스 로직 (자바 || SQL)
+	
+		
+		Connection conn = null;
+		int result = 0;
+		corpVo updateVo = null;
+		
+		try {
+			
+			conn = getConnection();
+			result = new CorpDao().corpUpdate(conn, vo);
+			
+			//트랜잭션 처리 (commit || rollback)
+			if(result == 1) {
+				commit(conn);
+				//다시한번 회원정보 조회 (회원번호)
+				updateVo = selectOneByNo(vo.getNo());
+			}else {
+				rollback(conn);
+			}
+			
+		}catch(Exception e) {
+			rollback(conn);
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		
+		//실행결과 리턴
+		return updateVo;
+		
+	}private corpVo selectOneByNo(int no) {
+		Connection conn = null;
+		corpVo vo = null;
+		
+		try {
+			conn = getConnection();
+			vo = new CorpDao().selectOneByNo(conn,no);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		
+		return vo;
+	}
 }
+
 
 
 

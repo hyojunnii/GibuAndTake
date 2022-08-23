@@ -1,3 +1,4 @@
+<%@page import="com.gnt.corp.vo.corpVo"%>
 <%@page import="com.gnt.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,6 +7,8 @@
 <%
 	String path = request.getContextPath();
 	MemberVo memberVo = (MemberVo)request.getSession().getAttribute("loginMember");
+	corpVo corpVo = (corpVo)request.getSession().getAttribute("loginCorp");
+													
 %>
 
 <c:set var="path" value="<%=path %>"/>
@@ -173,20 +176,21 @@
             <div id="login_serch" class="">
             	<c:choose>
             		<c:when test="${!empty loginMember }">
-            			<c:if test="${loginMember.clas == 1}">
-	            			<a href="<%=path %>/member/MyPage"><span id="login">${loginMember.name}님</span></a>
-            			</c:if>
-            			<c:if test="${loginMember.clas == 2}">
-	            			<a href="<%=path %>/corp/corpMyPage"><span id="login">${loginMember.name}님</span></a>
-            			</c:if>
+            			<a href="<%=path %>/member/MyPage"><span id="login">${loginMember.name}님</span></a>
+            			<a href="<%=path %>/logout" id="logout">로그아웃</a>
+                		<a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
+            		</c:when>
+            			<c:when test="${!empty loginCorp }">
+ 	            		<a href="<%=path %>/corp/corpMyPage"><span id="login">${loginCorp.name}님</span></a>
                 		<a href="<%=path %>/logout" id="logout">로그아웃</a>
                 		<a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>
             		</c:when>
             		<c:otherwise>
-        	    		<a href="<%=path %>/login"><span id="login">로그인</span></a>
+            			<a href="<%=path %>/login"><span id="login">로그인</span></a>
 		                <a href="<%=path %>/search"><img id="serch_icon" src="<%=path %>/resources/img/free-icon-search-149309.png" alt="검색아이콘"></a>	
             		</c:otherwise>
             	</c:choose>
+            		
             </div>
         </div>
     </header>

@@ -183,7 +183,7 @@
 		
 		<div id="line"></div>
 		<h3 align="center" style="font-size: 25px; ">회원 정보 조회</h3>
-		<form action="gibuAndTakePrj/member/memberInfo" method="post">
+		<form action="/gibuAndTakePrj/member/memberInfo" method="post" name="memberUpdate">
 		<input type="hidden" value="<%=loginMember.getNo()%>" name="memberNo">
 			<table>
 				<tr>
@@ -231,7 +231,7 @@
 			</table>
 			
 				<div id="memberDelQuit">
-					<a onclick="location.href='/gibuAndTakePrj/member/MyUpdate'" class="log">회원 정보 수정 /</a>
+					<a onclick="onUpdate()" id="Update" class="log">회원 정보 수정 /</a>
                     <a onclick="location.href='/gibuAndTakePrj/member/quit'" class="log">회원 탈퇴</a>
 				
 				</div>
@@ -244,7 +244,16 @@
 
 		
 	</main>
-
+			
+		<script>
+			function onUpdate(){
+				var memberUpdateForm = document.memberUpdate;
+					memberUpdateForm.submit();
+				
+			}
+			
+		</script>	
+			
 	
 </body>
 </html>

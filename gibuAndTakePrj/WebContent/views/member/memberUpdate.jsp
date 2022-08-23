@@ -309,7 +309,7 @@
 		
 		<div id="line"></div>
 		<h3 id= "memberUp">회원 정보 수정</h3>
-		<form action="gibuAndTakePrj/member/memberUpdate" method="post">
+		<form action="/gibuAndTakePrj/member/MyUpdate" method="post">
 			<table>
 			
 				<tr>

@@ -240,12 +240,12 @@
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주민등록번호 *</td>
-					<td><input type="tel" name="memberRegnum" class="input" placeholder="- 없이 입력"></td>
+					<td><input type="tel" name="memberRegnum" class="input"  minlength="6" maxlength="13"placeholder="- 없이 입력"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" class="input" placeholder="- 없이 입력"></td>
+					<td><input type="tel" name="memberPhone" class="input"  minlength="6" maxlength="13" placeholder="- 없이 입력"></td>
 					<td></td>
 				</tr>
 				

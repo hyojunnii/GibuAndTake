@@ -12,7 +12,6 @@ public class MemberVo {
 	
 	public MemberVo(int no, int clas, String regnum, String name, String id, String pwd, String nick, String email,
 			String addr, String phone, Timestamp date, String del, String ban, Timestamp mod) {
-		super();
 		this.no = no;
 		this.clas = clas;
 		this.regnum = regnum;

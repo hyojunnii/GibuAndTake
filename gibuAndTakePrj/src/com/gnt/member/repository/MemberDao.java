@@ -280,6 +280,36 @@ public class MemberDao {
 		return result;
 	}
 
+	public int changePwd(Connection conn, String memberId, String memberPwd, String memberPwdNew) throws Exception{
+			//connection 준비
+			
+			//sql 준비
+			String sql = "UPDATE MEMBER SET M_PWD = ? WHERE M_NO = ? AND M_ID = ? AND M_PWD = ?";
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			
+			try {
+				//sql 객체에 담기 및 sql 완성
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memberPwdNew);
+				pstmt.setString(2, memberId);
+				pstmt.setString(3, memberPwd);
+				
+				//sql 실행 및 결과저장
+				result = pstmt.executeUpdate();
+				//실행결과 -> 자바에서 사용가능하게 변경
+				//실행결과 리턴
+			}catch(Exception e) {
+				e.printStackTrace();
+				throw e;
+			}finally {
+				close(pstmt);
+			}
+		
+			//실행결과 리턴
+			return result;
+		}
 	}
 	
 

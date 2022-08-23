@@ -121,7 +121,7 @@
         align:center;
     }
 
-	#input {
+	.input {
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
@@ -218,52 +218,48 @@
 		<div class="corpUpWrap">
 		<div id="line"></div>
 		<h3 id= "corpUp">기업 정보 수정</h3>
-		<form action="gibuAndTakePrj/member/memberUpdate" method="post">
+		<form action="/gibuAndTakePrj/corp/corpUpdate" method="post">
 			<table>
 			
 				<tr>
 					<td class="first" style="font-weight: bold">대표자명 *</td>
-					<td><input type="text" name="rprName" id="input" maxlength="3" required></td>
+					<td><input type="text" name="rprName" id="rprName" class="input" maxlength="3" required></td>
 					
 					
 				</tr>
 			
 				<tr>
 					<td class="first" style="font-weight: bold">기업명 *</td>
-					<td><input type="tel" name="corpName" id="input" ></td>
+					<td><input type="tel" name="corpName" id="corpName" class="input" ></td>
 					<td></td>
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="email" name="corpPhone" id="input"></td>
+					<td><input type="email" name="corpPhone" id="corpPhone" class="input"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="text" name="corpEmail" id="input"></td>
+					<td><input type="text" name="corpEmail" id="corpEmail" class="input"></td>
 					<td></td>
 				</tr>
+				
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="memberAddr" id="input"></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="corpAddr" id="input"></td>
+					<td><input type="text" name="corpAddr"  id="corpAddr" class="input"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">사업 유형 *</td>
-					<td><input type="text" name="corpType" id="input"></td>
+					<td><input type="text" name="corpType" id ="corpType" class="input"></td>
 					<td></td>
 				</tr>
 				
 				<tr>
 					<td class="corpText" style="font-weight: bold">기업 설명 *</td>
 					<td>
-						 <textarea placeholder="100자 이하로 기입하시오"></textarea>
+						 <textarea name="corpContent" id ="corpContent" placeholder="100자 이하로 기입하시오"></textarea>
 						 </td>
 					
 				</tr>
@@ -274,8 +270,8 @@
 			</table>
 			</form>
 				<div id="corpQuit">
-					<a href="" class="log2">수정하기 /</a>
-                    <a href="" class="log2">회원 탈퇴</a>
+					<a onclick="location.href='/gibuAndTakePrj/corp/corpInfo'" class="log2">수정하기 /</a>
+                    <a onclick="location.href='/gibuAndTakePrj/member/quit'"class="log2">회원 탈퇴</a>
 				
 				</div>	
 					</div>
