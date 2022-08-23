@@ -109,10 +109,11 @@
     }
     
     #a{
-        border: 1px solid #2e6c4a;
-        width: 46%;
+        border: 2px solid #acdac2;
+		border-radius: 10px;
+        width: 760px;
         height: 60px;
-        margin: 0px 0px 0px 430px;
+        margin: 0px 0px 0px 530px;
 		text-indent: 20px;
     }
 
@@ -296,26 +297,29 @@
     <div id="gap"></div>
     <table id="a">
     	<tr>
-    		<td>번호</td>
-    		<td class="date">등록일 2022-02-02</td>
+    		<td><%=vo.getNo()%>번</td>
+    		<td class="date"><%=vo.getDate()%></td>
     	</tr>
     </table>
     
-    <form action="/gibuAndTakePrj/notice/detail" method="get">
+    <form action="/gibuAndTakePrj/notice/modify" method="post">
+    	<input type="hidden" name="num" value="<%=vo.getNo()%>">
+        <input type="hidden" name="writerNo" value="<%=loginMember.getNo() %>">
     	<label id="title">제목</label>
-	    <input id="input1" type="text" name="id">
+	    <input id="input1" type="text" name="title" required value="<%=vo.getTitle()%>">
 	    <br><br>
 	    <label id="content">내용</label> 
-	    <textarea name="content" id="input2"></textarea>
+	    <textarea id="input2" name="content" required><%=vo.getContent()%></textarea>
+	    
 	    <div id="btn">
-            <input id="btn1" class="float" type="submit" value="수정하기">
+            <%-- <a id="btn1" class="float" href="/gibuAndTakePrj/notice/modify?num=<%=vo.getNo()%>">수정하기</a> --%> 
+           <input type="submit" id="btn1" class="float" value="수정하기">
         </div>
     </form>
     
     <form action="/gibuAndTakePrj/notice/list" method="get">
-    	<input id="btn2" class="float" type="submit" value="삭제하기">
+ 	   <a id="btn2" class="float" href="/gibuAndTakePrj/notice/delete?num=<%=vo.getNo()%>">삭제하기</a> 
     </form>
-    <%-- <a href="/gibuAndTakePrj/notice/delete?num=<%=vo.getNo()%>" class="btn btn-sm btn-danger">삭제하기</a> --%>
     <div id="last"></div>
 
     <%@include file="/views/common/footer.jsp" %>

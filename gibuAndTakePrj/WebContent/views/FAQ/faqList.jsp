@@ -1,20 +1,23 @@
+<%@page import="com.gnt.common.PageVo"%>
+<%@page import="com.gnt.faq.vo.FaqVo"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.gnt.manager.vo.ManagerVo"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	ManagerVo loginMember = (ManagerVo)session.getAttribute("loginMember");
-	/* ArrayList<NoticeVo> voList = (ArrayList<NoticeVo>)request.getAttribute("voList"); */
+	ArrayList<FaqVo> vo = (ArrayList<FaqVo>)request.getAttribute("vo");
 	
 	String contextPath = request.getContextPath();
 	String path = request.getContextPath();
 	
-	/* PageVo pv = (PageVo)request.getAttribute("pv");
+	PageVo pv = (PageVo)request.getAttribute("pv");
 	
 	int currentPage = pv.getCurrentPage();
 	int startPage = pv.getStartPage();
 	int endPage = pv.getEndPage();
-	int maxPage = pv.getMaxPage(); */
+	int maxPage = pv.getMaxPage(); 
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -370,13 +373,9 @@
 	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:600px; padding:50px 0px 0px 0px;">                  
 	    	
 	    	<form action="/gibuAndTakePrj/faq/detail" method="get">
-	    	<%-- <%for(int i = 0; i < voList.size(); i++) {%> --%>
-	    	<button class="toggle">기부질문<%-- <%= voList.get(i).getNo()%> --%><button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<%-- <%}%>  --%>
+	    		<%for(int i = 0; i < vo.size(); i++) {%>  
+	    	<button class="toggle"><%= vo.get(i).getTitle()%><button id="img">▽</button></button>
+	    	<%}%> 
 	    	</form>
             
             <% if(loginMember != null && "admin".equals(loginMember.getId())) {%>  

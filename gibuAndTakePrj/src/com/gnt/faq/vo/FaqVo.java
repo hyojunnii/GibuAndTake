@@ -5,15 +5,15 @@ public class FaqVo {
 	public FaqVo() {
 		
 	}
-	
-	
-	
-	public FaqVo(String no, String cate, String title, String content, String date, String status) {
+
+
+	public FaqVo(String no, String cate, String title, String content, String writer, String date, String status) {
 		super();
 		this.no = no;
 		this.cate = cate;
 		this.title = title;
 		this.content = content;
+		this.writer = writer;
 		this.date = date;
 		this.status = status;
 	}
@@ -24,6 +24,7 @@ public class FaqVo {
 	private String cate;
 	private String title;
 	private String content;
+	private String writer;
 	private String date;
 	private String status;
 	
@@ -33,11 +34,9 @@ public class FaqVo {
 	}
 
 
-
 	public void setNo(String no) {
 		this.no = no;
 	}
-
 
 
 	public String getCate() {
@@ -45,11 +44,9 @@ public class FaqVo {
 	}
 
 
-
 	public void setCate(String cate) {
 		this.cate = cate;
 	}
-
 
 
 	public String getTitle() {
@@ -57,11 +54,9 @@ public class FaqVo {
 	}
 
 
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 
 
 	public String getContent() {
@@ -69,11 +64,19 @@ public class FaqVo {
 	}
 
 
-
 	public void setContent(String content) {
 		this.content = content;
 	}
 
+
+	public String getWriter() {
+		return writer;
+	}
+
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 
 
 	public String getDate() {
@@ -81,11 +84,9 @@ public class FaqVo {
 	}
 
 
-
 	public void setDate(String date) {
 		this.date = date;
 	}
-
 
 
 	public String getStatus() {
@@ -93,18 +94,19 @@ public class FaqVo {
 	}
 
 
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "FaqVo [no=" + no + ", cate=" + cate + ", title=" + title + ", content=" + content + ", date=" + date
-				+ ", status=" + status + "]";
+		return "FaqVo [no=" + no + ", cate=" + cate + ", title=" + title + ", content=" + content + ", writer=" + writer
+				+ ", date=" + date + ", status=" + status + "]";
 	}
+	
+	
+	
 	
 	
 }
