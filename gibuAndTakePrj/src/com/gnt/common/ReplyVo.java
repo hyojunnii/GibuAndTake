@@ -8,9 +8,11 @@ public class ReplyVo {
 	
 	
 
+	
+
+
 	public ReplyVo(String repno, String mno, String regno, String repcontent, String repdate, String repdel,
 			String repban, String repmod, String mnick) {
-		super();
 		this.repno = repno;
 		this.mno = mno;
 		this.regno = regno;
@@ -20,7 +22,11 @@ public class ReplyVo {
 		this.repban = repban;
 		this.repmod = repmod;
 		this.mnick = mnick;
+
 	}
+
+
+
 
 
 
@@ -33,6 +39,11 @@ public class ReplyVo {
 	private String repban;		//신고여부
 	private String repmod;		//마지막수정일자
 	private String mnick;		//사용자 닉네임
+
+
+
+
+
 	public String getRepno() {
 		return repno;
 	}
@@ -137,6 +148,18 @@ public class ReplyVo {
 
 	public void setMnick(String mnick) {
 		this.mnick = mnick;
+	}
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "ReplyVo [repno=" + repno + ", mno=" + mno + ", regno=" + regno + ", repcontent=" + repcontent
+				+ ", repdate=" + repdate + ", repdel=" + repdel + ", repban=" + repban + ", repmod=" + repmod
+				+ ", mnick=" + mnick + "]";
 	}
 	
 		

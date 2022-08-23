@@ -261,10 +261,6 @@
 	                <tr>
 	                    <td colspan="5" id="comments_content">${rp.repcontent}</td>
 	                </tr>
-	                <!-- <tr>
-	                    <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
-	                </tr> -->
-	                
 	            </table>
 	            <hr>
 	            </form>

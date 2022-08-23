@@ -7,7 +7,10 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.gnt.campaign.repository.CampaignDao;
+import com.gnt.campaign.vo.CampaignProofVo;
 import com.gnt.campaign.vo.CampaignVo;
+import com.gnt.common.ReplyVo;
+import com.gnt.funding.vo.FundingVo;
 
 public class CampaignService {
 
@@ -41,6 +44,28 @@ public class CampaignService {
 			voList = dao.selectbanner(conn);
 			close(conn);
 		return voList;
+	}
+
+	public CampaignVo selectDetail(int num) {
+		Connection conn = null;
+		CampaignVo vo = null;
+
+		conn = getConnection();
+		//DAO 호출	
+			vo = dao.selectDetail(conn, num);
+			close(conn);
+		return vo;
+	}
+
+	public List<CampaignProofVo> selectProof(int num) {
+		Connection conn = null;
+		List<CampaignProofVo> volist = null;
+		
+		conn = getConnection();
+		//DAO 호출	
+			volist = dao.selectProof(conn, num);
+			close(conn);
+		return volist;
 	}
 
 
