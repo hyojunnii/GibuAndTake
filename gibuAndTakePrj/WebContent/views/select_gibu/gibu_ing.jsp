@@ -244,11 +244,7 @@ progress::-webkit-progress-value{
     </div>
     <br clear="both">
 
-	<script>
-	function () {
-		colsole.log(list);
-	}
-	</script>
+	
 	</div>
     <%@ include file="../common/footer.jsp" %>
     
