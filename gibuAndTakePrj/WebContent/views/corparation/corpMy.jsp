@@ -89,14 +89,37 @@
    			width:100%;
    			height:200px;
 		}
+		
+		#memberHeader {
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		#memberHeader a {
+			margin: 5% 15% 2%;
+			text-decoration: none;
+			font-size: 20px;
+			background-color: #acdac2;
+			border-radius: 15px;
+			padding: 12px;
+			color: black;
+			font-weight: 600;
+		}
+		
+		#memberHeader a:hover {
+			background-color: #83DDAD;
+		}
 </style>
 </head>
 <body>	
 		
 		<div id="headIn"><%@ include file="/views/common/header.jsp" %></div>
 		<div id="memberMgEvery">
-		<h1 id="myPageTxt">기업 마이페이지</h1>
-		<div class="headLine">
+			<div id="memberHeader">
+				<h1 id="myPageTxt">기업 마이페이지</h1>
+				<a href="<%=path%>/pm/apply/main">프로젝트 관리하기</a>
+			</div>
+			<div class="headLine">
 			
 		</div>
 		
@@ -139,12 +162,6 @@
 			
 		<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
 		</div>
-		
-		<div id="btn_group">
-		<a href="/"><button id="fundingI" style="font-size: 25px"> 신청 </button></a>
-		<a href="/gibuAndTakePrj/corp/corpGibuAppl"><button id="fundingC" style="font-size: 25px">내역 보기</button></a>
-		</div>
-		
 		
 		<div id="footIn"><%@ include file="/views/common/footer.jsp" %></div>
 		

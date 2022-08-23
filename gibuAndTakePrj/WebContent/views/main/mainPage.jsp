@@ -47,11 +47,11 @@
       }
 
       .content-img {
-        height: 70%;
-        width: 30%;
+        height: 72%;
+        width: 32%;
         position: relative;
         top: -80px;
-        right: -680px;
+        right: -670px;
         border-radius: 25px;
       }
 
@@ -59,7 +59,6 @@
         width: 100%;
         height: 100%;
         border-radius: 25px;
-        border: 2px solid #ececec;
       }
 
       #funding {
@@ -179,6 +178,15 @@
         justify-content: space-between;
         margin: 0 15px 0 10px;
       }
+      
+      .card-img {
+      	height: 128px;
+      }
+      
+      .cam-img {
+      	height: 270px;
+      	width: 400px;
+      }
     </style>
   </head>
   <body>
@@ -202,35 +210,35 @@
           <div class="carousel-inner donation-header">
             <div class="carousel-item active content-outer">
               <div class="content-header">
-                <span>기부 카테고리</span>
-                <h3>제목입니다 제목입니다</h3>
+                <span>아동청소년</span>
+                <h3><a href="#">경제적 어려움으로 흔들리는 진규의 꿈</a></h3>
                 <br />
-                <h6>기부앤테이크 단체명</h6>
+                <h6>기부앤테이크</h6>
               </div>
               <div class="content-img">
-                <img src="resources/img/testImg01.png" class="right img-fluid" alt="..." />
+                <a href="#"><img src="resources/img/main_img/청소년진규.png" class="right img-fluid" alt="청소년진규" /></a>
               </div>
             </div>
             <div class="carousel-item content-outer">
               <div class="content-header">
-                <span>기부 카테고리</span>
-                <h3>제목입니다 제목입니다</h3>
+                <span>어르신</span>
+                <h3><a href="#">추석을 맞아 어르신들에게 효를 배달해요</a></h3>
                 <br />
-                <h6>기부앤테이크 단체명</h6>
+                <h6>기부앤테이크</h6>
               </div>
               <div class="content-img">
-                <img src="resources/img/testImg01.png" class="right img-fluid" alt="..." />
+                <a href="#"><img src="resources/img/main_img/추석어르신.png" class="right img-fluid" alt="추석어르신" /></a>
               </div>
             </div>
             <div class="carousel-item content-outer">
               <div class="content-header">
-                <span>기부 카테고리</span>
-                <h3>제목입니다 제목입니다</h3>
+                <span>지구촌</span>
+                <h3><a href="#">계속되는 전쟁, 우크라이나를 기억해주세요</a></h3>
                 <br />
-                <h6>기부앤테이크 단체명</h6>
+                <h6>기부앤테이크</h6>
               </div>
               <div class="content-img">
-                <img src="resources/img/testImg01.png" class="right img-fluid" alt="..." />
+                <a href="#"><img src="resources/img/main_img/우크라이나.jpg" class="right img-fluid" alt="우크라이나" /></a>
               </div>
             </div>
           </div>
@@ -246,14 +254,14 @@
       </div>
       <div id="funding">
         <div id="funding-header">
-          <h5>펀딩인데 좀 있어보이는 말이 뭐가 있을까요</h5>
+          <h5>기부앤테이크의 추천 펀딩</h5>
           <a href="<%=path%>/view/funding">더보기 &gt;</a>
         </div>
         <div id="funding-content">
           <div class="card f-content" style="width: 20%">
-            <img src="resources/img/testImg01.png" class="card-img-top" />
+            <a href="#"><img src="resources/img/main_img/수제어묵.jpg" class="card-img-top card-img" /></a>
             <div class="card-body">
-              <div class="card-title progress-title">펀딩제목제목제목제목제목제목제목제목</div>
+              <div class="card-title progress-title"><a href="#">할머니의 맛있는 수제어묵</a></div>
               <div class="progress-money">1,100,000원</div>
               <div class="progress" style="height: 5px; width: 58%">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 5px"></div>
@@ -261,9 +269,9 @@
             </div>
           </div>
           <div class="card f-content" style="width: 20%">
-            <img src="resources/img/testImg01.png" class="card-img-top" />
+            <a href="#"><img src="resources/img/main_img/탄소저감커피.jpg" class="card-img-top card-img" /></a>
             <div class="card-body">
-              <div class="card-title progress-title">펀딩제목제목제목제목제목제목제목제목</div>
+              <div class="card-title progress-title"><a href="#">지구를 위한 탄소 저감 커피</a></div>
               <div class="progress-money">1,100,000원</div>
               <div class="progress" style="height: 5px; width: 58%">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 5px"></div>
@@ -271,9 +279,9 @@
             </div>
           </div>
           <div class="card f-content" style="width: 20%">
-            <img src="resources/img/testImg01.png" class="card-img-top" />
+            <a href="#"><img src="resources/img/main_img/댕냥이장난감.jpeg" class="card-img-top card-img"/></a>
             <div class="card-body">
-              <div class="card-title progress-title">펀딩제목제목제목제목제목제목제목제목</div>
+              <div class="card-title progress-title"><a href="#">유기동물을 돕는 댕냥이 장난감</a></div>
               <div class="progress-money">1,100,000원</div>
               <div class="progress" style="height: 5px; width: 58%">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 5px"></div>
@@ -281,9 +289,9 @@
             </div>
           </div>
           <div class="card f-content" style="width: 20%">
-            <img src="resources/img/testImg01.png" class="card-img-top" />
+            <a href="#"><img src="resources/img/main_img/천연귤과자.jpg" class="card-img-top card-img" /></a>
             <div class="card-body">
-              <div class="card-title progress-title">펀딩제목제목제목제목제목제목제목제목</div>
+              <div class="card-title progress-title"><a href="#">색다른 천연 귤 과자</a></div>
               <div class="progress-money">1,100,000원</div>
               <div class="progress" style="height: 5px; width: 58%">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 5px"></div>
@@ -319,20 +327,20 @@
         </div>
       </div>
       <div id="campaign">
-        <h5 align="center"><a href="<%=path %>/view/campaign">함께 행동해요 (?) 오늘의 행동 (?)</a></h5>
+        <h5 align="center"><a href="<%=path %>/view/campaign">기부앤테이크와 함께 행동해요!</a></h5>
         <div id="campaign-content">
           <figure class="figure">
-            <img src="resources/img/testImg01.png" class="figure-img img-fluid rounded" alt="..." />
+            <a href="#"><img src="resources/img/main_img/작은가게.jpeg" class="figure-img img-fluid rounded cam-img" alt="작은가게" /></a>
             <div id="campaign-content-info">
-              <figcaption class="figure-caption" style="color: #000000">캠페인제목입니다</figcaption>
-              <figcaption class="figure-caption">진행자명</figcaption>
+              <figcaption class="figure-caption" style="color: #000000"><a href="#">우리동네 작은가게 함께 응원해요!</a></figcaption>
+              <figcaption class="figure-caption">기부앤테이크</figcaption>
             </div>
           </figure>
           <figure class="figure">
-            <img src="resources/img/testImg01.png" class="figure-img img-fluid rounded" alt="..." />
+            <a href="#"><img src="resources/img/main_img/지구온도.jpeg" class="figure-img img-fluid rounded cam-img" alt="지구온도" /></a>
             <div id="campaign-content-info">
-              <figcaption class="figure-caption" style="color: #000000">캠페인제목입니다</figcaption>
-              <figcaption class="figure-caption">진행자명</figcaption>
+              <figcaption class="figure-caption" style="color: #000000"><a href="#">지구온도를 내리고 실내온도는 높여요!</a></figcaption>
+              <figcaption class="figure-caption">기부앤테이크</figcaption>
             </div>
           </figure>
         </div>
