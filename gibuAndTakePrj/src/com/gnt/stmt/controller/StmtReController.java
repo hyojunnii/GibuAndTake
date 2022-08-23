@@ -9,14 +9,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gnt.corp.vo.corpVo;
 import com.gnt.stmt.service.StmtService;
+import com.gnt.stmt.vo.ExeVo;
+import com.gnt.stmt.vo.StmtVo;
 
 @WebServlet (urlPatterns = "/corp/stmtRe")
 public class StmtReController extends HttpServlet{
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		corpVo loginCorp = (corpVo) req.getSession().getAttribute("loginCorp");
+		
+		String donaNo = req.getParameter("donaNo");
+		System.out.println("donaNo 값 ::: " + donaNo);
+		StmtVo donaVo = new StmtService().showReDona(donaNo);
+		ArrayList<ExeVo> exeVo = new StmtService().showExe(donaNo);
+		
+		
+		
+		req.setAttribute("donaVo", donaVo);
+		req.setAttribute("exeVo", exeVo);
+		req.getRequestDispatcher("/views/user2/corpStatementRe.jsp").forward(req, resp);
 	
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
 		req.getRequestDispatcher("/views/user2/corpStatementRe.jsp").forward(req, resp);
 	}
 }

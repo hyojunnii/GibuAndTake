@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import static com.gnt.common.JDBCTemplate.*;
 
+import com.gnt.corp.vo.corpVo;
 import com.gnt.member.vo.MemberVo;
 import com.gnt.stmt.repository.StmtDao;
+import com.gnt.stmt.vo.ExeVo;
 import com.gnt.stmt.vo.StmtVo;
 
 //import com.gnt.corpStmt.controller.StmtVo;
@@ -16,16 +18,45 @@ public class StmtService {
 	
 	private final StmtDao dao = new StmtDao();
 
-	public ArrayList<StmtVo> showDona(MemberVo m) {
+	public ArrayList<StmtVo> showDona(corpVo loginCorp) {
 		Connection conn = null;
 		ArrayList<StmtVo> voList = null;
 	
 		conn = getConnection();
-		voList = new StmtDao().showList(conn, m); 
+		voList = new StmtDao().showList(conn, loginCorp); 
 		
 		return voList;
 	}
 
+	public ArrayList<ExeVo> showExe(String donaNo) {
+		Connection conn = null;
+		ArrayList<ExeVo> exeList = null;
+		int result = 0;
+		
+		conn = getConnection();
+		exeList = new StmtDao().showExe(conn, donaNo); 
+		
+		return exeList;
+	}
+
+	public StmtVo showReDona(String donaNo) {
+		
+		Connection conn = null;
+		StmtVo vo = null;
+		
+		try {
+			conn = getConnection();
+			vo = new StmtDao().showStmt(conn, donaNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return vo;
+	}
+	
+	
 	public StmtVo edit(StmtVo vo) {
 		Connection conn = null;
 		int result = 0;
@@ -50,10 +81,5 @@ public class StmtService {
 		return updateVo;
 	}
 
-	public ArrayList<StmtVo> showExe(ArrayList<StmtVo> result) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 
 }

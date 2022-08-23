@@ -9,23 +9,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gnt.corp.vo.corpVo;
 import com.gnt.member.vo.MemberVo;
 import com.gnt.stmt.service.StmtService;
+import com.gnt.stmt.vo.ExeVo;
 import com.gnt.stmt.vo.StmtVo;
 
 @WebServlet(urlPatterns = "/corp/stmtList")
 public class StmtListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		MemberVo loginMember = (MemberVo) req.getSession().getAttribute("loginMember");
+		corpVo loginCorp = (corpVo) req.getSession().getAttribute("loginCorp");
 		
-		ArrayList<StmtVo> donaResult = new StmtService().showDona(loginMember);
-		ArrayList<StmtVo> exeResult = new StmtService().showExe(donaResult);
+		ArrayList<StmtVo> donaResult = new StmtService().showDona(loginCorp);
 		
-		req.setAttribute("result", donaResult);
+		System.out.println("donaResult 값 ::: " + donaResult);
+		
+		String donaNo = null;
+		for(int i = 0; i < donaResult.size(); ++i) {
+			donaNo = donaResult.get(i).getDonaNo();
+		}
+		
+		ArrayList<ExeVo> exeResult = new StmtService().showExe(donaNo);
+		
+		req.setAttribute("donaResult", donaResult);
 		req.setAttribute("exeResult", exeResult);
 		req.getRequestDispatcher("/views/user2/corpStatementList.jsp").forward(req, resp);
 	}
+	
+	// 아래 코드는 re로 보내야할듯???? 
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,12 +50,10 @@ public class StmtListController extends HttpServlet{
 			exeMoney = new String[]{""};
 		}
 		
-		int no = ((MemberVo)req.getSession().getAttribute("loginMember")).getNo();
+		int no = ((corpVo)req.getSession().getAttribute("loginCorp")).getNo();
 		
 		StmtVo vo = new StmtVo();
 		vo.setMemberNo(no);
-		vo.setExeCnt(String.join(",", exeCnt));
-		vo.setExeMoney(String.join(",", exeMoney));
 		
 		StmtVo updateVo = new StmtService().edit(vo);
 		
