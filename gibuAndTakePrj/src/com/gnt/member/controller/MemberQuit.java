@@ -15,13 +15,10 @@ import com.gnt.member.vo.MemberVo;
 public class MemberQuit extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		MemberVo mvo = (MemberVo) req.getSession().getAttribute("loginMember");
 		
-		String memberId = mvo.getId();
-		String memberPwd = mvo.getPwd();		
+		int no = ((MemberVo)req.getSession().getAttribute("loginMember")).getNo();
 		
-		int result = new MemberService().quit(memberId, memberPwd);
+		int result = new MemberService().quit(no);
 		
 		if(result == 1) {
 			req.getSession().invalidate();
@@ -29,7 +26,7 @@ public class MemberQuit extends HttpServlet{
 			resp.sendRedirect("/gibuAndTakePrj");
 		} else {
 			req.getSession().setAttribute("alertMsg", "탈퇴 실패");
-			resp.sendRedirect("/webMiniPrj/member/mypage");
+			resp.sendRedirect("/views/error/errorPage.jsp");
 		}
 		
 	}

@@ -74,71 +74,71 @@ public class MemberService {
 	}
 
 	public int memberSelect(MemberVo vo) {
-			
-			int result = 0;
-			Connection conn = null;
-			
-			
-			try {
-				conn = getConnection();
-				
-				result = new MemberDao().memberSelect(vo, conn);
-				
-				if(result == 1) {
-					commit(conn);
-				}else {
-					rollback(conn);
-				}
-				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}finally {
-				close(conn);
-			}
-			
-			
-			return result;
-		}
 
-	/**public int memberUpdate(MemberVo vo) {
 		int result = 0;
 		Connection conn = null;
-		
-		
+
+
 		try {
 			conn = getConnection();
-			
-			result = new MemberDao().memberUpdate(vo, conn);
-			
+
+			result = new MemberDao().memberSelect(vo, conn);
+
 			if(result == 1) {
 				commit(conn);
 			}else {
 				rollback(conn);
 			}
-			
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			close(conn);
 		}
-		
-		
+
+
 		return result;
 	}
-		**/
+
+	/**public int memberUpdate(MemberVo vo) {
+		int result = 0;
+		Connection conn = null;
+
+
+		try {
+			conn = getConnection();
+
+			result = new MemberDao().memberUpdate(vo, conn);
+
+			if(result == 1) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+
+
+		return result;
+	}
+	 **/
 	public MemberVo memberUpdate(MemberVo vo) {
 		//비지니스 로직 (자바 || SQL)
-	
-		
+
+
 		Connection conn = null;
 		int result = 0;
 		MemberVo updateVo = null;
-		
+
 		try {
-			
+
 			conn = getConnection();
 			result = new MemberDao().memberUpdate(conn, vo);
-			
+
 			//트랜잭션 처리 (commit || rollback)
 			if(result == 1) {
 				commit(conn);
@@ -147,15 +147,15 @@ public class MemberService {
 			}else {
 				rollback(conn);
 			}
-			
+
 		}catch(Exception e) {
 			rollback(conn);
 			e.printStackTrace();
 		}finally {
 			close(conn);
 		}
-		
-		
+
+
 		//실행결과 리턴
 		return updateVo;
 	}
@@ -163,83 +163,102 @@ public class MemberService {
 	private MemberVo selectOneByNo(int no) {
 		Connection conn = null;
 		MemberVo vo = null;
-		
+
 		try {
 			conn = getConnection();
 			vo = new MemberDao().selectOneByNo(conn,no);
-			
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			close(conn);
 		}
-		
-		
+
+
 		return vo;
 	}
 
-	public int quit(String memberId, String memberPwd) {
+	public int quit(int no) {
 		int result = 0;
 		Connection conn = getConnection();
-		
-		result = MemberDao.quit(conn, memberId, memberPwd);
-		
+
+		result = MemberDao.quit(conn, no);
+
 		if(result == 1) {
 			commit(conn);
 		} else {
 			rollback(conn);
 		}
-		
+
 		close(conn);
-		
+
 		return result;
 	}
 
 	public int changePwd(String memberId, String memberPwd, String memberPwdNew, String memberPwdNew2) {
-		
-			
-		
-			if(memberPwdNew.equals(memberPwdNew2) == false) {
-				System.out.println("신규 비밀번호가 일치하지 않음");
-				return -1;
-			}
-			
-			if(memberPwdNew.length() < 4) {
-				return -2;
-			}
-			
-			
-			Connection conn = null;
-			int result = 0;
-			
-			try {
-				//DAO 호출 (SQL 실행)
-				conn = getConnection();
-				result = new MemberDao().changePwd(conn,memberId, memberPwd, memberPwdNew);
-				
-				
-				
-				if(result == 1) {
-					commit(conn);
-				}else {
-					rollback(conn);
-				}
-				
-			}catch(Exception e) {
-				rollback(conn);
-			}finally {
-				close(conn);
-			}
-			
-			return result;
-			
+
+
+
+		if(memberPwdNew.equals(memberPwdNew2) == false) {
+			System.out.println("신규 비밀번호가 일치하지 않음");
+			return -1;
 		}
+
+		if(memberPwdNew.length() < 4) {
+			return -2;
+		}
+
+
+		Connection conn = null;
+		int result = 0;
+
+		try {
+			//DAO 호출 (SQL 실행)
+			conn = getConnection();
+			result = new MemberDao().changePwd(conn,memberId, memberPwd, memberPwdNew);
+
+
+
+			if(result == 1) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+
+		}catch(Exception e) {
+			rollback(conn);
+		}finally {
+			close(conn);
+		}
+
+		return result;
+
 	}
 
 
+	/*
+	 * public int checkId(MemberVo vo) {
+	 * 
+	 * int result = 0;
+	 * 
+	 * Connection conn = getConnection();
+	 * 
+	 * result = MemberDao.checkId(conn, memberId, vo);
+	 * 
+	 * if(result == 1) { commit(conn); } else { rollback(conn); }
+	 * 
+	 * close(conn);
+	 * 
+	 * return result; }
+	 */
+}
 
-			
-	
+
+
+
+
+
+
 
 
 

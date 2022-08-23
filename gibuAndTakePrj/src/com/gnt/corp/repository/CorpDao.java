@@ -123,7 +123,6 @@ public class CorpDao {
 				String content = rs.getString("CORP_CONTENT");
 				String classs = rs.getString("CORP_CLASS");
 
-
 				loginCorp = new corpVo();
 				
 				loginCorp.setNo(no);
@@ -143,7 +142,7 @@ public class CorpDao {
 				loginCorp.setMod(modifyDate);
 				loginCorp.setContent(content);
 				loginCorp.setClasss(classs);
-
+				
 			}
 		}
 		finally {

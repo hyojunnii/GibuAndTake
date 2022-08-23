@@ -25,18 +25,12 @@ public class MemberLoginController extends HttpServlet{
 		String memberPwd = req.getParameter("memberPwd");
 		int logChk = Integer.parseInt(req.getParameter("check_log"));
 		
-
-
 		if(logChk == 1) {
 
 			//데이터 뭉치기
 			MemberVo vo = new MemberVo();
 			vo.setId(memberId);
-			System.out.println(memberId);
 			vo.setPwd(memberPwd);
-			System.out.println(memberPwd);
-
-
 
 			//서비스 로직 실행
 			MemberVo loginMember = new MemberService().login(vo);
@@ -47,31 +41,17 @@ public class MemberLoginController extends HttpServlet{
 				req.getSession().setAttribute("alertMsg","로그인 성공!");
 
 				resp.sendRedirect("/gibuAndTakePrj");
-
-
-			}else {
-				//로그인 실패
-				req.setAttribute("errorMsg", "로그인 실패!");
-				req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);
-
 			}
 		}else if(logChk == 2) {
-			System.out.println(logChk);
 
 			//데이터 뭉치기
 			corpVo vo = new corpVo();
 			vo.setId(memberId);
-			System.out.println(memberId);
 			vo.setPwd(memberPwd);
-			System.out.println(memberPwd);
-
-
 
 			//서비스 로직 실행
 			corpVo loginCorp = new corpService().login(vo);
-			
-			System.out.println(loginCorp);
-			
+
 			if(loginCorp != null) {
 				//로그인 성공 세션에 로그인 유저 정보 담기
 				req.getSession().setAttribute("loginCorp",loginCorp);
@@ -79,9 +59,7 @@ public class MemberLoginController extends HttpServlet{
 
 				resp.sendRedirect("/gibuAndTakePrj");
 
-
 			}
-			
 		}else {
 			//로그인 실패
 			req.setAttribute("errorMsg", "로그인 실패!");

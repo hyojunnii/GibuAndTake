@@ -8,7 +8,7 @@
 	String path = request.getContextPath();
 	MemberVo memberVo = (MemberVo)request.getSession().getAttribute("loginMember");
 	corpVo corpVo = (corpVo)request.getSession().getAttribute("loginCorp");
-													
+	
 %>
 
 <c:set var="path" value="<%=path %>"/>

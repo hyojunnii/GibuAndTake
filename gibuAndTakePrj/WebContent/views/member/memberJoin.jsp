@@ -137,7 +137,7 @@
        
 	}
 	
-	#inputId{
+	#memberId{
 		width: 300px;
 		height: 30px;
         border-radius: 20px 20px;
@@ -208,11 +208,8 @@
 			<table>
 				<tr>
 					<td class="first" style="font-weight: bold">아이디 *</td>
-					<td><input type="text" name="memberId" id="inputId" require placeholder="4글자 이상 입력">
-					<td><input type="button" id="check_button" value="중복확인" onclick="openIdChk()" >
-						<input type="hidden" name="idDuplication" value="idUncheck"><td>
-						
-					</td>
+					<td><input type="text" name="memberId" id="memberId" class="memberId" require placeholder="4글자 이상 입력">
+					<font id="checkId" size="2"></font>
 				</tr>
 				
 				<tr>
@@ -278,11 +275,28 @@
 	</main>
 
 	<script>
-	function openIdChk(){
+	
+	$('.memberId').focusout(function(){
+		let memberId = $('.memberId').val();
 		
-		window.name = "parentForm";
-		window.open("IdCheckForm.jsp",
-				"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
+		$.ajax({
+			url:"/member/idCheck",
+			type:"post",
+			data: {memberId: memberId},
+			dataType:'json';
+			success: function(result){
+				if(result == 0){
+					$("#checkId").html('사용할 수 없는 아이디입니다');
+					$("#checkId").attr('color', 'red');
+				}else{
+					$("#checkId").html('사용할 수 있는 아이디입니다');
+					$("#checkId").attr('color', 'green');
+				}
+			},
+			error: function (){
+				alert("서버요청실패");
+			}
+		})
 	}
 	
 	function pwdChk() {
