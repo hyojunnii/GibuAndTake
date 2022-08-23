@@ -53,12 +53,12 @@
               <td colspan="4">
                 <select name="category" class="form-select form-content" id="inputGroupSelect01" required>
                   <option value="" selected>카테고리를 선택하세요.</option>
-                  <option value="아동/청소년">아동/청소년</option>
+                  <option value="아동청소년">아동/청소년</option>
                   <option value="어르신">어르신</option>
                   <option value="장애인">장애인</option>
                   <option value="다문화">다문화</option>
                   <option value="지구촌">지구촌</option>
-                  <option value="가족/여성">가족/여성</option>
+                  <option value="가족여성">가족/여성</option>
                   <option value="시민사회">시민사회</option>
                   <option value="동물">동물</option>
                 </select>

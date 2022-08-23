@@ -68,7 +68,7 @@ public class SearchController extends HttpServlet{
 		
 		List<RegistVo> recommendList = new SearchService().recommendList(pageVo, s);
 		
-		req.getSession().setAttribute("recommendList", recommendList);
+		req.setAttribute("recommendList", recommendList);
 		
 		req.getRequestDispatcher("/views/search/searchPage.jsp").forward(req, resp);
 	}

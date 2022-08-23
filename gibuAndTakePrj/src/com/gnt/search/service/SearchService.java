@@ -45,6 +45,25 @@ public class SearchService {
 		return result;
 	}
 	
+	//주제별 검색 게시글 갯수
+	public int getCategoryCount(String project, String category) {
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = getConnection();
+			if("기부".equals(project)){
+				result = dao.getDonationCount(conn, category);
+			} else {
+				result = dao.getFundingCount(conn, category);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		return result;
+	}
+	
 	//추천목록
 	public List<RegistVo> recommendList(PageVo pageVo, String s) {
 		Connection conn = null;
@@ -88,6 +107,33 @@ public class SearchService {
 		return searchedList;
 	}
 
+	//주제별검색
+	public List<RegistVo> categorySearch(String project, String category, PageVo pageVo, String s) {
+		Connection conn = null;
+		
+		List<RegistVo> categoryList = null;
+		
+		conn = getConnection();
+		
+		if("기부".equals(project)) {
+			System.out.println("기부");
+			if(s != null) {
+				categoryList = dao.donationCatePopularList(conn, category, pageVo);
+			} else {
+				categoryList = dao.donationCateList(conn, category, pageVo);
+			}
+		} else {
+			System.out.println("펀딩");
+			if(s != null) {
+				categoryList = dao.fundingCatePopularList(conn, category, pageVo);
+			} else {
+				categoryList = dao.fundingCateList(conn, category, pageVo);
+			}
+		}
+		System.out.println(categoryList);
+		close(conn);
+		return categoryList;
+	}
 
 
 }

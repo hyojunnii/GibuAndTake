@@ -75,7 +75,7 @@ public class SearchContentController extends HttpServlet{
 		if(searchedList.size() == 0 || searchedList == null) {
 			req.setAttribute("NullList", 0);
 		} else {
-			req.getSession().setAttribute("searchedList", searchedList);
+			req.setAttribute("searchedList", searchedList);
 			req.setAttribute("par", search);
 		}
 		req.getRequestDispatcher("/views/search/searchPage.jsp").forward(req, resp);
