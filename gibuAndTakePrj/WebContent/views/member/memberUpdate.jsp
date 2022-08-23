@@ -340,7 +340,8 @@
 			</table>
 			
 				<div id="memberUdq">
-					<a onclick="location.href='/gibuAndTakePrj/member/MemberInfo'" class="log2" style="font-weight:bold">수정하기 /</a>
+					<button>수정하기</button>
+					<!-- <a onclick="location.href='/gibuAndTakePrj/member/MemberInfo'" class="log2" style="font-weight:bold">수정하기 /</a> -->
 					<a onclick="location.href='/gibuAndTakePrj/member/quit'"href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
                  	<a href="" onclick="pwdCh"  data-bs-toggle="modal" data-bs-target="#pwdChange"style="font-weight:bold"> 비밀번호 변경</a>
 				</div>
@@ -382,7 +383,7 @@
 		        			<td>신규 비밀번호 확인</td>
 		        			<td><input type="password" id="memberPnew2" name="memberPwdNew2"></td>
 		        		</tr>
-		        		<tr >
+		        		<tr>
 		        			<td  id="modal-form-buttons">
 		        				<input type="submit" class="modal-form-button" value="변경하기" onclick="return checkPwd();">
 		        				<input type="button" class="modal-form-button2"  data-bs-dismiss="modal" value="취소">
@@ -398,14 +399,4 @@
 	</div>
 	
 </body>
-	<script>
-		function pwdCh() {
-			var pwdCh = document.querySelector(".modal");
-			 pwdCh.classList.add("pwdCh");
-		}
-	
-	</script>
-	
-	
-	
 </html>

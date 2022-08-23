@@ -182,7 +182,7 @@
 		<ul class="menu">
 			<li><a onclick="location.href='/gibuAndTakePrj/member/MyPage'" id="home" style="font-weight:bold">MY 홈</a></li>
 			<div id="middleLine"></div>
-			<li><a onclick="location.href='/gibuAndTakePrj/member/MemberInfo'" id="memberInfor"  style="font-weight:bold">회원정보</a></li>
+			<li><a onclick="location.href='/gibuAndTakePrj/member/MemberUpdate'" id="memberInfor"  style="font-weight:bold">회원정보</a></li>
 			<div id="middleLine"></div>
 			<li><a href="#" id="Active"  style="font-weight:bold">활동내역</a></li>
 			<li><a onclick="location.href='/gibuAndTakePrj/member/MemberGibu'" id="dona" style="font-size: 12px">기부</a></li>

@@ -159,7 +159,7 @@ public class MemberDao {
 			try {
 			
 			//SQL 준비
-			String sql = "UPDATE MEMBER SET M_NICK = ? , M_PHONE = ? , M_EMAIL = ? , M_ADD= ?  WHERE M_NO = ?";
+			String sql = "UPDATE MEMBER SET M_NICK = ? , M_PHONE = ? , M_EMAIL = ? , M_ADD= ?, M_NAME = ?, M_MOD = SYSDATE WHERE M_NO = ?";
 			
 			//SQL 객체에 담기
 			pstmt = conn.prepareStatement(sql);
@@ -169,7 +169,8 @@ public class MemberDao {
 			pstmt.setString(2, vo.getPhone());
 			pstmt.setString(3, vo.getEmail());
 			pstmt.setString(4, vo.getAddr());
-			pstmt.setInt(5, vo.getNo());
+			pstmt.setString(5, vo.getName());
+			pstmt.setInt(6, vo.getNo());
 			
 			
 			//SQL 실행 및 실행결과 받기
@@ -257,9 +258,45 @@ public class MemberDao {
 		return vo;
 	}
 
-	public static int quit(Connection conn, String memberId, String memberPwd) {
+	
+	
+	
+	public static int checkId(Connection conn,String memberId, MemberVo vo) {
 		
-		String sql = "UPDATE MEMBER SET M_DEL='N' WHERE M_ID = ? AND M_PWD = ?";
+		
+		PreparedStatement pstmt = null;
+		int idCheck = 0;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM MEMBER WHERE M_NO = ? AND M_ID = ?";
+		
+
+		try {
+				pstmt = conn.prepareStatement(sql);
+			
+				pstmt.setInt(1, vo.getNo());
+				pstmt.setString(2,vo.getId());
+				
+				rs = pstmt.executeQuery();
+			
+				if(rs.next() || memberId.equals("")) {
+					idCheck = 0;
+				}else {
+					idCheck = 1;
+				}
+				}catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					close(pstmt);
+			}
+				return idCheck;
+		}
+	
+	
+	
+	public static int quit(Connection conn, int no) {
+		
+		String sql = "UPDATE MEMBER SET M_DEL='Y' WHERE M_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -267,8 +304,7 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, memberId);
-			pstmt.setString(2, memberPwd);
+			pstmt.setInt(1, no);
 			
 			result = pstmt.executeUpdate();
 			
@@ -283,8 +319,11 @@ public class MemberDao {
 	public int changePwd(Connection conn, String memberId, String memberPwd, String memberPwdNew) throws Exception{
 			//connection 준비
 			
+			System.out.println("memberId : " + memberId);
+			System.out.println("memberPwd : " + memberPwd);
+			System.out.println("memberPwdNew : " + memberPwdNew);
 			//sql 준비
-			String sql = "UPDATE MEMBER SET M_PWD = ? WHERE M_NO = ? AND M_ID = ? AND M_PWD = ?";
+			String sql = "UPDATE MEMBER SET M_PWD = ? WHERE M_ID = ? AND M_PWD = ?";
 			
 			PreparedStatement pstmt = null;
 			int result = 0;
@@ -310,8 +349,8 @@ public class MemberDao {
 			//실행결과 리턴
 			return result;
 		}
-	}
-	
+
+}
 
 	
 
