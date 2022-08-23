@@ -34,13 +34,17 @@ public class MemberLoginController extends HttpServlet{
 
 			//서비스 로직 실행
 			MemberVo loginMember = new MemberService().login(vo);
-
+			
 			if(loginMember != null) {
 				//로그인 성공 세션에 로그인 유저 정보 담기
 				req.getSession().setAttribute("loginMember",loginMember);
 				req.getSession().setAttribute("alertMsg","로그인 성공!");
 
 				resp.sendRedirect("/gibuAndTakePrj");
+			} else {
+				//로그인 실패
+				req.setAttribute("errorMsg", "로그인 실패!");
+				req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);
 			}
 		}else if(logChk == 2) {
 
@@ -58,17 +62,14 @@ public class MemberLoginController extends HttpServlet{
 				req.getSession().setAttribute("alertMsg","로그인 성공!");
 
 				resp.sendRedirect("/gibuAndTakePrj");
-
+				
+			} else {
+				//로그인 실패
+				req.setAttribute("errorMsg", "로그인 실패!");
+				req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);
 			}
-		}else {
-			//로그인 실패
-			req.setAttribute("errorMsg", "로그인 실패!");
-			req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);
-
 		}
-
 	}
-
 }
 
 

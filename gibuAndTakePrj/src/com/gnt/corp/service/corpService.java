@@ -100,6 +100,7 @@ public class corpService {
 		
 		Connection conn = null;
 		int result = 0;
+		int result2 = 0;
 		corpVo updateVo = null;
 		
 		try {
@@ -110,7 +111,6 @@ public class corpService {
 			//트랜잭션 처리 (commit || rollback)
 			if(result == 1) {
 				commit(conn);
-				//다시한번 회원정보 조회 (회원번호)
 				updateVo = selectOneByNo(vo.getNo());
 			}else {
 				rollback(conn);
@@ -127,7 +127,44 @@ public class corpService {
 		//실행결과 리턴
 		return updateVo;
 		
-	}private corpVo selectOneByNo(int no) {
+	}
+	
+	public corpVo memberUpdate(corpVo vo) {
+		//비지니스 로직 (자바 || SQL)
+	
+		
+		Connection conn = null;
+		int result = 0;
+		int result2 = 0;
+		corpVo updateVo = null;
+		
+		try {
+			
+			conn = getConnection();
+			result = new CorpDao().memberUpdate(conn, vo);
+			
+			//트랜잭션 처리 (commit || rollback)
+			if(result == 1) {
+				commit(conn);
+				updateVo = selectOneByNo(vo.getNo());
+			}else {
+				rollback(conn);
+			}
+			
+		}catch(Exception e) {
+			rollback(conn);
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		
+		//실행결과 리턴
+		return updateVo;
+		
+	}
+	
+	private corpVo selectOneByNo(int no) {
 		Connection conn = null;
 		corpVo vo = null;
 		

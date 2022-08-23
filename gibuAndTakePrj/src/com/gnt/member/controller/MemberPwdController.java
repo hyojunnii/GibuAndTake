@@ -33,7 +33,8 @@ public class MemberPwdController extends HttpServlet{
 				//성공
 				//마이페이지
 				req.getSession().setAttribute("alertMsg","비밀번호 변경 성공!");
-				resp.sendRedirect("/gibuAndTakePrj/member/memberUpdate");
+				req.getSession().invalidate();
+				resp.sendRedirect("/gibuAndTakePrj");
 			}else {
 				//실패
 				//에러페이지

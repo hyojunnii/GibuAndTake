@@ -182,7 +182,7 @@
 		<ul class="corpmenu">
 			<li><a onclick="location.href='/gibuAndTakePrj/corp/corpMyPage'" id="corphome" style="font-weight:bold">MY 홈</a></li>
 			<div id="middleLine"></div>
-			<li><a onclick="location.href='/gibuAndTakePrj/corp/corpInfo'" id="corpInfor"  style="font-weight:bold">회원정보</a></li>
+			<li><a onclick="location.href='/gibuAndTakePrj/corp/corpUpdate'" id="corpInfor"  style="font-weight:bold">회원정보</a></li>
 			<div id="middleLine"></div>
 			<li><a onclick="location.href='/gibuAndTakePrj/corp/corp'" id="corpActive"  style="font-weight:bold">활동내역</a></li>
 			<li><a onclick="location.href='/gibuAndTakePrj/corp/corpGibu'" id="corpdona" style="font-size: 12px">기부</a></li>

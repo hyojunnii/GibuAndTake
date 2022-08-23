@@ -1,36 +1,32 @@
 <%@page import="com.gnt.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <%
+<%
 	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
 	String alertMsg = (String)session.getAttribute("alertMsg");
 	session.removeAttribute("alertMsg");
 	
 	String contextPath = request.getContextPath();
 %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-	
 <title>Insert title here</title>
-  	
-  	
-  	<!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  
+	<!-- Latest compiled and minified CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	
 <style>
-	 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Sans+KR&display=swap");
-	 
-	.wrap{
+
+	#selEvery{
    		width:1200px;
    		margin:0 auto;
-  		 }
-	
+   }
+   
 	main{
 		margin:auto;
 		
@@ -60,7 +56,7 @@
 
     
     
-    a {
+    a{
     	text-decoration: none;
     	color: black;
     }
@@ -76,9 +72,10 @@
         
     }
     
-      .selected_bg{
+     .selected_bg{
         background-color: #EBF5E0;
     }
+     
     
      .greenBold{
         color: #086C37;
@@ -95,15 +92,89 @@
 		algin: center;
 		border-collapse: separate;
 		border-spacing : 0 20px;
-		
+		width:500px;
 		
 	}
 	
-	  #modal-outer {
+	table tr{
+		<%--border-style:solid;--%> 
+		
+	}
+	table tr >td{
+		<%--border-style:solid;--%>
+		
+		width:33%; 
+		
+	}
+	
+	#line{
+		border-bottom: 5px solid #E2F5EB;
+
+	}
+
+	#join{
+        text-align: center;
+        width: 260px;
+        margin: auto;
+        height: 60px;
+        border-radius: 20px 20px;
+        font-size: large;
+        background-color: white;
+        border-style: calc() ;
+        align:center;
+        
+    }
+	
+	.input{
+		width: 300px;
+		height: 30px;
+        border-radius: 20px 20px;
+        font-size: small;
+        border-width: 2px 2px 2px 2px;
+        padding-left:-30px;
+        border-style: solid ;
+        border-color:#acdac2;
+       
+	}
+	
+	
+	
+	
+	#check {
+		text-align: center;
+        width: 100px;
+        margin-top: 0 auto;
+        height: 30px;
+        border-radius: 20px 20px;
+        font-size: small;
+        background-color: white;
+        border: solid:black;
+        border-width: 1px 1px 1px 1px;
+        margin-right: 140px;
+       	font-weight: bold;
+       	
+	}
+	.first{
+		padding-left: 10px;
+		color:#2e6c4a;
+	}
+	 
+	 #memberDelQuit{
+		text-align: center;
+    }
+   
+    .log{
+        text-decoration: none;
+        color: black;
+        font-size: 15pt;
+       	font-weight: bold;
+    }
+    
+      #modal-outer {
         width: 400px;
       }
 
-      #modal-form {
+      #modal-form{
         height: 400px;
         border: 3px solid #72d09e;
         border-radius: 15px;
@@ -192,115 +263,26 @@
         font-weight: 600;
         box-shadow: 0.5px 0.5px 3px 0px #dadada;
       }
-      
-      
-      
-	table tr {
-		<%--border-style:solid;--%> 
-	  }
-	table tr >td{
-		<%--border-style:solid;--%> 
-		width:33%; 
-		
-	  }
 	
-	#line{
-		border-bottom: 5px solid #E2F5EB;
-
+	  #pwdFormOuter{
+		display: flex;
+		justify-content: center;
 	}
 	
-	#memberUp{
-		text-align:center;
-		font-size: 25px;
-		margin-top:10px;
-		font-weight:bold;
+	#pwdFormOuter td:last-child{
+		display: flex;
+		justify-content: right;
 	}
-
-	#join{
-        text-align: center;
-        width: 260px;
-        margin: auto;
-        height: 60px;
-        border-radius: 20px 20px;
-        font-size: large;
-        background-color: white;
-        border-style: calc() ;
-        align:center;
-    }
-
-	.input{
-		width: 300px;
-		height: 30px;
-        border-radius: 20px 20px;
-        font-size: small;
-        border-width: 2px 2px 2px 2px;
-        padding-left:20px;
-        border-style: solid;
-        border-color: #acdac2;
-        
-       
-	}
-	
-	#check {
-		text-align: center;
-        width: 100px;
-        margin-top: 0 auto;
-        height: 30px;
-        border-radius: 20px 20px;
-        font-size: small;
-        background-color: white;
-        border: solid:black;
-        border-width: 1px 1px 1px 1px;
-        margin-right: 140px;
-       	font-weight: bold;
-       	border-style: solid ;
-        border-color:#acdac2;
-        color:#2e6c4a;
-	}
-	
-	#check:hover{
-		text-align: center;
-        width: 100px;
-        margin-top: 0 auto;
-        height: 30px;
-        border-radius: 20px 20px;
-        font-size: small;
-        border: solid:black;
-        border-width: 1px 1px 1px 1px;
-        margin-right: 140px;
-       	font-weight: bold;
-		background-color: #5CD394;
-       	transition:background 0.7s ease-in-out;
-	}
-	
-	.first{
-		padding-left: 100px;
-		color:#2e6c4a;
-	}
-	
-	 #memberUdq{
-		text-align: center;
-		font-size:15pt;
-		
-    .log2{
-    	text-decoration: none;
-        color: black;
-       	font-weight: bold;
-    	
-    }
-    
-    
-   
-    	
-    	
+	 
 </style>
 </head>
 <body>
 	
 	
 	<main>
-		  <div id="memberUpEvery">
-		 <div id="logo_name">
+		  <div id="selEvery">
+
+		  <div id="logo_name">
            	 <a href="<%=request.getContextPath()%>">
                     <img id="logo" src="/gibuAndTakePrj/resources/img/free-icon-giving-5017478.png" alt="홈페이지 로고">
                     <span id="siteName"><span class="greenBold selected_bg">기부 앤 테이크</span><span id="siteName_small" class="greenBold">Gibu n Take</span></span>
@@ -308,52 +290,70 @@
            </div>
 		
 		<div id="line"></div>
-		<h3 id= "memberUp">회원 정보 수정</h3>
-		<form action="/gibuAndTakePrj/member/MyUpdate" method="post">
+		<h3 align="center" style="font-size: 25px; ">회원 정보 조회</h3>
+		<form action="/gibuAndTakePrj/member/MemberUpdate" method="post" name="memberUpdate">
+		<input type="hidden" value="<%=loginMember.getNo()%>" name="memberNo">
 			<table>
-			
 				<tr>
-					<td class="first" style="font-weight: bold">닉네임 *</td>
-					<td><input type="text" name="memberNick" id="memberNick" class="input" maxlength="10" required></td>
+					<td class="first" style="font-weight: bold">아이디 *</td>
+					<%--input 안에다가 히든밸류 값 넣어주기 getNo... --%>
+					<td><input type="text" name="memberId" class="input" id="memberId" value="<%=loginMember.getId() %>" readonly></td>
 					
-				</tr>
-			
-				<tr>
-					<td class="first" style="font-weight: bold">휴대전화 *</td>
-					<td><input type="tel" name="memberPhone" id ="memberPhone" class="input" placeholder="- 없이 입력"></td>
-					<td></td>
 				</tr>
 				
 				<tr>
+					<td class="first" style="font-weight: bold">이름 *</td>
+					<td><input type="text" name="memberName" id="memberName" class="input" value="<%=loginMember.getName() %>" ></td>
+			
+				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">닉네임 *</td>
+					<td><input type="text" class="input" name="memberNick"  id="memberNick" value="<%=loginMember.getNick() %>" ></td>
+					
+				</tr>
+				<tr>
+					<td  class="first" style="font-weight: bold">주민등록번호 *</td>
+					<td><input type="text" name="memberRegnum" id="memberRegnum" class="input" value="<%=loginMember.getRegnum() %>" readonly></td>
+				
+				</tr>
+				<tr>
+					<td class="first" style="font-weight: bold">휴대전화 *</td>
+					<td><input type="text" name="memberPhone"  id="memberPhone" class="input" value="<%=loginMember.getPhone() %>" ></td>
+					
+					
+				</tr>
+				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="email" name="memberEmail" name="memberEmail" class="input"></td>
-					<td></td>
+					<td><input type="tel" name="memberEmail" id = "memberEmail" class="input" value="<%=loginMember.getEmail() %>" ></td>
+				
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">주소 *</td>
-					<td><input type="text" name="memberAddr" id="memberAddr" class="input"></td>
-					<td></td>
+					<td><input type="tel" id="memberAddr"  name="memberAddr" class="input"  value="<%=loginMember.getAddr() %>" ></td>
+				
 				</tr>
-				<tr></tr><tr></tr><tr></tr><tr></tr>
+				
 			
-
+				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+				
 			</table>
 			
-				<div id="memberUdq">
-					<button>수정하기</button>
-					<!-- <a onclick="location.href='/gibuAndTakePrj/member/MemberInfo'" class="log2" style="font-weight:bold">수정하기 /</a> -->
-					<a onclick="location.href='/gibuAndTakePrj/member/quit'"href="" class="log2" style="font-weight:bold">회원 탈퇴 /</a>
-                 	<a href="" onclick="pwdCh"  data-bs-toggle="modal" data-bs-target="#pwdChange"style="font-weight:bold"> 비밀번호 변경</a>
-				</div>
+				<button>수정하기</button>
 			</form>
-			</div>
-			  <div style="padding-top: 100px">
-               <%@ include file="../common/footer.jsp" %>
-          		</div>
+			
+			<button type="button" data-bs-toggle="modal" data-bs-target="#pwdChange">비밀번호변경</button>
+			
+			<form action="/gibuAndTakePrj/member/quit" method="get">
+				<button>회원탈퇴</button>
+			</form>
 		
+		</div>
 		
-		
+		<div style="padding-top: 100px">
+           <%@ include file="../common/footer.jsp" %>
+        </div>
 	</main>
+	
 	<!-- The Modal -->
 	<div class="modal" id="pwdChange">
 	  <div class="modal-dialog" id="modal-outer">
@@ -368,8 +368,8 @@
 	      <!-- Modal body -->
 	      <div class="modal-body" id="modal-body">
 	        <div id="pwdFormOuter">
-	        	<form action="" method="post">
-	        		<input type="hidden" name="memberId"> 
+	        	<form action="/gibuAndTakePrj/member/pwd" method="post">
+	        		<input type="hidden" name="memberId" value="<%=loginMember.getId()%>">
 		        	<table>
 		        		<tr>
 		        			<td>기존 비밀번호</td>
@@ -398,5 +398,18 @@
 	  </div>
 	</div>
 	
+	<script>
+	function checkPwd(){
+		isSame = $('input[name=memberPwdNew]').val() == $('input[name=memberPwdNew2]').val();
+		if(isSame){
+			return true;
+		}else{
+			alert("신규 비밀번호가 일치하지 않습니다.");
+			return false;
+		}
+		
+	}
+	
+	</script>
 </body>
 </html>

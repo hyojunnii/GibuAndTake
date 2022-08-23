@@ -195,14 +195,14 @@ public class CorpDao {
 		return result;
 	}
 	
-	public int memberUpdate(Connection conn, MemberVo vo) throws Exception {
+	public int memberUpdate(Connection conn, corpVo vo) throws Exception {
 		PreparedStatement pstmt = null;
 		int result = 0;
 
 		try {
 
 			//SQL 준비
-			String sql = "UPDATE MEMBER SET M_NICK = ? , M_PHONE = ? , M_EMAIL = ? , M_ADD= ?  M_NAME = ? WHERE M_NO = ?";
+			String sql = "UPDATE MEMBER SET M_NICK = ? , M_PHONE = ? , M_EMAIL = ? , M_ADD= ? , M_NAME = ? WHERE M_NO = ?";
 
 			//SQL 객체에 담기
 			pstmt = conn.prepareStatement(sql);
@@ -245,6 +245,7 @@ public class CorpDao {
 			//SQL 객체에 담고, SQL 완성하기
 			pstmt.setString(1, vo.getContent());
 			pstmt.setNString(2, vo.getClasss());
+			pstmt.setInt(3, vo.getNo());
 	
 			//SQL 실행 및 실행결과 받기
 			result = pstmt.executeUpdate();
@@ -265,7 +266,7 @@ public class CorpDao {
 		//connection 준비
 		
 		//SQL 준비
-		String sql = "SELECT * FROM MEMBER WHERE M_NO = ? AND M_DEL = 'N'";
+		String sql = "SELECT * FROM MEMBER M , CORPARATION C WHERE M.M_NO = C.M_NO";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
