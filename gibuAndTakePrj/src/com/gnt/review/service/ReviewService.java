@@ -40,5 +40,17 @@ public class ReviewService {
 			
 		return result;
 	}
+
+	public ReviewVo selectReviewOne(String revNo) {
+		ReviewVo result = null;
+		Connection conn = null;
+		
+		conn = getConnection();
+		result = dao.selectReviewOne(conn, revNo);
+		result.setRevImg(dao.selectImg(conn, revNo));
+		close(conn);
+			
+		return result;
+	}
 }
 	

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,11 @@ import com.gnt.review.service.CreateReviewService;
 import com.gnt.review.service.UploadImgService;
 import com.gnt.review.vo.ReviewImgVo;
 import com.gnt.review.vo.ReviewVo;
+
+@MultipartConfig(
+		maxFileSize = 1024*1024*200,
+		maxRequestSize = 1024*1024*200*5
+		)
 
 @WebServlet(urlPatterns = "/review/create")
 public class CreateReviewController extends HttpServlet {
@@ -37,14 +43,20 @@ public class CreateReviewController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		String revNo = (String)req.getSession().getAttribute("CreateReviewNo");
 		String title = req.getParameter("title");
 		String editordata = req.getParameter("editordata");
 		String category = req.getParameter("category");
 		MemberVo m = (MemberVo)req.getSession().getAttribute("loginMember");
 		String no = Integer.toString(m.getNo());
+		
 		Part f = req.getPart("f");
+		
 		req.getSession().removeAttribute("CreateReviewNo");
+		
+		
+
 		
 		String savePath = null;
 		if(f.getSubmittedFileName().length()!=0) {
@@ -59,6 +71,7 @@ public class CreateReviewController extends HttpServlet {
 			String realPath = req.getServletContext().getRealPath("/resources/upload");
 			String changeName = new UploadImgService().createChangeName(originName);
 			savePath = realPath+File.separator+changeName;
+			System.out.println(savePath);
 			FileOutputStream os = new FileOutputStream(savePath);
 			BufferedOutputStream bos = new BufferedOutputStream(os);
 			
@@ -76,7 +89,13 @@ public class CreateReviewController extends HttpServlet {
 		}
 		
 		ReviewImgVo imgVo = new ReviewImgVo();
-		imgVo.setUrl(savePath);
+		String[] strArr = savePath.split("\\");
+		String[] relatePathArr = new String[3];
+		relatePathArr[0] = strArr[strArr.length-1];
+		relatePathArr[1] = strArr[strArr.length-2];
+		relatePathArr[2] = strArr[strArr.length-3];
+		String relatePath = req.getContextPath()+"/"+String.join("/", relatePathArr);
+		imgVo.setUrl(relatePath);
 		ReviewVo reviewVo = new ReviewVo();
 		reviewVo.setRevNo(revNo);
 		reviewVo.setmNo(no);
@@ -88,7 +107,18 @@ public class CreateReviewController extends HttpServlet {
 		
 		if(result==1) {
 			req.setAttribute("alertMsg", "후기 작성 성공");
+			if("1".equals(category)) {
+				resp.sendRedirect(req.getContextPath()+"/donate/review/list?p=1");
+			}else if("2".equals(category)) {
+				resp.sendRedirect(req.getContextPath()+"/campaign/review/list?p=1");
+			}else if("3".equals(category)) {
+				resp.sendRedirect(req.getContextPath()+"/funding/review/list?p=1");
+			}
+		}else {
+			req.setAttribute("errorMsg", "로그인 실패!");
+			req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);
 		}
+		
 		
 		
 	}
