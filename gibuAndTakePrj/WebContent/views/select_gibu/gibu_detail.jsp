@@ -1,3 +1,4 @@
+<%@page import="javax.naming.Context"%>
 <%@page import="com.gnt.common.ReplyVo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.gnt.gibu.vo.GibuVo"%>
@@ -8,6 +9,7 @@
 	GibuVo vo = (GibuVo)request.getAttribute("gibuvo");
 	List<ReplyVo> list = (List<ReplyVo>)request.getAttribute("replyvo");
 %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -164,7 +166,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
+    
+	
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
@@ -172,10 +175,17 @@
 	<div id="outer">
     <div id="gibu_detail_container">
         <table id="title_table">
-            <tr>
-                <td width="20%"></td>
-                <td colspan="3" width="60%"><h1><%=vo.getRegname() %></h1></td>
-                <td width="20%"><button class="btn" hidden>수정하기</button></td>
+            <tr>	
+            		<td width="20%"></td>
+	                <td colspan="3" width="60%"><h1><%=vo.getRegname() %></h1></td>
+	                <td width="20%">
+           		<c:if test="${empty loginMember }">
+	                </td>
+              	</c:if>
+	            <c:if test="${loginMember.no == gibuvo.mno}">
+	    			<button class="btn">수정하기</button>
+				    </td>
+			 	</c:if>
             </tr>
         </table>
             <p class="comName">By <%=vo.getMnick() %></p>
@@ -229,78 +239,65 @@
          
           <div id="comments">
           	
-          	<script>
-          		function repEdit() {
-					const done = confirm("수정하시겠습니까?");
-					var repno = ${'#comments_num'}.va();
-					console.log(repno);
-				}
-          		function repDel() {
-          			const done = confirm("삭제하시겠습니까?");
-          			if(done==1){
-          					
-          			}
-				}
-          		function repBan() {
-					const done = confirm("신고하시겠습니까?");
-					if(done==1){
-						
-					}
-				}
-          	</script>
           	
           	
-          	<%for(ReplyVo rp : list) {%>
-            <table id="comments_table">
-                <tr>
-                	<td hidden id="comments_num"><%= rp.getRep_no() %></td>
-                    <td id="comments_name" width="30%"><%= rp.getMnick() %></td>
-                    <td id="comments_date" align="right" width="50%"><%= rp.getRepmod() %></td>
-                    <td align="right" width="20%">
-                        <button value="수정" class="btn" onclick="repEdit()">수정</button>
-                        <button value="삭제" class="btn" onclick="repDel()">삭제</button>
-                        <button value="신고" class="btn" onclick="repBan()">신고</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" id="comments_content"><%= rp.getRepcontent() %></td>
-                </tr>
-                <!-- <tr>
-                    <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
-                </tr> -->
-                
-            </table>
-            <hr>
-			<%} %>
+          	
+          	<c:forEach var="rp" items="${replyvo}">
+          	<form action="/gibuAndTakePrj/view/gibuDetail/edit" method="get">
+          	<input type="hidden" name=num value="${rp.repno }">
+	            <table id="comments_table">
+	                <tr>
+	                	<td hidden id="comments_num"> ${rp.repno} </td>
+	                    <td id="comments_name" width="30%"> ${rp.mnick}</td>
+	                    <td id="comments_date" align="right" width="50%">${rp.repmod}</td>
+	                    <td align="right" width="20%">
+	                    <c:if test="${loginMember.no == rp.mno}">
+	                        <button type="submit" value="수정" class="btn" formaction='/gibuAndTakePrj/view/gibuDetail/edit?'>수정</button>
+	                        <button type="submit" value="삭제" class="btn" formaction='/gibuAndTakePrj/view/gibuDetail/del?'>삭제</button>
+	                 	</c:if>
+	                        <button type="submit" value="신고" class="btn" formaction='/gibuAndTakePrj/view/gibuDetail/ban?'>신고</button>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td colspan="5" id="comments_content">${rp.repcontent}</td>
+	                </tr>
+	                <!-- <tr>
+	                    <td colspan="5" ><img src="../resources/img/sample.png" alt="" id="comments_img"></td>
+	                </tr> -->
+	                
+	            </table>
+	            <hr>
+	            </form>
+			</c:forEach>
             
 
-
-            <!-- 댓글 -->
-            <form action="" method="post">
-            
-                <table id="comment_input_table">
-                    <br>
-                   <tr>
-                    <td align="left">
-                        <textarea name="comment_area" id="comment_area" rows="5" placeholder="내용을 적어주세요"></textarea>
-                    </td>
-                    <td align="right">
-                        <button id="comment_area_btn" >등록하기</button>
-                    </td>
-                   </tr> 
-                </table>
-                
-               
-
-            </form>
-
+			<c:if test="${!empty loginMember }">
+	            <!-- 댓글 -->
+	            <form action="/gibuAndTakePrj/view/gibu/insert" method="get">
+	            		<input type="hidden" name="writerNo" value="<%= memberVo.getNo()%>">
+	            		<input type="hidden" name="regNo" value="<%= vo.getRegno() %>">
+	                <table id="comment_input_table">
+	                    <br>
+	                   <tr>
+	                    <td align="left">
+	                        <textarea name="comment_area" id="comment_area" rows="5" placeholder="내용을 적어주세요"></textarea>
+	                    </td>
+	                    <td align="right">
+	                        <input id="comment_area_btn" type="submit" value="등록하기">
+	                    </td>
+	                   </tr> 
+	                </table>
+			   	</form>
+			</c:if>
 
           </div>
 
-           
+          
           
         </div>
       </div>
     <%@ include file="../common/footer.jsp" %>
+   
+   
 </body>
 </html>

@@ -80,4 +80,39 @@ public class GibuService {
 		return volist;
 	}
 
+	public int insertReply(GibuVo vo) {
+		Connection conn = null;
+		int result = 0;
+		conn = getConnection();
+		//DAO 호출	
+			result = dao.insertReply(conn, vo);
+			close(conn);
+		return result;
+	}
+
+	public ReplyVo GibuEdit(String num) {
+		Connection conn = null;
+		ReplyVo vo = null;
+		
+		conn = getConnection();
+		//DAO 호출	
+			vo = dao.GibuEdit(conn, num);
+			close(conn);
+		return vo;
+	}
+
+	public int Edit(ReplyVo vo) {
+		//데이터 검사
+		if(vo.getRepcontent().length()<1) {
+			return -1;
+		}
+		Connection conn = null;
+
+		conn = getConnection();
+		//DAO 호출	
+		int	result = dao.Edit(conn, vo);
+			close(conn);
+		return result;
+	}
+
 }

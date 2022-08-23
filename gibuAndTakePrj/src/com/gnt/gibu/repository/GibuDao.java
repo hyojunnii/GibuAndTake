@@ -3,6 +3,7 @@ package com.gnt.gibu.repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -316,10 +317,10 @@ public class GibuDao {
 	//상세보기
 	public GibuVo selectDetail(Connection conn, int type, int num) {
 		// sql 준비
-				String sql = "SELECT *  FROM DONATION D JOIN REGIST R ON D.REG_NO = R.REG_NO JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG RI ON R.REG_NO = RI.REG_NO  AND R.REG_CLASS = '기부' AND R.REG_FIN = 'N' AND R.REG_NO = ?";
+				String sql = "SELECT *  FROM DONATION D JOIN REGIST R ON D.REG_NO = R.REG_NO JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG RI ON R.REG_NO = RI.REG_NO  AND R.REG_CLASS = '기부' AND R.REG_NO = ?";
 				String paraclass = "";
 				if(type!=0) {
-					sql = "SELECT *  FROM DONATION D JOIN REGIST R ON D.REG_NO = R.REG_NO JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG RI ON R.REG_NO = RI.REG_NO  AND R.REG_CLASS = '기부' AND R.REG_FIN = 'N' AND R.REG_NO = ? AND D.D_CLASS = ? ";	
+					sql = "SELECT *  FROM DONATION D JOIN REGIST R ON D.REG_NO = R.REG_NO JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG RI ON R.REG_NO = RI.REG_NO  AND R.REG_CLASS = '기부' AND R.REG_NO = ? AND D.D_CLASS = ? ";	
 				}			
 				
 				
@@ -454,7 +455,7 @@ public class GibuDao {
 			while (rs.next()) {
 
 				// 테스트
-				String rep_no = rs.getString("REP_NO");		//댓글번호
+				String repno = rs.getString("REP_NO");		//댓글번호
 				String mno = rs.getString("M_NO");			//사용자번호
 				String regno = rs.getString("REG_NO");		//등록번호
 				String repcontent = rs.getString("REP_CONTENT");	//댓글내용
@@ -465,7 +466,7 @@ public class GibuDao {
 				String mnick = rs.getString("M_NICK");
 
 				ReplyVo vo = new ReplyVo();
-				vo.setRep_no(rep_no);
+				vo.setRepno(repno);
 				vo.setMno(mno);
 				vo.setRegno(regno);
 				vo.setRepcontent(repcontent);
@@ -487,6 +488,109 @@ public class GibuDao {
 		}
 		return volist;
 
+	}
+
+	public int insertReply(Connection conn, GibuVo vo) {
+		//SQL 준비
+				String sql = "INSERT INTO REPLY(REP_NO, M_NO, REG_NO, REP_CONTENT) VALUES(SEQ_REPLY_REP_NO.NEXTVAL, ?, ?, ?)";
+
+				PreparedStatement pstmt = null;
+				int result = 0;
+				try {
+					//SQL 객체에 담기 및 물음표 채우기
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, vo.getMno());
+					pstmt.setString(2, vo.getRegno());
+					pstmt.setString(3, vo.getRegcontent());;
+					
+					//SQL 실행
+					result = pstmt.executeUpdate();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					close(pstmt);
+				}
+				
+				//실행결과 리턴
+				return result;
+	}
+
+	public ReplyVo GibuEdit(Connection conn, String num) {
+		// sql 준비
+				String sql = "SELECT * FROM REPLY RP JOIN MEMBER M ON RP.M_NO = M.M_NO WHERE RP.REP_NO= ? AND RP.REP_DEL= 'N'";
+				String paraclass = "";
+				
+				int num1 = Integer.parseInt(num);
+				
+				PreparedStatement pstmt = null;
+				ReplyVo vo = null;
+				ResultSet rs = null;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, num1);
+//					if(type!=0) {
+//						pstmt.setString(2, paraclass);
+//					}
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+
+						// 테스트
+						String repno = rs.getString("REP_NO");		//댓글번호
+						String mno = rs.getString("M_NO");			//사용자번호
+						String regno = rs.getString("REG_NO");		//등록번호
+						String repcontent = rs.getString("REP_CONTENT");	//댓글내용
+						String repdate = rs.getString("REP_DATE");		//작성일
+						String repdel = rs.getString("REP_DEL");		//삭제여부
+						String repban = rs.getString("REP_BAN");		//신고여부
+						String repmod = rs.getString("REP_MOD");		//마지막수정일자
+						String mnick = rs.getString("M_NICK");
+
+						vo = new ReplyVo();
+						vo.setRepno(repno);
+						vo.setMno(mno);
+						vo.setRegno(regno);
+						vo.setRepcontent(repcontent);
+						vo.setRepdate(repdate);
+						vo.setRepdel(repdel);
+						vo.setRepban(repban);
+						vo.setRepmod(repmod);
+						vo.setMnick(mnick);;
+
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					close(pstmt);
+					close(rs);
+				}
+				return vo;
+	}
+
+	//최종 수정
+	public int Edit(Connection conn, ReplyVo vo) {
+		//SQL 준비
+		String sql = "UPDATE REPLY SET REP_CONTENT = ? , REP_MOD = SYSDATE WHERE REP_NO = ? AND REG_NO = ? AND M_NO = ?";
+		int result =0;
+		PreparedStatement pstmt = null;
+		//SQL 을 객체에 담기 && SQL 완성
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getRepcontent());
+			pstmt.setString(2, vo.getRepno());
+			pstmt.setString(3, vo.getRegno());
+			pstmt.setString(4, vo.getMno());
+			
+			//SQL 실행 및 결과저장
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		//실행결과 리턴
+		return result;
+				
 	}
 
 }
