@@ -3,6 +3,7 @@
 
 <% 
 	DonationVo dvo = (DonationVo)session.getAttribute("editVo");
+	String content = dvo.getContent();
 %>
 
 <!DOCTYPE html>
@@ -177,25 +178,22 @@
     <%@ include file="/views/common/footer.jsp" %>
 
     <script>
-	    $(document).ready(function() {
-	    	$('#summernote').summernote('code', '${editVo.content}');
-	    	$('#summernote').summernote({
-				  height: 500,                 // 에디터 높이
-				  minHeight: 500,             // 최소 높이
-				  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-				  lang: "ko-KR",					// 한글 설정
-				  placeholder: '프로젝트의 정보를 입력해주세요.',	//placeholder 설정
-				  toolbar: [
-				    ['fontsize', ['fontsize']],
-				    ['style', ['bold', 'italic', 'underline']],
-				    ['color', ['forecolor','color']],
-				  	['para', ['paragraph']],
-				  	['height', ['height']],
-				  ],
-			  	  fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
-	    	});
-	    });
-	    
+    	$('#summernote').summernote({
+			  height: 500,                 // 에디터 높이
+			  minHeight: 500,             // 최소 높이
+			  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+			  lang: "ko-KR",					// 한글 설정
+			  placeholder: '프로젝트의 정보를 입력해주세요.',	//placeholder 설정
+			  toolbar: [
+			    ['fontsize', ['fontsize']],
+			    ['style', ['bold', 'italic', 'underline']],
+			    ['color', ['forecolor','color']],
+			  	['para', ['paragraph']],
+			  	['height', ['height']],
+			  ],
+		  	  fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+    	});
+	    	
 		function addRow() {
 		  const table = document.getElementById("pm-table2");
 		

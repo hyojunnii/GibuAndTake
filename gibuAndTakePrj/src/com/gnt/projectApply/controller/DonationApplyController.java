@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.gnt.corp.vo.corpVo;
 import com.gnt.project.vo.DonationVo;
 import com.gnt.project.vo.RegistVo;
 import com.gnt.projectApply.service.ProjectApplyService;
@@ -40,8 +41,9 @@ public class DonationApplyController extends HttpServlet{
 		RegistVo rvo = new RegistVo();
 		
 		String regCategory = "기부";
-		// String corpNo = req.getParameter("corpNo"); //사용자번호 받아와야
-		String corpNo = "1";
+		corpVo cvo = (corpVo)req.getSession().getAttribute("loginCorp");
+		String corpNo = Integer.toString(cvo.getNo());
+		System.out.println(corpNo);
 		
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");

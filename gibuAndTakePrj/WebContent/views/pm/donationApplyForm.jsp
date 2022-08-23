@@ -66,7 +66,7 @@
             </tr>
             <tr>
               <td class="form-subtitle">단체명*</td>
-              <td colspan="4"><input name="corp" type="text" class="form-control form-content" placeholder="단체명을 입력하세요." value="로그인기업" disabled /></td>
+              <td colspan="4"><input name="corp" type="text" class="form-control form-content" placeholder="단체명을 입력하세요." value="${loginCorp.nick}" disabled /></td>
             </tr>
             <tr>
               <td class="form-subtitle">프로젝트 제목*</td>
