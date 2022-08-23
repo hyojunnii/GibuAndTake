@@ -11,14 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gnt.stmt.service.StmtService;
 
-@WebServlet (urlPatterns = "/corp/stmtList")
+@WebServlet (urlPatterns = "/corp/stmtRe")
 public class StmtReController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		ArrayList<StmtVo> list = new StmtReService().selectList();
-//		req.setAttribute("list", list);
-//		
-		req.getRequestDispatcher("/views/user2/corpStatementList.jsp").forward(req, resp);
+	
+		req.getRequestDispatcher("/views/user2/corpStatementRe.jsp").forward(req, resp);
 	}
 }

@@ -16,7 +16,7 @@ public class StmtService {
 	
 	private final StmtDao dao = new StmtDao();
 
-	public ArrayList<StmtVo> showList(MemberVo m) {
+	public ArrayList<StmtVo> showDona(MemberVo m) {
 		Connection conn = null;
 		ArrayList<StmtVo> voList = null;
 	
@@ -24,6 +24,35 @@ public class StmtService {
 		voList = new StmtDao().showList(conn, m); 
 		
 		return voList;
+	}
+
+	public StmtVo edit(StmtVo vo) {
+		Connection conn = null;
+		int result = 0;
+		StmtVo updateVo = null;
+		try {
+			conn = getConnection();
+			result = new StmtDao().edit(conn, vo);
+			
+			if(result == 1) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			rollback(conn);
+		} finally {
+			close(conn);
+		}
+		
+		return updateVo;
+	}
+
+	public ArrayList<StmtVo> showExe(ArrayList<StmtVo> result) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
