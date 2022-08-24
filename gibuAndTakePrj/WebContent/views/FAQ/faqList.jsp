@@ -367,7 +367,7 @@
 		    	
 			    	<button id="btn1" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/write1'">FAQ작성</button>
 			    	
-		    		<button id="btn2" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/modify'">FAQ수정/삭제</button>
+		    		<button id="btn2" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/modify?num='">FAQ수정/삭제</button>
 	    	<%} %> 
 	    
 	    <div id="page-area">
@@ -395,9 +395,7 @@
 	<script>
     	$(function(){
     		$('.toggle').click(function(){
-    			if($(".toggle2").css("display") == "none"){
-    				$(".toggle2").show();
-    			}
+    			$(this.nextElementSibling.nextElementSibling).toggle();
     		});
     		
     	})

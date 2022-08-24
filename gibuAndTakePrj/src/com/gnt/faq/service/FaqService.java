@@ -78,29 +78,7 @@ public class FaqService {
 		return result;
 	}
 
-	public int delete(String num) {
-		Connection conn = null;
-		int result = 0;
-		
-		try {
-			conn = getConnection();
-			
-			result = dao.delete(conn, num);
-			
-			if(result == 1) {
-				commit(conn);
-			}else {
-				rollback(conn);
-			}
-		}catch(Exception e) {
-			rollback(conn);
-			e.printStackTrace();
-		}finally {
-			close(conn);
-		}
-		
-		return result;
-	}
+	
 
 	public FaqVo selectNum(String num) {
 		Connection conn = null;
@@ -143,6 +121,30 @@ public class FaqService {
 		}catch(Exception e) {
 			e.printStackTrace();
 			rollback(conn);
+		}finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+	
+	public int delete(String num) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = getConnection();
+			
+			result = dao.delete(conn, num);
+			
+			if(result == 1) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+		}catch(Exception e) {
+			rollback(conn);
+			e.printStackTrace();
 		}finally {
 			close(conn);
 		}

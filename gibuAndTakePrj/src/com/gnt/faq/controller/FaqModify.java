@@ -1,6 +1,7 @@
 package com.gnt.faq.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,12 +23,18 @@ public class FaqModify extends HttpServlet{
 		req.setAttribute("list", list);
 		
 		String num = req.getParameter("num");
-		
+		System.out.println("오류1");
 		FaqVo vo = new FaqService().selectNum(num);
+		System.out.println("오류2");
+		
+		
 		
 		if(vo != null) {
 			req.setAttribute("vo", vo);
+			req.setAttribute("list", list);
+			System.out.println("오류3");
 			req.getRequestDispatcher("/views/FAQ/faqModify.jsp").forward(req, resp);
+			System.out.println("오류4");
 		}
 		
 	}
@@ -36,11 +43,13 @@ public class FaqModify extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		
+		String cate = req.getParameter("cate");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String num = req.getParameter("num");
 		
 		FaqVo vo = new FaqVo();
+		vo.setCate(cate);
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setNo(num);
