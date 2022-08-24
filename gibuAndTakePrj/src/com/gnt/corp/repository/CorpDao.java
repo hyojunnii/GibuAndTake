@@ -392,6 +392,37 @@ public class CorpDao {
 		}
 		return result;
 	}
+
+	public static int checkId(Connection conn,String corpId) {
+		
+		
+		PreparedStatement pstmt = null;
+		int idCheck = 0;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM MEMBER WHERE M_ID = ?";
+		
+
+		try {
+				pstmt = conn.prepareStatement(sql);
+			
+				
+				pstmt.setString(1 , corpId);
+				rs = pstmt.executeQuery();
+			
+				if(rs.next() || corpId.equals("")) {
+					idCheck = 0;
+				}else {
+					idCheck = 1;
+				}
+				}catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					close(pstmt);
+			}
+				return idCheck;
+		}
+	
 }
 
 

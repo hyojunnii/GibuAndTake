@@ -261,22 +261,21 @@ public class MemberDao {
 	
 	
 	
-	public static int checkId(Connection conn,String memberId, MemberVo vo) {
+	public static int checkId(Connection conn,String memberId) {
 		
 		
 		PreparedStatement pstmt = null;
 		int idCheck = 0;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM MEMBER WHERE M_NO = ? AND M_ID = ?";
+		String sql = "SELECT * FROM MEMBER WHERE M_ID = ?";
 		
 
 		try {
 				pstmt = conn.prepareStatement(sql);
 			
-				pstmt.setInt(1, vo.getNo());
-				pstmt.setString(2,vo.getId());
 				
+				pstmt.setString(1 , memberId);
 				rs = pstmt.executeQuery();
 			
 				if(rs.next() || memberId.equals("")) {

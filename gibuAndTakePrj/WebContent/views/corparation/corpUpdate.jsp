@@ -290,6 +290,97 @@
         font-size: 18px;
         background-color: #e0e0e0;
       }
+      
+      #corp_updatediv{
+		text-align: center;
+		margin-left:330px;
+	}
+	
+	#corp_pwdupdatediv{
+		text-align: center;
+		margin-left:330px;
+	}
+	
+	#corp_quitdiv{
+		text-align: center;
+		margin-left:330px;
+		
+	}
+	#corp_update {
+		 width:120px;
+       	 float:left;
+       	 margin-left:20px;
+       	 height:40px;
+       	 border-radius: 20px 20px;
+       	 font-size: small;
+       	 background-color: #5CD394;
+       	 border: none;
+	}
+	
+	  #corp_update:hover {
+	        text-align: center;
+	        width: 130px;
+	       	margin-left:20px;
+	        height: 45px;
+	        border-radius: 20px 20px;
+	        font-size: small;
+	        background-color: #EBF5E0;
+	        border: none;
+	        color: #086C37;
+	        font-weight: bold;
+	      	transition:background 0.7s ease-in-out;
+	      
+	    }
+	
+	#corp_pwdupdate{
+		 width:120px;
+       	 float:left;
+       	 margin-left:20px;
+       	 height:40px;
+       	 border-radius: 20px 20px;
+       	 font-size: small;
+       	 background-color: #5CD394;
+       	 border: none;
+	}
+	
+	#corp_pwdupdate:hover{
+		    text-align: center;
+	        width: 130px;
+	       	margin-left:20px;
+	        height: 45px;
+	        border-radius: 20px 20px;
+	        font-size: small;
+	        background-color: #EBF5E0;
+	        border: none;
+	        color: #086C37;
+	        font-weight: bold;
+	      	transition:background 0.7s ease-in-out;
+	}
+	#corp_quit{
+		 width:120px;
+       	 float:left;
+       	 margin-left:20px;
+       	 height:40px;
+       	 border-radius: 20px 20px;
+       	 font-size: small;
+       	 background-color: #5CD394;
+       	 border: none;
+       }
+       
+       #corp_quit:hover{
+		    text-align: center;
+	        width: 130px;
+	       	margin-left:20px;
+	        height: 45px;
+	        border-radius: 20px 20px;
+	        font-size: small;
+	        background-color: #EBF5E0;
+	        border: none;
+	        color: #086C37;
+	        font-weight: bold;
+	      	transition:background 0.7s ease-in-out;
+       }
+      
 
       .modal-form-button:hover {
         font-weight: 600;
@@ -416,15 +507,18 @@
 				
 
 			</table>
-				
-				<button>수정하기</button>
+				<div id="corp_updatediv">
+					<button id ="corp_update">수정하기</button>
+				</div>
 			</form>
-				<button type="button" data-bs-toggle="modal" data-bs-target="#pwdChange">비밀번호변경</button>
-			
+				<div id="corp_pwdupdatediv">
+				<button type="button" data-bs-toggle="modal" data-bs-target="#pwdChange" id="corp_pwdupdate">비밀번호변경</button>
+				</div>
+				<div id="corp_quitdiv">
 			<form action="/gibuAndTakePrj/corp/quit" method="get">
-				<button>회원탈퇴</button>
+				<button id="corp_quit">회원탈퇴</button>
 			</form>
-			
+			</div>
 			</div>
 			  <div style="padding-top: 100px">
                <%@ include file="../common/footer.jsp" %>

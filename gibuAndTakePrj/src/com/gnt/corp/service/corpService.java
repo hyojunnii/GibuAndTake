@@ -239,6 +239,21 @@ public class corpService {
 		return result;
 	}
 
+	 public int checkId(String corpId) {
+	  
+	  int result = 0;
+	  
+	  Connection conn = getConnection();
+	  
+	  result = CorpDao.checkId(conn, corpId);
+	  
+	  if(result == 1) { commit(conn); } else { rollback(conn); }
+	  close(conn);
+	  
+	  return result;
+	  
+	  }
+	 
 }
 
 
