@@ -6,17 +6,17 @@
     pageEncoding="UTF-8"%>
 <%
 	ManagerVo loginMember = (ManagerVo)session.getAttribute("loginMember");
-	/* ArrayList<FaqVo> voList = (ArrayList<FaqVo>)request.getAttribute("voList"); */
+	ArrayList<FaqVo> vo = (ArrayList<FaqVo>)request.getAttribute("vo");
 	
 	String contextPath = request.getContextPath();
 	String path = request.getContextPath();
 	
-	/* PageVo pv = (PageVo)request.getAttribute("pv");
+	PageVo pv = (PageVo)request.getAttribute("pv");
 	
 	int currentPage = pv.getCurrentPage();
 	int startPage = pv.getStartPage();
 	int endPage = pv.getEndPage();
-	int maxPage = pv.getMaxPage(); */ 
+	int maxPage = pv.getMaxPage();
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -78,7 +78,7 @@
     	border-radius: 10px;
     	width: 650px;
     	height: 40px;
-    	margin: 0px 70px 0px 350px;
+    	margin: 15px 70px 0px 390px;
     	text-align: left;
 	}
 	
@@ -92,7 +92,7 @@
     	border-radius: 10px;
     	width: 650px;
     	height: 80px;
-    	margin: 0px 70px 0px 350px;
+    	margin: 0px 70px 0px 390px;
     	text-align: left;
 	}
 	
@@ -142,7 +142,7 @@
         padding: 3px 10px 3px 10px;
         font-weight: bold;
         border-radius: 15px;
-        margin-left: 820px;
+        margin-left: 860px;
     }
 
     #btn1:hover{
@@ -168,46 +168,14 @@
     	float: left;
     }
     
-    #btn{
-    	margin-top: 100px;
-    	margin-left: 570px;
-    }
-    
-    #a:hover{
-    	cursor: pointer;
-    }
-    
-    #b:hover{
-    	cursor: pointer;
-    }
-    
-    #c:hover{
-    	cursor: pointer;
-    }
-    
-    #a{
-    	width: 40px;
+    #page-area{
+		margin: auto;
+		padding-top: 80px;
+		width: 150px;
     	height: 40px;
-    	border: 1px solid #2e6c4a;
     	color: #2e6c4a;
         font-weight: bold;
-    }
-    
-    #b{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
-    }
-    
-    #c{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
-    }
+	}
     
     #last{
     	padding: 320px;
@@ -400,12 +368,11 @@
 	    	
             
             <form action="/gibuAndTakePrj/faq/list" method="get">
-	    	<button class="toggle">기부질문<button id="img">▲</button></button>
-	    	<div class="toggle2">기부답변</div>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
-	    	<button class="toggle" id="toggle">기부질문<button id="img">▽</button></button>
+	    	<%for(int i = 0; i < vo.size(); i++) {%>  
+	    	<button class="toggle"><%= vo.get(i).getTitle()%><button id="img">▲</button></button>
+	    	<button class="toggle2"><%= vo.get(i).getContent()%></button>
+	    	
+           <%}%> 
             </form>
 	    	
 	    	<% if(loginMember != null && "admin".equals(loginMember.getId())) {%>
@@ -418,33 +385,28 @@
 	    	</form>
 	    	<%} %>
 	    
-	    <div id="btn">
-	    	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp1&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp2&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp3&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp4&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp5&nbsp&nbsp</a>
-	        <a id="c">&nbsp&nbsp>&nbsp&nbsp</a>
-	    </div>
+	    <div id="page-area">
+				<%if(currentPage != 1){%>
+					<a href="/gibuAndTakePrj/faq/list?p=<%=currentPage-1%>"> &lt; </a>
+				<%} %>
+				<% for(int i = startPage; i <= endPage; ++i) {%>
+					<%if(i == currentPage) {%>
+						<a><%=i%></a>
+					<%}else{ %>
+						<a href="/gibuAndTakePrj/faq/list?p=<%=i%>"><%=i%></a>
+					<%} %>
+				<%} %>
+				
+				<%if(currentPage != maxPage){%>
+					<a href="/gibuAndTakePrj/faq/list?p=<%=currentPage+1%>"> &gt; </a>
+				<%} %>
+				
+			</div>
 	    
 	  </div>
 	<div id="last"></div>
 	<%@include file="/views/common/footer.jsp" %>
 	
-	<!-- <button id="t">toggle</button>
-	    	<div id="to">
-	    	</div> -->
 	
-	<!-- <script>
-        $(function(){
-
-            const t = $('#to');
-
-            $('#t').click(function(){
-                t.toggle(1000);
-            });
-        })
-     </script> -->
 </body>
 </html>
