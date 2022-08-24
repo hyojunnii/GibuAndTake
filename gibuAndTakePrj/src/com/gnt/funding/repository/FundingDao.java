@@ -523,4 +523,111 @@ public class FundingDao {
 		return result;
 	}
 
+	public FundingVo selectDetail(Connection conn, int num) {
+		// sql 준비
+				String sql = "SELECT *  FROM FUNDING F JOIN REGIST R ON F.REG_NO = R.REG_NO JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG RI ON R.REG_NO = RI.REG_NO JOIN REWARD REW ON F.F_NO = REW.F_NO AND R.REG_CLASS = '펀딩' AND R.REG_NO = ?";
+				String paraclass = "";
+
+				
+				PreparedStatement pstmt = null;
+				FundingVo vo = new FundingVo();
+				ResultSet rs = null;
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, num);
+
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+
+						// 테스트
+						String fno = rs.getString("F_NO");
+						String regno = rs.getString("REG_NO");
+						String fclass = rs.getString("F_CLASS");
+						int fgmoney = rs.getInt("F_GMONEY");
+						int fpmoney = rs.getInt("F_PMONEY");
+						int fppeople = rs.getInt("F_PPEOPLE");
+						
+						String regclass = rs.getString("REG_CLASS");
+						String regname = rs.getString("REG_NAME");
+						String regcontent = rs.getString("REG_CONTENT");
+						String regsdate = rs.getString("REG_SDATE");
+						String regfdate = rs.getString("REG_FDATE");
+						String regpass = rs.getString("REG_PASS");
+						String regfin = rs.getString("REG_FIN");
+						String regdel = rs.getString("REG_DEL");
+						String regmod = rs.getString("REG_MOD");
+						int regcnt = rs.getInt("REG_CNT");
+						String mno = rs.getString("M_NO");
+						String mnick = rs.getString("M_NICK");
+						String imgsrc = rs.getString("URL");
+						double per = (double) fpmoney / (double) fgmoney * 100;
+						// 수정완료 퍼센트 구하기
+						String moneyper = String.format("%.1f", per);
+						
+						int rewno =rs.getInt("REW_NO");
+						String rewname =rs.getString("REW_NAME");
+						int rewmoney =rs.getInt("REW_MONEY");
+						int rewcnt =rs.getInt("REW_COUNT");
+						
+						
+
+						vo = new FundingVo();
+						vo.setFno(fno);
+						vo.setRegno(regno);
+						vo.setFclass(fclass);
+						vo.setFgmoney(fgmoney);
+						vo.setFpmoney(fpmoney);
+						vo.setFppeople(fppeople);
+						
+						vo.setRegclass(regclass);
+						vo.setRegname(regname);
+						vo.setRegcontent(regcontent);
+						vo.setRegsdate(regsdate);
+						vo.setRegfdate(regfdate);
+						vo.setRegpass(regpass);
+						vo.setRegfin(regfin);
+						vo.setRegdel(regdel);
+						vo.setRegmod(regmod);
+						vo.setRegcnt(regcnt);
+						vo.setMno(mno);
+						vo.setMnick(mnick);
+						vo.setImgsrc(imgsrc);
+						vo.setMoneypercent(moneyper);
+						
+						vo.setRewno(rewno);
+						vo.setRewname(rewname);
+						vo.setRewmoney(rewmoney);
+						vo.setRewcnt(rewcnt);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					close(pstmt);
+					close(rs);
+				}
+				return vo;
+	}
+
+	public int rewardMoney(Connection conn, int num, int mno, int addmoney) {
+		String sql = "UPDATE FUNDING F SET F.F_PMONEY = F.F_PMONEY + ?, F.F_PPEOPLE = F.F_PPEOPLE + 1 WHERE F.REG_NO = ?";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			//SQL 객체에 담기 및 물음표 채우기
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, addmoney);
+			pstmt.setInt(2, num);
+			
+			//SQL 실행
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		//실행결과 리턴
+		return result;
+	}
+
 }

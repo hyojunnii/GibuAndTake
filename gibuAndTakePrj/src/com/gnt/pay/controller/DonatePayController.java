@@ -2,6 +2,7 @@ package com.gnt.pay.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,11 +27,26 @@ public class DonatePayController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path = req.getContextPath();
+		
 		int num = Integer.parseInt(req.getParameter("num"));
 		int mno = Integer.parseInt(req.getParameter("mno"));
 		int addmoney = Integer.parseInt(req.getParameter("addmoney"));
 		System.out.println(num + ", " + addmoney +", " + mno);
 		
 		int result = new GibuService().donateMoney(num, mno, addmoney);
+		
+		
+		//결과에 따라, 화면 선택
+		if(result ==1 ) {
+			//성공 -> 목록(alertMsg)
+			req.getSession().setAttribute("alertMsg", "기부 완료!");
+			resp.sendRedirect(path+"/view/gibu_detail?type=0&num="+num);
+		}else {
+			//실패 -> 에러페이지(errorMsg)
+			req.setAttribute("errorMsg", "기부 실패");
+			RequestDispatcher view = req.getRequestDispatcher("/views/error/errorPage.jsp");
+			view.forward(req, resp);
+		}
 	}
 }

@@ -6,6 +6,8 @@
 	List<GibuVo> list = (List<GibuVo>)request.getAttribute("gibuvo"); 
 	int gibucnt = (Integer)request.getAttribute("gibucnt");
 	int regtype = (Integer)request.getAttribute("regtype");
+	request.setAttribute("vo", list);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -227,7 +229,7 @@ progress::-webkit-progress-value{
         <a href="/gibuAndTakePrj/view/gibu_detail?type=<%=regtype %>&num=<%=g.getRegno() %>" class="card">
             <div>
             <!-- ../resources/img/select_icon/1all.png -->
-                <img src="<%= g.getImgsrc()%>" alt="">
+                <img src="../resource/upload/<%= g.getImgsrc()%>">
             </div>
             <div>
                 <p align="center"><%= g.getRegname() %></p>

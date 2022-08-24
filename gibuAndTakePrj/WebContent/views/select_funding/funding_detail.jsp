@@ -6,6 +6,7 @@
 <%
 	FundingVo vo = (FundingVo)request.getSession().getAttribute("fundingvo");
 	List<ReplyVo> list = (List<ReplyVo>)request.getAttribute("replyvo");
+	request.setAttribute("vo", vo);
 %>
 <!DOCTYPE html>
 <html>
@@ -43,7 +44,6 @@
         margin: 30px auto;
         background-color: #b3e0c9;
         border-radius: 10px;
-        border: 1px solid black;
     }
    
     #total_money{
@@ -203,6 +203,13 @@
     border: none;
     border-radius: 10px;
 }
+.funding_btn_container{
+	width: 100%;
+	height: 100%;
+	background-color: #b3e0c9;
+    border-radius: 15px;
+    border: none;
+}
 </style>
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -232,7 +239,7 @@
             </tr>
         </table>
         <p class="comName">By <%=vo.getMnick() %></p>
-        <img src="<%= vo.getImgsrc() %>" alt="첫번째 이미지사진">
+        <img src="../resource/upload/<%= vo.getImgsrc() %>">
     <div id="funding_detail_container_div">
         <p>
             <%= vo.getRegcontent() %>
@@ -246,8 +253,8 @@
                     <td><%=vo.getMnick() %></td>
                 </tr>
                 <tr>
-                    <th>모금기간</th>
-                    <td><%= vo.getRegsdate() %> ~ <%= vo.getRegfdate() %></td>
+                    <th>종료기간</th>
+                    <td> ~ <%= vo.getRegfdate() %></td>
                 </tr>
                 <tr>
                     <th>사업대상</th>
@@ -286,13 +293,16 @@
                 </tr>
                 <tr>
                     <td colspan="2">
+                    <form action="<%=path %>/funding/pay" method="get">
                         <div class="funding_btn_cover">
-                            <a href="<%=path %>/funding/pay"  class="funding_btn_container">
+                        <input type="hidden" name="num" value="<%= vo.getRegno()%>">
+                            <button type="submit"  class="funding_btn_container">
                                 <div>
                                     펀딩 참여하기
                                 </div>
-                            </a>
+                            </button>
                         </div>
+                        </form>
                     </td>
                 </tr>
             </table>

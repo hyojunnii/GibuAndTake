@@ -62,7 +62,8 @@ li{
         </ul>
         <ul>
             <li>
-                <a class="nav_tab" href="">후기</a>
+                <a class="nav_tab" href="/gibuAndTakePrj/funding/review/list?p=1
+                ">후기</a>
             </li>
         </ul>
     </div>

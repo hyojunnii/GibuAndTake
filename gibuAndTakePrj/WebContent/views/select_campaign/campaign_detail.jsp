@@ -304,7 +304,7 @@
     <div id="outer">
       <div id="campaign_detail_container">
         <br />
-        <img src="<%= vo.getImgsrc() %>" alt="첫번째 이미지사진" />
+        <img src="../resource/upload/<%= vo.getImgsrc() %>">
         <div id="campaign_detail_container_div">
           <table id="title_table">
             <tr>
@@ -314,10 +314,10 @@
               <c:if test="${empty loginMember && empty loginCorp}">
             	</td>
            	</c:if>
-            <c:if test="${loginCorp.no == campaignvo.mno}">
-	    			<button class="btn">수정하기</button>
-				    </td>
-			 	</c:if>
+             <c:if test="${loginCorp.no eq gibuvo.mno}">
+             <a href="<%=path%>/pm/edit/donation" class="btn">수정하기</a>
+             </td>
+          </c:if>
             </tr>
           </table>
           <p class="comName">By <%=vo.getMnick() %></p>
@@ -358,8 +358,8 @@
                         <td><%=vo.getMnick() %></td>
                       </tr>
                       <tr>
-                        <th>행동기간</th>
-                        <td><%=vo.getRegsdate() %> ~ <%=vo.getRegfdate() %></td>
+                        <th>종료기간</th>
+                        <td>~ <%=vo.getRegfdate() %></td>
                       </tr>
                     </tbody>
                   </table>

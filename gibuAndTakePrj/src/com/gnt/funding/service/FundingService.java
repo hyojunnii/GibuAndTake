@@ -102,6 +102,26 @@ public class FundingService {
 		return result;
 	}
 
+	public FundingVo selectDetail(int num) {
+		Connection conn = null;
+		FundingVo vo = null;
+		conn = getConnection();
+		//DAO 호출	
+			vo = dao.selectDetail(conn, num);
+			close(conn);
+		return vo;
+	}
+
+	public int rewardMoney(int num, int mno, int addmoney) {
+		Connection conn = null;
+
+		conn = getConnection();
+		//DAO 호출	
+		int	result = dao.rewardMoney(conn, num, mno, addmoney);
+		close(conn);
+	return result;
+	}
+
 	
 
 }
