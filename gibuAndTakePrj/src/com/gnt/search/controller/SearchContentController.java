@@ -24,7 +24,6 @@ public class SearchContentController extends HttpServlet{
 		req.getSession().removeAttribute("searchedList");
 		
 		String search = req.getParameter("search");
-		System.out.println(search);
 		
 		//----------페이징 처리-----------
 		int listCount;		//현재 총 게시글 갯수

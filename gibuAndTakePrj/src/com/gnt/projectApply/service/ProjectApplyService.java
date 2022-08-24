@@ -17,8 +17,6 @@ public class ProjectApplyService {
 
 	//기부 프로젝트 신청
 	public int donationApply(RegistVo rvo, DonationVo dvo, String changeName) {
-		//카테고리 들어왔는지 확인
-		
 		//모금 종료일이 내일 이후인지 확인
 		
 		//사진 들어왔는지 확인
@@ -36,22 +34,18 @@ public class ProjectApplyService {
 		Connection conn = getConnection();
 		
 		regist = dao.registApply(conn, rvo);
-		System.out.println(regist);
 		
 		if(regist == 1) {
 			image = dao.imageApply(conn, changeName);
-			System.out.println(image);
 			
 			if(image == 1) {
 				project = dao.donationApply(conn, dvo);
-				System.out.println(project);
 				
 				if(project == 1) {
 					for(int i = 0; i < dvo.getDonaExecategory().length; i++) {
 						subproject = dao.donationExecuteApply(conn, dvo, i);
 						if(subproject == 0) {break;}
 					}
-					System.out.println(subproject);
 				}
 			}
 		}
@@ -69,8 +63,6 @@ public class ProjectApplyService {
 
 	//펀딩 프로젝트 신청
 	public int fundingApply(RegistVo rvo, FundingVo fvo, String changeName) {
-		//카테고리 들어왔는지 확인
-		
 		//모금 종료일이 내일 이후인지 확인
 		
 		//사진 들어왔는지 확인
@@ -88,22 +80,18 @@ public class ProjectApplyService {
 		Connection conn = getConnection();
 		
 		regist = dao.registApply(conn, rvo);
-		System.out.println(regist);
 		
 		if(regist == 1) {
 			image = dao.imageApply(conn, changeName);
-			System.out.println(image);
 			
 			if(image == 1) {
 				project = dao.fundingApply(conn, fvo);
-				System.out.println(project);
 				
 				if(project == 1) {
 					for(int i = 0; i < fvo.getName().length; i++) {
 						subproject = dao.fundingRewardApply(conn, fvo, i);
 						if(subproject == 0) {break;}
 					}
-					System.out.println(subproject);
 				}
 			}
 		}
@@ -121,8 +109,6 @@ public class ProjectApplyService {
 	
 	//캠페인 프로젝트 신청
 	public int campaignApply(RegistVo rvo, CampaignVo cvo, String changeName) {
-		//카테고리 들어왔는지 확인
-		
 		//종료일이 내일 이후인지 확인
 		
 		//사진 들어왔는지 확인
@@ -139,15 +125,12 @@ public class ProjectApplyService {
 		Connection conn = getConnection();
 		
 		regist = dao.registApply(conn, rvo);
-		System.out.println(regist);
 		
 		if(regist == 1) {
 			image = dao.imageApply(conn, changeName);
-			System.out.println(image);
 			
 			if(image == 1) {
 				project = dao.campaignApply(conn, cvo);
-				System.out.println(project);
 			}
 		}
 		
