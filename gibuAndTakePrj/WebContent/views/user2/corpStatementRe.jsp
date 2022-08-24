@@ -152,11 +152,16 @@
 		color: #2e6c4a;
 		font-weight: bold;
 	}
+	
+	#total {
+		border-bottom: none;
+	}
 
 	.input-col {
 		display: flex;
 		justify-content: space-between;
 		border: none;
+		border-top: 1px solid black;
 	}
 
 	a {
@@ -174,13 +179,13 @@
 
 	<div id="body">
 		<div id="category">
-			<a>기업 명세서 수정</a>
+			<a>기업 명세서 내역 추가</a>
 		</div>
 		<div id="nav">
 			<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
 
-			<form action="/gibuAndTakePrj/corp/stmtList" method="post">
-		
+			<form action="/gibuAndTakePrj/corp/stmtRe" method="post">
+				<input type="hidden" value="<%=donaVo.getDonaNo() %>" name="donaNo">
 				<table id="first">
 					<div id="outer">
 						<div id="title"><%=donaVo.getRegName() %></div>
@@ -198,7 +203,7 @@
 					</tr>
 					<tr>
 						<th>총 모금 금액</th>
-						<td colspan="2"><span class="total"><fmt:formatNumber value="<%=donaVo.getDonaPmoney() %>" pattern="#,###"/></span>원</span>(목표금액 3,000,000원)</td>
+						<td colspan="2"><span class="total"><fmt:formatNumber value="<%=donaVo.getDonaPmoney() %>" pattern="#,###"/></span>원 (목표금액 <fmt:formatNumber value="<%=donaVo.getDonaGmoney() %>" pattern="#,###"/>원)</td>
 					</tr>
 					<tr>
 						<th>사업 대상</th>
@@ -207,16 +212,16 @@
 				</table>
 				<table id="second">
 					<div id="col-outer">
-						<div id="col-p" onclick='javascript:addItem();'>+</div>
-						<div id="col-m" onclick="delRow">-</div>
+						<div id="col-p">+</div>
+						<div id="col-m">-</div>
 					</div>
 					<thead>
 						<tr>
 							<th>총 집행 금액</th>
-							<td colspan="2"><span class="total">3,000,000원</span>(목표금액 3,000,000원)</td>
+							<td colspan="2"><span class="total"><fmt:formatNumber value="<%=donaVo.getDonaPmoney() %>" pattern="#,###"/></span>원 (목표금액 <fmt:formatNumber value="<%=donaVo.getDonaGmoney() %>" pattern="#,###"/>원)</td>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="exeBody">
 						<% for (int i = 0; i < exeVo.size(); ++i) {%>
 							<tr>
 								<th>사업비</th>
@@ -226,20 +231,12 @@
 								</td>
 							</tr>
 						<%} %>
+					</tbody>
 				</table>
 				<div id="re-outer">
 					<input type="submit" value="완료">
 				</div>
 			</form>
-			<div id="add-col" style="display: none">
-				<ttr>
-					<tth>사업비</tth>
-					<ttd colspan="2" class="input-col" id="input-cnt">
-						<input type="text" name="exeCnt" size="40" placeholder=" 사용 내역을 등록해주세요.">
-						<input type="number" name="exeMoney" placeholder=" 금액을 등록해주세요.">
-					</ttd>
-				</ttr>
-			</div>
 
 		</div>
 	</div>
@@ -248,28 +245,27 @@
 	
 	<!-- 로우 추가는 되는데 이상하게 됨. 수정. -->
 	<script type="text/javascript">
-	$(function replaceAll(str, ostr, rstr)
-		{
-			if(str == undefined) return str;
-			return str.split(ostr).join(rstr);
-	})
-	
-	$(function addCol() {
-		let append_tr = $("add-col").html();
-		append_tr = replaceAll(append_tr, 'tth', 'th');
-		append_tr = replaceAll(append_tr, 'ttr', 'tr');
-		append_tr = replaceAll(append_tr, 'ttd', 'td');
-		$("#second tbody").append(apeend_tr);
-	})
-	
-//		$(function () {
-//			$('#col-p').click(function () {
-//				console.log("클릭됨");
-//				const copyTh = $('#input-title').clone(true);
-//				const copyTd = $('#input-cnt').clone(true);
-//				$('#copy').append(copyTh, copyTd);
-			})
+
+		$('#col-p').click(function () {
+			let exeRow;
+			exeRow = document.all["exeBody"].insertRow();
+
+			let exeTitle = exeRow.insertCell();
+			exeTitle.outerHTML = "<th>사업비</th>";
+			// exeTitle.innerHTML = "사업비";
+
+
+			let exeCnt = exeRow.insertCell();
+			exeCnt.innerHTML = '<input type="text" name="exeCnt" size="40" placeholder="사용 내역을 입력해주세요."> <input type="number" name="exeMoney" placeholder="사용 금액을 입력해주세요.">';
+			exeCnt.setAttribute("class", "input-col");
+		});
+
+		$('#col-m').click(function () {
+			let table = document.getElementById('exeBody');
+			if (table.rows.length<1) return;
+			table.deleteRow(table.rows.length-1);		
 		})
+
 	</script>
 
 </body>

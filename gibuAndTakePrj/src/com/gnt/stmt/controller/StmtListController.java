@@ -37,32 +37,4 @@ public class StmtListController extends HttpServlet{
 		req.getRequestDispatcher("/views/user2/corpStatementList.jsp").forward(req, resp);
 	}
 	
-	// 아래 코드는 re로 보내야할듯???? 
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		
-		String[] exeCnt = req.getParameterValues("exeCnt");
-		String[] exeMoney = req.getParameterValues("exeMoney");
-		if(exeCnt == null || exeMoney == null) {
-			exeCnt = new String[]{""};
-			exeMoney = new String[]{""};
-		}
-		
-		int no = ((corpVo)req.getSession().getAttribute("loginCorp")).getNo();
-		
-		StmtVo vo = new StmtVo();
-		vo.setMemberNo(no);
-		
-		StmtVo updateVo = new StmtService().edit(vo);
-		
-		if(updateVo != null) {
-			req.getSession().setAttribute("updateVo", updateVo);
-			resp.sendRedirect("/gibuAndTakePrj/corp/stmtList");
-		}else {
-			
-		}
-	}
-	
 }

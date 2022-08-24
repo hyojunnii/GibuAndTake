@@ -45,7 +45,7 @@ public class StmtDao {
 				vo.setDonaNo(donaNo);
 				vo.setRegName(regName);
 				vo.setDonaClass(donaClass);
-				vo.setDonaGmomey(donaGmoney);
+				vo.setDonaGmoney(donaGmoney);
 				vo.setDonaPmoney(donaPmoney);
 				vo.setDonaSdate(donaSdate);
 				vo.setDonaEdate(donaEdate);
@@ -90,7 +90,7 @@ public class StmtDao {
 				vo = new StmtVo();
 				vo.setRegName(regName);
 				vo.setDonaClass(donaClass);
-				vo.setDonaGmomey(donaGmoney);
+				vo.setDonaGmoney(donaGmoney);
 				vo.setDonaPmoney(donaPmoney);
 				vo.setDonaSdate(donaSdate);
 				vo.setDonaEdate(donaEdate);
@@ -140,25 +140,28 @@ public class StmtDao {
 		
 		return list;
 	}
-	
 
-	public int edit(Connection conn, StmtVo vo) {
-		String sql = "UPDATE";
+	public int insert(ExeVo vo, corpVo c, Connection conn) throws Exception {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
+		String sql = "INSERT INTO EXECUTE ( E_NO, D_NO, E_CTG, E_CONTENT, E_MONEY ) VALUES ( SEQ_EXECUTE_E_NO.NEXTVAL, ?, '사업비', ?, ? )";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(vo.getDonaNo()));
+			pstmt.setString(2, vo.getExeCnt());
+			pstmt.setString(3, vo.getExeMoney());
 			
-			
-			
-		} catch (Exception e) {
-			
+			result = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw e;
 		} finally {
-			close(conn);
+			close(pstmt);
 		}
 		
-		return 0;
+		return result;
 	}
 
 }

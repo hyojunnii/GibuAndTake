@@ -56,30 +56,31 @@ public class StmtService {
 		return vo;
 	}
 	
-	
-	public StmtVo edit(StmtVo vo) {
+	public int insert(ExeVo vo, corpVo c) {
+		if(vo.getExeCnt() == null || vo.getExeMoney() == null) {
+			System.out.println("데이터를 채워주세요.");
+			return -1;
+		}
+		
 		Connection conn = null;
 		int result = 0;
-		StmtVo updateVo = null;
+		ExeVo insertVo = null;
+		
 		try {
 			conn = getConnection();
-			result = new StmtDao().edit(conn, vo);
+			result = new StmtDao().insert(vo, c, conn);
 			
 			if(result == 1) {
 				commit(conn);
-			}else {
+			} else {
 				rollback(conn);
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			rollback(conn);
 		} finally {
 			close(conn);
 		}
-		
-		return updateVo;
+		return result;
 	}
-
-
 }

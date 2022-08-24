@@ -6,18 +6,29 @@ public class ExeVo {
 		
 	}
 
-	public ExeVo(String exeNo, String exeCtg, String exeCnt, String exeMoney) {
+	public ExeVo(String donaNo, String exeNo, String exeCtg, String exeCnt, String exeMoney) {
 		super();
+		this.donaNo = donaNo;
 		this.exeNo = exeNo;
 		this.exeCtg = exeCtg;
 		this.exeCnt = exeCnt;
 		this.exeMoney = exeMoney;
 	}
 
+	private String donaNo;
 	private String exeNo;
 	private String exeCtg;
 	private String exeCnt;
 	private String exeMoney;
+	
+	public String getDonaNo() {
+		return donaNo;
+	}
+
+	public void setDonaNo(String donaNo) {
+		this.donaNo = donaNo;
+	}
+
 	public String getExeNo() {
 		return exeNo;
 	}
@@ -52,7 +63,8 @@ public class ExeVo {
 
 	@Override
 	public String toString() {
-		return "ExeVo [exeNo=" + exeNo + ", exeCtg=" + exeCtg + ", exeCnt=" + exeCnt + ", exeMoney=" + exeMoney + "]";
+		return "ExeVo [donaNo=" + donaNo + ", exeNo=" + exeNo + ", exeCtg=" + exeCtg + ", exeCnt=" + exeCnt
+				+ ", exeMoney=" + exeMoney + "]";
 	}
 	
 	

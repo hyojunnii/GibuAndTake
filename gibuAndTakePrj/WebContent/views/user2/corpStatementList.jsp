@@ -174,7 +174,7 @@
 						</tr>
 						<tr>
 							<th>총 모금 금액</th>
-							<td colspan="2"><span class="total"><fmt:formatNumber value="<%=donaList.get(i).getDonaPmoney() %>" pattern="#,###"/></span>원(목표 금액 <fmt:formatNumber value="<%=donaList.get(i).getDonaGmomey() %>" pattern="#,###"/>원)</td>
+							<td colspan="2"><span class="total"><fmt:formatNumber value="<%=donaList.get(i).getDonaPmoney() %>" pattern="#,###"/></span>원(목표 금액 <fmt:formatNumber value="<%=donaList.get(i).getDonaGmoney() %>" pattern="#,###"/>원)</td>
 						</tr>
 						<tr>
 							<th>사업 대상</th>
@@ -185,7 +185,7 @@
 						<thead>
 							<tr>
 								<th>총 집행 금액</th>
-								<td colspan="2"><fmt:formatNumber value="<%=donaList.get(i).getDonaPmoney() %>" pattern="#,###"/>원(목표 금액 <fmt:formatNumber value="<%=donaList.get(i).getDonaGmomey() %>" pattern="#,###"/>원)</td>
+								<td colspan="2"><fmt:formatNumber value="<%=donaList.get(i).getDonaPmoney() %>" pattern="#,###"/>원(목표 금액 <fmt:formatNumber value="<%=donaList.get(i).getDonaGmoney() %>" pattern="#,###"/>원)</td>
 							</tr>
 						</thead>
 						<tbody>
