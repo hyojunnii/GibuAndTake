@@ -8,6 +8,7 @@
 <%
 	ManagerVo loginMember = (ManagerVo)session.getAttribute("loginMember");
 	FaqVo vo = (FaqVo)request.getAttribute("vo");	
+	
 
 	String contextPath = request.getContextPath();
 	String path = request.getContextPath();
@@ -325,15 +326,7 @@
     	<input type="hidden" name="num" value="<%=vo.getNo()%>">
         <input type="hidden" name="writerNo" value="<%=loginMember.getNo() %>">
     	
-	 	<label id="category">카테고리</label>                   
-	    	<td>
-                 <select name="cate" id="a">
-                     <%for(CategoryVo c : list){ %>
-                 <option value="<%=c.getCategoryName()%>"><%=c.getCategoryName()%></option>
-                <%} %>
-                 </select>
-             </td>
-	    <br><br>
+	 	
 	    
     	<label id="title">제목</label>
 	    <input id="input1" type="text" name="title" required value="<%=vo.getTitle()%>">
