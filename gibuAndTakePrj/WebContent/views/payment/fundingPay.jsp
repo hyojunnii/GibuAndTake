@@ -1,8 +1,13 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.gnt.pay.vo.PaymentVo"%>
+<%@page import="java.util.List"%>
 <%@page import="com.gnt.funding.vo.FundingVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	FundingVo vo = (FundingVo)request.getAttribute("fundingvo");
+	request.getSession().setAttribute("fundingvo", vo);
+	List<PaymentVo> pVo = (ArrayList<PaymentVo>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -99,6 +104,12 @@
     #pay_send_addr>*>*>*{
         padding: 10px;
     }
+    
+    #pay_body_select{
+    	margin-top : 20px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
 
 </style>
 
@@ -126,6 +137,29 @@
                         <span class="donate_money donate_won"><%=vo.getRewmoney() %> (<%=vo.getRewcnt() %> 개) 원</span>
                     </span>
                 </div>
+                
+                <div id="pay_body_select" class="pay_border">
+                    <span class="pay_div_title">결제 수단</span>
+                    <div>
+                    
+            		<c:if test="${!empty loginMember }">
+                       	<c:forEach items="${list}" var="p">
+                       	<c:set var="i" value="${i+1}"/>
+                        	<input type="radio" name="pNo" id="${i}" class="pay_select_name" value="${p.pNo}" checked>
+                        	<label for="${i}" class="pay_select_name">${p.pName} : ${p.pNumber}</label>
+						</c:forEach>
+            		</c:if>
+            		<c:if test="${!empty loginCorp }">
+                       	<c:forEach items="${pVo}" var="p">
+                       	<c:set var="i" value="${i+1}"/>
+                        	<input type="radio" name="pNo" id="${i}" class="pay_select_name" ${p.pNo} checked>
+                        	<label for="${i}" class="pay_select_name">${p.pName} : ${p.pNumber}</label>
+						</c:forEach>
+            		</c:if>
+            	
+                    </div>
+                </div>
+                
                 <div id="pay_body_send" class="pay_border">
                     <span class="pay_div_title_mini">배송지</span>
                     <table id="pay_send_addr">
