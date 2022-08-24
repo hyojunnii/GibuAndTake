@@ -264,7 +264,7 @@ public class CampaignDao {
 
 	public List<CampaignProofVo> selectProof(Connection conn, int num) {
 		// sql 준비
-		String sql = "SELECT * FROM CAMPAIGNPROOF CP JOIN MEMBER M ON CP.M_NO = M.M_NO JOIN PROOFIMG PF ON CP.CP_NO = PF.CP_NO JOIN REGIST R ON CP.CAM_NO = R.REG_NO WHERE R.REG_NO=? AND CP.CP_DEL= 'N' ORDER BY CP.CP_NO DESC";
+		String sql = "SELECT * FROM  CAMPAIGNPROOF CP JOIN MEMBER M ON CP.M_NO = M.M_NO JOIN REGIST R ON R.REG_NO = CP.CAM_NO WHERE CP.CAM_NO = ? ORDER BY CP.CP_NO DESC";
 		String paraclass = "";			
 
 		PreparedStatement pstmt = null;
