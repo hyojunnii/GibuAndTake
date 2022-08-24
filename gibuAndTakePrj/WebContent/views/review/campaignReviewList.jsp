@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.gnt.review.vo.ReviewPageVo"%>
 <%@page import="com.gnt.review.vo.ReviewVo"%>
 <%@page import="java.util.List"%>
@@ -6,7 +7,7 @@
 <%
 	String category = (String)request.getAttribute("category");    
 
-	List<ReviewVo> voList = (List<ReviewVo>)request.getAttribute("boardVoList");
+	List<ReviewVo> voList = (ArrayList<ReviewVo>)request.getAttribute("boardVoList");
 	ReviewPageVo pageVo = (ReviewPageVo)request.getAttribute("PageVo");
 	
 	int currentPage = pageVo.getCurrentPage();
@@ -74,6 +75,8 @@
     .review_card_img{
         width: 320px;
         height: 240px;
+        margin-left: 21px;
+        margin-right: 21px; 
     }
 
     .review_card_text{
@@ -125,14 +128,14 @@
 
     <div id="create_review">
         <div>
-            <input type="button" value="후기 작성하기" class="review_btn" onclick="location.href='<%=request.getContextPath()%>/campaign/review/create?category=${category}'">
+            <input type="button" value="후기 작성하기" class="review_btn" onclick="location.href='<%=request.getContextPath()%>/review/create?category=${category}'">
         </div>
     </div>  
 	<section>
         <div id="review_card_wrap">
         	
 			<c:forEach items="${boardVoList}" var="b">
-				<a href="${path}/campaign/review/view?id=${b.mNo}" class="review_card">
+				<a href="${path}/campaign/review/view?id=${b.revNo}" class="review_card">
 	                <span class="review_card_corp">${b.revName}</span>
 	                <strong class="review_card_title">${b.revName}</strong>
 	                <img src="${b.revImg}" alt="후기 썸네일" class="review_card_img">
@@ -146,8 +149,12 @@
                 <img src="" alt="후기 썸네일" class="review_card_img">
                 <p class="review_card_text">후기 내용 ...</p>
             </a>
+			
+            
 
-            <div id="review_view_more">
+        </div>
+        
+        <div id="review_view_more">
             <%if(startPage!=1){%>
 			<a href="<%=path%>/campaign/review/list?p=<%=startPage-1%>" class="review_btn">&lt;&lt;</a>
 			<%} %>
@@ -162,8 +169,6 @@
 			<a href="<%=path%>/campaign/review/list?p=<%=endPage+1%>" class="review_btn">&gt;&gt;</a>
 			<%} %>
 			</div>
-
-        </div>
 
     </section>
 

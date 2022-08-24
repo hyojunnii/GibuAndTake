@@ -1,13 +1,15 @@
 package com.gnt.review.service;
 
+import static com.gnt.common.JDBCTemplate.close;
+import static com.gnt.common.JDBCTemplate.getConnection;
+
 import java.sql.Connection;
 import java.util.List;
 
 import com.gnt.review.repository.ReviewDao;
+import com.gnt.review.vo.ReviewDetailVo;
 import com.gnt.review.vo.ReviewPageVo;
 import com.gnt.review.vo.ReviewVo;
-
-import static com.gnt.common.JDBCTemplate.*;
 
 public class ReviewService {
 	
@@ -41,13 +43,13 @@ public class ReviewService {
 		return result;
 	}
 
-	public ReviewVo selectReviewOne(String revNo) {
-		ReviewVo result = null;
+	public ReviewDetailVo selectReviewOne(String revNo) {
+		ReviewDetailVo result = null;
 		Connection conn = null;
 		
 		conn = getConnection();
 		result = dao.selectReviewOne(conn, revNo);
-		result.setRevImg(dao.selectImg(conn, revNo));
+		
 		close(conn);
 			
 		return result;

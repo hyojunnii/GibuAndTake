@@ -1,15 +1,16 @@
 package com.gnt.review.repository;
 
+import static com.gnt.common.JDBCTemplate.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gnt.review.vo.ReviewDetailVo;
 import com.gnt.review.vo.ReviewPageVo;
 import com.gnt.review.vo.ReviewVo;
-
-import static com.gnt.common.JDBCTemplate.*;
 
 public class ReviewDao {
 
@@ -73,10 +74,10 @@ public class ReviewDao {
 				String revClass = rs.getString("REV_CLASS");
 				String revMod = rs.getString("REV_MOD");
 				String revCnt = rs.getString("REV_CNT");
+				vo.setRevNo(no);
 				String revImg = selectImg(conn, vo);
 				
 				
-				vo.setRevNo(no);
 				vo.setmNo(mNo);
 				vo.setRevName(revName);
 				vo.setRevContent(revContent);
@@ -112,7 +113,6 @@ public class ReviewDao {
 			//sql객체에 담기 및 완성
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getRevNo());
-			
 			//sql실행
 			rs = pstmt.executeQuery();
 			//결과반환//resultSet->자바객체(NoticeVo)
@@ -130,10 +130,10 @@ public class ReviewDao {
 		return result;
 	}
 	
-	public ReviewVo selectReviewOne(Connection conn, String revNo) {
-		ReviewVo result = null;
+	public ReviewDetailVo selectReviewOne(Connection conn, String revNo) {
+		ReviewDetailVo result = null;
 		//여기부터
-		String sql = "SELECT RVI_NO, REV_NO, URL FROM REVIMG WHERE REV_NO = ?";
+		String sql = "SELECT R.REV_NO REV_NO, R.M_NO M_NO, M.M_NICK M_NICK, R.REV_NAME REV_NAME, R.REV_CONTENT REV_CONTENT, R.REV_DATE REV_DATE , CAM.CAM_GPEOPLE CAM_GPEOPLE, CAM.CAM_PPEOPLE CAM_PPEOPLE, NVL(CORP.CORP_CONTENT,' ')CORP_CONTENT, REG.REG_SDATE REG_SDATE, REG.REG_FDATE REG_FDATE FROM REVIEW R JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REVIEWREGIST RR ON R.REV_NO = RR.REV_NO JOIN REGIST REG ON REG.REG_NO = RR.REG_NO JOIN CORPORATION CORP ON CORP.M_NO = M.M_NO JOIN REVIMG RVI ON RVI.REV_NO = R.REV_NO JOIN CAMPAIGN CAM ON REG.REG_NO = CAM.REG_NO WHERE R.REV_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -148,7 +148,17 @@ public class ReviewDao {
 			//결과반환//resultSet->자바객체(NoticeVo)
 			if(rs.next()) {
 				result.setRevNo(revNo);
-				result.setRevName(rs.getString(0));
+				result.setmNo(rs.getString("M_NO"));
+				result.setmNick(rs.getString("M_NICK"));
+				result.setRevName(rs.getString("REV_NAME"));
+				result.setRevContent(rs.getString("REV_CONTENT"));
+				result.setRevDate(rs.getString("REV_DATE"));
+				result.setCamGpeople(rs.getString("CAM_GPEOPLE"));
+				result.setCamPpeople(rs.getString("CAM_PPEOPLE"));
+				result.setCorpContent(rs.getString("CORP_CONTENT"));
+				result.setRegSdate(rs.getString("REG_SDATE"));
+				result.setRegFdate(rs.getString("REG_FDATE"));
+				result.setImg(selectImg(conn, revNo));
 			}
 			
 		}catch (Exception e) {
@@ -164,7 +174,7 @@ public class ReviewDao {
 	public String selectImg(Connection conn, String revNo) {
 		String result = null;
 		
-		String sql = "SELECT RVI_NO, REV_NO, URL FROM REVIMG WHERE REV_NO = ?";
+		String sql = "SELECT RVI_NO, REV_NO, URL FROM REVIMG WHERE REV_NO = ? ORDER BY RVI_NO DESC";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

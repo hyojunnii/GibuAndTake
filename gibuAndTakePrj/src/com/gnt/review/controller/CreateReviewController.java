@@ -37,6 +37,7 @@ public class CreateReviewController extends HttpServlet {
 		req.getSession().setAttribute("CreateReviewNo", getCreateReviewNo);
 		
 		String category = req.getParameter("category");
+		String regNo = req.getParameter("regNo");
 		req.setAttribute("category", category);
 		req.getRequestDispatcher("/views/review/createReview.jsp").forward(req, resp);
 	}
@@ -46,8 +47,10 @@ public class CreateReviewController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		String revNo = (String)req.getSession().getAttribute("CreateReviewNo");
 		String title = req.getParameter("title");
+		
 		String editordata = req.getParameter("editordata");
 		String category = req.getParameter("category");
+		String regNo = req.getParameter("regNo");
 		MemberVo m = (MemberVo)req.getSession().getAttribute("loginMember");
 		String no = Integer.toString(m.getNo());
 		
@@ -89,13 +92,15 @@ public class CreateReviewController extends HttpServlet {
 		}
 		
 		ReviewImgVo imgVo = new ReviewImgVo();
-		String[] strArr = savePath.split("\\");
+		String[] strArr = savePath.split("\\\\");
 		String[] relatePathArr = new String[3];
-		relatePathArr[0] = strArr[strArr.length-1];
+		relatePathArr[2] = strArr[strArr.length-1];
 		relatePathArr[1] = strArr[strArr.length-2];
-		relatePathArr[2] = strArr[strArr.length-3];
+		relatePathArr[0] = strArr[strArr.length-3];
 		String relatePath = req.getContextPath()+"/"+String.join("/", relatePathArr);
+		System.out.println(relatePath);
 		imgVo.setUrl(relatePath);
+		imgVo.setRevNo(revNo);
 		ReviewVo reviewVo = new ReviewVo();
 		reviewVo.setRevNo(revNo);
 		reviewVo.setmNo(no);
@@ -103,7 +108,7 @@ public class CreateReviewController extends HttpServlet {
 		reviewVo.setRevClass(category);
 		reviewVo.setRevContent(editordata);
 		
-		int result = new UploadImgService().InsertReview(reviewVo,imgVo);
+		int result = new UploadImgService().InsertReview(reviewVo,imgVo,regNo,category);
 		
 		if(result==1) {
 			req.setAttribute("alertMsg", "후기 작성 성공");

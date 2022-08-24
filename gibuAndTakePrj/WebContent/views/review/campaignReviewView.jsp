@@ -1,5 +1,10 @@
+<%@page import="com.gnt.review.vo.ReviewDetailVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    ReviewDetailVo vo = (ReviewDetailVo)request.getAttribute("ReviewDetailVo");
+    request.setAttribute("ReviewDetailVo", vo);
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,38 +118,25 @@
         <form action="<%=request.getContextPath()%>/review/update" method="get">
         <div id="review_detail_wrap">
             <div class="review_detail_header">
-                <strong class="review_header_title">후기제목</strong>
-                <span class="review_header_corp">회사명</span>
+                <strong class="review_header_title">${vo.revName}</strong>
+                <span class="review_header_corp">${vo.mNick}</span>
             </div>
             <div id="review_body_content">
-                <pre
-                    >후기내용
-
-
-
-
-
-<img id="imgTest" src="../../resources/img/free-icon-giving-5017478.png" alt="이미지 테스트">
-
-
-
-후기내용</pre
-                >
+                <pre>${vo.revContent}</pre>
             </div>
             <div id="review_body_achieve">
-                <strong id="review_achieve_total">59,000명</strong>
-                <span id="review_achieve_goal">100,000명</span>
+                <strong id="review_achieve_total">${vo.camPpeople}명</strong>
+                <span id="review_achieve_goal">${vo.camGpeople}명</span>
             </div>
             <div id="review_detail_footer">
                 <div id="review_detail_footer_corp">
-                    <span id="review_detail_footer_corp_name">기업이름</span>
-                    <span id="review_detail_footer_corp_intro">기업소개</span>
-                    <span class="review_detail_footer_corp_date">캠페인기간 : 2999. 01. 01. ~ 2999. 01. 01.</span>
-                    <span class="review_detail_footer_corp_date">캠페인후기 : 2999. 01. 01.</span>
+                    <span id="review_detail_footer_corp_name">${vo.mNick}</span>
+                    <span id="review_detail_footer_corp_intro">${vo.corpContent}</span>
+                    <span class="review_detail_footer_corp_date">캠페인기간 : ${vo.regSdate} ~ ${vo.regFdate}</span>
+                    <span class="review_detail_footer_corp_date">캠페인후기 : ${vo.revDate}</span>
                 </div>
                 <div id="review_detail_footer_btn">
                     <input type="submit" value="수정하기" class="review_detail_btn">
-                    <input type="button" value="삭제하기" class="review_detail_btn" onclick="btnDelete();"> 
                 </div>
             </div>
         </div>
@@ -156,12 +148,7 @@
 <%@include file="/views/common/footer.jsp" %>
 
 <script>
-function btnDelete(){
-	const YN = confirm("정말 삭제하시겠습니까?");
-    if(YN){
-        document.querySelector('form').setAttribute("action", "<%=request.getContextPath()%>/review/delete");
-    }
-}
+
 </script>
 
 </body>

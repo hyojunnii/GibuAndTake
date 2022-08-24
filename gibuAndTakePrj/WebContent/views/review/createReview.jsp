@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
-String category = (String)request.getAttribute("category");    
+	String category = (String)request.getAttribute("category");    
+	String regNo = (String)request.getAttribute("regNo");
 %>
 <!DOCTYPE html>
 <html>
@@ -102,7 +103,8 @@ String category = (String)request.getAttribute("category");
 
     <section>
         <form id="review-form" action="${path}/review/create" method="post" enctype="multipart/form-data">
-        <input name="category" type="hidden" value="${category}"></div>
+        <input name="category" type="hidden" value="${category}">
+        <input name="regNo" type="hidden" value="${regNo}">
         <div id="review_create_wrap">
             <div class="review_create_header">
                 <label for="review_header_img_btn">상단배경선택</label>
