@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>Gibu n Take</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/free-icon-giving-5017478.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
@@ -47,9 +47,13 @@
     #notice>span{
     	width : 1200px;        
     }
+    
+    #go_notice {
+    	font-size: 24px;
+    }
 
     #go_notice_title{
-        font-size: 25px;
+        font-size: 20px;
         color: rgba(0, 0, 0, 0.74);
     }
 
@@ -78,7 +82,7 @@
     #footer_else_menu>a{
         margin-left: 15px;
         margin-right: 15px;
-        font-size: 20px;
+        font-size: 18px;
     }
     
     #footer_else{
@@ -125,7 +129,7 @@
                 </span>
             </div>
             <div id = "footer_mini_text">
-                <div class="text_mini">(주)기부 앤 테이크와 (팀?)불사조는 기부, 펀딩, 캠페인 프로젝트의 당사자가 아닙니다. 프로젝트 진행 및 거래 등에 대한 책임은 해당 프로젝트의 개설자에게 있습니다.</div>
+                <div class="text_mini">(주)기부 앤 테이크와 (팀)불사조는 기부, 펀딩, 캠페인 프로젝트의 당사자가 아닙니다. 프로젝트 진행 및 거래 등에 대한 책임은 해당 프로젝트의 개설자에게 있습니다.</div>
                 <divclass="text_mini">Copyright © Bul4Zo Team. All Rights Reserved.</div>
             </div>
         </div>

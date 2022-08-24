@@ -17,6 +17,7 @@ import javax.servlet.http.Part;
 
 import com.gnt.campaignproof.service.CampaignProofService;
 import com.gnt.campaignproof.vo.CampaignProofVo;
+import com.gnt.corp.vo.corpVo;
 import com.gnt.projectApply.service.ProjectApplyService;
 
 @MultipartConfig(
@@ -30,15 +31,15 @@ public class CampaignProofController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		
-		int mNo = 1;
-		int camNo = 1;
+		//int mNo = 1;
+		//int camNo = 1;
 		
 		com.gnt.campaign.vo.CampaignVo vo = (com.gnt.campaign.vo.CampaignVo)req.getSession().getAttribute("campaignvo");
-		//int camNo = Integer.parseInt(vo.getCamno());
+		int camNo = Integer.parseInt(vo.getCamno());
 		int regNo = Integer.parseInt(vo.getRegno());
 		
-		//corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
-		//int mNo = covo.getNo();
+		corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
+		int mNo = covo.getNo();
 		
 		String content = req.getParameter("content");
 		
@@ -80,12 +81,10 @@ public class CampaignProofController extends HttpServlet{
 		
 		if(result == 1) {
 			//성공알림, 상세페이지
-			System.out.println("캠페인 인증 성공");
 			req.getSession().setAttribute("alertMsg", "캠페인 인증 성공");
 			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail?type=0&num=" + regNo);
 		} else {
 			//실패알림, 상세페이지
-			System.out.println("캠페인 인증 실패");
 			req.getSession().setAttribute("alertMsg", "캠페인 인증 실패");
 			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail?type=0&num=" + regNo);
 		}

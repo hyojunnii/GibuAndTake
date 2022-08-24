@@ -54,4 +54,25 @@ public class CampaignProofDao {
 		return result;
 	}
 
+	//캠페인 인증 삭제
+	public int proofDelete(Connection conn, int cpNo) {
+		String sql = "UPDATE CAMPAIGNPROOF SET CP_DEL = 'Y' WHERE CP_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql); 
+			pstmt.setInt(1, cpNo); 
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }
