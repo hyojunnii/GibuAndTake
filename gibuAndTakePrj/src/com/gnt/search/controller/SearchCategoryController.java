@@ -21,8 +21,6 @@ public class SearchCategoryController extends HttpServlet{
 		
 		String project = req.getParameter("pr");
 		String category = req.getParameter("c");
-		System.out.println(project);
-		System.out.println(category);
 		
 		//----------페이징 처리-----------
 		int listCount;		//현재 총 게시글 갯수

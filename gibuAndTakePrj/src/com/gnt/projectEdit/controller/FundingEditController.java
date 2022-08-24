@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gnt.corp.vo.corpVo;
 import com.gnt.project.vo.FundingVo;
 import com.gnt.project.vo.RegistVo;
 import com.gnt.projectEdit.service.ProjectEditDataService;
@@ -19,20 +20,24 @@ public class FundingEditController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//등록번호, 사용자번호 가져오기
-		int regNo = 6;
+		int regNo = 8;
 		int mNo = 1;
+		
+		//com.gnt.funding.vo.FundingVo vo = (com.gnt.funding.vo.FundingVo)req.getSession().getAttribute("fundingvo");
+		//int regNo = Integer.parseInt(vo.getRegno());
+		
+		//corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
+		//int mNo = covo.getNo();
 		
 		//서비스 호출
 		FundingVo fvo = new ProjectEditDataService().getFundingEdit(regNo, mNo);
 		
 		if(fvo != null) {
 			//수정 페이지 보여주기
-			System.out.println("데이터 가져오기 성공");
 			req.getSession().setAttribute("editVo", fvo);
 			req.getRequestDispatcher("/views/pm/fundingEditForm.jsp").forward(req, resp);
 		} else {
 			//알림, 상세조회로 돌아가기
-			System.out.println("데이터 가져오기 실패");
 			req.getRequestDispatcher("/views/pm/fundingEditForm.jsp").forward(req, resp);
 		}
 	}
@@ -46,11 +51,13 @@ public class FundingEditController extends HttpServlet{
 		RegistVo rvo = new RegistVo();
 		
 		FundingVo vo = (FundingVo)req.getSession().getAttribute("editVo");
+		corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
+		String corpNo = Integer.toString(covo.getNo());
 		String content = req.getParameter("content");
 		String fDate = req.getParameter("fDate");
 		
 		rvo.setRegNo(vo.getRegNo());
-		rvo.setmNo(vo.getmNo());
+		rvo.setmNo(corpNo);
 		rvo.setContent(content);
 		rvo.setfDate(fDate);
 		

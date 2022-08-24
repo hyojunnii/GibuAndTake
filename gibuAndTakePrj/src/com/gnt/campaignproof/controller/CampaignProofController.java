@@ -32,8 +32,14 @@ public class CampaignProofController extends HttpServlet{
 		
 		int mNo = 1;
 		int camNo = 1;
-		//String mNo = req.getParameter("mNo");
-		//int camNo = req.getParameter("camNo");
+		
+		com.gnt.campaign.vo.CampaignVo vo = (com.gnt.campaign.vo.CampaignVo)req.getSession().getAttribute("campaignvo");
+		//int camNo = Integer.parseInt(vo.getCamno());
+		int regNo = Integer.parseInt(vo.getRegno());
+		
+		//corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
+		//int mNo = covo.getNo();
+		
 		String content = req.getParameter("content");
 		
 		CampaignProofVo proofVo = new CampaignProofVo();
@@ -75,13 +81,13 @@ public class CampaignProofController extends HttpServlet{
 		if(result == 1) {
 			//성공알림, 상세페이지
 			System.out.println("캠페인 인증 성공");
-			req.getSession().setAttribute("alertMsg", "인증 성공");
-			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail");
+			req.getSession().setAttribute("alertMsg", "캠페인 인증 성공");
+			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail?type=0&num=" + regNo);
 		} else {
 			//실패알림, 상세페이지
 			System.out.println("캠페인 인증 실패");
-			req.getSession().setAttribute("alertMsg", "인증 실패");
-			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail");
+			req.getSession().setAttribute("alertMsg", "캠페인 인증 실패");
+			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail?type=0&num=" + regNo);
 		}
 	
 	}

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.gnt.corp.vo.corpVo;
 import com.gnt.member.vo.MemberVo;
 import com.gnt.project.vo.CampaignVo;
 import com.gnt.project.vo.RegistVo;
@@ -39,8 +40,8 @@ public class CampaignApplyController extends HttpServlet{
 		
 		//등록 Vo
 		String regCategory = "캠페인";
-		MemberVo mvo = (MemberVo)req.getSession().getAttribute("loginCorp");
-		String corpNo = Integer.toString(mvo.getNo());
+		corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
+		String corpNo = Integer.toString(covo.getNo());
 		
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");

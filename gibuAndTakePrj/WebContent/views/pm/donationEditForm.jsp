@@ -3,7 +3,6 @@
 
 <% 
 	DonationVo dvo = (DonationVo)session.getAttribute("editVo");
-	String content = dvo.getContent();
 %>
 
 <!DOCTYPE html>
@@ -66,7 +65,7 @@
             <tr>
               <td class="form-subtitle">단체명</td>
               <td colspan="4">
-                <input value="" name="corp" type="text" class="form-control form-content" placeholder="단체명을 입력하세요." readonly />
+                <input name="corp" type="text" class="form-control form-content" value="${loginCorp.nick}" readonly />
               </td>
             </tr>
             <tr>
