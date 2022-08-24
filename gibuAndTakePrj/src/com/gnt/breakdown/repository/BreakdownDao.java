@@ -23,7 +23,7 @@ public class BreakdownDao {
 		ArrayList<BreakdownVo> list = new ArrayList<BreakdownVo>();
 		BreakdownVo vo = null;
 		
-		String paySql = "SELECT M.M_ID, R.REG_NAME, P.P_NO, P_NAME, PL_DATE, PL_MONEY FROM PAYLIST PL JOIN PAY P ON P.P_NO = PL.P_NO JOIN MEMBER M ON M.M_NO = P.M_NO JOIN REGIST R ON R.REG_NO = PL.REG_NO WHERE R.REG_CLASS = '기부' AND P.M_NO = ? ORDER BY P.P_NO DESC";
+		String paySql = "SELECT M.M_ID, R.REG_NAME, D.D_CLASS, P.P_NO, P_NAME, PL_DATE, PL_MONEY FROM PAYLIST PL JOIN PAY P ON P.P_NO = PL.P_NO JOIN MEMBER M ON M.M_NO = P.M_NO JOIN REGIST R ON R.REG_NO = PL.REG_NO JOIN DONATION D ON D.REG_NO = R.REG_NO WHERE R.REG_CLASS = '기부' AND P.M_NO = ? ORDER BY P.P_NO DESC";
 		String corpSql = "SELECT R.REG_NO, M.M_NO, M.M_NAME, M.M_ADD, M.M_REGNUM FROM REGIST R JOIN MEMBER M ON M.M_NO = R.M_NO JOIN PAYLIST PL ON PL.REG_NO = R.REG_NO JOIN PAY P ON P.P_NO = PL.P_NO WHERE P.P_NO = ?";
 		
 		try {
@@ -40,6 +40,7 @@ public class BreakdownDao {
 				String payName = payRs.getString("P_NAME");
 				String payMoney = payRs.getString("PL_MONEY");
 				String payDate = payRs.getString("PL_DATE");
+				String donaClass = payRs.getString("D_CLASS");
 				
 				corpPstmt = conn.prepareStatement(corpSql);
 				corpPstmt.setNString(1, payNo);
@@ -63,6 +64,7 @@ public class BreakdownDao {
 					vo.setCorpName(corpName);
 					vo.setCorpRegNum(corpRegNum);
 					vo.setCorpAdd(corpAdd);
+					vo.setCorpClass(donaClass);
 					
 					list.add(vo);
 				}

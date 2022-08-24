@@ -5,10 +5,10 @@ public class BreakdownVo {
 	public BreakdownVo () {
 		
 	}
-	
+
 	public BreakdownVo(String memberId, String memberName, String memberRegNum, String memberAdd, String regName,
 			String payNo, String payName, String payMoney, String payDate, String corpName, String corpRegNum,
-			String corpAdd) {
+			String corpAdd, String corpClass) {
 		super();
 		this.memberId = memberId;
 		this.memberName = memberName;
@@ -22,6 +22,7 @@ public class BreakdownVo {
 		this.corpName = corpName;
 		this.corpRegNum = corpRegNum;
 		this.corpAdd = corpAdd;
+		this.corpClass = corpClass;
 	}
 
 	private String memberId; //유저 아이디
@@ -37,6 +38,7 @@ public class BreakdownVo {
 	private String corpName;
 	private String corpRegNum;
 	private String corpAdd;
+	private String corpClass;
 	
 	public String getMemberId() {
 		return memberId;
@@ -134,12 +136,20 @@ public class BreakdownVo {
 		this.corpAdd = corpAdd;
 	}
 
+	public String getCorpClass() {
+		return corpClass;
+	}
+
+	public void setCorpClass(String corpClass) {
+		this.corpClass = corpClass;
+	}
+
 	@Override
 	public String toString() {
 		return "BreakdownVo [memberId=" + memberId + ", memberName=" + memberName + ", memberRegNum=" + memberRegNum
 				+ ", memberAdd=" + memberAdd + ", regName=" + regName + ", payNo=" + payNo + ", payName=" + payName
 				+ ", payMoney=" + payMoney + ", payDate=" + payDate + ", corpName=" + corpName + ", corpRegNum="
-				+ corpRegNum + ", corpAdd=" + corpAdd + "]";
+				+ corpRegNum + ", corpAdd=" + corpAdd + ", corpClass=" + corpClass + "]";
 	}
 
 	

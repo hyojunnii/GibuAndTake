@@ -21,6 +21,7 @@ public class ExeVo {
 	private String exeCnt;
 	private String exeMoney;
 	
+	
 	public String getDonaNo() {
 		return donaNo;
 	}

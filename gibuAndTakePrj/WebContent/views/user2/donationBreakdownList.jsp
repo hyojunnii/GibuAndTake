@@ -249,7 +249,11 @@
 
 				<%for (int i = 0; i < voList.size(); i++) {%>
 					<form action="<%=contextPath%>/member/breakPrint" method="post">
-						<input type="hidden" value="<%=voList.get(i).getPayNo() %>" name="payNo">
+						<div id="data-area">
+							<input type="hidden" value="<%=voList.get(i).getPayNo() %>" name="payNo">
+							<input type="hidden" value="<%=voList.get(i).getCorpName() %>" name="corpName" id="corpName">
+							<input type="hidden" value="<%=voList.get(i).getCorpClass() %>" name="corpClass" id="corpClass">
+						</div>
 						<table id="body-table">
 							<thead>
 								<tr>
@@ -290,90 +294,111 @@
 							</tbody>
 						</table>
 					</form>
-		
+					
 					<hr>
-				<%} %>
-
+					<%} %>
+					
+				</div>
+				
 			</div>
-		
+			
 		</div>
-		
-	</div>
 	
 	<%@include file="/views/common/footer.jsp" %>
-	<!-- 모달창 데이터 받아오는 거 구현해야함! -->
-  <!-- Modal -->
-	<div class="modal" id="certificatePrint" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">   <div class="modal-dialog modal-dialog-centered" id="modal-outer">
-		<div class="modal-content" id="modal-form">
-	  	<div class="modal-header" id="modal-header">
-			<h5 class="modal-title">기부 증서 출력하기</h5>
-	  	</div>
-		<div class="modal-body" id="modal-body">
-			<form action="" method="">
-				<div id="modal-form-title">기 부 증 서</div>
-		  		
-				<table id="modal-table">
-					<tr>
-						<td>기 부 번 호:</td>
-						<td id="modalNo"></td>
-					</tr>
-					<tr>
-						<td>기 부 자 명:</td>
-						<td id="modalName"></td>
-					</tr>
-					<tr>
-						<td>기 부 단 체:</td>
-						<td id="modalCorp"></td>
-					</tr>
-					<tr>
-						<td>기 부 분 야:</td>
-						<td id="modalClass"></td>
-					</tr>
-					<tr>
-						<td>총 기 부 금 액:</td>
-						<td id="modalMoney"></td>
-					</tr>
-					<tr>
-						<td>기 부 일 자:</td>
-						<td id="modalDate"></td>
-					</tr>
-				</table>
-				<div id="modal-text-outer">
-					<div id="modal-text">위 사람은 사랑과 봉사, 섬김과 나눔의 정신을 가지고<br>
-					어려운 이웃들의 복지 증진과 사회 통합을 위해 노력하며<br>
-					기부 앤 테이크를 통해 기부하였음을 증명합니다.</div>
-					<div id="modal-date">2022. 08. 05</div>
-					<div id="modal-sign">기부 앤 테이크 대표</div>
-				</div>
 
-		  		<div id="modal-form-buttons">
-					<input type="button" class="modal-form-button" data-bs-dismiss="modal" value="취소" />
-					<input type="submit" class="modal-form-button" value="출력" />
-		  		</div>
-			</form>
-	  	</div>
-	</div>
+	<!-- Modal -->
+	<%for(int i = 0; i < voList.size(); ++i) { %>
+		<div class="modal" id="certificatePrint" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered" id="modal-outer">
+				<div class="modal-content" id="modal-form">
+					<div class="modal-header" id="modal-header">
+						<h5 class="modal-title">기부 증서 출력하기</h5>
+					</div>
+					<div class="modal-body" id="modal-body">
+						<form action="" method="">
+							<div id="modal-form-title">기 부 증 서</div>
+							
+							<table id="modal-table">
+								<tr>
+									<td>기 부 번 호:</td>
+									<td id="modalNo"></td>
+								</tr>
+								<tr>
+									<td>기 부 자 명:</td>
+									<td id="modalName"></td>
+								</tr>
+								<tr>
+									<td>기 부 단 체:</td>
+									<td id="modalCorp"></td>
+								</tr>
+								<tr>
+									<td>기 부 분 야:</td>
+									<td id="modalClass"></td>
+								</tr>
+								<tr>
+									<td>총 기 부 금 액:</td>
+									<td id="modalMoney"></td>
+								</tr>
+								<tr>
+									<td>기 부 일 자:</td>
+									<td id="modalDate"></td>
+								</tr>
+							</table>
+						<div id="modal-text-outer">
+							<div id="modal-text">위 사람은 사랑과 봉사, 섬김과 나눔의 정신을 가지고<br>
+								어려운 이웃들의 복지 증진과 사회 통합을 위해 노력하며<br>
+								기부 앤 테이크를 통해 기부하였음을 증명합니다.
+							</div>
+								<div id="modal-date">
+									<c:set var="now" value="<%=new java.util.Date() %>"></c:set>
+									<fmt:formatDate value="${now }" pattern="yyyy-MM-dd" var="today"/>
+									<c:out value="${today }"/>
+								</div>
+							<div id="modal-sign">기부 앤 테이크 대표</div>
+						</div>
+						
+						<div id="modal-form-buttons">
+							<input type="button" class="modal-form-button" data-bs-dismiss="modal" value="취소" />
+							<input type="submit" class="modal-form-button" value="출력" onclick="printPage()"/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	<%} %>
 
 	<script>
-
-		$(function () {
-			$("#certificate").click(function () {
-				let payNo = $("#payNo").text();
-				let payName = $("#payName").text();
-				let corpNAme = $("#payNo").text();
-				let corpClass = $("#payNo").text();
+				
+				$(document).on("click","#certificate", function() {
+					let payNo = $("#payNo").text();
+					let payName = $("#payName").text();
+					let corpName = $("#corpName").val();
+					let corpClass = $("#corpClass").val();
 				let payMoney = $("#payMoney").text();
 				let payDate = $("#payDate").text();
-
+				
 				$("#modalNo").html(payNo);
 				$("#modalName").html(payName);
-				$("#modalCorp").html(payNo);
+				$("#modalCorp").html(corpName);
 				$("#modalClass").html(corpClass);
 				$("#modalMoney").html(payMoney);
 				$("#modalDate").html(payDate);
 			})
-		})
 
+			function printPage(){
+				var initBody = initBody = document.body.innerHTML;
+				window.onbeforeprint = function(){
+					document.body.innerHTML = document.getElementById('modal-body').innerHTML;
+				};
+				
+				window.onafterprint = function(){
+					document.body.innerHTML = initBody;
+				};
+				
+				window.print();
+				
+				return false;
+			}    
 	</script>
 
 </body>

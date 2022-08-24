@@ -236,7 +236,14 @@
 					<tbody id="exeBody">
 						<% for (int i = 0; i < exeVo.size(); ++i) {%>
 							<tr>
-								<th>사업비</th>
+								<th>
+									<select name="exeCategory" id="inputGroupSelect01" required>
+										<option value="사업비" selected>사업비</option>
+										<option value="인건비" >인건비</option>
+										<option value="운영비" >운영비</option>
+										<option value="행사홍보비" >행사홍보비</option>
+									</select>
+								</th>
 								<td colspan="2" class="input-col" id="input-cnt">
 									<input type="text" value="<%=exeVo.get(i).getExeCnt() %>" size="40" readonly="readonly">
 									<input type="number" value="<%=exeVo.get(i).getExeMoney() %>" readonly="readonly">
@@ -263,9 +270,7 @@
 			exeRow = document.all["exeBody"].insertRow();
 
 			let exeTitle = exeRow.insertCell();
-			exeTitle.outerHTML = "<th>사업비</th>";
-			// exeTitle.innerHTML = "사업비";
-
+			exeTitle.outerHTML = '<th><select name="exeCategory" id="inputGroupSelect01" required> <option value="사업비" selected>사업비</option> <option value="인건비" >인건비</option> <option value="운영비" >운영비</option> <option value="행사홍보비" >행사홍보비</option> </select></th>';
 
 			let exeCnt = exeRow.insertCell();
 			exeCnt.innerHTML = '<input type="text" name="exeCnt" size="40" placeholder="사용 내역을 입력해주세요."> <input type="number" name="exeMoney" placeholder="사용 금액을 입력해주세요.">';

@@ -99,7 +99,6 @@ public class StmtDao {
 				vo.setDonaEdate(donaEdate);
 				vo.setDonaPerson(donaPerson);
 				
-				System.out.println(vo);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,7 +116,7 @@ public class StmtDao {
 		ResultSet rs = null;
 		ArrayList<ExeVo> list = new ArrayList<ExeVo>();
 
-		String sql = "SELECT E_NO, E_CONTENT, E_MONEY FROM EXECUTE E JOIN DONATION D ON D.D_NO = E.D_NO JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE D.D_NO = ? ORDER BY E_NO ASC";
+		String sql = "SELECT E_NO, E_CTG, E_CONTENT, E_MONEY FROM EXECUTE E JOIN DONATION D ON D.D_NO = E.D_NO JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE D.D_NO = ? ORDER BY E_NO ASC";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, donaNo);
@@ -125,11 +124,13 @@ public class StmtDao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String exeNo = rs.getString("E_NO");
+				String exeCtg = rs.getString("E_CTG");
 				String exeCnt = rs.getString("E_CONTENT");
 				String exeMoney = rs.getString("E_MONEY");
 				
 				ExeVo vo = new ExeVo();
 				vo.setExeNo(exeNo);
+				vo.setExeCtg(exeCtg);
 				vo.setExeCnt(exeCnt);
 				vo.setExeMoney(exeMoney);
 				
@@ -141,7 +142,7 @@ public class StmtDao {
 			close(rs);
 			close(pstmt);
 		}
-		
+		System.out.println(list);
 		return list;
 	}
 
@@ -149,13 +150,14 @@ public class StmtDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String sql = "INSERT INTO EXECUTE ( E_NO, D_NO, E_CTG, E_CONTENT, E_MONEY ) VALUES ( SEQ_EXECUTE_E_NO.NEXTVAL, ?, '사업비', ?, ? )";
+		String sql = "INSERT INTO EXECUTE ( E_NO, D_NO, E_CTG, E_CONTENT, E_MONEY ) VALUES ( SEQ_EXECUTE_E_NO.NEXTVAL, ?, ?, ?, ? )";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(vo.getDonaNo()));
-			pstmt.setString(2, vo.getExeCnt());
-			pstmt.setString(3, vo.getExeMoney());
+			pstmt.setString(2, vo.getExeCtg());
+			pstmt.setString(3, vo.getExeCnt());
+			pstmt.setString(4, vo.getExeMoney());
 			
 			result = pstmt.executeUpdate();
 		} catch(Exception e) {
