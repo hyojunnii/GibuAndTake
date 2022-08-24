@@ -172,6 +172,15 @@
         color: #8bdcb1;
     }
 
+    @media print {
+        .noprint { 
+	        display:none;
+	    }
+    }
+
+    .mTitle{
+        text-align: left;
+    }
 </style>
 </head>
 <body>
@@ -190,15 +199,15 @@
                 
                     <div id="title">기 부 금  영 수 증</div>
                     <div id="btn-outer">
-                        <a id="print">출력하기</a>
-                        <a id="back" onclick="history.back()">돌아가기</a>
+                        <a id="print" class="noprint" onclick="printPage()">출력하기</a>
+                        <a id="back" class="noprint" onclick="history.back()">돌아가기</a>
                     </div>
                 </div>
         
         
                 <table>
                     <tr id="first">
-                        <td colspan="7">1 기부자</td>
+                        <td colspan="7" class="mTitle">1 기부자</td>
                     </tr>
                     <tr>
                         <th>성명</th>
@@ -218,7 +227,7 @@
                 </table>
                 <table id="second">
                     <tr>
-                        <td colspan="7">2 기부금 단체</td>
+                        <td colspan="7" class="mTitle">2 기부금 단체</td>
                     </tr>
                     <tr>
                         <th>단체명</th>
@@ -245,7 +254,7 @@
             
                 <table id="third">
                     <tr>
-                        <td colspan="7">3 기부금 모집처</td>
+                        <td colspan="7" class="mTitle">3 기부금 모집처</td>
                     </tr>
                     <tr>
                         <th>단체명</th>
@@ -261,7 +270,7 @@
             
                 <table id="fourth">
                     <tr>
-                        <td colspan="7">4 기부 내용</td>
+                        <td colspan="7" class="mTitle">4 기부 내용</td>
                     </tr>
                     <tr>
                         <th rowspan="2">코드</th>
@@ -335,6 +344,23 @@
     </div>
     
     <%@include file="/views/common/footer.jsp" %>
+    
+    <script>
+        function printPage(){
+            var initBody = initBody = document.body.innerHTML;
+            window.onbeforeprint = function(){
+                document.body.innerHTML = document.getElementById('res').innerHTML;
+            };
 
+            window.onafterprint = function(){
+                document.body.innerHTML = initBody;
+            };
+            
+            window.print();
+            
+            return false;
+        }    
+    </script>
+    
 </body>
 </html>

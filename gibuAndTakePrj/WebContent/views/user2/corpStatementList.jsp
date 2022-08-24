@@ -164,8 +164,6 @@
 								
 								<div id="do_t">기부금 집행 내역 |</div>
 								<div id="do_ex">기부금이 어떻게 사용되었는지 등록해주세요.</div>
-								<div id="do_tt">최종 수정 일시 |</div>
-								<div id="do_tt2">2022-08-05 13:30</div>
 							</div>
 							<tr>
 								<th>집행기간</th>
@@ -196,7 +194,7 @@
 							<tbody>
 								<%for(int j = 0; j < exeList.size(); ++j ) {%>
 									<tr>
-										<th>사업비</th>
+										<th><%=exeList.get(j).getExeCtg() %></th>
 										<td><%=exeList.get(j).getExeCnt() %></td>
 										<td><fmt:formatNumber value="<%=exeList.get(j).getExeMoney() %>" pattern="#,###"/>원</td>
 									</tr>
