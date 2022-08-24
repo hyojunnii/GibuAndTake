@@ -6,6 +6,8 @@ import static com.gnt.common.JDBCTemplate.getConnection;
 import static com.gnt.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.gnt.corp.repository.CorpDao;
 import com.gnt.corp.vo.corpVo;
@@ -107,11 +109,12 @@ public class corpService {
 			
 			conn = getConnection();
 			result = new CorpDao().corpUpdate(conn, vo);
+			result2 = new CorpDao().memberUpdate(conn, vo);
 			
 			//트랜잭션 처리 (commit || rollback)
-			if(result == 1) {
+			if(result == 1 && result2 == 1) {
 				commit(conn);
-				updateVo = selectOneByNo(vo.getNo());
+				updateVo = selectOneByNo(vo.getNo(), vo.getId(), vo.getPwd(), vo.getClas(), vo.getRegnum(), vo.getDate(), vo.getDel(), vo.getBan(), vo.getCno(), vo.getClasss());
 			}else {
 				rollback(conn);
 			}
@@ -129,42 +132,7 @@ public class corpService {
 		
 	}
 	
-	public corpVo memberUpdate(corpVo vo) {
-		//비지니스 로직 (자바 || SQL)
-	
-		
-		Connection conn = null;
-		int result = 0;
-		int result2 = 0;
-		corpVo updateVo = null;
-		
-		try {
-			
-			conn = getConnection();
-			result = new CorpDao().memberUpdate(conn, vo);
-			
-			//트랜잭션 처리 (commit || rollback)
-			if(result == 1) {
-				commit(conn);
-				updateVo = selectOneByNo(vo.getNo());
-			}else {
-				rollback(conn);
-			}
-			
-		}catch(Exception e) {
-			rollback(conn);
-			e.printStackTrace();
-		}finally {
-			close(conn);
-		}
-		
-		
-		//실행결과 리턴
-		return updateVo;
-		
-	}
-	
-	private corpVo selectOneByNo(int no) {
+	private corpVo selectOneByNo(int no, String id, String pwd, int clas, String regNum, Timestamp enrolDate, String del, String ban, int cno, String clss) {
 		Connection conn = null;
 		corpVo vo = null;
 		

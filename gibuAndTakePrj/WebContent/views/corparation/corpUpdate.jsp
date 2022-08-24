@@ -473,7 +473,7 @@
 				</tr>
 				<tr>
 					<td class="first" style="font-weight: bold">사업자등록번호 *</td>
-					<td><input type="tel" name="compNum" id="compNum"  value=<%=loginCorp.getRegnum()%> class="input"></td>
+					<td><input type="tel" name="compNum" id="compNum"  value=<%=loginCorp.getRegnum()%> class="input" readonly></td>
 					<td></td>
 				</tr>
 				<tr>

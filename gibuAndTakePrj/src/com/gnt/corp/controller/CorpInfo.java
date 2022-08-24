@@ -55,17 +55,13 @@ public class CorpInfo extends HttpServlet{
 		vo.setAddr(corpAddr);
 		vo.setContent(corpContent);
 	
-		
-
 		//서비스 호출(객체)
-		corpVo updateVo = new corpService().memberUpdate(vo);
-		corpVo updateVo2 = new corpService().corpUpdate(vo);
+		corpVo updateVo = new corpService().corpUpdate(vo);
 		
 		//실행결과에 따라 화면 선택
-		if(updateVo != null || updateVo2 != null) {
+		if(updateVo != null) {
 			//성공 화면
 			req.getSession().setAttribute("loginCorp", updateVo);
-			req.getSession().setAttribute("loginCorp", updateVo2);
 			req.getSession().setAttribute("alertMsg", "회원 정보 수정 완료!");
 			resp.sendRedirect("/gibuAndTakePrj/");
 		}else {
