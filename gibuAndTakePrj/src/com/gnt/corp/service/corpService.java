@@ -181,6 +181,64 @@ public class corpService {
 		
 		return vo;
 	}
+
+	public int changePwd(String memberId, String memberPwd, String memberPwdNew, String memberPwdNew2) {
+
+
+
+		if(memberPwdNew.equals(memberPwdNew2) == false) {
+			System.out.println("신규 비밀번호가 일치하지 않음");
+			return -1;
+		}
+
+		if(memberPwdNew.length() < 4) {
+			return -2;
+		}
+
+
+		Connection conn = null;
+		int result = 0;
+
+		try {
+			//DAO 호출 (SQL 실행)
+			conn = getConnection();
+			result = new CorpDao().changePwd(conn,memberId, memberPwd, memberPwdNew);
+
+
+
+			if(result == 1) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+
+		}catch(Exception e) {
+			rollback(conn);
+		}finally {
+			close(conn);
+		}
+
+		return result;
+
+	}
+
+	public int quit(int no) {
+		int result = 0;
+		Connection conn = getConnection();
+
+		result = CorpDao.quit(conn, no);
+
+		if(result == 1) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+	}
+
 }
 
 

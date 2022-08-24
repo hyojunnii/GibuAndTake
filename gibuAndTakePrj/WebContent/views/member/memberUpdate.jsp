@@ -137,8 +137,37 @@
        
 	}
 	
+	#updatediv{
+		text-align: center;
+		margin-left:400px;
+	}
 	
+	#pwdupdatediv{
+		text-align: center;
+		margin-left:400px;
+	}
 	
+	#quitdiv{
+		text-align: center;
+		margin-left:400px;
+	}
+	#update {
+		 width:120px;
+       	 float:left;
+       	 margin-left:20px;
+	}
+	
+	#pwdupdate{
+		 width:120px;
+       	 float:left;
+       	  margin-left:20px;
+	}
+	
+	#quit{
+		 width:120px;
+       	  float:left;
+       	   margin-left:20px;
+       }
 	
 	#check {
 		text-align: center;
@@ -273,7 +302,8 @@
 		display: flex;
 		justify-content: right;
 	}
-	 
+	
+	
 </style>
 </head>
 <body>
@@ -337,16 +367,18 @@
 				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 				
 			</table>
-			
-				<button>수정하기</button>
+				<div id="updatediv">
+				<button id ="update">수정하기</button>
+				</div>
 			</form>
-			
-			<button type="button" data-bs-toggle="modal" data-bs-target="#pwdChange">비밀번호변경</button>
-			
+			<div id="pwdupdatediv">
+			<button type="button" data-bs-toggle="modal" data-bs-target="#pwdChange" id="pwdupdate">비밀번호변경</button>
+			</div>
+			<div id="quitdiv">
 			<form action="/gibuAndTakePrj/member/quit" method="get">
-				<button>회원탈퇴</button>
+				<button id="quit">회원탈퇴</button>
 			</form>
-		
+			</div>
 		</div>
 		
 		<div style="padding-top: 100px">
