@@ -90,7 +90,7 @@
     	border-radius: 10px;
     	width: 650px;
     	height: 40px;
-    	margin: 15px 70px 15px 390px;
+    	margin: 15px 70px 0px 390px;
     	text-align: left;
     	
 	}
@@ -101,6 +101,21 @@
 	
 	#toggle{
 		margin-top: 30px;
+	}
+	
+	.toggle2{
+		border: 2px solid #acdac2;
+    	background-color: white;
+    	border-radius: 10px;
+    	width: 650px;
+    	height: 80px;
+    	margin: 0px 70px 0px 390px;
+    	text-align: left;
+    	display : none;
+	}
+	
+	.toggle2:hover{
+        cursor: pointer;
 	}
 	
 	#img{
@@ -342,19 +357,17 @@
 	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:600px; padding:50px 0px 0px 0px;">                  
 	    	
 	    	
-	    		<%for(int i = 0; i < vo.size(); i++) {%>  
-	    	<button class="toggle"><%= vo.get(i).getTitle()%><button id="img">▽</button></button>
+	    	<%for(int i = 0; i < vo.size(); i++) {%>  
+	    		<button class="toggle"><%= vo.get(i).getTitle()%><button id="img">▽</button></button>
+	    		<button class="toggle2"><%= vo.get(i).getContent()%></button>
 	    	<%}%> 
 	    	
             
             <% if(loginMember != null && "admin".equals(loginMember.getId())) {%>  
-	    	<form action="/gibuAndTakePrj/faq/write1" method="get">
-		    	<button id="btn1" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/write1'">FAQ작성</button>
-	    	</form>
-	    	
-	    	<form action="/gibuAndTakePrj/faq/modify" method="get">
-	        	<input id="btn2" class="btn3" type="submit" value="FAQ수정/삭제">
-	    	</form>
+		    	
+			    	<button id="btn1" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/write1'">FAQ작성</button>
+			    	
+		    		<button id="btn2" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/modify'">FAQ수정/삭제</button>
 	    	<%} %> 
 	    
 	    <div id="page-area">
@@ -382,8 +395,20 @@
 	<script>
     	$(function(){
     		$('.toggle').click(function(){
-    			const num = $(this).children().eq(0).text();
-    			location.href='/gibuAndTakePrj/faq/detail?num=' + num;
+    			if($(".toggle2").css("display") == "none"){
+    				$(".toggle2").show();
+    			}
+    		});
+    		
+    	})
+    </script>
+	
+	<script>
+    	$(function(){
+    		$('.toggle2').click(function(){
+    			if($(".toggle2").css("display") != "block"){
+    				$(".toggle2").hide();
+    			}
     		});
     		
     	})

@@ -1,10 +1,26 @@
+<%@page import="com.gnt.common.PageVo"%>
+<%@page import="com.gnt.qa.vo.QaVo"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%
+	ArrayList<QaVo> voList = (ArrayList<QaVo>)request.getAttribute("voList");
+	
+	
+	PageVo pv = (PageVo)request.getAttribute("pv");
+	
+	int currentPage = pv.getCurrentPage();
+	int startPage = pv.getStartPage();
+	int endPage = pv.getEndPage();
+	int maxPage = pv.getMaxPage();
+
+%> --%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>문의하기</title>
 <style>
     #title {
@@ -14,6 +30,31 @@
         font-weight: bold;
         font-size: 36px;
         padding: 30px 0px 30px 120px;
+    }
+    
+    #outer{
+        border: 1px solid #2e6c4a;
+        color: black;
+        width: 70%;
+        margin: 0 auto;
+        padding-bottom: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    #table-main{
+        border: 1px solid white;
+        width: 95%;
+        margin-top: 10px;
+        line-height: 2.5em;
+    }
+
+    #table-main>tbody tr:hover{
+        cursor: pointer;
     }
     
     .search {
@@ -155,6 +196,16 @@
         font-weight: bold;
     }
     
+    #page-area{
+		text-align: center;
+		margin: auto;
+		padding-top: 30px;
+		width: 150px;
+    	height: 40px;
+    	color: #2e6c4a;
+        font-weight: bold;
+	}
+    
     #last{
     	padding: 300px;
     }
@@ -189,35 +240,58 @@
 	 </div>
 	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:600px; padding:50px 0px 0px 0px;">                  
 	    	
-	    	<form action="/gibuAndTakePrj/qa/answer" method="get">
+	    <%-- <div id="outer">
+        <table id="table-main">
+            <tbody>        
+                   <%for(int i = 0; i < voList.size(); i++) {%>
+                    <tr>
+                        <td><%= voList.get(i).getName()%></td>
+                    </tr>
+                <%}%> 
+            </tbody>            
+        </table>
+    </div>  --%>
+             <form action="/gibuAndTakePrj/qa/answer" method="get">
 	    	<button class="toggle">서비스질문<button id="img">▽</button></button>
 	    	<button class="toggle" id="toggle">서비스질문<button id="img">▽</button></button>
 	    	<button class="toggle" id="toggle">서비스질문<button id="img">▽</button></button>
 	    	<button class="toggle" id="toggle">서비스질문<button id="img">▽</button></button>
 	    	<button class="toggle" id="toggle">서비스질문<button id="img">▽</button></button>
 	    	</form>
-             
-	    	<form action="/gibuAndTakePrj/qa/write" method="get">
-		    	<input id="btn1" class="btn3" type="submit" value="문의하기">
-	    	</form>
 	    	
-	    	<form action="/gibuAndTakePrj/qa/modify" method="get">
-	        	<input id="btn2" class="btn3" type="submit" value="문의수정/삭제">
-	    	</form>
+		    	<button id="btn1" class="btn3" onclick="location.href='/gibuAndTakePrj/qa/write'">문의하기</button>
+		    	<button id="btn2" class="btn3" onclick="location.href='/gibuAndTakePrj/qa/modify'">문의수정/삭제</button>
 	    
-	    
-	    <div id="btn">
-	    	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp1&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp2&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp3&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp4&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp5&nbsp&nbsp</a>
-	        <a id="c">&nbsp&nbsp>&nbsp&nbsp</a>
-	    </div>
+	   <%-- <div id="page-area">
+				<%if(currentPage != 1){%>
+					<a href="/gibuAndTakePrj/notice/list?p=<%=currentPage-1%>"> &lt; </a>
+				<%} %>
+				<% for(int i = startPage; i <= endPage; ++i) {%>
+					<%if(i == currentPage) {%>
+						<a><%=i%></a>
+					<%}else{ %>
+						<a href="/gibuAndTakePrj/notice/list?p=<%=i%>"><%=i%></a>
+					<%} %>
+				<%} %>
+				
+				<%if(currentPage != maxPage){%>
+					<a href="/gibuAndTakePrj/notice/list?p=<%=currentPage+1%>"> &gt; </a>
+				<%} %>
+			</div> --%>
 	    
 	  </div>
 	<div id="last"></div>
 	<%@include file="/views/common/footer.jsp" %>
+	
+	<<!-- script>
+    	$(function(){
+    		
+    		$('#table-main>tbody>tr').click(function(){
+    			const num = $(this).children().eq(0).text();
+    			location.href='/gibuAndTakePrj/qa/answer?num=' + num;
+    		});
+    		
+    	})
+    </script> -->
 </body>
 </html>
