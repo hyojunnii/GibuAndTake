@@ -7,7 +7,7 @@
     
 <%
 	GibuVo vo = (GibuVo)request.getSession().getAttribute("gibuvo");
-	List<ReplyVo> list = (ArrayList<ReplyVo>)request.getAttribute("replyvo");
+	List<ReplyVo> list = (List<ReplyVo>)request.getAttribute("replyvo");
 	request.setAttribute("vo", vo);
 
 %>    
@@ -191,21 +191,20 @@
     <div id="gibu_detail_container">
         <table id="title_table">
             <tr>	
-           		<c:if test="${empty loginMember }">
             		<td width="20%"></td>
 	                <td colspan="3" width="60%"><h1><%=vo.getRegname() %></h1></td>
 	                <td width="20%">
+           		<c:if test="${empty loginMember }">
 	                </td>
               	</c:if>
 	            <c:if test="${loginMember.no == gibuvo.mno}">
-	    			<td>
 	    			<button class="btn">수정하기</button>
 				    </td>
 			 	</c:if>
             </tr>
         </table>
             <p class="comName">By <%=vo.getMnick() %></p>
-            <img src="<%= vo.getImgsrc() %>" alt="첫번째 이미지사진">
+            <img src="../resource/upload/<%= vo.getImgsrc() %>">
         <div id="gibu_detail_container_div">
             <p>
                 <%= vo.getRegcontent() %>
@@ -219,8 +218,8 @@
                         <td><%=vo.getMnick() %></td>
                     </tr>
                     <tr>
-                        <th>모금기간</th>
-                        <td><%= vo.getRegsdate() %> ~ <%= vo.getRegfdate() %></td>
+                        <th>종료기간</th>
+                        <td>~ <%= vo.getRegfdate() %></td>
                     </tr>
                     <tr>
                         <th>사업대상</th>

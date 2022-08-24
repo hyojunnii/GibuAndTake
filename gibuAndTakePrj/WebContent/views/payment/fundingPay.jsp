@@ -1,5 +1,9 @@
+<%@page import="com.gnt.funding.vo.FundingVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	FundingVo vo = (FundingVo)request.getAttribute("fundingvo");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,10 +107,13 @@
 <%@include file="/views/common/header.jsp" %>
 
     <section>
-        <form action="">
+        <form action="<%=path %>/funding/pay" method="post">
+        	<input type="hidden" name="num" value="<%= vo.getRegno() %>">
+        	<input type="hidden" name="mno" value="<%= memberVo.getNo()%>">
+        	<input type="hidden" name="addmoney" value="<%=vo.getRewmoney() %>">
             <div id="pay_title">
-                <strong class="pay_div_title">펀딩 제목</strong>
-                <span class="pay_div_title_mini">회사명</span>
+                <strong class="pay_div_title"><%= vo.getRegname() %></strong>
+                <span class="pay_div_title_mini"><%= vo.getMnick() %></span>
             </div>
             
             <div id="pay_body">
@@ -115,8 +122,8 @@
                 </div>
                 <div id="pay_body_money" class="pay_border">
                     <span>
-                        <span class="pay_div_title">리워드 명</span>
-                        <span class="donate_money donate_won">10,000 원</span>
+                        <span class="pay_div_title"><%= vo.getRewname() %></span>
+                        <span class="donate_money donate_won"><%=vo.getRewmoney() %> (<%=vo.getRewcnt() %> 개) 원</span>
                     </span>
                 </div>
                 <div id="pay_body_send" class="pay_border">
@@ -139,7 +146,7 @@
             </div>
 
             <div id="pay_btn_div">
-                <input type="button" value="결제하기" id="pay_btn">
+                <input type="submit" value="결제하기" id="pay_btn">
             </div>
 
         </form>
