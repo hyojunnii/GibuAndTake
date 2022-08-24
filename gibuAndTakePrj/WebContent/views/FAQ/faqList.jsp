@@ -90,8 +90,9 @@
     	border-radius: 10px;
     	width: 650px;
     	height: 40px;
-    	margin: 0px 70px 0px 350px;
+    	margin: 15px 70px 15px 390px;
     	text-align: left;
+    	
 	}
 	
 	.toggle:hover{
@@ -118,7 +119,7 @@
         padding: 3px 10px 3px 10px;
         font-weight: bold;
         border-radius: 15px;
-        margin-left: 820px;
+        margin-left: 860px;
     }
 
     #btn1:hover{
@@ -144,46 +145,14 @@
     	float: left;
     }
     
-    #btn{
-    	margin-top: 120px;
-    	margin-left: 570px;
-    }
-    
-    #a:hover{
-    	cursor: pointer;
-    }
-    
-    #b:hover{
-    	cursor: pointer;
-    }
-    
-    #c:hover{
-    	cursor: pointer;
-    }
-    
-    #a{
-    	width: 40px;
+    #page-area{
+		margin: auto;
+		padding-top: 80px;
+		width: 150px;
     	height: 40px;
-    	border: 1px solid #2e6c4a;
     	color: #2e6c4a;
         font-weight: bold;
-    }
-    
-    #b{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
-    }
-    
-    #c{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
-    }
+	}
     
     #last{
     	padding: 300px;
@@ -372,15 +341,15 @@
 	 </div>
 	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:600px; padding:50px 0px 0px 0px;">                  
 	    	
-	    	<form action="/gibuAndTakePrj/faq/detail" method="get">
+	    	
 	    		<%for(int i = 0; i < vo.size(); i++) {%>  
 	    	<button class="toggle"><%= vo.get(i).getTitle()%><button id="img">▽</button></button>
 	    	<%}%> 
-	    	</form>
+	    	
             
             <% if(loginMember != null && "admin".equals(loginMember.getId())) {%>  
 	    	<form action="/gibuAndTakePrj/faq/write1" method="get">
-		    	<input id="btn1" class="btn3" type="submit" value="FAQ작성">
+		    	<button id="btn1" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/write1'">FAQ작성</button>
 	    	</form>
 	    	
 	    	<form action="/gibuAndTakePrj/faq/modify" method="get">
@@ -388,18 +357,36 @@
 	    	</form>
 	    	<%} %> 
 	    
-	    <div id="btn">
-	    	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp1&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp2&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp3&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp4&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp5&nbsp&nbsp</a>
-	        <a id="c">&nbsp&nbsp>&nbsp&nbsp</a>
-	    </div>
+	    <div id="page-area">
+				<%if(currentPage != 1){%>
+					<a href="/gibuAndTakePrj/faq/list?p=<%=currentPage-1%>"> &lt; </a>
+				<%} %>
+				<% for(int i = startPage; i <= endPage; ++i) {%>
+					<%if(i == currentPage) {%>
+						<a><%=i%></a>
+					<%}else{ %>
+						<a href="/gibuAndTakePrj/faq/list?p=<%=i%>"><%=i%></a>
+					<%} %>
+				<%} %>
+				
+				<%if(currentPage != maxPage){%>
+					<a href="/gibuAndTakePrj/faq/list?p=<%=currentPage+1%>"> &gt; </a>
+				<%} %>
+				
+			</div>
 	    
 	  </div>
 	<div id="last"></div>
 	<%@include file="/views/common/footer.jsp" %>
+	
+	<script>
+    	$(function(){
+    		$('.toggle').click(function(){
+    			const num = $(this).children().eq(0).text();
+    			location.href='/gibuAndTakePrj/faq/detail?num=' + num;
+    		});
+    		
+    	})
+    </script>
 </body>
 </html>
