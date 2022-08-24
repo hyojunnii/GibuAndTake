@@ -75,4 +75,35 @@ public class UploadImgDao {
 		return result;
 	}
 
+	public int InsertRevReg(Connection conn, ReviewVo reviewVo, String regNo, String category) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			
+			//sql 준비
+			String sql = "INSERT INTO REVIEWREGIST(RR_NO, REV_NO, REG_NO, RR_CLASS) VALUES(SEQ_REVIEWREGIST_RR_NO.NEXTVAL,?,?,?)";
+			//sql 객체에 담기
+			pstmt = conn.prepareStatement(sql);
+			
+			//미완성 sql 완성
+			pstmt.setString(1, reviewVo.getRevNo());
+			pstmt.setString(2, regNo);
+			pstmt.setString(3, category);
+			
+			
+			
+			
+			//sql 실행 실행 결과 받기
+			result = pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			//다쓴 자원 정리하기
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

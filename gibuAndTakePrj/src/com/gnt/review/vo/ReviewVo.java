@@ -7,6 +7,7 @@ public class ReviewVo {
 	
 	private String revNo;
 	private String mNo;
+	private String mNick;
 	private String revName;
 	private String revContent;
 	private String revDate;
@@ -16,11 +17,12 @@ public class ReviewVo {
 	private String revImg;
 	
 
-	public ReviewVo(String revNo, String mNo, String revName, String revContent, String revDate, String revClass,
-			String revMod, String revCnt, String revImg) {
+	public ReviewVo(String revNo, String mNo, String mNick, String revName, String revContent, String revDate,
+			String revClass, String revMod, String revCnt, String revImg) {
 		super();
 		this.revNo = revNo;
 		this.mNo = mNo;
+		this.mNick = mNick;
 		this.revName = revName;
 		this.revContent = revContent;
 		this.revDate = revDate;
@@ -100,6 +102,14 @@ public class ReviewVo {
 
 	public void setRevImg(String revImg) {
 		this.revImg = revImg;
+	}
+
+	public String getmNick() {
+		return mNick;
+	}
+
+	public void setmNick(String mNick) {
+		this.mNick = mNick;
 	}
 
 	@Override

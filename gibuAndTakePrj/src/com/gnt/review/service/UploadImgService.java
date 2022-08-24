@@ -47,16 +47,18 @@ public class UploadImgService {
 	}
 
 
-	public int InsertReview(ReviewVo reviewVo, ReviewImgVo imgVo) {
+	public int InsertReview(ReviewVo reviewVo, ReviewImgVo imgVo,String regNo,String category) {
 		int result1 = 0;
 		int result2 = 0;
+		int result3 = 0;
 		Connection conn = null;
 		
 		conn = getConnection();
 		result1 = new UploadImgDao().InsertReview(conn, reviewVo);
 		result2 = new UploadImgDao().UploadImg(conn, imgVo);
+		result3 = new UploadImgDao().InsertRevReg(conn, reviewVo, regNo, category);
 		
-		if(result1*result2==1) {
+		if(result1*result2*result3==1) {
 			
 			commit(conn);
 		}else {
