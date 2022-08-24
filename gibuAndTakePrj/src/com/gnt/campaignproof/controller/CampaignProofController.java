@@ -18,6 +18,7 @@ import javax.servlet.http.Part;
 import com.gnt.campaignproof.service.CampaignProofService;
 import com.gnt.campaignproof.vo.CampaignProofVo;
 import com.gnt.corp.vo.corpVo;
+import com.gnt.member.vo.MemberVo;
 import com.gnt.projectApply.service.ProjectApplyService;
 
 @MultipartConfig(
@@ -37,9 +38,17 @@ public class CampaignProofController extends HttpServlet{
 		com.gnt.campaign.vo.CampaignVo vo = (com.gnt.campaign.vo.CampaignVo)req.getSession().getAttribute("campaignvo");
 		int camNo = Integer.parseInt(vo.getCamno());
 		int regNo = Integer.parseInt(vo.getRegno());
+		System.out.println(camNo);
 		
+		int mNo;
 		corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
-		int mNo = covo.getNo();
+		MemberVo mvo = (MemberVo)req.getSession().getAttribute("loginMember");
+		if(covo != null) {
+			mNo = covo.getNo();
+		} else {
+			mNo = mvo.getNo();
+		}
+		System.out.println(mNo);
 		
 		String content = req.getParameter("content");
 		

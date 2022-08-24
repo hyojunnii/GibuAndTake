@@ -19,8 +19,8 @@ public class CampaignProofDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql); 
-			pstmt.setInt(1, proofVo.getCamNo()); 
-			pstmt.setInt(2, proofVo.getmNo());
+			pstmt.setInt(1, proofVo.getmNo());
+			pstmt.setInt(2, proofVo.getCamNo()); 
 			pstmt.setString(3, proofVo.getContent()); 
 			
 			result = pstmt.executeUpdate();
