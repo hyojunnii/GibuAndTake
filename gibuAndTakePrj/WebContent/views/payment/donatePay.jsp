@@ -1,5 +1,9 @@
+<%@page import="com.gnt.gibu.vo.GibuVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	GibuVo vo = (GibuVo)request.getAttribute("gibuvo");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,10 +100,12 @@
 <%@include file="/views/common/header.jsp" %>
 
     <section>
-        <form action="">
+        <form action="<%=path %>/donate/pay" method="post">
+        	<input type="hidden" name="num" value="<%= vo.getRegno() %>">
+        	<input type="hidden" name="mno" value="<%= memberVo.getNo()%>">
             <div id="pay_title">
-                <strong class="pay_div_title">기부 제목</strong>
-                <span class="pay_div_title_mini">회사명</span>
+                <strong class="pay_div_title"><%= vo.getRegname() %></strong>
+                <span class="pay_div_title_mini"><%= vo.getMnick() %></span>
             </div>
             
             <div id="pay_body">
@@ -109,7 +115,7 @@
                 <div id="pay_body_money" class="pay_border">
                     <span>
                         <span class="pay_div_title">기부 금액</span>
-                        <input type="text" class="donate_money">
+                        <input type="text" class="donate_money" name="addmoney">
                         <span class="donate_money donate_won">원</span>
                     </span>
                 </div>
@@ -121,14 +127,15 @@
                     </div>
                 </div>
             </div>
-
             <div id="pay_btn_div">
-                <input type="button" value="결제하기" id="pay_btn">
+                <input type="submit" value="결제하기" id="pay_btn">
             </div>
 
-        </form>
-    </section>
+		        </form>
 
+         
+            
+  </section>
 
 <%@include file="/views/common/footer.jsp" %>
 </body>

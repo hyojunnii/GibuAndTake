@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-	GibuVo vo = (GibuVo)request.getAttribute("gibuvo");
+	GibuVo vo = (GibuVo)request.getSession().getAttribute("gibuvo");
 	List<ReplyVo> list = (List<ReplyVo>)request.getAttribute("replyvo");
 %>    
 
@@ -159,7 +159,20 @@
     border: none;
     border-radius: 15px;
 }
-
+.gibu_btn_container{
+	width: 100%;
+	height: 100%;
+	background-color: #8bdcb1;
+    border: none;
+    border-radius: 15px;
+}
+.reviw_container{
+	height: 30px;
+	 width: 40%;
+	background-color: #8bdcb1;
+    border: none;
+    border-radius: 10px;
+}
 </style>
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -214,13 +227,17 @@
                 </table>
             </div>
 
-            <div class="gibu_btn_cover">
-                <a href="<%=path %>/donate/pay"  class="gibu_btn_container">
-                    <div>
-                        기부하기
-                    </div>
-                </a>
-            </div>
+            	<form action="<%=path %>/donate/pay" method="get">
+            		<div class="gibu_btn_cover">
+            			<input type="hidden" name="num" value="<%= vo.getRegno()%>">
+                		<button type="submit"  class="gibu_btn_container">
+	                    	<div>
+	                       		기부하기
+	                    	</div>
+                		</button>
+            		</div>
+                </form>
+                
             <p id="total_money">
                 <%= vo.getDpmoney() %> 원
             </p>
@@ -228,6 +245,13 @@
                목표금액 : <%= vo.getDgmoney() %> 원
             </p>
             
+            
+            <form action="<%=path %>/review/create" method="get">
+            	<input type="hidden" name="regNo" value="<%=vo.getRegno()%>">
+            	<input type="hidden" name="category" value="<%=vo.getRegclass()%>">
+            	<button type="submit" class="reviw_container">후기 등록</button>
+            
+            </form>
         </div>
     </div>
     </div>

@@ -615,4 +615,103 @@ public class GibuDao {
 				return result;
 	}
 
+	public GibuVo selectDetail(Connection conn, int num) {
+		// sql 준비
+		String sql = "SELECT *  FROM DONATION D JOIN REGIST R ON D.REG_NO = R.REG_NO JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG RI ON R.REG_NO = RI.REG_NO  AND R.REG_CLASS = '기부' AND R.REG_NO = ?";
+		String paraclass = "";
+
+		
+		PreparedStatement pstmt = null;
+		GibuVo vo = new GibuVo();
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+
+				// 테스트
+				String dno = rs.getString("D_NO");
+				String regno = rs.getString("REG_NO");
+				String dclass = rs.getString("D_CLASS");
+				int dgmoney = rs.getInt("D_GMONEY");
+				int dpmoney = rs.getInt("D_PMONEY");
+				String dsdate = rs.getString("D_SDATE");
+				String dedate = rs.getString("D_EDATE");
+				String dperson = rs.getString("D_PERSON");
+				
+				String regclass = rs.getString("REG_CLASS");
+				String regname = rs.getString("REG_NAME");
+				String regcontent = rs.getString("REG_CONTENT");
+				String regsdate = rs.getString("REG_SDATE");
+				String regfdate = rs.getString("REG_FDATE");
+				String regpass = rs.getString("REG_PASS");
+				String regfin = rs.getString("REG_FIN");
+				String regdel = rs.getString("REG_DEL");
+				String regmod = rs.getString("REG_MOD");
+				int regcnt = rs.getInt("REG_CNT");
+				String mno = rs.getString("M_NO");
+				String mnick = rs.getString("M_NICK");
+				String imgsrc = rs.getString("URL");
+				double per = (double) dpmoney / (double) dgmoney * 100;
+				// 수정완료 퍼센트 구하기
+				String moneyper = String.format("%.1f", per);
+				;
+
+				vo = new GibuVo();
+				vo.setDno(dno);
+				vo.setRegno(regno);
+				vo.setDclass(dclass);
+				vo.setDgmoney(dgmoney);
+				vo.setDpmoney(dpmoney);
+				vo.setDsdate(dsdate);
+				vo.setDedate(dedate);
+				vo.setDperson(dperson);
+				vo.setRegclass(regclass);
+				vo.setRegname(regname);
+				vo.setRegcontent(regcontent);
+				vo.setRegsdate(regsdate);
+				vo.setRegfdate(regfdate);
+				vo.setRegpass(regpass);
+				vo.setRegfin(regfin);
+				vo.setRegdel(regdel);
+				vo.setRegmod(regmod);
+				vo.setRegcnt(regcnt);
+				vo.setMno(mno);
+				vo.setMnick(mnick);
+				vo.setImgsrc(imgsrc);
+				vo.setMoneypercent(moneyper);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return vo;
+	}
+
+	public int donateMoney(Connection conn, int num, int mno, int addmoney) {
+
+		String sql = "UPDATE DONATION D SET D.D_PMONEY = D.D_PMONEY + ? WHERE D.REG_NO = ?";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			//SQL 객체에 담기 및 물음표 채우기
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, addmoney);
+			pstmt.setInt(2, num);
+			
+			//SQL 실행
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		//실행결과 리턴
+		return result;
+	}
+
 }

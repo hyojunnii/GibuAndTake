@@ -23,7 +23,7 @@ public class FundingDetailServlet extends HttpServlet{
 		
 		FundingVo fundingvo = new FundingService().selectDetail(type, num);
 		List<ReplyVo> replyvo = new FundingService().selectReply(type, num);
-		req.setAttribute("fundingvo", fundingvo);
+		req.getSession().setAttribute("fundingvo", fundingvo);
 		req.setAttribute("replyvo", replyvo);
 		
 		

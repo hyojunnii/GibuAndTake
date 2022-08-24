@@ -24,7 +24,7 @@ public class CampaignDetailServlet extends HttpServlet{
 		List<CampaignProofVo> proofvo = new CampaignService().selectProof(num);
 		
 		System.out.println(proofvo);
-		req.setAttribute("campaignvo", campaignvo);
+		req.getSession().setAttribute("campaignvo", campaignvo);
 		req.setAttribute("proofvo", proofvo);
 		
 		

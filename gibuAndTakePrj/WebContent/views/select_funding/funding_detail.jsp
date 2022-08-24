@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	FundingVo vo = (FundingVo)request.getAttribute("fundingvo");
+	FundingVo vo = (FundingVo)request.getSession().getAttribute("fundingvo");
 	List<ReplyVo> list = (List<ReplyVo>)request.getAttribute("replyvo");
 %>
 <!DOCTYPE html>
@@ -196,7 +196,13 @@
     border: none;
     border-radius: 15px;
 }
-
+.reviw_container{
+	height: 30px;
+	 width: 40%;
+	background-color: #8bdcb1;
+    border: none;
+    border-radius: 10px;
+}
 </style>
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -291,7 +297,7 @@
                 </tr>
             </table>
 
-
+			
             <!-- <p id="funding_item_title" align="left">
                 상품이름 공간
             </p>
@@ -317,6 +323,12 @@
             </div> -->
         </div>
     </div>
+    		<form action="<%=path %>/review/create" method="get">
+            	<input type="hidden" name="regNo" value="<%=vo.getRegno()%>">
+            	<input type="hidden" name="category" value="<%=vo.getRegclass()%>">
+            	<button type="submit" class="reviw_container">후기 등록</button>
+            
+            </form>
 </div>
 </div>
 

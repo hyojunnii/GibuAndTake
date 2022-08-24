@@ -23,6 +23,7 @@ public class FundingReplyDeleteController extends HttpServlet{
 		
 		if(result == 1) {
 			//성공
+			req.getSession().setAttribute("alertMsg", "댓글 삭제 완료! 목록으로 이동합니다.");
 			resp.sendRedirect(req.getContextPath()+ "/view/funding");
 		}else {
 			//실패

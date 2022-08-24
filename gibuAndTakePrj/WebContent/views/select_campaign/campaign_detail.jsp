@@ -3,7 +3,7 @@
 <%@page import="com.gnt.campaign.vo.CampaignVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	CampaignVo vo = (CampaignVo)request.getAttribute("campaignvo");
+	CampaignVo vo = (CampaignVo)request.getSession().getAttribute("campaignvo");
 	List<CampaignProofVo> list = (List<CampaignProofVo>)request.getAttribute("proofvo");
 %>
 <!DOCTYPE html>
@@ -282,6 +282,13 @@
         color: #666;
         font-size: 15px;
       }
+      .reviw_container{
+	height: 30px;
+	 width: 40%;
+	background-color: #8bdcb1;
+    border: none;
+    border-radius: 10px;
+}
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -320,6 +327,14 @@
               <div>행동하기</div>
             </a>
           </div>
+
+			<form action="<%=path %>/review/create" method="get">
+            	<input type="hidden" name="regNo" value="<%=vo.getRegno()%>">
+            	<input type="hidden" name="category" value="<%=vo.getRegclass()%>">
+            	<button type="submit" class="reviw_container">후기 등록</button>
+            
+            </form>
+		<br>
 
           <div id="tabs">
             <!-- A -->
