@@ -1,10 +1,15 @@
+<%@page import="com.gnt.qa.vo.QaVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%
+	QaVo vo = (QaVo)request.getAttribute("vo");
+%>  --%>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>문의답변</title>
 <style>
 
@@ -107,6 +112,68 @@
     	margin: 0px 70px 0px 350px;
     }
     
+    #tag{
+        padding: 50px;
+        margin-bottom: 30px;
+        margin-left: 750px;
+    }
+    
+    #list{
+       	background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
+        font-weight: bold;
+        padding: 10px;
+        margin: 0px 60px 0px 0px;
+        border-radius: 15px;
+    }
+
+    #modify{
+        background-color: #b3e0c9;
+    	border: 2px solid #acdac2;
+        font-weight: bold;
+        padding: 10px 20px 10px 20px;
+        border-radius: 15px;
+    }
+
+    #list:hover{
+    	background-color: #93e1b7;
+        cursor: pointer;
+    }  
+    
+    #modify:hover{
+    	background-color: #93e1b7;
+        cursor: pointer;
+    }
+    
+    
+    #table-main{
+        border: 1px solid #2e6c4a;
+        width: 1050px;
+        height: 600px;
+        margin: 0px 430px;
+        border-radius: 10px;
+        border-collapse: collapse;
+    }
+    
+    #a{
+        border: 1px solid #2e6c4a;
+        color: #2e6c4a;
+        width: 100%;
+        height: 60px;
+		font-weight: bold;
+		text-indent: 15px;
+		
+    }
+
+    #b{
+        border: 1px solid #2e6c4a;
+        color: #2e6c4a;
+        width: 100%;
+        height: 600px;
+        vertical-align : top;
+        text-indent: 15px;
+    }
+    
     #btn1{
         background-color: #b3e0c9;
     	border: 2px solid #acdac2;
@@ -141,44 +208,8 @@
     }
     
     #btn{
-    	margin-top: 100px;
+    	margin-top: 120px;
     	margin-left: 570px;
-    }
-    
-    #a:hover{
-    	cursor: pointer;
-    }
-    
-    #b:hover{
-    	cursor: pointer;
-    }
-    
-    #c:hover{
-    	cursor: pointer;
-    }
-    
-    #a{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
-    }
-    
-    #b{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
-    }
-    
-    #c{
-    	width: 40px;
-    	height: 40px;
-    	border: 1px solid #2e6c4a;
-    	color: #2e6c4a;
-        font-weight: bold;
     }
     
     #last{
@@ -213,10 +244,9 @@
 		</form>
 	 </div>
 	 <div style="border: 1px solid #72d09e; float: left; width: 80%; height:640px; padding:50px 0px 0px 0px;">                  
-	    	
-	    	
-            
-            <form action="/gibuAndTakePrj/qa/list" method="get">
+	    
+	    
+	    <form action="/gibuAndTakePrj/qa/list" method="get">
 	    	<button class="toggle">서비스질문<button id="img">▲</button></button>
 	    	<div class="toggle2">서비스답변</div>
 	    	<button class="toggle" id="toggle">서비스질문<button id="img">▽</button></button>
@@ -231,36 +261,25 @@
 	    	
 	    	<form action="/gibuAndTakePrj/qa/modify" method="get">
 	        	<input id="btn2" class="btn3" type="submit" value="문의수정/삭제">
-	    	</form>
-	    	
+	    	</form>	
+    
+	    <%-- <table id="table-main">
+	    	<tr id="a" class="border">
+				<td><%=vo.getName()%></td>
+				<td class="date"><%=vo.getDate()%></td>
+	    	</tr>
+	    	<tr id="b" class="border">
+				<td id="c"><%=vo.getContent()%></td>
+				<td></td>
+	    	</tr>
+	    </table> --%>
 	    
-	    <div id="btn">
-	    	<a id="a">&nbsp&nbsp<&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp1&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp2&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp3&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp4&nbsp&nbsp</a>
-	        <a id="b">&nbsp&nbsp5&nbsp&nbsp</a>
-	        <a id="c">&nbsp&nbsp>&nbsp&nbsp</a>
-	    </div>
+	    
 	    
 	  </div>
 	<div id="last"></div>
 	<%@include file="/views/common/footer.jsp" %>
 	
-	<!-- <button id="t">toggle</button>
-	    	<div id="to">
-	    	</div> -->
 	
-	<!-- <script>
-        $(function(){
-
-            const t = $('#to');
-
-            $('#t').click(function(){
-                t.toggle(1000);
-            });
-        })
-     </script> -->
 </body>
 </html>

@@ -300,7 +300,7 @@
      <% if(loginMember != null && "admin".equals(loginMember.getId())) {%> 
     <button id="write" style="float: right" onclick="location.href='/gibuAndTakePrj/notice/write'">공지사항 작성</button>
     <%} %> 
-    
+   
    		<div id="page-area">
 				<%if(currentPage != 1){%>
 					<a href="/gibuAndTakePrj/notice/list?p=<%=currentPage-1%>"> &lt; </a>
