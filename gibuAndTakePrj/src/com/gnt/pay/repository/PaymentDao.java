@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gnt.pay.vo.PayListVo;
 import com.gnt.pay.vo.PaymentVo;
 import static com.gnt.common.JDBCTemplate.*;
 
@@ -41,6 +42,36 @@ public class PaymentDao {
 				
 				result.add(vo);
 			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+	public int insertPayList(Connection conn, PayListVo payListVo) {
+		
+		int result = 0;
+		
+		String sql = "INSERT INTO PAYLIST(PL_NO, REG_NO, P_NO, PL_MONEY) VALUES (SEQ_PAYLIST_PL_NO.NEXTVAL, ?,?,?)";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, payListVo.getRegNo());
+			pstmt.setString(2, payListVo.getpNo());
+			pstmt.setString(3, payListVo.getPlMoney());
+			
+			//sql실행
+			result = pstmt.executeUpdate();
+			
 			
 		}catch (Exception e) {
 			e.printStackTrace();

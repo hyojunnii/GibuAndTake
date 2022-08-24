@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gnt.gibu.service.GibuService;
 import com.gnt.gibu.vo.GibuVo;
+import com.gnt.pay.service.PayService;
+import com.gnt.pay.vo.PayListVo;
+import com.gnt.pay.service.PayService;
 
 @WebServlet(urlPatterns = "/donate/pay")
 public class DonatePayController extends HttpServlet {
@@ -34,11 +37,23 @@ public class DonatePayController extends HttpServlet {
 		int addmoney = Integer.parseInt(req.getParameter("addmoney"));
 		System.out.println(num + ", " + addmoney +", " + mno);
 		
-		int result = new GibuService().donateMoney(num, mno, addmoney);
+		GibuVo gibuvo = (GibuVo)req.getAttribute("vo");
+		String pNo = req.getParameter("pNo");
+		String plMoney = req.getParameter("addmoney");
+		String regNo = gibuvo.getRegno();
 		
+		PayListVo payListVo = new PayListVo(); 
+		payListVo.setpNo(pNo);
+		payListVo.setPlMoney(plMoney);
+		payListVo.setRegNo(regNo);
+		
+		
+		int result1 = new GibuService().donateMoney(num, mno, addmoney);
+		
+		int result2 = new PayService().insertPayList(payListVo);
 		
 		//결과에 따라, 화면 선택
-		if(result ==1 ) {
+		if(result1*result2 == 1 ) {
 			//성공 -> 목록(alertMsg)
 			req.getSession().setAttribute("alertMsg", "기부 완료!");
 			resp.sendRedirect(path+"/view/gibu_detail?type=0&num="+num);

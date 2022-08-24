@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.gnt.pay.vo.PaymentVo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.gnt.gibu.vo.GibuVo"%>
@@ -6,6 +7,7 @@
 <%
 	GibuVo vo = (GibuVo)request.getAttribute("gibuvo");
 	List<PaymentVo> pVo = (List<PaymentVo>)request.getAttribute("list");
+	
 	request.setAttribute("vo", vo);
 %>
 <!DOCTYPE html>
@@ -102,7 +104,7 @@
 </head>
 <body>
 <%@include file="/views/common/header.jsp" %>
-<c:set var="pVo" value=<%=pVo %>/>
+<c:set var="pvo" value="<%=pVo %>"/>
     <section>
         <form action="<%=path %>/donate/pay" method="post">
         	<input type="hidden" name="num" value="<%= vo.getRegno() %>">
