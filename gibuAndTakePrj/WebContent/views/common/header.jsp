@@ -8,7 +8,8 @@
 	String path = request.getContextPath();
 	MemberVo memberVo = (MemberVo)request.getSession().getAttribute("loginMember");
 	corpVo corpVo = (corpVo)request.getSession().getAttribute("loginCorp");
-	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	session.removeAttribute("alertMsg");
 %>
 
 <c:set var="path" value="<%=path %>"/>
@@ -16,8 +17,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-  <link rel="shortcut icon" type="image/x-icon" href="resources/img/free-icon-giving-5017478.png" />
+<title>Gibu n Take</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/free-icon-giving-5017478.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
@@ -32,7 +33,7 @@
         vertical-align: middle;
         padding-top: 15px;
         padding-bottom: 15px;
-        border-bottom: 1px solid #14AE5C;
+        border-bottom: 2px solid #14AE5C;
         display : flex;
         align-items: center;
     	justify-content: space-evenly;
@@ -80,7 +81,7 @@
 
     #login{
         font-size: 20px;
-        margin-right: 15px;
+        margin-right: 18px;
     }
 
 	#logout{
@@ -94,20 +95,22 @@
 
     .selected_bg{
         background-color: #EBF5E0;
+        border-radius: 10px;
+        margin-right: 4px;
     }
 
     .greenBold{
         color: #086C37;
         font-weight: bold;
     }
-
+    
     .top_menu_click{
         margin-left: 5px;
-        margin-right: 5px;
+        margin-right: 15px;
         padding-left : 4px;
         padding-right : 4px; 
-        font-size: 30px;
-        border-radius: 15px
+        font-size: 28px;
+        border-radius: 15px;
     }
     
     .top_menu_click:hover{
@@ -140,11 +143,12 @@
     }
 
     #top_menu{
-        width: 450px;
+        width: 500px;
+        margin-left: 100px;
     }
-
+    
     #login_serch{
-        width: 400px;
+        width: 150px;
         display: flex;
         justify-content: flex-end;
     }
@@ -194,5 +198,11 @@
             </div>
         </div>
     </header>
+    
+    <script>
+      <%if(alertMsg != null){%>
+      	alert('<%= alertMsg%>');
+      <%}%>
+    </script>
 </body>
 </html>

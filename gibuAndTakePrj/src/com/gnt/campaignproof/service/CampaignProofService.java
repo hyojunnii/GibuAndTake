@@ -39,4 +39,20 @@ public class CampaignProofService {
 		return result;
 	}
 
+	//캠페인 인증 삭제
+	public int proofDelete(int cpNo) {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		result = dao.proofDelete(conn, cpNo);
+		
+		if(result == 1) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 }

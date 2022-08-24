@@ -53,7 +53,7 @@
             <tr>
               <td class="form-subtitle">진행자명</td>
               <td colspan="4">
-                <input value="" name="corp" type="text" class="form-control form-content" value="${loginCorp.nick}" readonly />
+                <input name="corp" type="text" class="form-control form-content" value="${loginCorp.nick}" readonly />
               </td>
             </tr>
             <tr>

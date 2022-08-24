@@ -114,13 +114,11 @@ public class DonationApplyController extends HttpServlet{
 		
 		if(result == 1) {
 			//성공시 apply/main + 알람
-			System.out.println("신청 성공");
-			req.setAttribute("alertMsg", "기부프로젝트 신청 성공!");
+			req.getSession().setAttribute("alertMsg", "기부프로젝트 신청 성공!");
 			resp.sendRedirect(req.getContextPath() + "/pm/apply/main");
 		} else {
 			//실패시 기존화면(돌아가기..?) + 알람
-			System.out.println("신청 실패");
-			req.setAttribute("alertMsg", "기부프로젝트 신청 실패");
+			req.getSession().setAttribute("alertMsg", "기부프로젝트 신청 실패");
 			resp.sendRedirect(req.getContextPath() + "/pm/apply/donation");
 		}
 	}

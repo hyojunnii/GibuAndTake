@@ -20,14 +20,14 @@ public class CampaignEditController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//등록번호, 사용자번호 가져오기
-		int regNo = 15;
-		int mNo = 1;
+		//int regNo = 15;
+		//int mNo = 1;
 		
-		//com.gnt.campaign.vo.CampaignVo vo = (com.gnt.campaign.vo.CampaignVo)req.getSession().getAttribute("campaignvo");
-		//int regNo = Integer.parseInt(vo.getRegno());
+		com.gnt.campaign.vo.CampaignVo vo = (com.gnt.campaign.vo.CampaignVo)req.getSession().getAttribute("campaignvo");
+		int regNo = Integer.parseInt(vo.getRegno());
 		
-		//corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
-		//int mNo = covo.getNo();
+		corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
+		int mNo = covo.getNo();
 		
 		//서비스 호출
 		CampaignVo cvo = new ProjectEditDataService().getCampaignEdit(regNo, mNo);
@@ -37,8 +37,9 @@ public class CampaignEditController extends HttpServlet{
 			req.getSession().setAttribute("editVo", cvo);
 			req.getRequestDispatcher("/views/pm/campaignEditForm.jsp").forward(req, resp);
 		} else {
-			//알림, 상세조회로 돌아가기
-			req.getRequestDispatcher("/views/pm/campaignEditForm.jsp").forward(req, resp);
+			//알림, 수정 페이지로 돌아가기
+			req.getSession().setAttribute("alertMsg", "조회 실패..");
+			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail?type=0&num="+regNo);
 		}
 	}
 	
@@ -73,13 +74,12 @@ public class CampaignEditController extends HttpServlet{
 		
 		if(result == 1) {
 			//성공 알림 + 수정페이지
-			System.out.println("수정성공");
+			req.getSession().setAttribute("alertMsg", "프로젝트 수정 성공!");
 			resp.sendRedirect(req.getContextPath() + "/pm/edit/campaign");
 		} else {
-			//실패 알림 + 수정페이지
-			System.out.println("수정실패");
-			resp.sendRedirect(req.getContextPath() + "/pm/edit/campaign");
+			//실패 알림 + 상세페이지
+			req.getSession().setAttribute("alertMsg", "프로젝트 수정 실패");
+			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail?type=0&num="+vo.getRegNo());
 		}
-	
 	}
 }

@@ -98,7 +98,7 @@
       .f-content {
         border: none;
       }
-
+      
       .f-content img {
         border-radius: 10px;
       }
@@ -137,6 +137,10 @@
         width: 70%;
         height: 100%;
       }
+      
+      #info-content {
+      	width: 40%;
+      }
 
       #info-content h3 {
         font-weight: 700;
@@ -148,12 +152,15 @@
       }
 
       #info-content2 {
-        margin-left: 17%;
         font-size: 18px;
       }
       #info-content2 table {
         border-collapse: separate;
-        border-spacing: 15px 15px;
+        border-spacing: 20px 15px;
+      }
+      
+      #info-content2 tr > td:nth-child(3) {
+      	padding-left: 10px;
       }
 
       .t-title {
@@ -211,7 +218,7 @@
             <div class="carousel-item active content-outer">
               <div class="content-header">
                 <span>아동청소년</span>
-                <h3><a href="<%=path%>/view/gibu_detail?type=0&num=1">경제적 어려움으로 흔들리는 진규의 꿈</a></h3>
+                <h3><a href="<%=path%>/view/gibu_detail?type=0&num=1">진규의 꿈과 재능을 함께 응원해주세요</a></h3>
                 <br />
                 <h6>기부앤테이크</h6>
               </div>
@@ -317,7 +324,7 @@
               <td class="t-title">기부총액</td>
               <td>${todayStory.getdMoney()}원</td>
             </tr>
-            <tr>
+            <tr id="info-content2-tr2">
               <td class="t-title">펀딩참여</td>
               <td>${todayStory.getfPeople()}명</td>
               <td class="t-title">펀딩총액</td>
