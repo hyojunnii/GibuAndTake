@@ -8,6 +8,8 @@
 <%
 	GibuVo vo = (GibuVo)request.getSession().getAttribute("gibuvo");
 	List<ReplyVo> list = (List<ReplyVo>)request.getAttribute("replyvo");
+	request.setAttribute("vo", vo);
+
 %>    
 
 <!DOCTYPE html>
@@ -202,7 +204,7 @@
             </tr>
         </table>
             <p class="comName">By <%=vo.getMnick() %></p>
-            <img src="<%= vo.getImgsrc() %>" alt="첫번째 이미지사진">
+            <img src="../resource/upload/<%= vo.getImgsrc() %>">
         <div id="gibu_detail_container_div">
             <p>
                 <%= vo.getRegcontent() %>
@@ -216,8 +218,8 @@
                         <td><%=vo.getMnick() %></td>
                     </tr>
                     <tr>
-                        <th>모금기간</th>
-                        <td><%= vo.getRegsdate() %> ~ <%= vo.getRegfdate() %></td>
+                        <th>종료기간</th>
+                        <td>~ <%= vo.getRegfdate() %></td>
                     </tr>
                     <tr>
                         <th>사업대상</th>
