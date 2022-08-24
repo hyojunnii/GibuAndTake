@@ -26,8 +26,6 @@ public class StmtReController extends HttpServlet{
 		StmtVo donaVo = new StmtService().showReDona(donaNo);
 		ArrayList<ExeVo> exeVo = new StmtService().showExe(donaNo);
 		
-		
-		
 		req.setAttribute("donaVo", donaVo);
 		req.setAttribute("exeVo", exeVo);
 		req.getRequestDispatcher("/views/user2/corpStatementRe.jsp").forward(req, resp);
@@ -36,7 +34,26 @@ public class StmtReController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		corpVo c = (corpVo) req.getSession().getAttribute("loginCorp");
 		
+		req.setCharacterEncoding("UTF-8");
+		
+		String donaNo = req.getParameter("donaNo");
+		String[] exeCnt = req.getParameterValues("exeCnt");
+		String[] exeMoney = req.getParameterValues("exeMoney");
+		int result = 0;
+		
+		ExeVo vo = new ExeVo();
+		for(int i = 0; i < exeCnt.length; ++i) {
+			vo.setDonaNo(donaNo);
+			vo.setExeCnt(exeCnt[i]);
+			vo.setExeMoney(exeMoney[i]);
+			result = new StmtService().insert(vo, c);
+		}
+		
+		if(result == 1) {
+			resp.sendRedirect("/gibuAndTakePrj/corp/stmtList");
+		}
 		
 		req.getRequestDispatcher("/views/user2/corpStatementRe.jsp").forward(req, resp);
 	}

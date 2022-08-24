@@ -6,7 +6,7 @@ public class StmtVo {
 		
 	}
 
-	public StmtVo(int memberNo, String regNo, String donaNo, String regName, String donaClass, String donaGmomey,
+	public StmtVo(int memberNo, String regNo, String donaNo, String regName, String donaClass, String donaGmoney,
 			String donaPmoney, String donaSdate, String donaEdate, String donaPerson) {
 		super();
 		this.memberNo = memberNo;
@@ -14,7 +14,7 @@ public class StmtVo {
 		this.donaNo = donaNo;
 		this.regName = regName;
 		this.donaClass = donaClass;
-		this.donaGmomey = donaGmomey;
+		this.donaGmoney = donaGmoney;
 		this.donaPmoney = donaPmoney;
 		this.donaSdate = donaSdate;
 		this.donaEdate = donaEdate;
@@ -26,7 +26,7 @@ public class StmtVo {
 	private String donaNo;
 	private String regName;
 	private String donaClass;
-	private String donaGmomey;
+	private String donaGmoney;
 	private String donaPmoney;
 	private String donaSdate;
 	private String donaEdate;
@@ -73,12 +73,12 @@ public class StmtVo {
 		this.donaClass = donaClass;
 	}
 
-	public String getDonaGmomey() {
-		return donaGmomey;
+	public String getDonaGmoney() {
+		return donaGmoney;
 	}
 
-	public void setDonaGmomey(String donaGmomey) {
-		this.donaGmomey = donaGmomey;
+	public void setDonaGmoney(String donaGmoney) {
+		this.donaGmoney = donaGmoney;
 	}
 
 	public String getDonaPmoney() {
@@ -116,7 +116,7 @@ public class StmtVo {
 	@Override
 	public String toString() {
 		return "StmtVo [memberNo=" + memberNo + ", regNo=" + regNo + ", donaNo=" + donaNo + ", regName=" + regName
-				+ ", donaClass=" + donaClass + ", donaGmomey=" + donaGmomey + ", donaPmoney=" + donaPmoney
+				+ ", donaClass=" + donaClass + ", donaGmomey=" + donaGmoney + ", donaPmoney=" + donaPmoney
 				+ ", donaSdate=" + donaSdate + ", donaEdate=" + donaEdate + ", donaPerson=" + donaPerson + "]";
 	}
 	
