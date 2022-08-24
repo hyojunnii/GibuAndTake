@@ -26,7 +26,7 @@ public class GibuDetailServlet extends HttpServlet {
 		
 		GibuVo gibuvo = new GibuService().selectDetail(type, num);
 		List<ReplyVo> replyvo = new GibuService().selectReply(type, num);
-		req.setAttribute("gibuvo", gibuvo);
+		req.getSession().setAttribute("gibuvo", gibuvo);
 		req.setAttribute("replyvo", replyvo);
 		
 		req.getRequestDispatcher("/views/select_gibu/gibu_detail.jsp").forward(req, resp);

@@ -37,11 +37,11 @@ public class GibuInsertController extends HttpServlet{
 		//결과에 따라, 화면 선택
 		if(result ==1 ) {
 			//성공 -> 공지사항 목록(alertMsg)
-//			req.getSession().setAttribute("alertMsg", "댓글 작성 완료!");
+			req.getSession().setAttribute("alertMsg", "댓글 작성 완료!");
 			resp.sendRedirect(path+"/view/gibu_detail?type=0&num="+regno);
 		}else {
 			//실패 -> 에러페이지(errorMsg)
-//			req.setAttribute("errorMsg", "댓글 작성 실패");
+			req.setAttribute("errorMsg", "댓글 작성 실패");
 			RequestDispatcher view = req.getRequestDispatcher("/views/error/errorPage.jsp");
 			view.forward(req, resp);
 		}

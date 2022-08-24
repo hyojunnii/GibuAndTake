@@ -126,4 +126,25 @@ public class GibuService {
 		return result;
 	}
 
+	public GibuVo selectDetail(int num) {
+		Connection conn = null;
+		GibuVo vo = null;
+		
+		conn = getConnection();
+		//DAO 호출	
+			vo = dao.selectDetail(conn, num);
+			close(conn);
+		return vo;
+	}
+
+	public int donateMoney(int num, int mno, int addmoney) {
+		Connection conn = null;
+
+		conn = getConnection();
+		//DAO 호출	
+		int	result = dao.donateMoney(conn, num, mno, addmoney);
+			close(conn);
+		return result;
+	}
+
 }

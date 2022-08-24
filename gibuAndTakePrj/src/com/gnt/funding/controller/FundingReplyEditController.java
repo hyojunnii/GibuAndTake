@@ -58,6 +58,7 @@ public class FundingReplyEditController extends HttpServlet{
 		//결과에 따라 화면 선택
 		if(result == 1) {
 			//성공
+			req.getSession().setAttribute("alertMsg", "댓글 수정 완료!");
 			resp.sendRedirect(req.getContextPath()+ "/view/funding_detail?type=0&num="+vo.getRegno());
 		}else {
 			//실패
