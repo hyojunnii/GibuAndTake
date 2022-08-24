@@ -15,16 +15,17 @@ import com.gnt.stmt.vo.StmtVo;
 
 public class StmtDao {
 
+	//처음에 기부 명세서 리스트에서 기부 가져오기
 	public ArrayList<StmtVo> showList(Connection conn, corpVo loginCorp) {
+		
+		String sql = "SELECT D.REG_NO, D_NO, REG_NAME, D_CLASS, D_GMONEY, D_PMONEY, D_SDATE, D_EDATE, D_PERSON FROM DONATION D JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE R.M_NO = 2 ORDER BY D_NO ASC";
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<StmtVo> list = new ArrayList<StmtVo>();
-		
-		String sql = "SELECT D.REG_NO, D_NO, REG_NAME, D_CLASS, D_GMONEY, D_PMONEY, D_SDATE, D_EDATE, D_PERSON FROM DONATION D JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE M.M_NO = ?";
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, loginCorp.getNo());
+//			pstmt.setInt(1, loginCorp.getNo());
 
 			rs = pstmt.executeQuery();
 			
@@ -61,6 +62,7 @@ public class StmtDao {
 			close(rs);
 		}
 		
+		System.out.println("기부 list ::: " + list);
 		
 		return list;
 	}
@@ -88,6 +90,7 @@ public class StmtDao {
 				String donaPerson = rs.getString("D_PERSON");
 				
 				vo = new StmtVo();
+				vo.setDonaNo(donaNo);
 				vo.setRegName(regName);
 				vo.setDonaClass(donaClass);
 				vo.setDonaGmoney(donaGmoney);
@@ -108,12 +111,13 @@ public class StmtDao {
 		return vo;
 	}
 	
+	//사업 내용 출력
 	public ArrayList<ExeVo> showExe(Connection conn, String donaNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<ExeVo> list = new ArrayList<ExeVo>();
 
-		String sql = "SELECT E_NO, E_CONTENT, E_MONEY FROM EXECUTE E JOIN DONATION D ON D.D_NO = E.D_NO JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE D.D_NO = ?";
+		String sql = "SELECT E_NO, E_CONTENT, E_MONEY FROM EXECUTE E JOIN DONATION D ON D.D_NO = E.D_NO JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE D.D_NO = ? ORDER BY E_NO ASC";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, donaNo);

@@ -24,10 +24,13 @@
 	#nav{
 		display: flex;
 	}
+	
+	#naviIn{
+		height: 900px;
+	}
 
 	#body {
         width: 1200px;
-		height: 1000px;
         margin: 0 auto;
     }
 
@@ -48,7 +51,7 @@
 	}
 
 	form{
-		width: 1200px;
+		width: 1000px;
 	}
 
 	table {
@@ -149,65 +152,66 @@
 		<div id="nav">
 			<div id="naviIn"><%@ include file="/views/mypageNav/corpNavi.jsp" %></div>
 
-			<%for(int i = 0; i < donaList.size(); ++i) {%>
-				<form action="/gibuAndTakePrj/corp/stmtRe" method="get">
-					<table id="first">
-					<input type="hidden" value="<%=donaList.get(i).getDonaNo() %>" name="donaNo">
-						<div id="outer">
-							<div id="title"><%=donaList.get(i).getRegName() %></div>
-							<input type="submit" value="추가하기">
-							
-							<div id="do_t">기부금 집행 내역 |</div>
-							<div id="do_ex">기부금이 어떻게 사용되었는지 등록해주세요.</div>
-							<div id="do_tt">최종 수정 일시 |</div>
-							<div id="do_tt2">2022-08-05 13:30</div>
-						</div>
-						<tr>
-							<th>집행기간</th>
-							<td colspan="2">
-								<fmt:parseDate var="parsedSdate" value="<%=donaList.get(i).getDonaSdate() %>" pattern="yyyy-MM-dd HH:mm:ss"/>
-	                        	<fmt:formatDate value="${parsedSdate}" pattern="yyyy-MM-dd" />
-	                        	~
-	                        	<fmt:parseDate var="parsedEdate" value="<%=donaList.get(i).getDonaEdate() %>" pattern="yyyy-MM-dd HH:mm:ss"/>
-	                        	<fmt:formatDate value="${parsedEdate}" pattern="yyyy-MM-dd" />
-							</td>
-						</tr>
-						<tr>
-							<th>총 모금 금액</th>
-							<td colspan="2"><span class="total"><fmt:formatNumber value="<%=donaList.get(i).getDonaPmoney() %>" pattern="#,###"/></span>원(목표 금액 <fmt:formatNumber value="<%=donaList.get(i).getDonaGmoney() %>" pattern="#,###"/>원)</td>
-						</tr>
-						<tr>
-							<th>사업 대상</th>
-							<td colspan="2"><%=donaList.get(i).getDonaPerson() %></td>
-						</tr>
-					</table>
-					<table id="second">
-						<thead>
+			<div id="content">
+	
+				<%for(int i = 0; i < donaList.size(); ++i) {%>
+					<form action="/gibuAndTakePrj/corp/stmtRe" method="get">
+						<table id="first">
+						<input type="hidden" value="<%=donaList.get(i).getDonaNo() %>" name="donaNo">
+							<div id="outer">
+								<div id="title"><%=donaList.get(i).getRegName() %></div>
+								<input type="submit" value="추가하기">
+								
+								<div id="do_t">기부금 집행 내역 |</div>
+								<div id="do_ex">기부금이 어떻게 사용되었는지 등록해주세요.</div>
+								<div id="do_tt">최종 수정 일시 |</div>
+								<div id="do_tt2">2022-08-05 13:30</div>
+							</div>
 							<tr>
-								<th>총 집행 금액</th>
-								<td colspan="2"><fmt:formatNumber value="<%=donaList.get(i).getDonaPmoney() %>" pattern="#,###"/>원(목표 금액 <fmt:formatNumber value="<%=donaList.get(i).getDonaGmoney() %>" pattern="#,###"/>원)</td>
+								<th>집행기간</th>
+								<td colspan="2">
+									<fmt:parseDate var="parsedSdate" value="<%=donaList.get(i).getDonaSdate() %>" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${parsedSdate}" pattern="yyyy-MM-dd" />
+									~
+									<fmt:parseDate var="parsedEdate" value="<%=donaList.get(i).getDonaEdate() %>" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${parsedEdate}" pattern="yyyy-MM-dd" />
+								</td>
 							</tr>
-						</thead>
-						<tbody>
-							<%for(int j = 0; j < exeList.size(); ++j ) {%>
+							<tr>
+								<th>총 모금 금액</th>
+								<td colspan="2"><span class="total"><fmt:formatNumber value="<%=donaList.get(i).getDonaPmoney() %>" pattern="#,###"/></span>원(목표 금액 <fmt:formatNumber value="<%=donaList.get(i).getDonaGmoney() %>" pattern="#,###"/>원)</td>
+							</tr>
+							<tr>
+								<th>사업 대상</th>
+								<td colspan="2"><%=donaList.get(i).getDonaPerson() %></td>
+							</tr>
+						</table>
+						<table id="second">
+							<thead>
 								<tr>
-									<th>사업비</th>
-									<td><%=exeList.get(j).getExeCnt() %></td>
-									<td><fmt:formatNumber value="<%=exeList.get(j).getExeMoney() %>" pattern="#,###"/>원</td>
+									<th>총 집행 금액</th>
+									<td colspan="2"><fmt:formatNumber value="<%=donaList.get(i).getDonaPmoney() %>" pattern="#,###"/>원(목표 금액 <fmt:formatNumber value="<%=donaList.get(i).getDonaGmoney() %>" pattern="#,###"/>원)</td>
 								</tr>
-							<%} %>
-						</tbody>
-					</table>
-					<hr>
-				</form>
-			<%} %>
+							</thead>
+							<tbody>
+								<%for(int j = 0; j < exeList.size(); ++j ) {%>
+									<tr>
+										<th>사업비</th>
+										<td><%=exeList.get(j).getExeCnt() %></td>
+										<td><fmt:formatNumber value="<%=exeList.get(j).getExeMoney() %>" pattern="#,###"/>원</td>
+									</tr>
+								<%} %>
+							</tbody>
+						</table>
+						<hr>
+					</form>
+				<%} %>
+	
+			</div>
 		</div>
-		
-		
-		
 	</div>
+	<%@ include file="/views/common/footer.jsp" %>
 	
 
-	<%@ include file="/views/common/footer.jsp" %>
 </body>
 </html>

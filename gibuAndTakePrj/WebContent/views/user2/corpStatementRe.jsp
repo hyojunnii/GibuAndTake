@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>기업 명세서 수정</title>
@@ -20,9 +21,12 @@
 		display: flex;
 	}
 
+	#naviIn{
+		height: 900px;
+	}
+
     #body {
         width: 1200px;
-		height: 1000px;
         margin: 0 auto;
     }
 
@@ -161,15 +165,23 @@
 		display: flex;
 		justify-content: space-between;
 		border: none;
-		border-top: 1px solid black;
+		border-top: none;
 	}
 
 	a {
         cursor: pointer;
     }
 
-	input[type=submit]{
+	input[type=submit], input[type=button]{
 		cursor: pointer;
+	}
+
+	#re-outer > input:hover, #col-p:hover, #col-m:hover{
+		background-color: #15462b;
+	}
+
+	#exeBody > tr {
+		border-top: 1px solid black;
 	}
 
 </style>
@@ -235,6 +247,7 @@
 				</table>
 				<div id="re-outer">
 					<input type="submit" value="완료">
+					<input type="button" value="뒤로 가기" onclick="history.go(-1)">
 				</div>
 			</form>
 
@@ -243,7 +256,6 @@
 
 	<%@include file="/views/common/footer.jsp" %>
 	
-	<!-- 로우 추가는 되는데 이상하게 됨. 수정. -->
 	<script type="text/javascript">
 
 		$('#col-p').click(function () {

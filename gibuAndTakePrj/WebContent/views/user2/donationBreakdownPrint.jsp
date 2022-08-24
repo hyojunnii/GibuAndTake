@@ -20,6 +20,10 @@
 		display: flex;
 	}
 
+	#naviIn{
+		height: 900px;
+	}
+
     #body {
         width: 1200px;
         margin: 0 auto;
@@ -163,6 +167,11 @@
         cursor: pointer;
     }
 
+    #print:hover, #back:hover {
+        background-color: #2e6c4a;
+        color: #8bdcb1;
+    }
+
 </style>
 </head>
 <body>
@@ -195,7 +204,12 @@
                         <th>성명</th>
                         <td colspan="2"><%=vo.getMemberName() %></td>
                         <th colspan="2">주민등록번호</th>
-                        <td colspan="2"><%=vo.getMemberRegNum() %></td>
+                        <td colspan="2">
+                            <c:set var="memRegNum" value="<%=vo.getMemberRegNum() %>" />
+                            <c:out value="${fn:substring(memRegNum, 0, 6)}"/>
+                            -
+                            <c:out value="${fn:substring(memRegNum, 6, 13)}"/>
+                        </td>
                     </tr>
                     <tr>
                         <th>주소(소재지)</th>
@@ -210,7 +224,15 @@
                         <th>단체명</th>
                         <td colspan="2"><%=vo.getCorpName() %></td>
                         <th colspan="2">사업자등록번호</th>
-                        <td colspan="2"><%=vo.getCorpRegNum() %></td>
+                        <td colspan="2">
+                            <c:set var="corpRegNum" value="<%=vo.getCorpRegNum() %>" />
+                            <c:out value="${fn:substring(corpRegNum, 0, 3)}"/>
+                            -
+                            <c:out value="${fn:substring(corpRegNum, 3, 5)}"/>
+                            -
+                            <c:out value="${fn:substring(corpRegNum, 5, 9)}"/>
+                        
+                        </td>
                     </tr>
                     <tr>
                         <th>소재지</th>
@@ -229,7 +251,7 @@
                         <th>단체명</th>
                         <td colspan="2">기부 앤 테이크</td>
                         <th colspan="2">사업자등록번호</th>
-                        <td colspan="2">444-55-666666</td>
+                        <td colspan="2">444 - 55 - 666666</td>
                     </tr>
                     <tr>
                         <th>주소(소재지)</th>
