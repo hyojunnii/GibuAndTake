@@ -1,9 +1,7 @@
 package com.gnt.review.service;
 
-import static com.gnt.common.JDBCTemplate.close;
-import static com.gnt.common.JDBCTemplate.commit;
-import static com.gnt.common.JDBCTemplate.getConnection;
-import static com.gnt.common.JDBCTemplate.rollback;
+import static com.gnt.common.JDBCTemplate.*;
+
 
 import java.sql.Connection;
 
@@ -18,9 +16,6 @@ public class CreateReviewService {
 		
 		conn = getConnection();
 		result = new CreateReviewDao().getCreateReviewNo(conn);
-		
-		
-		
 	
 		close(conn);
 		

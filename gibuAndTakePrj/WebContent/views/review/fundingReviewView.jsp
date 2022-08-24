@@ -1,5 +1,10 @@
+<%@page import="com.gnt.review.vo.ReviewDetailVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%
+    ReviewDetailVo rvo = (ReviewDetailVo)request.getAttribute("ReviewDetailVo");
+    request.setAttribute("ReviewDetailVo", rvo);
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,43 +112,34 @@
 </head>
 <body>
 <%@include file="/views/common/header.jsp" %>
-
+<c:set var="vo" value="<%=rvo %>"/>
     <section>
-        <form action="<%=request.getContextPath()%>/review/update" method="get">
+       <form action="<%=request.getContextPath()%>/review/update" method="get">
         <div id="review_detail_wrap">
             <div class="review_detail_header">
-                <strong class="review_header_title">후기제목</strong>
-                <span class="review_header_corp">회사명</span>
+                <strong class="review_header_title">${vo.revName}</strong>
+                <span class="review_header_corp">${vo.mNick}</span>
             </div>
             <div id="review_body_content">
-                <pre
-                    >후기내용
-
-
-
-
-
-<img id="imgTest" src="../../resources/img/free-icon-giving-5017478.png" alt="이미지 테스트">
-
-
-
-후기내용</pre
-                >
+                <pre>${vo.revContent}</pre>
             </div>
             <div id="review_body_achieve">
-                <strong id="review_achieve_total">3,959,000원</strong>
-                <span id="review_achieve_goal">4,000,000원</span>
+                <strong id="review_achieve_total">${vo.Pmoney}원</strong>
+                <span id="review_achieve_goal">${vo.Gmoney}원</span>
             </div>
             <div id="review_detail_footer">
                 <div id="review_detail_footer_corp">
-                    <span id="review_detail_footer_corp_name">기업이름</span>
-                    <span id="review_detail_footer_corp_intro">기업소개</span>
-                    <span class="review_detail_footer_corp_date">기부기간 : 2999. 01. 01. ~ 2999. 01. 01.</span>
-                    <span class="review_detail_footer_corp_date">기부후기 : 2999. 01. 01.</span>
+                    <span id="review_detail_footer_corp_name">${vo.mNick}</span>
+                    <span id="review_detail_footer_corp_intro">${vo.corpContent}</span>
+                    <span class="review_detail_footer_corp_date">펀딩기간 : ${vo.regSdate} ~ ${vo.regFdate}</span>
+                    <span class="review_detail_footer_corp_date">펀딩후기 : ${vo.revDate}</span>
                 </div>
                 <div id="review_detail_footer_btn">
-                    <input type="submit" value="수정하기" class="review_detail_btn">
-                    <input type="button" value="삭제하기" class="review_detail_btn" onclick="btnDelete();"> 
+                  <c:if test="${!empty loginCorp}">
+                		<c:if test="${loginCorp.no==vo.mNo}">
+                    		<input type="submit" value="수정하기" class="review_detail_btn">
+                    	</c:if>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -155,12 +151,7 @@
 <%@include file="/views/common/footer.jsp" %>
 
 <script>
-function btnDelete(){
-	const YN = confirm("정말 삭제하시겠습니까?");
-    if(YN){
-        document.querySelector('form').setAttribute("action", "<%=request.getContextPath()%>/review/delete");
-    }
-}
+
 </script>
 </body>
 </html>

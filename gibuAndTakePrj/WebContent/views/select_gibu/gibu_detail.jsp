@@ -7,7 +7,9 @@
     
 <%
 	GibuVo vo = (GibuVo)request.getSession().getAttribute("gibuvo");
-	List<ReplyVo> list = (List<ReplyVo>)request.getAttribute("replyvo");
+	List<ReplyVo> list = (ArrayList<ReplyVo>)request.getAttribute("replyvo");
+	request.setAttribute("vo", vo);
+
 %>    
 
 <!DOCTYPE html>
@@ -189,13 +191,14 @@
     <div id="gibu_detail_container">
         <table id="title_table">
             <tr>	
+           		<c:if test="${empty loginMember }">
             		<td width="20%"></td>
 	                <td colspan="3" width="60%"><h1><%=vo.getRegname() %></h1></td>
 	                <td width="20%">
-           		<c:if test="${empty loginMember }">
 	                </td>
               	</c:if>
 	            <c:if test="${loginMember.no == gibuvo.mno}">
+	    			<td>
 	    			<button class="btn">수정하기</button>
 				    </td>
 			 	</c:if>

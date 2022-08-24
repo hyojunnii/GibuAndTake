@@ -58,7 +58,7 @@ public class CreateReviewController extends HttpServlet {
 		
 		req.getSession().removeAttribute("CreateReviewNo");
 		
-		
+		ReviewImgVo imgVo =null;
 
 		
 		String savePath = null;
@@ -89,18 +89,18 @@ public class CreateReviewController extends HttpServlet {
 			bis.close();
 			bos.close();
 		
+			imgVo = new ReviewImgVo();
+			String[] strArr = savePath.split("\\\\");
+			String[] relatePathArr = new String[3];
+			relatePathArr[2] = strArr[strArr.length-1];
+			relatePathArr[1] = strArr[strArr.length-2];
+			relatePathArr[0] = strArr[strArr.length-3];
+			String relatePath = req.getContextPath()+"/"+String.join("/", relatePathArr);
+			System.out.println(relatePath);
+			imgVo.setUrl(relatePath);
+			imgVo.setRevNo(revNo);
 		}
 		
-		ReviewImgVo imgVo = new ReviewImgVo();
-		String[] strArr = savePath.split("\\\\");
-		String[] relatePathArr = new String[3];
-		relatePathArr[2] = strArr[strArr.length-1];
-		relatePathArr[1] = strArr[strArr.length-2];
-		relatePathArr[0] = strArr[strArr.length-3];
-		String relatePath = req.getContextPath()+"/"+String.join("/", relatePathArr);
-		System.out.println(relatePath);
-		imgVo.setUrl(relatePath);
-		imgVo.setRevNo(revNo);
 		ReviewVo reviewVo = new ReviewVo();
 		reviewVo.setRevNo(revNo);
 		reviewVo.setmNo(no);

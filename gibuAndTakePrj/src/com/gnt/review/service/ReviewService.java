@@ -43,12 +43,36 @@ public class ReviewService {
 		return result;
 	}
 
-	public ReviewDetailVo selectReviewOne(String revNo) {
+	public ReviewDetailVo selectReviewOne1(String revNo) {
 		ReviewDetailVo result = null;
 		Connection conn = null;
 		
 		conn = getConnection();
-		result = dao.selectReviewOne(conn, revNo);
+		result = dao.selectReviewOne1(conn, revNo);
+		
+		close(conn);
+			
+		return result;
+	}
+	
+	public ReviewDetailVo selectReviewOne2(String revNo) {
+		ReviewDetailVo result = null;
+		Connection conn = null;
+		
+		conn = getConnection();
+		result = dao.selectReviewOne2(conn, revNo);
+		
+		close(conn);
+			
+		return result;
+	}
+	
+	public ReviewDetailVo selectReviewOne3(String revNo) {
+		ReviewDetailVo result = null;
+		Connection conn = null;
+		
+		conn = getConnection();
+		result = dao.selectReviewOne3(conn, revNo);
 		
 		close(conn);
 			

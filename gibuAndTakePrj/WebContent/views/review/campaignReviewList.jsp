@@ -127,9 +127,6 @@
 <%@include file="/views/common/header.jsp" %>
 
     <div id="create_review">
-        <div>
-            <input type="button" value="후기 작성하기" class="review_btn" onclick="location.href='<%=request.getContextPath()%>/review/create?category=${category}'">
-        </div>
     </div>  
 	<section>
         <div id="review_card_wrap">
@@ -142,33 +139,24 @@
 	                <p class="review_card_text">${b.revContent}</p>
 	            </a>
 			</c:forEach>
-        
-            <a href="" class="review_card">
-                <span class="review_card_corp">기업이름</span>
-                <strong class="review_card_title">후기 제목</strong>
-                <img src="" alt="후기 썸네일" class="review_card_img">
-                <p class="review_card_text">후기 내용 ...</p>
-            </a>
-			
-            
 
         </div>
         
-        <div id="review_view_more">
+       	<div id="review_view_more">
             <%if(startPage!=1){%>
-			<a href="<%=path%>/campaign/review/list?p=<%=startPage-1%>" class="review_btn">&lt;&lt;</a>
-			<%} %>
-			<%for(int i = startPage; i<=endPage; i++){ %>
-				<% if(i==currentPage){ %>
-					<Strong class="review_btn"><%=i %></Strong>
-				<%}else{%>
-				<a href="<%=path%>/campaign/review/list?p=<%=i%>" class="review_btn"><%=i %></a>
+				<a href="<%=path%>/campaign/review/list?p=<%=startPage-1%>" class="review_btn">&lt;&lt;</a>
 				<%} %>
+				<%for(int i = startPage; i<=endPage; i++){ %>
+					<% if(i==currentPage){ %>
+						<Strong class="review_btn"><%=i %></Strong>
+					<%}else{%>
+					<a href="<%=path%>/campaign/review/list?p=<%=i%>" class="review_btn"><%=i %></a>
+					<%} %>
+				<%} %>
+				<%if(endPage!=maxPage){%>
+				<a href="<%=path%>/campaign/review/list?p=<%=endPage+1%>" class="review_btn">&gt;&gt;</a>
 			<%} %>
-			<%if(endPage!=maxPage){%>
-			<a href="<%=path%>/campaign/review/list?p=<%=endPage+1%>" class="review_btn">&gt;&gt;</a>
-			<%} %>
-			</div>
+		</div>
 
     </section>
 
