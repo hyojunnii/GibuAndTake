@@ -279,7 +279,6 @@
 
 	<script>
 	
-	
 	$('.memberId').focusout(function(){
 		
 		let memberId = $('.memberId').val(); // input_id에 입력되는 값
@@ -304,7 +303,6 @@
 		})
 		 
 	})
-	
 	
 	function pwdChk() {
 		var pwd1 = $("#memberPwd");
@@ -348,7 +346,7 @@
 	
 	function onJoin(){
 		var memberJoinForm = document.memberJoin;
-		var id = $("#inputId").val().length;
+		//var id = $("#inputId").val().length;
 		var pwd1 = $("#memberPwd");
 		var pwd2 = $("#memberPwd2");
 		

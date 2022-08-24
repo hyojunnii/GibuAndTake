@@ -2,7 +2,12 @@
 <%@page import="com.gnt.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	session.removeAttribute("alertMsg");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,9 +181,9 @@
 					    
 					    <tr>
 						    
-					    <td><input type="radio" name="check_log" id="member" value="1" checked><span id="memberBut">일반 회원</span></td>
+					    <td><input type="radio" name="check_log" id="member" value="1" checked><label for="member">일반 회원</label></td>
 						
-          				<td><input type="radio" name="check_log" id="corp" value="2" >기업 회원</td>		
+          				<td><input type="radio" name="check_log" id="corp" value="2" ><label for="corp">기업 회원</label></td>		
           				</tr>
 						
 	                <tr>
@@ -194,8 +199,8 @@
                     <td><a onclick="location.href='/gibuAndTakePrj/member/Join'"  class="log">일반 회원가입 |</a></td>
                     <td><a onclick="location.href='/gibuAndTakePrj/corp/Join'"  class="log"> &nbsp;기업 회원가입</a></td>
                     <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> <td></td><td></td><td></td><td></td><td></td> 
-                    <td><a onclick="location.href='/gibuAndTakePrj/IdFound/idSearch'"class="log">아이디 찾기 |</a></td>
-                    <td><a onclick="location.href='/gibuAndTakePrj/PwdSearch/pwdSearch'"> &nbsp;비밀번호 찾기</a></td>
+                    <td><a onclick="location.href='/gibuAndTakePrj/member/idSearch'"class="log">아이디 찾기 |</a></td>
+                    <td><a onclick="location.href='/gibuAndTakePrj/member/pwdSearch'"> &nbsp;비밀번호 찾기</a></td>
                     </tr>
                 </table>
                 </div>
@@ -206,6 +211,11 @@
                <%@ include file="../common/footer.jsp" %>
           		</div>
     		
+    <script>
+      <%if(alertMsg != null){%>
+      	alert('<%= alertMsg%>');
+      <%}%>
+    </script>
 		
        
 </body>

@@ -100,8 +100,8 @@ public class MemberService {
 		return result;
 	}
 
-	
-	
+
+
 	public MemberVo memberUpdate(MemberVo vo) {
 		//비지니스 로직 (자바 || SQL)
 
@@ -212,22 +212,72 @@ public class MemberService {
 	}
 
 
+
+	public int checkId(String memberId) {
+
+		int result = 0;
+
+		Connection conn = getConnection();
+
+		result = MemberDao.checkId(conn, memberId);
+
+		if(result == 1) { commit(conn); } else { rollback(conn); }
+		close(conn);
+
+		return result;
+
+	}
+
+	public MemberVo idSearch(String name, String email) {
+
+		MemberVo searchId = null;
+		Connection conn = null;
+		
+		try {
+			conn = getConnection();
+
+			searchId = new MemberDao().idSearch(conn, name, email);
+
+			if(searchId != null) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+
+		return searchId;
+	}
 	
-	  public int checkId(String memberId) {
-	  
-	  int result = 0;
-	  
-	  Connection conn = getConnection();
-	  
-	  result = MemberDao.checkId(conn, memberId);
-	  
-	  if(result == 1) { commit(conn); } else { rollback(conn); }
-	  close(conn);
-	  
-	  return result;
-	  
-	  }
-	 
+	public MemberVo pwdSearch(String id, String email) {
+
+		MemberVo searchPwd = null;
+		Connection conn = null;
+		
+		try {
+			conn = getConnection();
+
+			searchPwd = new MemberDao().pwdSearch(conn, id, email);
+
+			if(searchPwd != null) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+
+		return searchPwd;
+	}
+	
 }
 
 

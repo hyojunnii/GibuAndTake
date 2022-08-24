@@ -203,24 +203,24 @@
 		
 		<div id="line"></div>
 		<h3 align="center" style="font-size: 25px">아이디 찾기</h3>
-		<form action="gibuAndTakePrj/member/join" method="post">
+		<form action="/gibuAndTakePrj/member/idSearch" method="post">
 			<table>
 				<tr>
 					<td class="first" style="font-weight: bold">이름 *</span></td>
-					<td><input type="text" name="memberId" id="inputId" maxlength="10" required="required"onkeydown="inputIdchk()" >
+					<td><input type="text" name="name" id="inputId" maxlength="10" required="required"onkeydown="inputIdchk()" >
 					</td>
 				</tr>
 				
 				<tr>
 					<td class="first" style="font-weight: bold">이메일 *</td>
-					<td><input type="password" name="memberPwd" id="input" maxlength="10" required></td>
+					<td><input type="text" name="email" id="input" maxlength="10" required></td>
 					<td></td>
 				</tr>
 				
 				<tr></tr><tr></tr><tr></tr><tr></tr>
 				<tr>
 					<td  style="font-weight: bold"></td>
-					<td><button type="button" id="join" onclick="">찾기</button></td>
+					<td><button id="join">찾기</button></td>
 					<td></td>
 				</tr>
 
@@ -232,14 +232,5 @@
 
 		</form>
 	</main>
-
-	<script>
-	function openIdChk(){
-		
-		window.name = "parentForm";
-		window.open("IdCheckForm.jsp",
-				"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
-	}
-	</script>
 </body>
 </html>

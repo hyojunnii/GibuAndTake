@@ -202,7 +202,7 @@ public class CorpDao {
 		try {
 
 			//SQL 준비
-			String sql = "UPDATE MEMBER SET M_NICK = ? , M_PHONE = ? , M_EMAIL = ? , M_ADD= ? , M_NAME = ? WHERE M_NO = ?";
+			String sql = "UPDATE MEMBER SET M_NICK = ? , M_PHONE = ? , M_EMAIL = ? , M_ADD= ? , M_NAME = ?, M_MOD = SYSDATE WHERE M_NO = ?";
 
 			//SQL 객체에 담기
 			pstmt = conn.prepareStatement(sql);
@@ -244,13 +244,10 @@ public class CorpDao {
 			
 			//SQL 객체에 담고, SQL 완성하기
 			pstmt.setString(1, vo.getContent());
-			System.out.println(vo.getContent());
 			pstmt.setInt(2, vo.getNo());
-			System.out.println(vo.getNo());
 			
 			//SQL 실행 및 실행결과 받기
 			result = pstmt.executeUpdate();
-			System.out.println(result);
 	
 		} catch (Exception e) {
 			//롤백해야함
@@ -267,7 +264,7 @@ public class CorpDao {
 		//connection 준비
 		
 		//SQL 준비
-		String sql = "SELECT * FROM MEMBER M , CORPARATION C WHERE M.M_NO = C.M_NO";
+		String sql = "SELECT * FROM MEMBER M , CORPORATION C WHERE M.M_NO = C.M_NO AND M.M_NO = ?";
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -284,13 +281,13 @@ public class CorpDao {
 			//SQL 실행 및 결과저장
 		
 			rs = pstmt.executeQuery();
-			System.out.println(rs);
 		
 			//ResultSet -> 자바객체(MemberVo)
 		
 			if(rs.next()) {
 				
 				int no = rs.getInt("M_NO");
+				int cNo = rs.getInt("CORP_NO");
 				int m = rs.getInt("M_CLASS");
 				String num = rs.getString("M_REGNUM");
 				String name = rs.getString("M_NAME");									
@@ -305,11 +302,13 @@ public class CorpDao {
 				String ban = rs.getString("M_BAN");
 				Timestamp modifyDate = rs.getTimestamp("M_MOD");
 				String content = rs.getString("CORP_CONTENT");
+				String clss = rs.getString("CORP_CLASS");
 				
 				
 				vo = new corpVo();
 				
 				vo.setNo(no);
+				vo.setCno(cNo);
 				vo.setClas(m);
 				vo.setRegnum(num);
 				vo.setName(name);
@@ -324,6 +323,7 @@ public class CorpDao {
 				vo.setBan(ban);
 				vo.setMod(modifyDate);
 				vo.setContent(content);
+				vo.setClasss(clss);
 			
 			}
 		} catch (SQLException e) {
@@ -340,9 +340,6 @@ public class CorpDao {
 	public int changePwd(Connection conn, String memberId, String memberPwd, String memberPwdNew) throws Exception{
 		//connection 준비
 		
-		System.out.println("memberId : " + memberId);
-		System.out.println("memberPwd : " + memberPwd);
-		System.out.println("memberPwdNew : " + memberPwdNew);
 		//sql 준비
 		String sql = "UPDATE MEMBER SET M_PWD = ? WHERE M_ID = ? AND M_PWD = ?";
 		

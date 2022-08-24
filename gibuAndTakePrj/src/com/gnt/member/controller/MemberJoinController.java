@@ -55,7 +55,6 @@ public class MemberJoinController extends HttpServlet {
 
 		//객체 이용해서 회원가입 진행
 		int result = new MemberService().memberjoin(vo);
-		
 		//insert 결과를 가지고 화면 선택
 		if(result == 1) {
 			//회원가입 성공
