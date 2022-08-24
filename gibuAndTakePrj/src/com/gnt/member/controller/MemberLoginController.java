@@ -44,7 +44,7 @@ public class MemberLoginController extends HttpServlet{
 			} else {
 				//로그인 실패
 				req.setAttribute("errorMsg", "로그인 실패!");
-				req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);
+				req.getRequestDispatcher("/views/error/errorPage.jsp").forward(req, resp);
 			}
 		}else if(logChk == 2) {
 
@@ -66,7 +66,7 @@ public class MemberLoginController extends HttpServlet{
 			} else {
 				//로그인 실패
 				req.setAttribute("errorMsg", "로그인 실패!");
-				req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);
+				req.getRequestDispatcher("/views/error/errorPage.jsp").forward(req, resp);
 			}
 		}
 	}

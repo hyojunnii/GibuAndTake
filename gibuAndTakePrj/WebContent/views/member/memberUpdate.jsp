@@ -303,6 +303,96 @@
 		justify-content: right;
 	}
 	
+	  #updatediv{
+		text-align: center;
+		margin-left:400px;
+	}
+	
+	#pwdupdatediv{
+		text-align: center;
+		margin-left:400px;
+	}
+	
+	#quitdiv{
+		text-align: center;
+		margin-left:400px;
+		
+	}
+	#update {
+		 width:120px;
+       	 float:left;
+       	 margin-left:20px;
+       	 height:40px;
+       	 border-radius: 20px 20px;
+       	 font-size: small;
+       	 background-color: #5CD394;
+       	 border: none;
+	}
+	
+	  #update:hover {
+	        text-align: center;
+	        width: 130px;
+	       	margin-left:20px;
+	        height: 45px;
+	        border-radius: 20px 20px;
+	        font-size: small;
+	        background-color: #EBF5E0;
+	        border: none;
+	        color: #086C37;
+	        font-weight: bold;
+	      	transition:background 0.7s ease-in-out;
+	      
+	    }
+	
+	#pwdupdate{
+		 width:120px;
+       	 float:left;
+       	 margin-left:20px;
+       	 height:40px;
+       	 border-radius: 20px 20px;
+       	 font-size: small;
+       	 background-color: #5CD394;
+       	 border: none;
+	}
+	
+	#pwdupdate:hover{
+		    text-align: center;
+	        width: 130px;
+	       	margin-left:20px;
+	        height: 45px;
+	        border-radius: 20px 20px;
+	        font-size: small;
+	        background-color: #EBF5E0;
+	        border: none;
+	        color: #086C37;
+	        font-weight: bold;
+	      	transition:background 0.7s ease-in-out;
+	}
+	#quit{
+		 width:120px;
+       	 float:left;
+       	 margin-left:20px;
+       	 height:40px;
+       	 border-radius: 20px 20px;
+       	 font-size: small;
+       	 background-color: #5CD394;
+       	 border: none;
+       }
+       
+       #quit:hover{
+		    text-align: center;
+	        width: 130px;
+	       	margin-left:20px;
+	        height: 45px;
+	        border-radius: 20px 20px;
+	        font-size: small;
+	        background-color: #EBF5E0;
+	        border: none;
+	        color: #086C37;
+	        font-weight: bold;
+	      	transition:background 0.7s ease-in-out;
+       }
+      
 	
 </style>
 </head>

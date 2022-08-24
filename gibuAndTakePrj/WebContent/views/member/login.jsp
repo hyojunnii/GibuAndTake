@@ -18,7 +18,7 @@
    
     #square{
      width: 500px;   
-     height: 550px;
+     height: 580px;
      border: solid black;
      margin: 0 auto;
      margin-top: 200px;
@@ -95,7 +95,7 @@
         border-width: 2px 2px 2px 2px;
         border-style: solid ;
     	border-color: #acdac2;
-    	margin-top:50px;
+    	margin-top:30px;
     }
 
     #PWD {
@@ -141,11 +141,13 @@
     }
 	
 	#member{
-		margin-right: 100px;
+			margin-left:-250px;
 	}
-    
+  
+	#corp {
+		margin-left:-400px;
+	}
 	
-
     #alink {
         margin-top: 30px;
         display: flex;
@@ -174,7 +176,7 @@
 					    
 					    <tr>
 						    
-					    <td><input type="radio" name="check_log" id="member" value="1" checked>일반 회원</td>
+					    <td><input type="radio" name="check_log" id="member" value="1" checked><span id="memberBut">일반 회원</span></td>
 						
           				<td><input type="radio" name="check_log" id="corp" value="2" >기업 회원</td>		
           				</tr>

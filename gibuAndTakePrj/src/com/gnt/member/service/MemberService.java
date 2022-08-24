@@ -100,32 +100,8 @@ public class MemberService {
 		return result;
 	}
 
-	*public int memberUpdate(MemberVo vo) {
-		int result = 0;
-		Connection conn = null;
-
-
-		try {
-			conn = getConnection();
-
-			result = new MemberDao().memberUpdate(vo, conn);
-
-			if(result == 1) {
-				commit(conn);
-			}else {
-				rollback(conn);
-			}
-
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(conn);
-		}
-
-
-		return result;
-	}
-	 **/
+	
+	
 	public MemberVo memberUpdate(MemberVo vo) {
 		//비지니스 로직 (자바 || SQL)
 
@@ -237,16 +213,15 @@ public class MemberService {
 
 
 	
-	  public int checkId(MemberVo vo) {
+	  public int checkId(String memberId) {
 	  
 	  int result = 0;
 	  
 	  Connection conn = getConnection();
 	  
-	  result = MemberDao.checkId(conn, memberId, vo);
+	  result = MemberDao.checkId(conn, memberId);
 	  
 	  if(result == 1) { commit(conn); } else { rollback(conn); }
-	  
 	  close(conn);
 	  
 	  return result;
