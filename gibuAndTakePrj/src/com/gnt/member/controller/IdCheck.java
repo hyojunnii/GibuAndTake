@@ -23,24 +23,24 @@ public class IdCheck extends HttpServlet{
 	
 	
 	
-	/*
-	 * @Override protected void doPost(HttpServletRequest req, HttpServletResponse
-	 * resp) throws ServletException, IOException {
-	 * 
-	 * req.setCharacterEncoding("UTF-8");
-	 * 
-	 * String memberId = req.getParameter("memberId");
-	 * 
-	 * PrintWriter out = resp.getWriter();
-	 * 
-	 * MemberVo vo = new MemberVo();
-	 * 
-	 * vo.setId(memberId);
-	 * 
-	 * int idCheck = new MemberService().checkId(vo);
-	 * 
-	 * 
-	 * }
-	 */
+	
+	 @Override protected void doPost(HttpServletRequest req, HttpServletResponse
+	  resp) throws ServletException, IOException {
+	  
+	  req.setCharacterEncoding("UTF-8");
+	  
+	  String memberId = req.getParameter("memberId");
+	  
+	  PrintWriter out = resp.getWriter();
+	  
+	  MemberVo vo = new MemberVo();
+	  
+	  vo.setId(memberId);
+	  
+	  int idCheck = new MemberService().checkId(vo);
+	  
+	  
+	  }
+	 
 	
 }

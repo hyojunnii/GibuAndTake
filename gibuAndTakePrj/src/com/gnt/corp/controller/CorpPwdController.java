@@ -1,4 +1,4 @@
-package com.gnt.member.controller;
+package com.gnt.corp.controller;
 
 import java.io.IOException;
 
@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gnt.corp.service.corpService;
 import com.gnt.member.service.MemberService;
 
-@WebServlet(urlPatterns = "/member/pwd")
-public class MemberPwdController extends HttpServlet{
+@WebServlet(urlPatterns = "/corp/pwd")
+public class CorpPwdController extends HttpServlet{
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
@@ -24,7 +25,7 @@ public class MemberPwdController extends HttpServlet{
 			String memberPwdNew2= req.getParameter("memberPwdNew2");
 			
 			//서비스 호출
-			int result = new MemberService().changePwd(memberId, memberPwd, memberPwdNew, memberPwdNew2);
+			int result = new corpService().changePwd(memberId, memberPwd, memberPwdNew, memberPwdNew2);
 			
 			System.out.println(result);
 			

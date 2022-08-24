@@ -100,7 +100,7 @@ public class MemberService {
 		return result;
 	}
 
-	/**public int memberUpdate(MemberVo vo) {
+	*public int memberUpdate(MemberVo vo) {
 		int result = 0;
 		Connection conn = null;
 
@@ -236,21 +236,23 @@ public class MemberService {
 	}
 
 
-	/*
-	 * public int checkId(MemberVo vo) {
-	 * 
-	 * int result = 0;
-	 * 
-	 * Connection conn = getConnection();
-	 * 
-	 * result = MemberDao.checkId(conn, memberId, vo);
-	 * 
-	 * if(result == 1) { commit(conn); } else { rollback(conn); }
-	 * 
-	 * close(conn);
-	 * 
-	 * return result; }
-	 */
+	
+	  public int checkId(MemberVo vo) {
+	  
+	  int result = 0;
+	  
+	  Connection conn = getConnection();
+	  
+	  result = MemberDao.checkId(conn, memberId, vo);
+	  
+	  if(result == 1) { commit(conn); } else { rollback(conn); }
+	  
+	  close(conn);
+	  
+	  return result;
+	  
+	  }
+	 
 }
 
 

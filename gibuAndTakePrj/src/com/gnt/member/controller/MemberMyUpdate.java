@@ -22,7 +22,7 @@ public class MemberMyUpdate extends HttpServlet{
 		MemberVo loginMember = (MemberVo)req.getSession().getAttribute("loginMember");
 
 		if(loginMember != null) {
-			req.getRequestDispatcher("/views/member/memberSelect.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/member/memberUpdate.jsp").forward(req, resp);
 		}else {
 			req.getSession().setAttribute("alertMsg", "로그인 후 접근 가능합니다!");
 			resp.sendRedirect(req.getContextPath());
@@ -45,6 +45,7 @@ public class MemberMyUpdate extends HttpServlet{
 		int no = ((MemberVo)req.getSession().getAttribute("loginMember")).getNo();
 
 		MemberVo vo = new MemberVo();
+		
 		vo.setNo(no);
 		vo.setName(memberName);
 		vo.setNick(memberNick);

@@ -195,24 +195,24 @@ public class CorpDao {
 		return result;
 	}
 	
-	public int memberUpdate(Connection conn, MemberVo vo) throws Exception {
+	public int memberUpdate(Connection conn, corpVo vo) throws Exception {
 		PreparedStatement pstmt = null;
 		int result = 0;
 
 		try {
 
 			//SQL 준비
-			String sql = "UPDATE MEMBER SET M_NICK = ? , M_PHONE = ? , M_EMAIL = ? , M_ADD= ?  M_NAME = ? WHERE M_NO = ?";
+			String sql = "UPDATE MEMBER SET M_NICK = ? , M_PHONE = ? , M_EMAIL = ? , M_ADD= ? , M_NAME = ? WHERE M_NO = ?";
 
 			//SQL 객체에 담기
 			pstmt = conn.prepareStatement(sql);
-
+			
 			//SQL 객체에 담고, SQL 완성하기
-			pstmt.setString(1, vo.getName());
+			pstmt.setString(1, vo.getNick());
 			pstmt.setString(2, vo.getPhone());
 			pstmt.setString(3, vo.getEmail());
 			pstmt.setString(4, vo.getAddr());
-			pstmt.setString(5, vo.getNick());
+			pstmt.setString(5, vo.getName());
 			pstmt.setInt(6, vo.getNo());
 
 			//SQL 실행 및 실행결과 받기
@@ -237,18 +237,20 @@ public class CorpDao {
 		try {
 
 			//SQL 준비
-			String sql = "UPDATE CORPORATION SET CORP_CONTENT = ? , CORP_CLASS = ?  WHERE M_NO = ?";
-	
+			String sql = "UPDATE CORPORATION SET CORP_CONTENT = ?  WHERE M_NO = ?";
+			
 			//SQL 객체에 담기
 			pstmt = conn.prepareStatement(sql);
-	
+			
 			//SQL 객체에 담고, SQL 완성하기
 			pstmt.setString(1, vo.getContent());
-			pstmt.setNString(2, vo.getClasss());
-	
+			System.out.println(vo.getContent());
+			pstmt.setInt(2, vo.getNo());
+			System.out.println(vo.getNo());
+			
 			//SQL 실행 및 실행결과 받기
 			result = pstmt.executeUpdate();
-	
+			System.out.println(result);
 	
 		} catch (Exception e) {
 			//롤백해야함
@@ -265,8 +267,8 @@ public class CorpDao {
 		//connection 준비
 		
 		//SQL 준비
-		String sql = "SELECT * FROM MEMBER WHERE M_NO = ? AND M_DEL = 'N'";
-		
+		String sql = "SELECT * FROM MEMBER M , CORPARATION C WHERE M.M_NO = C.M_NO";
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		corpVo vo = null;
@@ -278,11 +280,11 @@ public class CorpDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, number);
-		
+			
 			//SQL 실행 및 결과저장
 		
 			rs = pstmt.executeQuery();
-		
+			System.out.println(rs);
 		
 			//ResultSet -> 자바객체(MemberVo)
 		
@@ -303,7 +305,7 @@ public class CorpDao {
 				String ban = rs.getString("M_BAN");
 				Timestamp modifyDate = rs.getTimestamp("M_MOD");
 				String content = rs.getString("CORP_CONTENT");
-				String classs = rs.getString("CORP_CLASS");
+				
 				
 				vo = new corpVo();
 				
@@ -322,8 +324,7 @@ public class CorpDao {
 				vo.setBan(ban);
 				vo.setMod(modifyDate);
 				vo.setContent(content);
-				vo.setClasss(classs);
-				
+			
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -334,6 +335,62 @@ public class CorpDao {
 		
 		//SQL 실행결과(자바객체) 리턴
 		return vo;
+	}
+
+	public int changePwd(Connection conn, String memberId, String memberPwd, String memberPwdNew) throws Exception{
+		//connection 준비
+		
+		System.out.println("memberId : " + memberId);
+		System.out.println("memberPwd : " + memberPwd);
+		System.out.println("memberPwdNew : " + memberPwdNew);
+		//sql 준비
+		String sql = "UPDATE MEMBER SET M_PWD = ? WHERE M_ID = ? AND M_PWD = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			//sql 객체에 담기 및 sql 완성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberPwdNew);
+			pstmt.setString(2, memberId);
+			pstmt.setString(3, memberPwd);
+			
+			//sql 실행 및 결과저장
+			result = pstmt.executeUpdate();
+			//실행결과 -> 자바에서 사용가능하게 변경
+			//실행결과 리턴
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}finally {
+			close(pstmt);
+		}
+	
+		//실행결과 리턴
+		return result;
+	}
+
+	public static int quit(Connection conn, int no) {
+		
+		String sql = "UPDATE MEMBER SET M_DEL='Y' WHERE M_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }
 
