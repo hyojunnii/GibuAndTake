@@ -106,7 +106,7 @@
     
     .top_menu_click{
         margin-left: 5px;
-        margin-right: 15px;
+        margin-right: 5px;
         padding-left : 4px;
         padding-right : 4px; 
         font-size: 28px;
@@ -148,7 +148,7 @@
     }
     
     #login_serch{
-        width: 150px;
+        width: 400px;
         display: flex;
         justify-content: flex-end;
     }
