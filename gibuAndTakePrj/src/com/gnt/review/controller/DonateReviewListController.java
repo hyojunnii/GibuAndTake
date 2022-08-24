@@ -18,7 +18,6 @@ public class DonateReviewListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("category", "1");
 		//--페이징 처리--
 		int listCount;  //현재 총 게시글 갯수
 		int currentPage;//현재 페이지
@@ -28,7 +27,7 @@ public class DonateReviewListController extends HttpServlet {
 		int maxPage;	//가장 마지막 페이지
 		int startPage;  //페이징 바 시작
 		int endPage;	//페이징 바 끝
-		int category = 2;
+		int category = 1;
 		
 		//listCount 구하기
 		listCount = new ReviewService().getCount(category);

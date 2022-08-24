@@ -1,8 +1,12 @@
+<%@page import="com.gnt.pay.vo.PaymentVo"%>
+<%@page import="java.util.List"%>
 <%@page import="com.gnt.gibu.vo.GibuVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	GibuVo vo = (GibuVo)request.getAttribute("gibuvo");
+	List<PaymentVo> pVo = (List<PaymentVo>)request.getAttribute("list");
+	request.setAttribute("vo", vo);
 %>
 <!DOCTYPE html>
 <html>
@@ -98,7 +102,7 @@
 </head>
 <body>
 <%@include file="/views/common/header.jsp" %>
-
+<c:set var="pVo" value=<%=pVo %>/>
     <section>
         <form action="<%=path %>/donate/pay" method="post">
         	<input type="hidden" name="num" value="<%= vo.getRegno() %>">
@@ -122,8 +126,22 @@
                 <div id="pay_body_select" class="pay_border">
                     <span class="pay_div_title">결제 수단</span>
                     <div>
-                        <input type="radio" name="" id="1" class="pay_select_name" checked>
-                        <label for="1" class="pay_select_name">결제수단</label>
+                    <c:choose>
+	            		<c:when test="${!empty loginMember }">
+                        	<c:forEach items="${pVo}" var="p">
+                        	<c:set var="i" value="${i+1}"/>
+	                        	<input type="radio" name="pNo" id="${i}" class="pay_select_name" value="${p.pNo}" checked>
+	                        	<label for="${i}" class="pay_select_name">${p.pName}</label>
+							</c:forEach>
+	            		</c:when>
+	            		<c:when test="${!empty loginCorp }">
+                        	<c:forEach items="${pVo}" var="p">
+                        	<c:set var="i" value="${i+1}"/>
+	                        	<input type="radio" name="pNo" id="${i}" class="pay_select_name" ${p.pNo} checked>
+	                        	<label for="${i}" class="pay_select_name">${p.pName}</label>
+							</c:forEach>
+	            		</c:when>
+            	</c:choose>
                     </div>
                 </div>
             </div>

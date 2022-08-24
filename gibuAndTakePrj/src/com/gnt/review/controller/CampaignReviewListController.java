@@ -18,7 +18,6 @@ public class CampaignReviewListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("category", "2");
 		//--페이징 처리--
 		int listCount;  //현재 총 게시글 갯수
 		int currentPage;//현재 페이지

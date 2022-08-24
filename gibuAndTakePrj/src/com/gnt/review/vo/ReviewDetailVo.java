@@ -13,15 +13,17 @@ public class ReviewDetailVo {
 	private String revDate;
 	private String camGpeople;
 	private String camPpeople;
+	private String Gmoney;
+	private String Pmoney;
 	private String corpContent;
 	private String regSdate;
 	private String regFdate;
 	private String img;
 	
-	
 
 	public ReviewDetailVo(String revNo, String mNo, String mNick, String revName, String revContent, String revDate,
-			String camGpeople, String camPpeople, String corpContent, String regSdate, String regFdate, String img) {
+			String camGpeople, String camPpeople, String gmoney, String pmoney, String corpContent, String regSdate,
+			String regFdate, String img) {
 		super();
 		this.revNo = revNo;
 		this.mNo = mNo;
@@ -31,11 +33,15 @@ public class ReviewDetailVo {
 		this.revDate = revDate;
 		this.camGpeople = camGpeople;
 		this.camPpeople = camPpeople;
+		Gmoney = gmoney;
+		Pmoney = pmoney;
 		this.corpContent = corpContent;
 		this.regSdate = regSdate;
 		this.regFdate = regFdate;
 		this.img = img;
 	}
+
+
 
 	public String getRevNo() {
 		return revNo;
@@ -131,6 +137,22 @@ public class ReviewDetailVo {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+	
+	public String getGmoney() {
+		return Gmoney;
+	}
+
+	public void setGmoney(String gmoney) {
+		Gmoney = gmoney;
+	}
+
+	public String getPmoney() {
+		return Pmoney;
+	}
+
+	public void setPmoney(String pmoney) {
+		Pmoney = pmoney;
 	}
 
 	@Override

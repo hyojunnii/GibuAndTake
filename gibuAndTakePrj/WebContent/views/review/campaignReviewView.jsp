@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    ReviewDetailVo vo = (ReviewDetailVo)request.getAttribute("ReviewDetailVo");
-    request.setAttribute("ReviewDetailVo", vo);
+    ReviewDetailVo rvo = (ReviewDetailVo)request.getAttribute("ReviewDetailVo");
+    request.setAttribute("ReviewDetailVo", rvo);
     %>
 <!DOCTYPE html>
 <html>
@@ -113,7 +113,7 @@
 </head>
 <body>
 <%@include file="/views/common/header.jsp" %>
-
+<c:set var="vo" value="<%=rvo %>"/>
     <section>
         <form action="<%=request.getContextPath()%>/review/update" method="get">
         <div id="review_detail_wrap">
@@ -136,7 +136,11 @@
                     <span class="review_detail_footer_corp_date">캠페인후기 : ${vo.revDate}</span>
                 </div>
                 <div id="review_detail_footer_btn">
-                    <input type="submit" value="수정하기" class="review_detail_btn">
+                    <c:if test="${!empty loginCorp}">
+                		<c:if test="${loginCorp.no==vo.mNo}">
+                    		<input type="submit" value="수정하기" class="review_detail_btn">
+                    	</c:if>
+                    </c:if>
                 </div>
             </div>
         </div>
