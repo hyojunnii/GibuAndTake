@@ -22,9 +22,12 @@
 		display: flex;
 	}
 
+	#naviIn{
+		height: 900px;
+	}
+
     #body {
         width: 1200px;
-		height: 1000px;
         margin: 0 auto;
     }
 
@@ -94,6 +97,11 @@
 		margin: 50px;
 		border: 1px dashed #8bdcb1;
 	}
+
+    #certificate:hover, #receipt:hover {
+        background-color: #2e6c4a;
+        color: #8bdcb1;
+    }
 
 	/* modal */
 	
@@ -222,9 +230,8 @@
 	#modal-body {
 		display: flex;
 	}
-
-
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
@@ -237,52 +244,57 @@
 		</div>
 		<div id="nav">
 			<div id="naviIn"><%@ include file="/views/mypageNav/mypageNavi.jsp" %></div>
-			<%for (int i = 0; i < voList.size(); i++) {%>
-				<form action="<%=contextPath%>/member/breakPrint" method="post">
-					<input type="hidden" value="<%=voList.get(i).getPayNo() %>" name="payNo">
-					<table id="body-table">
-						<thead>
-							<tr>
-								<th colspan="2" style=" font-size: 20px;" id="regName">${voList.get(i).regName}</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th colspan="2">기부 내역</th>
-							</tr>
-							<tr>
-								<td>결제번호</td>
-								<td id="payNo">${voList.get(i).payNo }</td> <%--<%=voList.get(i).getPayNo() % --%>
-							</tr>
-							<tr>
-								<td>결제수단</td>
-								<td id="payName">${voList.get(i).payName }</td>
-							</tr>
-							<tr>
-								<td>기부금액</td>
-								<td id="payMoney"><fmt:formatNumber value="${voList.get(i).payMoney}" pattern="#,###,###"/></td>
-							</tr>
-							<tr>
-								<td>기부일자</td>
-								<td id="payDate">
-									<fmt:parseDate var="parsedDate" value="${voList.get(i).payDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-                        			<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd" />	
-								</td>
-							</tr>
-							<tr>
-								<td>기부증서</td>
-								<td><input id="certificate" type="button" value="출력" data-bs-toggle="modal" data-bs-target="#certificatePrint"></td>
-							</tr>
-							<tr>
-								<td>기부금영수증</td>
-								<td><input id="receipt" type="submit" value="출력"></td>
-							</tr>
-						</tbody>
-					</table>
-				</form>
-	
-				<hr>
-			<%} %>
+
+			<div id="content">
+
+				<%for (int i = 0; i < voList.size(); i++) {%>
+					<form action="<%=contextPath%>/member/breakPrint" method="post">
+						<input type="hidden" value="<%=voList.get(i).getPayNo() %>" name="payNo">
+						<table id="body-table">
+							<thead>
+								<tr>
+									<th colspan="2" style=" font-size: 20px;" id="regName"><%=voList.get(i).getRegName()%></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th colspan="2">기부 내역</th>
+								</tr>
+								<tr>
+									<td>결제번호</td>
+									<td id="payNo"><%=voList.get(i).getPayNo() %></td> 
+								</tr>
+								<tr>
+									<td>결제수단</td>
+									<td id="payName"><%=voList.get(i).getPayName()%></td>
+								</tr>
+								<tr>
+									<td>기부금액</td>
+									<td id="payMoney"><fmt:formatNumber value="<%=voList.get(i).getPayMoney()%>" pattern="#,###,###"/></td>
+								</tr>
+								<tr>
+									<td>기부일자</td>
+									<td id="payDate">
+										<fmt:parseDate var="parsedDate" value="<%=voList.get(i).getPayDate()%>" pattern="yyyy-MM-dd HH:mm:ss"/>
+										<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd" />	
+									</td>
+								</tr>
+								<tr>
+									<td>기부증서</td>
+									<td><input id="certificate" type="button" value="출력" data-bs-toggle="modal" data-bs-target="#certificatePrint"></td>
+								</tr>
+								<tr>
+									<td>기부금영수증</td>
+									<td><input id="receipt" type="submit" value="출력"></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+		
+					<hr>
+				<%} %>
+
+			</div>
 		
 		</div>
 		
@@ -307,23 +319,23 @@
 					</tr>
 					<tr>
 						<td>기 부 자 명:</td>
-						<td>홍길동</td>
+						<td id="modalName"></td>
 					</tr>
 					<tr>
 						<td>기 부 단 체:</td>
-						<td>그린피스</td>
+						<td id="modalCorp"></td>
 					</tr>
 					<tr>
 						<td>기 부 분 야:</td>
-						<td>환경</td>
+						<td id="modalClass"></td>
 					</tr>
 					<tr>
 						<td>총 기 부 금 액:</td>
-						<td>30,000원</td>
+						<td id="modalMoney"></td>
 					</tr>
 					<tr>
 						<td>기 부 일 자:</td>
-						<td>2022년08월07일</td>
+						<td id="modalDate"></td>
 					</tr>
 				</table>
 				<div id="modal-text-outer">
@@ -344,11 +356,21 @@
 
 	<script>
 
-		const num = $('#payNo').data('${voList.get(i).payNo}');
-		
 		$(function () {
-			$("#certifiate").on("clikc", function () {
-				$("#payNo").html(num);
+			$("#certificate").click(function () {
+				let payNo = $("#payNo").text();
+				let payName = $("#payName").text();
+				let corpNAme = $("#payNo").text();
+				let corpClass = $("#payNo").text();
+				let payMoney = $("#payMoney").text();
+				let payDate = $("#payDate").text();
+
+				$("#modalNo").html(payNo);
+				$("#modalName").html(payName);
+				$("#modalCorp").html(payNo);
+				$("#modalClass").html(corpClass);
+				$("#modalMoney").html(payMoney);
+				$("#modalDate").html(payDate);
 			})
 		})
 

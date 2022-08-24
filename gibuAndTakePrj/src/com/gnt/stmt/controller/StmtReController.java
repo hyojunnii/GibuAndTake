@@ -22,10 +22,12 @@ public class StmtReController extends HttpServlet{
 		corpVo loginCorp = (corpVo) req.getSession().getAttribute("loginCorp");
 		
 		String donaNo = req.getParameter("donaNo");
+		
 		System.out.println("donaNo 값 ::: " + donaNo);
+		
 		StmtVo donaVo = new StmtService().showReDona(donaNo);
 		ArrayList<ExeVo> exeVo = new StmtService().showExe(donaNo);
-		
+		System.out.println("donaVo 값 ::: " + donaVo);
 		req.setAttribute("donaVo", donaVo);
 		req.setAttribute("exeVo", exeVo);
 		req.getRequestDispatcher("/views/user2/corpStatementRe.jsp").forward(req, resp);
@@ -53,8 +55,8 @@ public class StmtReController extends HttpServlet{
 		
 		if(result == 1) {
 			resp.sendRedirect("/gibuAndTakePrj/corp/stmtList");
+		}else {
+			req.getRequestDispatcher("/views/error/errorPage.jsp").forward(req, resp);
 		}
-		
-		req.getRequestDispatcher("/views/user2/corpStatementRe.jsp").forward(req, resp);
 	}
 }
