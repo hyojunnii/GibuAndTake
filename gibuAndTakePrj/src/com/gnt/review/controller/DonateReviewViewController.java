@@ -18,7 +18,6 @@ public class DonateReviewViewController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String revNo = req.getParameter("id");
 		ReviewDetailVo vo = new ReviewService().selectReviewOne2(revNo);
-		
 		req.setAttribute("ReviewDetailVo", vo);
 		req.getRequestDispatcher("/views/review/donateReviewView.jsp").forward(req, resp);
 	}

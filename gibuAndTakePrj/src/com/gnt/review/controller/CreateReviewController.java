@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.gnt.corp.vo.corpVo;
 import com.gnt.member.vo.MemberVo;
 import com.gnt.review.service.CreateReviewService;
 import com.gnt.review.service.UploadImgService;
@@ -39,6 +40,7 @@ public class CreateReviewController extends HttpServlet {
 		String category = req.getParameter("category");
 		String regNo = req.getParameter("regNo");
 		req.setAttribute("category", category);
+		req.setAttribute("regNo", regNo);
 		req.getRequestDispatcher("/views/review/createReview.jsp").forward(req, resp);
 	}
 	
@@ -50,9 +52,26 @@ public class CreateReviewController extends HttpServlet {
 		
 		String editordata = req.getParameter("editordata");
 		String category = req.getParameter("category");
+		if("기부".equals(category)) {
+			category = "1";
+		}else if("펀딩".equals(category)) {
+			category = "3";
+		}else if("캠페인".equals(category)) {
+			category = "2";
+		}
+		
 		String regNo = req.getParameter("regNo");
-		MemberVo m = (MemberVo)req.getSession().getAttribute("loginMember");
-		String no = Integer.toString(m.getNo());
+		System.out.println(regNo);
+		String no = null;
+		MemberVo m = null;
+		corpVo c = null;
+		if((MemberVo)req.getSession().getAttribute("loginMember")!=null) {
+			m = (MemberVo)req.getSession().getAttribute("loginMember");
+			no = Integer.toString(m.getNo());
+		}else {
+			c = (corpVo)req.getSession().getAttribute("loginCorp");
+			no = Integer.toString(c.getNo());
+		}
 		
 		Part f = req.getPart("f");
 		
@@ -107,9 +126,8 @@ public class CreateReviewController extends HttpServlet {
 		reviewVo.setRevName(title);
 		reviewVo.setRevClass(category);
 		reviewVo.setRevContent(editordata);
-		
+		System.out.println(category);
 		int result = new UploadImgService().InsertReview(reviewVo,imgVo,regNo,category);
-		
 		if(result==1) {
 			req.setAttribute("alertMsg", "후기 작성 성공");
 			if("1".equals(category)) {

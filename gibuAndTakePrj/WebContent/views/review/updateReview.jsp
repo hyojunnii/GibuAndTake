@@ -101,15 +101,15 @@
 <%@include file="/views/common/header.jsp" %>
 
     <section>
-        <form action="/review/update" method="post">
+        <form action="<%=path %>/review/update" method="post">
         <div id="review_update_wrap">
             <div class="review_update_header">
                 <label for="review_header_img_btn">상단배경선택</label>
-                <input type="file" id="review_header_img_btn" value="사진첨부하기" name="f">
-                <input type="text" class="review_header_title" placeholder="후기제목" name="title"></input>
+                <input type="file" id="review_header_img_btn" value="사진첨부하기" name="f" >
+                <input type="text" class="review_header_title" placeholder="후기제목" name="title" value="<%=vo.getRevName()%>"></input>
             </div>
             <div id="review_body_content">
-                <textarea id="content" name="editordata" class="note-editable"></textarea>
+                <textarea id="content" name="editordata" class="note-editable"><%=vo.getCorpContent() %></textarea>
             </div>
             <div id="review_update_footer_btn">
                 <input type="submit" value="수정하기" class="review_update_btn">

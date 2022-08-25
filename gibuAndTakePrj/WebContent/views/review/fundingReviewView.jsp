@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
         <%
     ReviewDetailVo rvo = (ReviewDetailVo)request.getAttribute("ReviewDetailVo");
-    request.setAttribute("ReviewDetailVo", rvo);
+        request.getSession().setAttribute("ReviewDetailVo", rvo);
     %>
 <!DOCTYPE html>
 <html>

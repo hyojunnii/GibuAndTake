@@ -69,7 +69,7 @@ public class UploadImgService {
 		close(conn);
 		
 		
-		return result1*result2;
+		return result1*result2*result3;
 	}
 
 }

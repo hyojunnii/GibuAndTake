@@ -26,6 +26,8 @@
     section{
         display: flex;
         justify-content: center;
+	    flex-direction: column;
+	    align-items: center;
     }
 	
 	a{
@@ -91,8 +93,10 @@
 
     .review_view_more{
         width: 100%;
-        margin: 0 0 24px 24px;
+        margin: 24px auto;
         height: 35px;
+        display: flex;
+    	justify-content: center;
     }
 
     #create_review{
