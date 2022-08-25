@@ -250,8 +250,8 @@
             <li>
                 <div>
                 	<a href="/gibuAndTakePrj/view/campaign_detail?num=<%= c.getRegno()%>">
-                    <h3><%= c.getRegname() %></h3>
-                    <span><%= c.getMnick() %></span>
+                    <h3 style="color:white"><%= c.getRegname() %></h3>
+                    <span style="color:white"><%= c.getMnick() %></span>
                 </div>
                 <img src="../resources/upload/<%= c.getImgsrc()%>">
                 </a>

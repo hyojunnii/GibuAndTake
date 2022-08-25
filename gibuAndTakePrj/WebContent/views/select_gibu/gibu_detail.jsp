@@ -192,25 +192,25 @@
         <table id="title_table">
             <tr>	
             		<td width="20%"></td>
-	                <td colspan="3" width="60%"><h1><%=vo.getRegname() %></h1></td>
+	                <td colspan="3" width="60%" style="padding-top: 20px"><h1><%=vo.getRegname() %></h1></td>
 	                <td width="20%">
-           		<c:if test="${empty loginMember }">
+           		<c:if test="${empty loginMember && empty loginCorp}">
 	                </td>
               	</c:if>
-	            <c:if test="${loginMember.no == gibuvo.mno}">
-	    			<button class="btn">수정하기</button>
-				    </td>
-			 	</c:if>
+	            <c:if test="${loginCorp.no eq gibuvo.mno}">
+	             <a href="<%=path%>/pm/edit/donation" class="btn">수정하기</a>
+	             </td>
+	          </c:if>
             </tr>
         </table>
             <p class="comName">By <%=vo.getMnick() %></p>
             <img src="../resources/upload/<%= vo.getImgsrc() %>">
         <div id="gibu_detail_container_div">
-            <p>
+            <p style="padding-top: 10px">
                 <%= vo.getRegcontent() %>
             </p>
-                <h2>사업대상</h2>
-            <div id="table_cover">
+                <h2 style="padding-top: 10px">사업대상</h2>
+            <div id="table_cover" style="padding-top: 10px">
                 <table class="gibu_table">
                     <tbody>
                     <tr>
@@ -247,13 +247,13 @@
                목표금액 : <%= vo.getDgmoney() %> 원
             </p>
             
-            
+           <c:if test="${loginCorp.no eq gibuvo.mno}">
             <form action="<%=path %>/review/create" method="get">
             	<input type="hidden" name="regNo" value="<%=vo.getRegno()%>">
             	<input type="hidden" name="category" value="<%=vo.getRegclass()%>">
             	<button type="submit" class="reviw_container">후기 등록</button>
-            
             </form>
+            </c:if>
         </div>
     </div>
     </div>

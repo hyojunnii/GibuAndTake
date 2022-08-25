@@ -75,4 +75,25 @@ public class CampaignProofDao {
 		return result;
 	}
 
+	//캠페인 인증 신고
+	public int proofBan(Connection conn, int cpNo) {
+		String sql = "UPDATE CAMPAIGNPROOF SET CP_BAN = 'Y' WHERE CP_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql); 
+			pstmt.setInt(1, cpNo); 
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

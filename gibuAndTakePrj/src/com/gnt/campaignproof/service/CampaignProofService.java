@@ -55,4 +55,20 @@ public class CampaignProofService {
 		return result;
 	}
 
+	//캠페인 인증 신고
+	public int proofBan(int cpNo) {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		result = dao.proofBan(conn, cpNo);
+		
+		if(result == 1) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 }
