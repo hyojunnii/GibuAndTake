@@ -90,7 +90,7 @@
     	border-radius: 10px;
     	width: 650px;
     	height: 40px;
-    	margin: 15px 70px 0px 390px;
+    	margin: 20px 70px 0px 390px;
     	text-align: left;
     	
 	}
@@ -361,13 +361,12 @@
 	    		<button class="toggle"><%= vo.get(i).getTitle()%><button id="img">▽</button></button>
 	    		<button class="toggle2"><%= vo.get(i).getContent()%></button>
 	    	<%}%> 
-	    	
             
             <% if(loginMember != null && "admin".equals(loginMember.getId())) {%>  
 		    	
 			    	<button id="btn1" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/write1'">FAQ작성</button>
 			    	
-		    		<button id="btn2" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/modify?num='">FAQ수정/삭제</button>
+		    		<button id="btn2" class="btn3" onclick="location.href='/gibuAndTakePrj/faq/modify?num=30'">FAQ수정/삭제</button>
 	    	<%} %> 
 	    
 	    <div id="page-area">
@@ -401,15 +400,6 @@
     	})
     </script>
 	
-	<script>
-    	$(function(){
-    		$('.toggle2').click(function(){
-    			if($(".toggle2").css("display") != "block"){
-    				$(".toggle2").hide();
-    			}
-    		});
-    		
-    	})
-    </script>
+	
 </body>
 </html>

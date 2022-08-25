@@ -92,6 +92,8 @@
         font-weight: bold;
         border-radius: 15px;
 		padding: 5px 20px 5px 20px;
+		font-size: 13px;
+		color: black;
     }
 
     #btn1:hover{

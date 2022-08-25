@@ -65,6 +65,8 @@ public class FaqList extends HttpServlet{
 		ArrayList<FaqVo> vo = new FaqService().selectList(pageVo);
 		req.setAttribute("vo", vo);
 		
+		String num = req.getParameter("num");
+		
 		req.getRequestDispatcher("/views/FAQ/faqList.jsp").forward(req, resp);
 	}
 }

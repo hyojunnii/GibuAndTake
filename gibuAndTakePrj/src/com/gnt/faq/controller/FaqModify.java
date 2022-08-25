@@ -19,22 +19,17 @@ public class FaqModify extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<CategoryVo> list = new FaqService().selectCategoryList();
-		req.setAttribute("list", list);
 		
 		String num = req.getParameter("num");
-		System.out.println("오류1");
+		
 		FaqVo vo = new FaqService().selectNum(num);
-		System.out.println("오류2");
 		
 		
 		
 		if(vo != null) {
 			req.setAttribute("vo", vo);
-			req.setAttribute("list", list);
-			System.out.println("오류3");
+			
 			req.getRequestDispatcher("/views/FAQ/faqModify.jsp").forward(req, resp);
-			System.out.println("오류4");
 		}
 		
 	}
