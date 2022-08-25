@@ -22,19 +22,24 @@ public class StmtListController extends HttpServlet{
 		corpVo loginCorp = (corpVo) req.getSession().getAttribute("loginCorp");
 		
 		ArrayList<StmtVo> donaResult = new StmtService().showDona(loginCorp);
+		ArrayList<ExeVo> exeTest = new StmtService().showExeTest(donaResult);
 		
-		System.out.println("donaResult 값 ::: " + donaResult);
+//		System.out.println(donaResult);
+//
+//		String donaNo = null;
+//		ArrayList<ExeVo> exeResult = null;
+//		
+//		for(int i = 0; i < donaResult.size(); ++i) {
+//			donaNo = donaResult.get(i).getDonaNo();
+//			exeResult = new StmtService().showExe(donaNo);
+//		}
 		
-		String donaNo = null;
-		for(int i = 0; i < donaResult.size(); ++i) {
-			donaNo = donaResult.get(i).getDonaNo();
-		}
-		
-		ArrayList<ExeVo> exeResult = new StmtService().showExe(donaNo);
+//		System.out.println(donaNo);
+		System.out.println(exeTest);
 		
 		req.setAttribute("donaResult", donaResult);
-		req.setAttribute("exeResult", exeResult);
-		req.getRequestDispatcher("/views/user2/corpStatementList.jsp").forward(req, resp);
+		req.setAttribute("exeResult", exeTest);			
+		req.getRequestDispatcher("/views/user2/corpStatementList.jsp").forward(req, resp);						
 	}
 	
 }

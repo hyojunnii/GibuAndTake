@@ -31,11 +31,16 @@ public class StmtService {
 	public ArrayList<ExeVo> showExe(String donaNo) {
 		Connection conn = null;
 		ArrayList<ExeVo> exeList = null;
-		int result = 0;
 		
-		conn = getConnection();
-		exeList = new StmtDao().showExe(conn, donaNo); 
-		
+		try {
+			conn = getConnection();
+			exeList = new StmtDao().showExe(conn, donaNo); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+				
 		return exeList;
 	}
 
@@ -82,5 +87,22 @@ public class StmtService {
 			close(conn);
 		}
 		return result;
+	}
+
+	public ArrayList<ExeVo> showExeTest(ArrayList<StmtVo> donaResult) {
+
+		Connection conn = null;
+		ArrayList<ExeVo> testList = null;
+		
+		try {
+			conn = getConnection();
+			testList = new StmtDao().showExeTest(conn, donaResult);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return testList;
 	}
 }

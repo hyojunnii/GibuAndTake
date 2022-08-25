@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="com.gnt.stmt.vo.ExeVo"%>
 <%@page import="com.gnt.stmt.vo.StmtVo"%>
 <%@page import="java.util.ArrayList"%>
@@ -192,14 +193,16 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%for(int j = 0; j < exeList.size(); ++j ) {%>
+								<%for(int j = 0; j < exeList.size(); ++j) {%>
+									<%if(exeList.get(j).getDonaNo().equals(donaList.get(i).getDonaNo())){%>
 									<tr>
 										<th><%=exeList.get(j).getExeCtg() %></th>
 										<td><%=exeList.get(j).getExeCnt() %></td>
 										<td><fmt:formatNumber value="<%=exeList.get(j).getExeMoney() %>" pattern="#,###"/>원</td>
 									</tr>
+									<%} %>
 								<%} %>
-							</tbody>
+								</tbody>
 						</table>
 						<hr>
 					</form>

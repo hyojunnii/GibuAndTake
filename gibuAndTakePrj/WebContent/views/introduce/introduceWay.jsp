@@ -37,9 +37,21 @@
         padding: 15px;
     }
 
+    .btn-area a:hover {
+        background-color: #2e6c4a;
+        color: #d8eee2;
+    }
+
     .img{
         display: flex;
         justify-content: space-evenly;
+    }
+
+    img{
+        border-radius: 20px;
+        border: 3px solid #8bdcb1;
+        width: 500px;
+        padding: 5px;
     }
 
     .text {
@@ -51,6 +63,7 @@
 
     h2 {
         background-color: #d8eee2;
+        color: #2e6c4a;
         text-align: center;
     }
 </style>
@@ -69,12 +82,12 @@
         <h2>1 기부하기</h2>
         <div id="img-area">
             <div class="img">
-                <img src="/gibuAndTakePrj/resources/img/testImg01.png" alt="기부 방법 이미지">
+                <img src="/gibuAndTakePrj/resources/img/intro_gibu.png" alt="기부 방법 이미지">
                 <div class="text">
-                1. 기부하고 싶은 프로젝트를 선택한다. <br>
+                1. 기부 목록에서 참여하고 싶은 기부를 선택한다. <br>
                 2. 기부하기를 누른다. <br>
-                3. 기부하고 싶은 액수를 결제한다. <br>
-                4. 마이페이지에서 기부 내역과 영수증을 확인한다.
+                3. 기부금 결제를 진행한다. <br>
+                4. 마이페이지에서 나의 기부 내역을 볼 수 있다.
                 </div>
             </div>
 
@@ -84,11 +97,12 @@
 
             <h2>2 펀딩하기</h2>
             <div class="img">
-                <img src="/gibuAndTakePrj/resources/img/testImg01.png" alt="펀딩 방법 이미지">
+                <img src="/gibuAndTakePrj/resources/img/intro_funding.png" alt="펀딩 방법 이미지">
                 <div class="text">
-                1. 펀딩에 참여하고 싶은 프로젝트를 선택한다. <br>
-                2. 펀딩할 물품을 고르고 결제한다. <br>
-                3. 마이페이지에서 나의 펀딩 내역을 확인한다. <br>
+                1. 펀딩 목록에서 참여하고 싶은 펀딩을 선택한다. <br>
+                2. 원하는 리워드를 고르고 참여하기를 누른다. <br>
+                3. 결제를 진행한다.<br>
+                4. 마이페이지에서 내가 참여한 펀딩을 볼 수 있다. <br>
                 </div>
             </div>
 
@@ -98,12 +112,12 @@
 
             <h2> 3 캠페인 참여하기</h2>
             <div class="img">
-                <img src="/gibuAndTakePrj/resources/img/testImg01.png" alt="캠페인 참여 방법 이미지">
+                <img src="/gibuAndTakePrj/resources/img/intro_campaign.png" alt="캠페인 참여 방법 이미지">
                 <div class="text">
-                1. 참여하고 싶은 캠페인을 선택한다. <br>
-                2. 각 캠페인의 인증 방법을 읽는다. <br>
-                3. 인증하기를 눌러서 인증을 남긴다. <br>
-                4. 마이페이지에서 캠페인 참여 내역을 확인한다.
+                1. 캠페인 목록에서 참여하고 싶은 캠페인을 선택한다. <br>
+                2. 캠페인 소개를 읽는다. <br>
+                3. 행동하기를 눌러 캠페인에 참여한다. <br>
+                4. 마이페이지에서 내가 참여한 캠페인을 볼 수 있다.
                 </div>
             </div>
 

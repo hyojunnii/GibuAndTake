@@ -129,6 +129,7 @@ public class StmtDao {
 				String exeMoney = rs.getString("E_MONEY");
 				
 				ExeVo vo = new ExeVo();
+				vo.setDonaNo(donaNo);
 				vo.setExeNo(exeNo);
 				vo.setExeCtg(exeCtg);
 				vo.setExeCnt(exeCnt);
@@ -142,7 +143,6 @@ public class StmtDao {
 			close(rs);
 			close(pstmt);
 		}
-		System.out.println(list);
 		return list;
 	}
 
@@ -168,6 +168,42 @@ public class StmtDao {
 		}
 		
 		return result;
+	}
+
+	public ArrayList<ExeVo> showExeTest(Connection conn, ArrayList<StmtVo> donaResult) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<ExeVo> testList = new ArrayList<ExeVo>();
+
+		String sql = "SELECT E_NO, E_CTG, E_CONTENT, E_MONEY FROM EXECUTE E JOIN DONATION D ON D.D_NO = E.D_NO JOIN REGIST R ON R.REG_NO = D.REG_NO JOIN MEMBER M ON M.M_NO = R.M_NO WHERE D.D_NO = ? ORDER BY E_NO ASC";
+		try {
+			for(int i = 0 ; i < donaResult.size(); ++i) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, donaResult.get(i).getDonaNo());
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					String exeNo = rs.getString("E_NO");
+					String exeCtg = rs.getString("E_CTG");
+					String exeCnt = rs.getString("E_CONTENT");
+					String exeMoney = rs.getString("E_MONEY");
+
+					ExeVo vo = new ExeVo();
+					vo.setDonaNo(donaResult.get(i).getDonaNo());
+					vo.setExeNo(exeNo);
+					vo.setExeCtg(exeCtg);
+					vo.setExeCnt(exeCnt);
+					vo.setExeMoney(exeMoney);
+					
+					testList.add(vo);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {			
+			close(rs);
+			close(pstmt);
+		}
+		return testList;
 	}
 
 }

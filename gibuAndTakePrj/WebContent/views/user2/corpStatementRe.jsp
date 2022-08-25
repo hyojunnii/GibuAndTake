@@ -184,6 +184,15 @@
 		border-top: 1px solid black;
 	}
 
+	#exeDataTr, #exeDataTr > td > input {
+		background-color: #e4f9ee;
+	}
+
+	#exeDataTr > td > input {
+		border: none;
+		pointer-events: none;
+		color: #15462b;
+	}
 </style>
 </head>
 <body>
@@ -235,14 +244,9 @@
 					</thead>
 					<tbody id="exeBody">
 						<% for (int i = 0; i < exeVo.size(); ++i) {%>
-							<tr>
+							<tr id="exeDataTr">
 								<th>
-									<select name="exeCategory" id="inputGroupSelect01" required>
-										<option value="사업비" selected>사업비</option>
-										<option value="인건비" >인건비</option>
-										<option value="운영비" >운영비</option>
-										<option value="행사홍보비" >행사홍보비</option>
-									</select>
+									<%=exeVo.get(i).getExeCtg() %>
 								</th>
 								<td colspan="2" class="input-col" id="input-cnt">
 									<input type="text" value="<%=exeVo.get(i).getExeCnt() %>" size="40" readonly="readonly">
