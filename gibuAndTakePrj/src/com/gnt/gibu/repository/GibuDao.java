@@ -115,7 +115,8 @@ public class GibuDao {
 		return list;
 
 	}
-
+	
+	//진행중인 리스트 카운트
 	public int getListCount(Connection conn, int type) {
 		int listcount = 0;
 		// sql 준비
