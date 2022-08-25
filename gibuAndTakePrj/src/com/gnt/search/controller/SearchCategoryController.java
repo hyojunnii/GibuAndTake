@@ -33,7 +33,6 @@ public class SearchCategoryController extends HttpServlet{
 		
 		listCount = new SearchService().getCategoryCount(project, category);
 		
-		//나중에 헤더 수정
 		if(req.getParameter("p") != null) {
 			currentPage = Integer.parseInt(req.getParameter("p"));
 		} else {
@@ -69,10 +68,12 @@ public class SearchCategoryController extends HttpServlet{
 		List<RegistVo> categoryList = new SearchService().categorySearch(project, category, pageVo, s);
 		
 		req.setAttribute("categoryList", categoryList);
+		
 		if(categoryList != null) {
 			req.setAttribute("pr", project);
 			req.setAttribute("c", category);
 		}
+		
 		req.getRequestDispatcher("/views/search/searchPage.jsp").forward(req, resp);
 	}
 }

@@ -20,11 +20,7 @@ public class MainService {
 		if(todayVo != null) {
 			todayVo = new MainDao().todayFundingStory(conn, today, todayVo);
 		}
-		
 		close(conn);
-		
 		return todayVo;
 	}
-
-
 }

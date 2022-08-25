@@ -17,9 +17,6 @@ public class ProjectApplyService {
 
 	//기부 프로젝트 신청
 	public int donationApply(RegistVo rvo, DonationVo dvo, String changeName) {
-		//모금 종료일이 내일 이후인지 확인
-		
-		//사진 들어왔는지 확인
 		if(changeName.length() < 1) {
 			System.out.println("대표사진 입력 안함");
 			return -3;
@@ -63,9 +60,6 @@ public class ProjectApplyService {
 
 	//펀딩 프로젝트 신청
 	public int fundingApply(RegistVo rvo, FundingVo fvo, String changeName) {
-		//모금 종료일이 내일 이후인지 확인
-		
-		//사진 들어왔는지 확인
 		if(changeName.length() < 1) {
 			System.out.println("대표사진 입력 안함");
 			return -3;
@@ -109,9 +103,6 @@ public class ProjectApplyService {
 	
 	//캠페인 프로젝트 신청
 	public int campaignApply(RegistVo rvo, CampaignVo cvo, String changeName) {
-		//종료일이 내일 이후인지 확인
-		
-		//사진 들어왔는지 확인
 		if(changeName.length() < 1) {
 			System.out.println("대표사진 입력 안함");
 			return -3;

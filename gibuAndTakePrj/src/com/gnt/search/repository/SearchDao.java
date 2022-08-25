@@ -15,7 +15,7 @@ public class SearchDao {
 	
 	//게시글 총 갯수 조회
 	public int getCount(Connection conn) {
-		//나중에 REG_PASS 'Y'로 바꾸기
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT COUNT(REG_NO) AS COUNT FROM REGIST WHERE REG_DEL = 'N' AND REG_PASS = 'N'";
 		
 		PreparedStatement pstmt = null;
@@ -41,7 +41,7 @@ public class SearchDao {
 	
 	//등록테이블 검색 게시글 갯수
 	public int getSearchCount(Connection conn, String search) {
-		//나중에 REG_PASS 'Y'로 바꾸기
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT COUNT(REG_NO) AS COUNT FROM REGIST WHERE (REG_NAME LIKE '%' || ? || '%' OR REG_CONTENT LIKE '%' || ? || '%') AND REG_DEL = 'N' AND REG_PASS = 'N'";
 		
 		PreparedStatement pstmt = null;
@@ -69,7 +69,7 @@ public class SearchDao {
 	
 	//기부 주제별 검색 게시글 갯수
 	public int getDonationCount(Connection conn, String category) {
-		//나중에 REG_PASS 'Y'로 바꾸기
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT COUNT(D.D_NO) AS COUNT FROM DONATION D JOIN REGIST R ON D.REG_NO = R.REG_NO WHERE D.D_CLASS = ? AND R.REG_DEL = 'N' AND R.REG_PASS = 'N'";
 		
 		PreparedStatement pstmt = null;
@@ -96,7 +96,7 @@ public class SearchDao {
 	
 	//펀딩 주제별 검색 게시글 갯수
 	public int getFundingCount(Connection conn, String category) {
-		//나중에 REG_PASS 'Y'로 바꾸기
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT COUNT(F.F_NO) AS COUNT FROM FUNDING F JOIN REGIST R ON F.REG_NO = R.REG_NO WHERE F.F_CLASS = ? AND R.REG_DEL = 'N' AND R.REG_PASS = 'N'";
 		
 		PreparedStatement pstmt = null;
@@ -123,7 +123,7 @@ public class SearchDao {
 	
 	//추천목록(현재 페이지 기준) - 최신순
 	public List<RegistVo> recommendList(Connection conn, PageVo pageVo) {
-		//나중에 REG_PASS 'Y'로 수정
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, RM.* FROM ( SELECT R.REG_NO, R.REG_CLASS, R.REG_NAME, R.REG_CONTENT, R.REG_FIN, R.REG_CNT, M.M_NICK AS CORP, I.URL AS URL FROM REGIST R JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG I ON R.REG_NO = I.REG_NO WHERE R.REG_DEL = 'N' AND R.REG_PASS = 'N' ORDER BY R.REG_NO DESC ) RM ) R WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
@@ -174,7 +174,7 @@ public class SearchDao {
 	
 	//추천목록(현재 페이지 기준) - 인기순
 	public List<RegistVo> recommendPopularList(Connection conn, PageVo pageVo) {
-		//나중에 REG_PASS 'Y'로 수정
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, RM.* FROM ( SELECT R.REG_NO, R.REG_CLASS, R.REG_NAME, R.REG_CONTENT, R.REG_FIN, R.REG_CNT, M.M_NICK AS CORP, I.URL AS URL FROM REGIST R JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG I ON R.REG_NO = I.REG_NO WHERE R.REG_DEL = 'N' AND R.REG_PASS = 'N' ORDER BY R.REG_CNT DESC, R.REG_NO DESC ) RM ) R WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
@@ -225,7 +225,7 @@ public class SearchDao {
 	
 	//통합검색(현재 페이지 기준) - 최신순
 	public List<RegistVo> searchList(String search, Connection conn, PageVo pageVo) {
-		//나중에 REG_PASS 'Y'로 수정
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, RM.* FROM ( SELECT R.REG_NO, R.REG_CLASS, R.REG_NAME, R.REG_CONTENT, R.REG_FIN, R.REG_CNT, M.M_NICK AS CORP, I.URL AS URL FROM REGIST R JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG I ON R.REG_NO = I.REG_NO WHERE (R.REG_NAME LIKE '%' || ? || '%' OR R.REG_CONTENT LIKE '%' || ? || '%') AND R.REG_DEL = 'N' AND R.REG_PASS = 'N' ORDER BY R.REG_NO DESC ) RM ) R WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
@@ -278,7 +278,7 @@ public class SearchDao {
 
 	//통합검색(현재 페이지 기준) - 인기순
 	public List<RegistVo> searchPopularList(String search, Connection conn, PageVo pageVo) {
-		//나중에 REG_PASS 'Y'로 수정
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, RM.* FROM ( SELECT R.REG_NO, R.REG_CLASS, R.REG_NAME, R.REG_CONTENT, R.REG_FIN, R.REG_CNT, M.M_NICK AS CORP, I.URL AS URL FROM REGIST R JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG I ON R.REG_NO = I.REG_NO WHERE (R.REG_NAME LIKE '%' || ? || '%' OR R.REG_CONTENT LIKE '%' || ? || '%') AND R.REG_DEL = 'N' AND R.REG_PASS = 'N' ORDER BY R.REG_CNT DESC, R.REG_NO DESC ) RM ) R WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
@@ -331,7 +331,7 @@ public class SearchDao {
 
 	//기부 주제별 검색 - 최신순
 	public List<RegistVo> donationCateList(Connection conn, String category, PageVo pageVo) {
-		//나중에 REG_PASS 'Y'로 수정
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, RM.* FROM ( SELECT R.REG_NO, R.REG_CLASS, R.REG_NAME, R.REG_CONTENT, R.REG_FIN, R.REG_CNT, M.M_NICK AS CORP, I.URL AS URL FROM REGIST R JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG I ON R.REG_NO = I.REG_NO JOIN DONATION D ON R.REG_NO = D.REG_NO WHERE D.D_CLASS = ? AND R.REG_DEL = 'N' AND R.REG_PASS = 'N' ORDER BY R.REG_NO DESC ) RM ) R WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
@@ -383,7 +383,7 @@ public class SearchDao {
 
 	//기부 주제별 검색 - 인기순
 	public List<RegistVo> donationCatePopularList(Connection conn, String category, PageVo pageVo) {
-		//나중에 REG_PASS 'Y'로 수정
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, RM.* FROM ( SELECT R.REG_NO, R.REG_CLASS, R.REG_NAME, R.REG_CONTENT, R.REG_FIN, R.REG_CNT, M.M_NICK AS CORP, I.URL AS URL FROM REGIST R JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG I ON R.REG_NO = I.REG_NO JOIN DONATION D ON R.REG_NO = D.REG_NO WHERE D.D_CLASS = ? AND R.REG_DEL = 'N' AND R.REG_PASS = 'N' ORDER BY R.REG_CNT DESC, R.REG_NO DESC ) RM ) R WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
@@ -435,7 +435,7 @@ public class SearchDao {
 
 	//펀딩 주제별 검색 - 최신순
 	public List<RegistVo> fundingCateList(Connection conn, String category, PageVo pageVo) {
-		//나중에 REG_PASS 'Y'로 수정
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, RM.* FROM ( SELECT R.REG_NO, R.REG_CLASS, R.REG_NAME, R.REG_CONTENT, R.REG_FIN, R.REG_CNT, M.M_NICK AS CORP, I.URL AS URL FROM REGIST R JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG I ON R.REG_NO = I.REG_NO JOIN FUNDING F ON R.REG_NO = F.REG_NO WHERE F.F_CLASS = ? AND R.REG_DEL = 'N' AND R.REG_PASS = 'N' ORDER BY R.REG_NO DESC ) RM ) R WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
@@ -487,7 +487,7 @@ public class SearchDao {
 
 	//펀딩 주제별 검색 - 인기순
 	public List<RegistVo> fundingCatePopularList(Connection conn, String category, PageVo pageVo) {
-		//나중에 REG_PASS 'Y'로 수정
+		//나중에 REG_PASS 'Y'
 		String sql = "SELECT * FROM ( SELECT ROWNUM RNUM, RM.* FROM ( SELECT R.REG_NO, R.REG_CLASS, R.REG_NAME, R.REG_CONTENT, R.REG_FIN, R.REG_CNT, M.M_NICK AS CORP, I.URL AS URL FROM REGIST R JOIN MEMBER M ON R.M_NO = M.M_NO JOIN REGIMG I ON R.REG_NO = I.REG_NO JOIN FUNDING F ON R.REG_NO = F.REG_NO WHERE F.F_CLASS = ? AND R.REG_DEL = 'N' AND R.REG_PASS = 'N' ORDER BY R.REG_CNT DESC, R.REG_NO DESC ) RM ) R WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
