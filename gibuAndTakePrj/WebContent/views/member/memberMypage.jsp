@@ -105,8 +105,8 @@
 				<span id="myDonM" style="padding-left:100px" >나의 기부 금액</span>
 				<span id="money" style="padding-left:300px">10000원</span>
 				<br><br><br><br><br>
-				<span id="goFunding">펀딩 바로가기</span>
-				<span id="gogibu">기부 바로가기</span>
+				<a onclick="location.href='/gibuAndTakePrj/view/funding'" id="goFunding">펀딩 바로가기</a>
+				<a onclick="location.href='/gibuAndTakePrj/view/gibu'"id="gogibu">기부 바로가기</a>
 				<div id="middleLin"></div>
 				<h2 id= "log" style="margin-top: 100px">최근 활동 내역이 없습니다</h2>
 			</div>		
