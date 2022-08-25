@@ -176,7 +176,6 @@ public class MemberService {
 
 
 		if(memberPwdNew.equals(memberPwdNew2) == false) {
-			System.out.println("신규 비밀번호가 일치하지 않음");
 			return -1;
 		}
 
@@ -194,8 +193,7 @@ public class MemberService {
 			result = new MemberDao().changePwd(conn,memberId, memberPwd, memberPwdNew);
 
 
-
-			if(result == 1) {
+			if(result == 3) {
 				commit(conn);
 			}else {
 				rollback(conn);
@@ -208,7 +206,7 @@ public class MemberService {
 		}
 
 		return result;
-
+	
 	}
 
 
