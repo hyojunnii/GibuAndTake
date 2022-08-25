@@ -1,6 +1,6 @@
-package com.gnt.notice.controller;
+ package com.gnt.notice.controller;
 
-import java.io.IOException;
+ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -13,8 +13,8 @@ import com.gnt.common.PageVo;
 import com.gnt.notice.service.NoticeService;
 import com.gnt.notice.vo.NoticeVo;
 
-@WebServlet(urlPatterns = "/notice/list")
-public class NoticeList extends HttpServlet{
+ @WebServlet(urlPatterns = "/notice/list")
+ public class NoticeList extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
