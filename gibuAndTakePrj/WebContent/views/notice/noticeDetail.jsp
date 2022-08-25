@@ -103,6 +103,7 @@
         font-weight: bold;
         padding: 10px 20px 10px 20px;
         border-radius: 15px;
+        color: black;
     }
 
     #list:hover{

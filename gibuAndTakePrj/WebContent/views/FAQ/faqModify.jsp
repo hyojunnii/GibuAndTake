@@ -104,6 +104,8 @@
         font-weight: bold;
         border-radius: 15px;
         margin: 20px 0px 0px 40px;
+        font-size: 13px;
+        color: black;
     }
 
     #btn2:hover{
@@ -334,8 +336,12 @@
 	    <label id="content">내용</label> 
 	    <textarea id="input2" name="content" required><%=vo.getContent()%></textarea>
             <input id="btn1" class="btn3" type="submit" value="수정하기">
-        	<input id="btn2" class="btn3" type="submit" value="삭제하기">
         </form>
+        
+        	<form action="/gibuAndTakePrj/faq/list" method="get">
+        	<!-- <input id="btn2" class="btn3" type="submit" value="삭제하기"> -->
+        	<a id="btn2" class="btn3" href="/gibuAndTakePrj/faq/delete?num=<%=vo.getNo()%>">삭제하기</a> 
+        	 </form>
     </div>
 	<div id="last"></div>
 	

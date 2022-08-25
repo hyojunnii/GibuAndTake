@@ -62,6 +62,7 @@ ALTER TABLE FAQ ADD CONSTRAINT "PK_FAQ" PRIMARY KEY (
 );
 
 INSERT INTO FAQ (FAQ_NO, FAQ_CATE , FAQ_TITLE , FAQ_CONTENT , FAQ_WRITER ) VALUES ( SEQ_FAQ_NO.NEXTVAL ,'기부', '기부하는법' , '기부신청은 홈페이지에서 확인하실수 있습니다' , 1);
+INSERT INTO FAQ (FAQ_NO, FAQ_CATE , FAQ_TITLE , FAQ_CONTENT , FAQ_WRITER ) VALUES ( SEQ_FAQ_NO.NEXTVAL ,'기부', '기부내역확인하는법' , '기부내역은 마이페이지에서 확인하실수 있습니다' , 1);
 
 COMMIT;
 

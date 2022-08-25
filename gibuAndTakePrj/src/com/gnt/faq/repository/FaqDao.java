@@ -139,7 +139,7 @@ public class FaqDao {
 	}
 
 	public int delete(Connection conn, String num) {
-		String sql = "DELETE FAQ WHERE N_NO = ?";
+		String sql = "DELETE FAQ WHERE FAQ_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
