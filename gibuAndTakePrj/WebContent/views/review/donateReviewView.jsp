@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
         <%
     ReviewDetailVo rvo = (ReviewDetailVo)request.getAttribute("ReviewDetailVo");
-    request.setAttribute("ReviewDetailVo", rvo);
+    request.getSession().setAttribute("ReviewDetailVo", rvo);
     %>
 <!DOCTYPE html>
 <html>
@@ -125,8 +125,8 @@
                 <pre>${vo.revContent}</pre>
             </div>
             <div id="review_body_achieve">
-                <strong id="review_achieve_total">${vo.Pmoney}원</strong>
-                <span id="review_achieve_goal">${vo.Gmoney}원</span>
+                <strong id="review_achieve_total"><%=rvo.getPmoney() %>원</strong>
+                <span id="review_achieve_goal"><%=rvo.getPmoney() %>원</span>
             </div>
             <div id="review_detail_footer">
                 <div id="review_detail_footer_corp">
@@ -152,7 +152,6 @@
 <%@include file="/views/common/footer.jsp" %>
 
 <script>
-
 </script>
 </body>
 </html>

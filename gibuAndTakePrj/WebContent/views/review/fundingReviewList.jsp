@@ -27,7 +27,13 @@
     section{
         display: flex;
         justify-content: center;
+        flex-direction: column;
+	    align-items: center;
     }
+    
+    a{
+		text-decoration: none;	
+	}
 
 
     *{
@@ -88,8 +94,10 @@
 
     .review_view_more{
         width: 100%;
-        margin: 0 0 24px 24px;
+        margin: 24px auto;
         height: 35px;
+        display: flex;
+    	justify-content: center;
     }
 
     #create_review{
@@ -109,6 +117,8 @@
         border-radius: 10px;
         outline: none;
         box-shadow: none;
+        text-decoration: none;
+        color: black;
     }
 
     #create_review>div{
@@ -143,17 +153,17 @@
         
         <div id="review_view_more">
             <%if(startPage!=1){%>
-				<a href="<%=path%>/campaign/review/list?p=<%=startPage-1%>" class="review_btn">&lt;&lt;</a>
+				<a href="<%=path%>/funding/review/list?p=<%=startPage-1%>" class="review_btn">&lt;&lt;</a>
 				<%} %>
 				<%for(int i = startPage; i<=endPage; i++){ %>
 					<% if(i==currentPage){ %>
 						<Strong class="review_btn"><%=i %></Strong>
 					<%}else{%>
-					<a href="<%=path%>/campaign/review/list?p=<%=i%>" class="review_btn"><%=i %></a>
+					<a href="<%=path%>/funding/review/list?p=<%=i%>" class="review_btn"><%=i %></a>
 					<%} %>
 				<%} %>
 				<%if(endPage!=maxPage){%>
-				<a href="<%=path%>/campaign/review/list?p=<%=endPage+1%>" class="review_btn">&gt;&gt;</a>
+				<a href="<%=path%>/funding/review/list?p=<%=endPage+1%>" class="review_btn">&gt;&gt;</a>
 			<%} %>
 		</div>
 

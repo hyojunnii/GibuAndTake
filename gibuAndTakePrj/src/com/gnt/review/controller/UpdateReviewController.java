@@ -8,12 +8,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.gnt.corp.vo.corpVo;
 import com.gnt.member.vo.MemberVo;
 import com.gnt.review.service.ReviewService;
 import com.gnt.review.service.UpdateReviewService;
@@ -22,13 +24,19 @@ import com.gnt.review.vo.ReviewDetailVo;
 import com.gnt.review.vo.ReviewImgVo;
 import com.gnt.review.vo.ReviewVo;
 
+
+@MultipartConfig(
+		maxFileSize = 1024*1024*200,
+		maxRequestSize = 1024*1024*200*5
+		)
 @WebServlet(urlPatterns = "/review/update")
 public class UpdateReviewController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ReviewDetailVo vo = (ReviewDetailVo)req.getAttribute("ReviewDetailVo");
+		ReviewDetailVo vo = (ReviewDetailVo)req.getSession().getAttribute("ReviewDetailVo");
 		req.setAttribute("ReviewDetailVo", vo);
+		req.getSession().removeAttribute("ReviewDetailVo");
 		req.getRequestDispatcher("/views/review/updateReview.jsp").forward(req, resp);
 	}
 	
@@ -37,15 +45,31 @@ public class UpdateReviewController extends HttpServlet {
 		ReviewDetailVo vo = (ReviewDetailVo)req.getSession().getAttribute("ReviewDetailVo");
 		req.getSession().removeAttribute("ReviewDetailVo");
 		
-		
+		req.setCharacterEncoding("utf-8");
 		String revNo = vo.getRevNo();
 		String title = req.getParameter("title");
 		
 		String editordata = req.getParameter("editordata");
 		String category = req.getParameter("category");
+		if("기부".equals(category)) {
+			category = "1";
+		}else if("펀딩".equals(category)) {
+			category = "3";
+		}else if("캠페인".equals(category)) {
+			category = "2";
+		}
+		
 		String regNo = req.getParameter("regNo");
-		MemberVo m = (MemberVo)req.getSession().getAttribute("loginMember");
-		String no = Integer.toString(m.getNo());
+		String no = null;
+		MemberVo m = null;
+		corpVo c = null;
+		if((MemberVo)req.getSession().getAttribute("loginMember")!=null) {
+			m = (MemberVo)req.getSession().getAttribute("loginMember");
+			no = Integer.toString(m.getNo());
+		}else {
+			c = (corpVo)req.getSession().getAttribute("loginCorp");
+			no = Integer.toString(c.getNo());
+		}
 		
 		Part f = req.getPart("f");
 		
@@ -102,26 +126,15 @@ public class UpdateReviewController extends HttpServlet {
 		reviewVo.setRevName(title);
 		reviewVo.setRevClass(category);
 		reviewVo.setRevContent(editordata);
-		
+		System.out.println(category);
 		int result = new UpdateReviewService().updateReview(reviewVo,imgVo,regNo);
-		
 		if(result==1) {
 			req.setAttribute("alertMsg", "후기 수정 성공");
-			if("1".equals(category)) {
 				resp.sendRedirect(req.getContextPath()+"/donate/review/list?p=1");
-			}else if("2".equals(category)) {
-				resp.sendRedirect(req.getContextPath()+"/campaign/review/list?p=1");
-			}else if("3".equals(category)) {
-				resp.sendRedirect(req.getContextPath()+"/funding/review/list?p=1");
-			}
 		}else {
 			req.setAttribute("errorMsg", "로그인 실패!");
 			req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);
 		}
 		
-		
-		
-		
-		super.doPost(req, resp);
 	}
 }

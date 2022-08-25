@@ -27,7 +27,6 @@ public class UpdateReviewService {
 		if(imgVo==null) {
 			result2 = 1;
 		}
-		
 		close(conn);
 			
 		return result1*result2;

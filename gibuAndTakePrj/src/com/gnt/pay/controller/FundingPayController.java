@@ -43,10 +43,10 @@ public class FundingPayController extends HttpServlet {
 		int mno = Integer.parseInt(req.getParameter("mno"));
 		int addmoney = Integer.parseInt(req.getParameter("addmoney"));
 		
-		GibuVo gibuvo = (GibuVo)req.getAttribute("vo");
+		FundingVo fundingvo = (FundingVo)req.getAttribute("vo");
 		String pNo = req.getParameter("pNo");
 		String plMoney = req.getParameter("addmoney");
-		String regNo = gibuvo.getRegno();
+		String regNo = fundingvo.getRegno();
 		
 		PayListVo payListVo = new PayListVo(); 
 		payListVo.setpNo(pNo);
