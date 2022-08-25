@@ -253,7 +253,7 @@
                     <h3><%= c.getRegname() %></h3>
                     <span><%= c.getMnick() %></span>
                 </div>
-                <img src="../resource/upload/<%= c.getImgsrc()%>">
+                <img src="../resources/upload/<%= c.getImgsrc()%>">
                 </a>
             </li>
     		<%} %>
@@ -276,7 +276,7 @@
         <%for(CampaignVo c : list){ %>
          <a href="/gibuAndTakePrj/view/campaign_detail?num=<%=c.getRegno() %>" class="card">
              <div>
-                 <img src="../resource/upload/<%= c.getImgsrc() %>">
+                 <img src="../resources/upload/<%= c.getImgsrc() %>">
              </div>
              <div>
                  <p align="center"><%= c.getRegname() %></p>

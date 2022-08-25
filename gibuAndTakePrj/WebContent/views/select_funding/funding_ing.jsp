@@ -211,7 +211,7 @@
         <%for(FundingVo f : list) {%>
          <a href="/gibuAndTakePrj/view/funding_detail?type=0&num=<%=f.getRegno() %>" class="card">
              <div>
-                 <img src="../resource/upload/<%= f.getImgsrc()%>">
+                 <img src="../resources/upload/<%= f.getImgsrc()%>">
              </div>
              <div>
                  <p align="center"><%= f.getRegname() %></p>
