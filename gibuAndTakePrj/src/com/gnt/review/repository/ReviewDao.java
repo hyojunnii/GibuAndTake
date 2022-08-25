@@ -298,17 +298,14 @@ public class ReviewDao {
 		try {
 			
 			//sql 준비
-			String sql = "UPDATE REVIEW SET REV_NAME = ?, REV_CONTENT=? WHERE REV_NO=?";
+			String sql = "UPDATE REVIEW SET REV_NAME = ?, REV_CONTENT=?, REV_MOD = SYSDATE WHERE REV_NO=?";
 			//sql 객체에 담기
 			pstmt = conn.prepareStatement(sql);
 			
 			//미완성 sql 완성
 			pstmt.setString(1, reviewVo.getRevName());
 			pstmt.setString(2, reviewVo.getRevContent());
-			pstmt.setString(3, regNo);
-			
-			
-			
+			pstmt.setString(3, reviewVo.getRevNo());
 			
 			
 			//sql 실행 실행 결과 받기
@@ -320,7 +317,6 @@ public class ReviewDao {
 			//다쓴 자원 정리하기
 			JDBCTemplate.close(pstmt);
 		}
-		
 		return result;
 		
 	}

@@ -45,13 +45,12 @@ public class UpdateReviewController extends HttpServlet {
 		ReviewDetailVo vo = (ReviewDetailVo)req.getSession().getAttribute("ReviewDetailVo");
 		req.getSession().removeAttribute("ReviewDetailVo");
 		
-		
+		req.setCharacterEncoding("utf-8");
 		String revNo = vo.getRevNo();
 		String title = req.getParameter("title");
 		
 		String editordata = req.getParameter("editordata");
 		String category = req.getParameter("category");
-		
 		if("기부".equals(category)) {
 			category = "1";
 		}else if("펀딩".equals(category)) {
@@ -127,17 +126,11 @@ public class UpdateReviewController extends HttpServlet {
 		reviewVo.setRevName(title);
 		reviewVo.setRevClass(category);
 		reviewVo.setRevContent(editordata);
-		
+		System.out.println(category);
 		int result = new UpdateReviewService().updateReview(reviewVo,imgVo,regNo);
 		if(result==1) {
 			req.setAttribute("alertMsg", "후기 수정 성공");
-			if("1".equals(category)) {
 				resp.sendRedirect(req.getContextPath()+"/donate/review/list?p=1");
-			}else if("2".equals(category)) {
-				resp.sendRedirect(req.getContextPath()+"/campaign/review/list?p=1");
-			}else if("3".equals(category)) {
-				resp.sendRedirect(req.getContextPath()+"/funding/review/list?p=1");
-			}
 		}else {
 			req.setAttribute("errorMsg", "로그인 실패!");
 			req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);

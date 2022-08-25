@@ -99,7 +99,6 @@
 </head>
 <body>
 <%@include file="/views/common/header.jsp" %>
-
     <section>
         <form action="<%=path %>/review/update" method="post" enctype="multipart/form-data">
         <div id="review_update_wrap">

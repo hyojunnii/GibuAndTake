@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 	String category = (String)request.getAttribute("category");    
-
+	
 	List<ReviewVo> voList = (ArrayList<ReviewVo>)request.getAttribute("boardVoList");
 	ReviewPageVo pageVo = (ReviewPageVo)request.getAttribute("PageVo");
 	
@@ -129,7 +129,7 @@
 </head>
 <body>
 <%@include file="/views/common/header.jsp" %>
-
+	
     <div id="create_review">
     </div>  
 	<section>
