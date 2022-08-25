@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.gnt.corp.vo.corpVo;
 import com.gnt.member.vo.MemberVo;
 import com.gnt.review.service.ReviewService;
 import com.gnt.review.service.UpdateReviewService;
@@ -45,8 +46,16 @@ public class UpdateReviewController extends HttpServlet {
 		String editordata = req.getParameter("editordata");
 		String category = req.getParameter("category");
 		String regNo = req.getParameter("regNo");
-		MemberVo m = (MemberVo)req.getSession().getAttribute("loginMember");
-		String no = Integer.toString(m.getNo());
+		String no = null;
+		MemberVo m = null;
+		corpVo c = null;
+		if((MemberVo)req.getSession().getAttribute("loginMember")!=null) {
+			m = (MemberVo)req.getSession().getAttribute("loginMember");
+			no = Integer.toString(m.getNo());
+		}else {
+			c = (corpVo)req.getSession().getAttribute("loginCorp");
+			no = Integer.toString(c.getNo());
+		}
 		
 		Part f = req.getPart("f");
 		
