@@ -309,13 +309,13 @@
           <table id="title_table">
             <tr>
               <td width="20%"></td>
-              <td colspan="3" width="60%"><h1><%= vo.getRegname() %></h1></td>
+              <td colspan="3" width="60%" style="padding-top: 20px"><h1><%= vo.getRegname() %></h1></td>
               <td width="20%">
               <c:if test="${empty loginMember && empty loginCorp}">
             	</td>
            	</c:if>
-             <c:if test="${loginCorp.no eq gibuvo.mno}">
-             <a href="<%=path%>/pm/edit/donation" class="btn">수정하기</a>
+             <c:if test="${loginCorp.no eq campaignvo.mno}">
+             <a href="<%=path%>/pm/edit/campaign" class="btn">수정하기</a>
              </td>
           </c:if>
             </tr>
@@ -327,13 +327,13 @@
               <div>행동하기</div>
             </a>
           </div>
-
+		<c:if test="${loginCorp.no eq campaignvo.mno}">
 			<form action="<%=path %>/review/create" method="get">
             	<input type="hidden" name="regNo" value="<%=vo.getRegno()%>">
             	<input type="hidden" name="category" value="<%=vo.getRegclass()%>">
             	<button type="submit" class="reviw_container">후기 등록</button>
-            
             </form>
+		</c:if>
 		<br>
 
           <div id="tabs">
@@ -345,12 +345,12 @@
             <div class="tabcontent">
               <div id="introduce">
                 <h3>캠페인 소개</h3>
-                <h2>사업대상</h2>
                 <p>
                 <%=vo.getRegcontent() %>
                 </p>
-                <br> <br> <br>
+                <br> <br>
                 <div id="table_cover">
+                <h2>사업대상</h2>
                   <table class="campaign_table">
                     <tbody>
                       <tr>
@@ -399,11 +399,13 @@
 	                    <td id="comments_name" width="30%"> ${pf.mnick}</td>
 	                    <td id="comments_date" align="right" width="50%">${pf.cpmod}</td>
 	                    <td align="right" width="20%">
-	                    <c:if test="${loginMember.no == pf.mno}">
-	                        <button type="submit" value="수정" class="btn" formaction='/gibuAndTakePrj/view/CampaignDetail/edit?'>수정</button>
-	                        <button type="submit" value="삭제" class="btn" formaction='/gibuAndTakePrj/view/CampaignDetail/del?'>삭제</button>
+	                    <c:if test="${loginMember.no eq pf.mno}">
+	                        <a class="btn" onclick="return confirm('삭제하시겠습니까?')" href="<%=path%>/campaign/proof/delete?cno=${pf.cpno}">삭제</a>
 	                 	</c:if>
-	                        <button type="submit" value="신고" class="btn" formaction='/gibuAndTakePrj/view/CampaignDetail/ban?'>신고</button>
+	                 	<c:if test="${loginCorp.no eq pf.mno}">
+	                        <a class="btn" onclick="return confirm('삭제하시겠습니까?')" href="<%=path%>/campaign/proof/delete?cno=${pf.cpno}">삭제</a>
+	                 	</c:if>
+	                        <a class="btn" data-bs-toggle="modal" data-bs-target="#banModal">신고</a>
 	                    </td>
 	                </tr>
 	                <tr>
@@ -415,6 +417,65 @@
 	            </table>
 	            <hr>
 	            </form>
+               <!-- Modal -->
+				<div class="modal fade" id="banModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">신고 사유를 선택해주세요.</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        <div class="form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+						  <label class="form-check-label" for="flexRadioDefault1">
+						    영리, 홍보목적
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+						  <label class="form-check-label" for="flexRadioDefault2">
+						    음란, 청소년 유해
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+						  <label class="form-check-label" for="flexRadioDefault2">
+						    욕설, 비방, 차별, 혐오
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+						  <label class="form-check-label" for="flexRadioDefault2">
+						    개인정보 노출, 거래
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+						  <label class="form-check-label" for="flexRadioDefault2">
+						    도배, 스팸
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+						  <label class="form-check-label" for="flexRadioDefault2">
+						    불법촬영물 등 유통 신고
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+						  <label class="form-check-label" for="flexRadioDefault2">
+						    기타
+						  </label>
+						</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+				        <a type="button" class="btn btn-primary" href="<%=path%>/campaign/proof/ban?cno=${pf.cpno}">신고하기</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			</c:forEach>
 
 
@@ -499,40 +560,8 @@
           </div>
         </div>
       </div>
-
-      <!-- 인증수정 모달창 예비 -->
-      <div class="modal" id="proofEditModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered" id="modal-outer">
-          <div class="modal-content" id="modal-form">
-            <div class="modal-header" id="modal-header">
-              <h5 class="modal-title">수정하기</h5>
-            </div>
-            <div class="modal-body" id="modal-body">
-              <form action="<%=path%>/campaign/proof/edit" method="post">
-                <div id="cam_name"></div>
-                <!-- <input type="hidden" id="reply_name" value="로그인고객"> -->
-                <textarea
-                  name="content"
-                  id="reply_text"
-                  class="form-control"
-                  aria-label="With textarea"
-                  placeholder="변경할 사진을 첨부해주세요."
-                ></textarea>
-                <div class="count"><span>0</span>/100</div>
-                <input name="img" type="file" class="form-control" id="reply_img" />
-                <p id="modal-form-info">
-                  -사진은 50mb이하 최대 1장까지 등록 가능합니다. <br />
-                  -미션 내용에 맞지 않거나 게시글 정책에 맞지 않는 경우 삭제됩니다.
-                </p>
-                <div id="modal-form-buttons">
-                  <input name="dispose" type="button" class="modal-form-button modal-close" data-bs-dismiss="modal" value="취소" />
-                  <input type="submit" class="modal-form-button" value="수정" />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      
+   
 
       <script>
         $(document).ready(function () {
@@ -551,6 +580,20 @@
 
           $("#delete-btn").on("click", function () {});
         });
+        
+/*         function fn_delete(cpno) {
+        	var msg = conform("인증글을 삭제합니다.");
+        	if(msg == true) {
+        		deleteProof(cpno);
+        	} else {
+        		return false;
+        	}
+        }
+        
+        function deleteProof(cpno) {
+        	var param = "cpNo="+cpno;
+        	
+        } */
       </script>
 
       <br clear="both" />
