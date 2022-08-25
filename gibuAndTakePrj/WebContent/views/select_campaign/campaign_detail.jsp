@@ -304,7 +304,7 @@
     <div id="outer">
       <div id="campaign_detail_container">
         <br />
-        <img src="../resource/upload/<%= vo.getImgsrc() %>">
+        <img src="../resources/upload/<%= vo.getImgsrc() %>">
         <div id="campaign_detail_container_div">
           <table id="title_table">
             <tr>
@@ -409,6 +409,9 @@
 	                <tr>
 	                    <td colspan="5" id="comments_content">${pf.cpcontent}</td>
 	                </tr>
+	                <tr>
+                    <td colspan="5"><img src="../resources/upload/${pf.imgsrc}" id="comments_img" /></td>
+                  </tr>
 	            </table>
 	            <hr>
 	            </form>

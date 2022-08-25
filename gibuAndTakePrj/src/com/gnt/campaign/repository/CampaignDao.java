@@ -264,7 +264,7 @@ public class CampaignDao {
 
 	public List<CampaignProofVo> selectProof(Connection conn, int num) {
 		// sql 준비
-		String sql = "SELECT * FROM  CAMPAIGNPROOF CP JOIN MEMBER M ON CP.M_NO = M.M_NO JOIN REGIST R ON R.REG_NO = CP.CAM_NO WHERE CP.CAM_NO = ? ORDER BY CP.CP_NO DESC";
+		String sql = "SELECT * FROM  CAMPAIGNPROOF CP JOIN MEMBER M ON CP.M_NO = M.M_NO JOIN CAMPAIGN C ON CP.CAM_NO = C.CAM_NO JOIN PROOFIMG PF ON CP.CP_NO = PF.CP_NO WHERE C.REG_NO = ? ORDER BY CP.CP_NO DESC";
 		String paraclass = "";			
 
 		PreparedStatement pstmt = null;
@@ -290,7 +290,8 @@ public class CampaignDao {
 				String cpmod = rs.getString("CP_MOD");		//마지막수정일자
 				String mnick = rs.getString("M_NICK");		//닉네임
 				String imgsrc = rs.getString("URL");		//사진주소
-
+				String regno = rs.getString("REG_NO");		//등록번호
+				
 				CampaignProofVo vo = new CampaignProofVo();
 				vo.setCpno(cpno);
 				vo.setMno(mno);
@@ -302,6 +303,7 @@ public class CampaignDao {
 				vo.setCpmod(cpmod);
 				vo.setMnick(mnick);;
 				vo.setImgsrc(imgsrc);
+				vo.setRegno(regno);
 
 				volist.add(vo);
 				

@@ -204,7 +204,7 @@
             </tr>
         </table>
             <p class="comName">By <%=vo.getMnick() %></p>
-            <img src="../resource/upload/<%= vo.getImgsrc() %>">
+            <img src="../resources/upload/<%= vo.getImgsrc() %>">
         <div id="gibu_detail_container_div">
             <p>
                 <%= vo.getRegcontent() %>

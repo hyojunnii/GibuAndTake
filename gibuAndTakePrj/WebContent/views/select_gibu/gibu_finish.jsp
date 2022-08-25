@@ -226,7 +226,7 @@ progress::-webkit-progress-value{
         <a href="/gibuAndTakePrj/view/gibu_detail?type=<%=regtype %>&num=<%=g.getRegno() %>" class="card">
             <div>
             <!-- ../resources/img/select_icon/1all.png -->
-                <img src="../resource/upload/<%= g.getImgsrc()%>">
+                <img src="../resources/upload/<%= g.getImgsrc()%>">
             </div>
             <div>
                 <p align="center"><%= g.getRegname() %></p>

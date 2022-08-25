@@ -5,10 +5,9 @@ public class CampaignProofVo {
 		
 	}
 	
-	
 
 	public CampaignProofVo(String cpno, String mno, String camno, String cpcontent, String cpdate, String cpdel,
-			String cpban, String cpmod, String mnick, String imgsrc) {
+			String cpban, String cpmod, String mnick, String imgsrc, String regno) {
 		this.cpno = cpno;
 		this.mno = mno;
 		this.camno = camno;
@@ -19,7 +18,10 @@ public class CampaignProofVo {
 		this.cpmod = cpmod;
 		this.mnick = mnick;
 		this.imgsrc = imgsrc;
+		this.regno = regno;
 	}
+
+
 
 
 
@@ -34,6 +36,21 @@ public class CampaignProofVo {
 	private String mnick;		//사용자 닉네임
 	private String imgsrc;
 	
+	private String regno; 		//등록번호
+	
+	
+	public String getRegno() {
+		return regno;
+	}
+
+
+
+	public void setRegno(String regno) {
+		this.regno = regno;
+	}
+
+
+
 	public String getImgsrc() {
 		return imgsrc;
 	}
@@ -98,14 +115,12 @@ public class CampaignProofVo {
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "CampaignProofVo [cpno=" + cpno + ", mno=" + mno + ", camno=" + camno + ", cpcontent=" + cpcontent
 				+ ", cpdate=" + cpdate + ", cpdel=" + cpdel + ", cpban=" + cpban + ", cpmod=" + cpmod + ", mnick="
-				+ mnick + ", imgsrc=" + imgsrc + "]";
+				+ mnick + ", imgsrc=" + imgsrc + ", regno=" + regno + "]";
 	}
-	
-	
-	
+
+
 }
