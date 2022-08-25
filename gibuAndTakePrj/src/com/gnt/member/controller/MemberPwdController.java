@@ -29,7 +29,7 @@ public class MemberPwdController extends HttpServlet{
 			System.out.println(result);
 			
 			//실행결과에 따라 화면 선택
-			if(result == 1) {
+			if(result == 3) {
 				//성공
 				//마이페이지
 				req.getSession().setAttribute("alertMsg","비밀번호 변경 성공!");

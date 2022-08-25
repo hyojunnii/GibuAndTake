@@ -318,9 +318,7 @@ public class MemberDao {
 	public int changePwd(Connection conn, String memberId, String memberPwd, String memberPwdNew) throws Exception{
 		//connection 준비
 
-		System.out.println("memberId : " + memberId);
-		System.out.println("memberPwd : " + memberPwd);
-		System.out.println("memberPwdNew : " + memberPwdNew);
+		
 		//sql 준비
 		String sql = "UPDATE MEMBER SET M_PWD = ? WHERE M_ID = ? AND M_PWD = ?";
 
@@ -333,11 +331,11 @@ public class MemberDao {
 			pstmt.setString(1, memberPwdNew);
 			pstmt.setString(2, memberId);
 			pstmt.setString(3, memberPwd);
-
 			//sql 실행 및 결과저장
 			result = pstmt.executeUpdate();
 			//실행결과 -> 자바에서 사용가능하게 변경
 			//실행결과 리턴
+			System.out.println(result);
 		}catch(Exception e) {
 			e.printStackTrace();
 			throw e;

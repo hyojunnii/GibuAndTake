@@ -174,7 +174,7 @@ public class corpService {
 
 
 
-			if(result == 1) {
+			if(result == 2) {
 				commit(conn);
 			}else {
 				rollback(conn);
