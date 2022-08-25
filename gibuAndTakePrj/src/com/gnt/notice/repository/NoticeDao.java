@@ -31,7 +31,6 @@ public class NoticeDao {
 			
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
-			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -42,7 +41,6 @@ public class NoticeDao {
 				String cnt = rs.getString("N_CNT");
 				String date = rs.getString("N_DATE");
 				
-				
 				NoticeVo vo = new NoticeVo();
 				vo.setNo(no);
 				vo.setTitle(title);
@@ -50,7 +48,6 @@ public class NoticeDao {
 				vo.setWriter(writer);
 				vo.setCnt(cnt);
 				vo.setDate(date);
-				
 				
 				list.add(vo);
 			}

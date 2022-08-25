@@ -26,7 +26,7 @@ public class NoticeService {
 		return voList;
 	}
 
-	//공지사항 작성
+	
 	public int writeNotice(NoticeVo vo) {
 		Connection conn = null;
 		int result = 0;
