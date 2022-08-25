@@ -13,6 +13,7 @@ public class GibuService {
 	
 	private final GibuDao dao = new GibuDao();
 
+	//목록 조회
 	public List<GibuVo> selectList(int type) {
 		
 		Connection conn = null;
@@ -36,7 +37,7 @@ public class GibuService {
 			close(conn);
 		return result;
 	}
-
+	//만료된 목록 조회
 	public List<GibuVo> selectDoneList(int type) {
 		Connection conn = null;
 		List<GibuVo> voList = null;
@@ -47,7 +48,7 @@ public class GibuService {
 			close(conn);
 		return voList;
 	}
-
+	//만료된 게시글 총 개수 구하기
 	public int getListDoneCount(int type) {
 		Connection conn = null;
 		int result = 0;
