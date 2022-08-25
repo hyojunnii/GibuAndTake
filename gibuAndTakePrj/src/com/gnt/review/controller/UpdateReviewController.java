@@ -34,7 +34,9 @@ public class UpdateReviewController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ReviewDetailVo vo = (ReviewDetailVo)req.getAttribute("ReviewDetailVo");
+		ReviewDetailVo vo = (ReviewDetailVo)req.getSession().getAttribute("ReviewDetailVo");
+		req.getSession().removeAttribute("ReviewDetailVo");
+		
 		
 		String revNo = vo.getRevNo();
 		String title = req.getParameter("title");

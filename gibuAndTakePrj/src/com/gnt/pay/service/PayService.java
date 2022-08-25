@@ -6,6 +6,7 @@ import java.util.List;
 import static com.gnt.common.JDBCTemplate.*;
 
 import com.gnt.pay.repository.PaymentDao;
+import com.gnt.pay.vo.PayListVo;
 import com.gnt.pay.vo.PaymentVo;
 
 public class PayService {
@@ -19,6 +20,19 @@ public class PayService {
 		
 		conn = getConnection();
 		result = dao.callPaymentList(conn, no);
+	
+		close(conn);
+		
+		return result;
+	}
+
+	public int insertPayList(PayListVo payListVo) {
+		int result = 0;
+		
+		Connection conn = null;
+		
+		conn = getConnection();
+		result = dao.insertPayList(conn, payListVo);
 	
 		close(conn);
 		

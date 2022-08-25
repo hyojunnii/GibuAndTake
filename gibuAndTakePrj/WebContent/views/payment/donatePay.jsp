@@ -1,12 +1,14 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.gnt.pay.vo.PaymentVo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.gnt.gibu.vo.GibuVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	GibuVo vo = (GibuVo)request.getAttribute("gibuvo");
-	List<PaymentVo> pVo = (List<PaymentVo>)request.getAttribute("list");
-	request.setAttribute("vo", vo);
+	GibuVo vo = (GibuVo)request.getAttribute("vo");
+	request.getSession().setAttribute("gibuvo", vo);
+	List<PaymentVo> pVo = (ArrayList<PaymentVo>)request.getAttribute("list");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -102,7 +104,7 @@
 </head>
 <body>
 <%@include file="/views/common/header.jsp" %>
-<c:set var="pVo" value=<%=pVo %>/>
+<c:set var="pvo" value="<%=pVo %>"/>
     <section>
         <form action="<%=path %>/donate/pay" method="post">
         	<input type="hidden" name="num" value="<%= vo.getRegno() %>">
@@ -126,22 +128,22 @@
                 <div id="pay_body_select" class="pay_border">
                     <span class="pay_div_title">결제 수단</span>
                     <div>
-                    <c:choose>
-	            		<c:when test="${!empty loginMember }">
-                        	<c:forEach items="${pVo}" var="p">
-                        	<c:set var="i" value="${i+1}"/>
-	                        	<input type="radio" name="pNo" id="${i}" class="pay_select_name" value="${p.pNo}" checked>
-	                        	<label for="${i}" class="pay_select_name">${p.pName}</label>
-							</c:forEach>
-	            		</c:when>
-	            		<c:when test="${!empty loginCorp }">
-                        	<c:forEach items="${pVo}" var="p">
-                        	<c:set var="i" value="${i+1}"/>
-	                        	<input type="radio" name="pNo" id="${i}" class="pay_select_name" ${p.pNo} checked>
-	                        	<label for="${i}" class="pay_select_name">${p.pName}</label>
-							</c:forEach>
-	            		</c:when>
-            	</c:choose>
+                    
+            		<c:if test="${!empty loginMember }">
+                       	<c:forEach items="${list}" var="p">
+                       	<c:set var="i" value="${i+1}"/>
+                        	<input type="radio" name="pNo" id="${i}" class="pay_select_name" value="${p.pNo}" checked>
+                        	<label for="${i}" class="pay_select_name">${p.pName} : ${p.pNumber}</label>
+						</c:forEach>
+            		</c:if>
+            		<c:if test="${!empty loginCorp }">
+                       	<c:forEach items="${pVo}" var="p">
+                       	<c:set var="i" value="${i+1}"/>
+                        	<input type="radio" name="pNo" id="${i}" class="pay_select_name" ${p.pNo} checked>
+                        	<label for="${i}" class="pay_select_name">${p.pName} : ${p.pNumber}</label>
+						</c:forEach>
+            		</c:if>
+            	
                     </div>
                 </div>
             </div>
