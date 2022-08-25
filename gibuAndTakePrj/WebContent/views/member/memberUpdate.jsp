@@ -222,12 +222,12 @@
         color: #2e6c4a;
         margin-left:120px;
       }
-	  #memberP {
+	  #memberP{
 	  	 height:30px;
          width: 180px;
          border-radius: 15px;
          margin: 5% auto;
-         margin-left: -80px;
+         margin-right: -50px;
          border: 1px solid #acdac2;
 	  }
 	  
@@ -236,7 +236,7 @@
          width: 180px;
          border-radius: 15px;
           margin: 5% auto;
-           margin-left: -80px;
+         margin-right: -50px;
          border: 1px solid #acdac2;
 	  }
 	  
@@ -245,7 +245,7 @@
         width: 180px;
          border-radius: 15px;
          margin: 5% auto;
-          margin-left: -80px;
+        margin-right: -50px;
          border: 1px solid #acdac2;
 	  }
 	  

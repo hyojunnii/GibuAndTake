@@ -500,7 +500,7 @@
 				<tr>
 					<td class="corpText" id="corpText" style="font-weight: bold" >기업 설명 *</td>
 					<td>
-						 <textarea name="corpContent" id ="corpContent"  value=<%=loginCorp.getContent()%>></textarea></td>
+						 <textarea name="corpContent" id ="corpContent"  value=<%=loginCorp.getContent()%> readonly></textarea></td>
 					
 				</tr>
 				<tr></tr><tr></tr><tr></tr><tr></tr>
