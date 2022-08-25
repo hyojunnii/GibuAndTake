@@ -109,7 +109,7 @@
                 <input type="text" class="review_header_title" placeholder="후기제목" name="title" value="<%=vo.getRevName()%>"></input>
             </div>
             <div id="review_body_content">
-                <textarea id="content" name="editordata" class="note-editable"><%=vo.getCorpContent() %></textarea>
+                <textarea id="content" name="editordata" class="note-editable"><%=vo.getRevContent() %></textarea>
             </div>
             <div id="review_update_footer_btn">
                 <input type="submit" value="수정하기" class="review_update_btn">
