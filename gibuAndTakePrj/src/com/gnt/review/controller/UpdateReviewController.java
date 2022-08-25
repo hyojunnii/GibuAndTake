@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,11 @@ import com.gnt.review.vo.ReviewDetailVo;
 import com.gnt.review.vo.ReviewImgVo;
 import com.gnt.review.vo.ReviewVo;
 
+
+@MultipartConfig(
+		maxFileSize = 1024*1024*200,
+		maxRequestSize = 1024*1024*200*5
+		)
 @WebServlet(urlPatterns = "/review/update")
 public class UpdateReviewController extends HttpServlet {
 	
@@ -45,6 +51,15 @@ public class UpdateReviewController extends HttpServlet {
 		
 		String editordata = req.getParameter("editordata");
 		String category = req.getParameter("category");
+		
+		if("기부".equals(category)) {
+			category = "1";
+		}else if("펀딩".equals(category)) {
+			category = "3";
+		}else if("캠페인".equals(category)) {
+			category = "2";
+		}
+		
 		String regNo = req.getParameter("regNo");
 		String no = null;
 		MemberVo m = null;
@@ -114,7 +129,6 @@ public class UpdateReviewController extends HttpServlet {
 		reviewVo.setRevContent(editordata);
 		
 		int result = new UpdateReviewService().updateReview(reviewVo,imgVo,regNo);
-		
 		if(result==1) {
 			req.setAttribute("alertMsg", "후기 수정 성공");
 			if("1".equals(category)) {
@@ -129,9 +143,5 @@ public class UpdateReviewController extends HttpServlet {
 			req.getRequestDispatcher("/gibuAndTakePrj/views/error/errorPage.jsp").forward(req, resp);
 		}
 		
-		
-		
-		
-		super.doPost(req, resp);
 	}
 }

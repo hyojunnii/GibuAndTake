@@ -101,7 +101,7 @@
 <%@include file="/views/common/header.jsp" %>
 
     <section>
-        <form action="<%=path %>/review/update" method="post">
+        <form action="<%=path %>/review/update" method="post" enctype="multipart/form-data">
         <div id="review_update_wrap">
             <div class="review_update_header">
                 <label for="review_header_img_btn">상단배경선택</label>

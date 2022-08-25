@@ -298,7 +298,7 @@ public class ReviewDao {
 		try {
 			
 			//sql 준비
-			String sql = "UPDATE REVIEW SET TITLE = ?, CONTENT=? WHERE REV_NO=?;";
+			String sql = "UPDATE REVIEW SET REV_NAME = ?, REV_CONTENT=? WHERE REV_NO=?";
 			//sql 객체에 담기
 			pstmt = conn.prepareStatement(sql);
 			
