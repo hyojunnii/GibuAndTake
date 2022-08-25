@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gnt.common.PageVo;
+import com.gnt.corp.vo.corpVo;
 import com.gnt.project.vo.RegistVo;
 import com.gnt.projectApply.service.ApplyListService;
 import com.gnt.search.service.SearchService;
@@ -20,8 +21,8 @@ public class ApplyListPageController extends HttpServlet{
 	//프로젝트 신청 내역
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//신청 내역 가져오기
-		int mno = 1;
+		corpVo covo = (corpVo)req.getSession().getAttribute("loginCorp");
+		int mno = covo.getNo();
 		
 		//----------페이징 처리-----------
 		int listCount;		//현재 총 게시글 갯수
@@ -34,7 +35,6 @@ public class ApplyListPageController extends HttpServlet{
 		
 		listCount = new SearchService().getCount();
 		
-		//나중에 헤더 수정
 		if(req.getParameter("p") != null) {
 			currentPage = Integer.parseInt(req.getParameter("p"));
 		} else {

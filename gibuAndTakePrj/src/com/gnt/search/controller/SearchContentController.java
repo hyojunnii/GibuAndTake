@@ -36,7 +36,6 @@ public class SearchContentController extends HttpServlet{
 		
 		listCount = new SearchService().getSearchCount(search);
 		
-		//나중에 헤더 수정
 		if(req.getParameter("p") != null) {
 			currentPage = Integer.parseInt(req.getParameter("p"));
 		} else {

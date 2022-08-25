@@ -25,7 +25,6 @@ public class ProjectEditDao {
 			pstmt.setString(1, rvo.getContent());
 			pstmt.setString(2, rvo.getfDate());
 			pstmt.setInt(3, rvo.getRegNo()); 
-			//pstmt.setString(4, rvo.getmNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -61,32 +60,6 @@ public class ProjectEditDao {
 		}
 		return result;
 	}
-
-//	//집행테이블 수정
-//	public int donationExecuteEdit(Connection conn, DonationVo dvo, int i) {
-//		String sql = "UPDATE EXECUTE SET E_CTG = ?, E_CONTENT = ?,  E_MONEY = ? WHERE E_NO IN(SELECT E_NO FROM (SELECT ROWNUM AS NUM, E_NO, E_CTG, E_CONTENT, E_MONEY FROM EXECUTE WHERE D_NO = ?) WHERE NUM = ?)";
-//		
-//		int result = 0;
-//		PreparedStatement pstmt = null;
-//		
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setString(1, dvo.getDonaExecategory()[i]);
-//			pstmt.setString(2, dvo.getDonaExecontent()[i]);
-//			pstmt.setString(3, dvo.getMoney()[i]);
-//			pstmt.setInt(4, dvo.getdNo());
-//			pstmt.setInt(5, i+1);
-//			
-//			result = pstmt.executeUpdate();
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			close(pstmt);
-//		}
-//		return result;
-//	}
 	
 	//집행테이블 기존 데이터 삭제
 	public int donationExecuteDelete(Connection conn, DonationVo dvo) {

@@ -77,9 +77,7 @@ public class SearchService {
 		} else {
 			recommendList = dao.recommendList(conn, pageVo);
 		}
-		
 		close(conn);
-		
 		return recommendList;
 	}
 
@@ -101,9 +99,7 @@ public class SearchService {
 		} else {
 			searchedList = dao.searchList(search, conn, pageVo);
 		}
-		
 		close(conn);
-		
 		return searchedList;
 	}
 
@@ -116,21 +112,18 @@ public class SearchService {
 		conn = getConnection();
 		
 		if("기부".equals(project)) {
-			System.out.println("기부");
 			if(s != null) {
 				categoryList = dao.donationCatePopularList(conn, category, pageVo);
 			} else {
 				categoryList = dao.donationCateList(conn, category, pageVo);
 			}
 		} else {
-			System.out.println("펀딩");
 			if(s != null) {
 				categoryList = dao.fundingCatePopularList(conn, category, pageVo);
 			} else {
 				categoryList = dao.fundingCateList(conn, category, pageVo);
 			}
 		}
-		System.out.println(categoryList);
 		close(conn);
 		return categoryList;
 	}

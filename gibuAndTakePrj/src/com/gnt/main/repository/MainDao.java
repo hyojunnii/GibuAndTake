@@ -50,38 +50,38 @@ public class MainDao {
 	}
 	
 	//오늘의 참여현황 - 펀딩
-		public TodayStoryVo todayFundingStory(Connection conn, String today, TodayStoryVo todayVo) {
+	public TodayStoryVo todayFundingStory(Connection conn, String today, TodayStoryVo todayVo) {
+		
+		String sql = "SELECT COUNT(*) AS FPEOPLE, SUM(PL_MONEY) AS FMONEY FROM PAYLIST P JOIN REGIST R ON P.REG_NO = R.REG_NO WHERE P.PL_DATE LIKE ? || '%' AND R.REG_CLASS = '펀딩'";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, today);
 			
-			String sql = "SELECT COUNT(*) AS FPEOPLE, SUM(PL_MONEY) AS FMONEY FROM PAYLIST P JOIN REGIST R ON P.REG_NO = R.REG_NO WHERE P.PL_DATE LIKE ? || '%' AND R.REG_CLASS = '펀딩'";
+			rs = pstmt.executeQuery();
 			
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			
-			try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, today);
+			if(rs.next()) {
+				double people = rs.getDouble("FPEOPLE");
+				double money = rs.getDouble("FMONEY");
 				
-				rs = pstmt.executeQuery();
+				String fPeople = dc.format(people);
+				String fMoney = dc.format(money);
 				
-				if(rs.next()) {
-					double people = rs.getDouble("FPEOPLE");
-					double money = rs.getDouble("FMONEY");
-					
-					String fPeople = dc.format(people);
-					String fMoney = dc.format(money);
-					
-					todayVo.setfPeople(fPeople);
-					todayVo.setfMoney(fMoney);
-				} else {
-					todayVo = null;
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				JDBCTemplate.close(pstmt);
-				JDBCTemplate.close(rs);
+				todayVo.setfPeople(fPeople);
+				todayVo.setfMoney(fMoney);
+			} else {
+				todayVo = null;
 			}
-			return todayVo;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
 		}
+		return todayVo;
+	}
 
 }

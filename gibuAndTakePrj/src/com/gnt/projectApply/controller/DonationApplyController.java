@@ -84,15 +84,12 @@ public class DonationApplyController extends HttpServlet{
 		String savePath = "";
 		String changeName = "";
 		if(file.getSubmittedFileName().length() > 0) {
-			//파일 업로드
-			String originName = file.getSubmittedFileName();	//원본 파일명 얻기
+			String originName = file.getSubmittedFileName();	//원본 파일명
 			changeName = new ProjectApplyService().createChangeName(originName);
 			
-			//인풋 스트림 준비
 			InputStream is = file.getInputStream();
 			BufferedInputStream bis = new BufferedInputStream(is);
 			
-			//아웃풋 스트림 준비 (서버에 저장)
 			String realPath = req.getServletContext().getRealPath("/resources/upload");
 			savePath = realPath + File.separator + changeName;
 			FileOutputStream os = new FileOutputStream(savePath);
@@ -109,15 +106,14 @@ public class DonationApplyController extends HttpServlet{
 			bos.close();
 		}
 		
-		//서비스 호출
 		int result = new ProjectApplyService().donationApply(rvo, dvo, changeName);
 		
 		if(result == 1) {
-			//성공시 apply/main + 알람
+			//성공시 메인신청페이지
 			req.getSession().setAttribute("alertMsg", "기부프로젝트 신청 성공!");
 			resp.sendRedirect(req.getContextPath() + "/pm/apply/main");
 		} else {
-			//실패시 기존화면(돌아가기..?) + 알람
+			//실패시 기존화면
 			req.getSession().setAttribute("alertMsg", "기부프로젝트 신청 실패");
 			resp.sendRedirect(req.getContextPath() + "/pm/apply/donation");
 		}

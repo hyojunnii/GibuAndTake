@@ -32,9 +32,6 @@ public class CampaignProofController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		
-		//int mNo = 1;
-		//int camNo = 1;
-		
 		com.gnt.campaign.vo.CampaignVo vo = (com.gnt.campaign.vo.CampaignVo)req.getSession().getAttribute("campaignvo");
 		int camNo = Integer.parseInt(vo.getCamno());
 		int regNo = Integer.parseInt(vo.getRegno());
@@ -61,15 +58,12 @@ public class CampaignProofController extends HttpServlet{
 		String savePath = "";
 		String changeName = "";
 		if(file.getSubmittedFileName().length() > 0) {
-			//파일 업로드
-			String originName = file.getSubmittedFileName();	//원본 파일명 얻기
+			String originName = file.getSubmittedFileName();	//원본 파일명
 			changeName = new ProjectApplyService().createChangeName(originName);
 			
-			//인풋 스트림 준비
 			InputStream is = file.getInputStream();
 			BufferedInputStream bis = new BufferedInputStream(is);
 			
-			//아웃풋 스트림 준비 (서버에 저장)
 			String realPath = req.getServletContext().getRealPath("/resources/upload");
 			savePath = realPath + File.separator + changeName;
 			FileOutputStream os = new FileOutputStream(savePath);
@@ -89,11 +83,11 @@ public class CampaignProofController extends HttpServlet{
 		int result = new CampaignProofService().insertProof(proofVo, changeName);
 		
 		if(result == 1) {
-			//성공알림, 상세페이지
+			//상세페이지
 			req.getSession().setAttribute("alertMsg", "캠페인 인증 성공");
 			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail?type=0&num=" + regNo);
 		} else {
-			//실패알림, 상세페이지
+			//상세페이지
 			req.getSession().setAttribute("alertMsg", "캠페인 인증 실패");
 			resp.sendRedirect(req.getContextPath() + "/view/campaign_detail?type=0&num=" + regNo);
 		}

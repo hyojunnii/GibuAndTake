@@ -18,7 +18,7 @@ public class ProjectEditDataDao {
 	//기부 수정페이지 데이터
 	//등록, 기부테이블
 	public DonationVo getDonation(Connection conn, int regNo, int mNo) {
-		//나중에 PASS = 'Y'로 바꿔야함
+		//나중에 PASS = 'Y'
 		String sql = "SELECT R.REG_NO REGNO , R.REG_NAME TITLE , R.REG_CONTENT CONTENT , R.REG_FDATE FDATE , D.D_NO DNO , D.D_CLASS CATEGORY , D.D_GMONEY GMONEY , D.D_SDATE SDATE , D.D_EDATE EDATE , D.D_PERSON PERSON FROM REGIST R JOIN DONATION D ON R.REG_NO = D.REG_NO WHERE R.REG_NO = ? AND R.M_NO = ? AND R.REG_CLASS = '기부' AND R.REG_DEL = 'N' AND R.REG_PASS = 'N'";
 		
 		PreparedStatement pstmt = null;
@@ -115,7 +115,7 @@ public class ProjectEditDataDao {
 	//펀딩 수정페이지 데이터
 	//등록, 펀딩테이블
 	public FundingVo getFunding(Connection conn, int regNo, int mNo) {
-		//나중에 PASS = 'Y'로 바꿔야함
+		//나중에 PASS = 'Y'
 		String sql = "SELECT R.REG_NO REGNO , R.REG_NAME TITLE , R.REG_CONTENT CONTENT , R.REG_FDATE FDATE , F.F_NO FNO , F.F_CLASS CATEGORY , F.F_GMONEY GMONEY FROM REGIST R JOIN FUNDING F ON R.REG_NO = F.REG_NO WHERE R.REG_NO = ? AND R.M_NO = ? AND R.REG_CLASS = '펀딩' AND R.REG_DEL = 'N' AND R.REG_PASS = 'N'";
 		
 		PreparedStatement pstmt = null;
@@ -203,7 +203,7 @@ public class ProjectEditDataDao {
 	//캠페인 수정페이지 데이터
 	//등록, 캠페인테이블
 	public CampaignVo getCampaign(Connection conn, int regNo, int mNo) {
-		//나중에 PASS = 'Y'로 바꿔야함
+		//나중에 PASS = 'Y'
 			String sql = "SELECT R.REG_NO REGNO , R.REG_NAME TITLE , R.REG_CONTENT CONTENT , R.REG_FDATE FDATE , C.CAM_NO CAMNO , C.CAM_GPEOPLE GPEOPLE FROM REGIST R JOIN CAMPAIGN C ON R.REG_NO = C.REG_NO WHERE R.REG_NO = ? AND R.M_NO = ? AND R.REG_CLASS = '캠페인' AND R.REG_DEL = 'N' AND R.REG_PASS = 'N'";
 			
 			PreparedStatement pstmt = null;
